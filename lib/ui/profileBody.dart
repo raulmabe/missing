@@ -9,53 +9,66 @@ class ProfileBody extends StatefulWidget {
 class _ProfileBodyState extends State<ProfileBody> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          end: Alignment.topLeft,
+          colors: [
+            Theme.of(context).primaryColor,
+            Colors.redAccent[100]
+          ]
+        )
+      ),
       padding: const EdgeInsets.all(10.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Align(
-            alignment: Alignment.centerRight,
-            child: InkWell(
-              onTap: (){print("Settings tapped");},
-              child: Icon(
-                Icons.settings,
-                size: 30,
+      child: SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Align(
+              alignment: Alignment.centerRight,
+              child: InkWell(
+                onTap: (){print("Settings tapped");},
+                child: Icon(
+                  Icons.settings,
+                  color: Colors.white,
+                  size: 30,
+                ),
               ),
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              // Profile image
-              Container(
-                width: 100,
-                height: 100,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: Theme.of(context).primaryColor,
-                    width: 3.0
-                    )
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                // Profile image
+                Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 3.0
+                      )
+                  ),
+                  child: CircleAvatar(
+                  backgroundImage: AssetImage("assets/profile_pic.jpg"),
+                  radius: 50.0,
                 ),
-                child: ClipOval(
-                  child: Image.asset("assets/profile_pic.jpg"),
                 ),
-              ),
-              getTextColumn(
-                number: 0,
-                text: "Found"
-              ),
-              getTextColumn(
-                number: 2,
-                text: "Missings"
-              ),
-            ],
-          ),
-          getInfo(),
-          Divider(),
-        ],
+                getTextColumn(
+                  number: 0,
+                  text: "Found"
+                ),
+                getTextColumn(
+                  number: 2,
+                  text: "Missings"
+                ),
+              ],
+            ),
+            getInfo(),
+            Divider(
+              color: Colors.white,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -68,14 +81,16 @@ class _ProfileBodyState extends State<ProfileBody> {
         Text(
           "$number",
           style: TextStyle(
-            fontSize: 25.0
+            fontSize: 25.0,
+            color: Colors.grey[50]
           )
           ),
         Text(
           text,
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 20.0
+            fontSize: 20.0,
+            color: Colors.grey[50]
           )
         )
       ],
@@ -94,13 +109,15 @@ class _ProfileBodyState extends State<ProfileBody> {
           Icon(
             FontAwesomeIcons.mapMarkerAlt,
             size: 20.0,
+            color: Colors.white,
             ),
           Padding(
             padding: EdgeInsets.only(left: 5.0),
             child: Text(
               "Premià de mar, Barcelona",
               style: TextStyle(
-                fontSize: 16.0
+                fontSize: 18.0,
+                color: Colors.white
               ),
               ),
           )

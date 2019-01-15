@@ -38,36 +38,34 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: <Widget>[
-            TabBarView(
-              controller: _tabController,
-              children: <Widget>[
-                new Body(
-                  type: Type.PEOPLE,
-                ),
-                new Body(
-                  type: Type.PETS,
-                ),
-                new Body(
-                  type: Type.THINGS,
-                ),
-                new ProfileBody(),
-              ],
-            ),
-            (_tabController.index == _tabController.length-1) ? new Container() : Positioned(
-              top: 4.0,
-              right: 20.0,
-              left: 20.0,
-              child: SafeArea(
-                child: SearchBar(),
-              )
+      body: Stack(
+        children: <Widget>[
+          TabBarView(
+            controller: _tabController,
+            children: <Widget>[
+              new Body(
+                type: Type.PEOPLE,
+              ),
+              new Body(
+                type: Type.PETS,
+              ),
+              new Body(
+                type: Type.THINGS,
+              ),
+              new ProfileBody(),
+            ],
+          ),
+          (_tabController.index == _tabController.length-1) ? new Container() : Positioned(
+            top: 4.0,
+            right: 20.0,
+            left: 20.0,
+            child: SafeArea(
+              child: SearchBar(),
             )
-          ],
-        ),
+          )
+        ],
       ),
-      bottomNavigationBar: new Container(
+      bottomNavigationBar: Container(
         padding: EdgeInsets.only(bottom: 20.0),
         color: Theme.of(context).primaryColor,
         height: 85,
@@ -75,6 +73,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           controller: _tabController,
           labelColor: Colors.white,
           indicator: null,
+          indicatorPadding: EdgeInsets.only(top: 0),
           tabs: <Widget>[
             Tab(
               text: "People",
