@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import './bodys/animalsBody.dart';
-import './bodys/peopleBody.dart';
-import './bodys/stuffBody.dart';
-import './bodys/profileBody.dart';
+import './body.dart';
+import './profileBody.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './widgets/searchBar.dart';
 
@@ -22,7 +20,12 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   void initState(){
     super.initState();
     _tabController = TabController(vsync: this, length: 4);
+    _tabController.addListener(_handleTabSelection);
     _scrollController = ScrollController();
+  }
+
+  void _handleTabSelection(){
+    setState((){});
   }
 
   @override
@@ -35,26 +38,34 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          TabBarView(
-            controller: _tabController,
-            children: <Widget>[
-              new PeopleBody(),
-              new AnimalBody(),
-              new StuffBody(),
-              new ProfileBody()
-            ],
-          ),
-          (_tabController.index == 1) ? new Container() : Positioned(
-            top: 4.0,
-            right: 20.0,
-            left: 20.0,
-            child: SafeArea(
-              child: SearchBar(),
+      body: SafeArea(
+        child: Stack(
+          children: <Widget>[
+            TabBarView(
+              controller: _tabController,
+              children: <Widget>[
+                new Body(
+                  type: Type.PEOPLE,
+                ),
+                new Body(
+                  type: Type.PETS,
+                ),
+                new Body(
+                  type: Type.THINGS,
+                ),
+                new ProfileBody(),
+              ],
+            ),
+            (_tabController.index == _tabController.length-1) ? new Container() : Positioned(
+              top: 4.0,
+              right: 20.0,
+              left: 20.0,
+              child: SafeArea(
+                child: SearchBar(),
+              )
             )
-          )
-        ],
+          ],
+        ),
       ),
       bottomNavigationBar: new Container(
         padding: EdgeInsets.only(bottom: 20.0),
@@ -74,7 +85,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               icon: new Icon(Icons.pets),
             ),
             Tab(
-              text: "Stuff",
+              text: "Things",
               icon: new Icon(FontAwesomeIcons.archive),
             ),
             Tab(

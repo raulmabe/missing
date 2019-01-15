@@ -24,31 +24,32 @@ class _MissingCardState extends State<MissingCard> {
   @override
   Widget build(BuildContext context) {
     
-    return Padding(
-      padding: EdgeInsets.all(5.0),
-      child: Material(
-        elevation: 4.0,
-        borderRadius: BorderRadius.circular(5.0),
-        color: Colors.grey[350],
-        child:Column(
+    return Material(
+      elevation: 1.0,
+      borderRadius: BorderRadius.circular(5.0),
+      color: Colors.white,
+      child:Padding(
+        padding: EdgeInsets.all(10.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             Text(
               title,
               style: TextStyle(
                 fontSize: 16.0,
-                color: Theme.of(context).primaryColor
+                fontWeight: FontWeight.w700,
               ),
             ),
             Text(
               description,
+              textAlign: TextAlign.justify,
               style: TextStyle(
                 fontSize: 16.0,
-                color: Theme.of(context).primaryColor
               ),
             ),
           ],
-        )
-      ),
+        ),
+      )
     );
   }
 }
