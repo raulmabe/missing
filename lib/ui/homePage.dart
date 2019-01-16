@@ -14,14 +14,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin{
 
   TabController _tabController;
-  ScrollController _scrollController;
 
   @override
   void initState(){
     super.initState();
     _tabController = TabController(vsync: this, length: 4);
     _tabController.addListener(_handleTabSelection);
-    _scrollController = ScrollController();
   }
 
   void _handleTabSelection(){
@@ -31,7 +29,6 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   @override
   void dispose(){
     _tabController.dispose();
-    _scrollController.dispose();
     super.dispose();
   }
 
@@ -66,32 +63,31 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         ],
       ),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.only(bottom: 20.0),
         color: Theme.of(context).primaryColor,
-        height: 85,
-        child: new TabBar(
-          controller: _tabController,
-          labelColor: Colors.white,
-          indicator: null,
-          indicatorPadding: EdgeInsets.only(top: 0),
-          tabs: <Widget>[
-            Tab(
-              text: "People",
-              icon: new Icon(Icons.face),
-            ),
-            Tab(
-              text: "Pets",
-              icon: new Icon(Icons.pets),
-            ),
-            Tab(
-              text: "Things",
-              icon: new Icon(FontAwesomeIcons.archive),
-            ),
-            Tab(
-              text: "Profile",
-              icon: new Icon(Icons.person),
-            ),
-          ],
+        height: 100,
+        child: SafeArea(
+          child: TabBar(
+            controller: _tabController,
+            labelColor: Colors.white,
+            tabs: <Widget>[
+              Tab(
+                text: "People",
+                icon: Icon(Icons.face),
+              ),
+              Tab(
+                text: "Pets",
+                icon: Icon(Icons.pets),
+              ),
+              Tab(
+                text: "Things",
+                icon: Icon(FontAwesomeIcons.archive),
+              ),
+              Tab(
+                text: "Profile",
+                icon: Icon(Icons.person),
+              ),
+            ],
+          ),
         ),
       ),
     );

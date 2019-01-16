@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import './widgets/missingCards.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class ProfileBody extends StatefulWidget {
   @override
@@ -7,6 +9,32 @@ class ProfileBody extends StatefulWidget {
 }
 
 class _ProfileBodyState extends State<ProfileBody> {
+
+  ScrollController _scrollController;
+
+  List<Widget> myPosts = [
+    MissingCard(
+      title: null,
+      description: null,
+    ),
+    MissingCard(
+      title: null,
+      description: null,
+    ),
+  ];
+
+  @override
+  void initState(){
+    super.initState();
+    _scrollController = ScrollController();
+  }
+
+  @override
+  void dispose(){
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -67,6 +95,19 @@ class _ProfileBodyState extends State<ProfileBody> {
             Divider(
               color: Colors.white,
             ),
+            Expanded(
+              child: StaggeredGridView.count(
+                controller: _scrollController,
+                padding: EdgeInsets.only(top: 10.0, bottom: 10.0, left: 10.0, right: 10.0),
+                crossAxisCount: 4,
+                mainAxisSpacing: 15.0,
+                crossAxisSpacing: 10.0,
+                children: myPosts,
+                staggeredTiles: myPosts
+                              .map<StaggeredTile>((_) => StaggeredTile.fit(2))
+                              .toList(),
+              ),
+            ), 
           ],
         ),
       ),
@@ -103,24 +144,47 @@ class _ProfileBodyState extends State<ProfileBody> {
         vertical: 15.0,
         horizontal: 40,
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+      child: Column(
         children: <Widget>[
-          Icon(
-            FontAwesomeIcons.mapMarkerAlt,
-            size: 20.0,
-            color: Colors.white,
-            ),
-          Padding(
-            padding: EdgeInsets.only(left: 5.0),
-            child: Text(
-              "Premià de mar, Barcelona",
-              style: TextStyle(
-                fontSize: 18.0,
-                color: Colors.white
-              ),
-              ),
-          )
+          // Usuario
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: 5.0),
+                child: Text(
+                  "Raul Mateo Beneyto",
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold
+                  ),
+                  ),
+              )
+            ],
+          ),
+
+          // Ubicacion
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Icon(
+                FontAwesomeIcons.mapMarkerAlt,
+                size: 20.0,
+                color: Colors.white,
+                ),
+              Padding(
+                padding: EdgeInsets.only(left: 5.0),
+                child: Text(
+                  "Premià de mar, Barcelona",
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    color: Colors.white
+                  ),
+                  ),
+              )
+            ],
+          ),
         ],
       ),
     );
