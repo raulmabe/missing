@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './widgets/missingCards.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'dart:math';
 
 class Body extends StatefulWidget{
 
@@ -20,50 +21,62 @@ class _BodyState extends State<Body>{
 
   List<Widget> children = [
           MissingCard(
+            id: 0,
             title: null,
             description: null,
           ),
           MissingCard(
+            id: 1,
             title: null,
             description: null,
           ),
           MissingCard(
+            id: 2,
             title: null,
             description: null,
           ),
           MissingCard(
+            id: 3,
             title: null,
             description: null,
           ),
           MissingCard(
+            id: 4,
             title: null,
             description: null,
           ),
           MissingCard(
+            id: 5,
             title: null,
             description: null,
           ),
           MissingCard(
+            id: 6,
             title: null,
             description: null,
           ),
           MissingCard(
+            id: 7,
             title: null,
             description: null,
           ),
           MissingCard(
+            id: 8,
             title: null,
             description: null,
           ),
           MissingCard(
+            id: 9,
             title: null,
             description: null,
           ),
           MissingCard(
+            id: 10,
             title: null,
             description: null,
           ),
           MissingCard(
+            id: 11,
             title: null,
             description: null,
           ),

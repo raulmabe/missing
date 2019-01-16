@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './widgets/missingCards.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'dart:math';
 
 class ProfileBody extends StatefulWidget {
   @override
@@ -14,10 +15,12 @@ class _ProfileBodyState extends State<ProfileBody> {
 
   List<Widget> myPosts = [
     MissingCard(
+      id: new Random().nextInt(1000),
       title: null,
       description: null,
     ),
     MissingCard(
+      id: new Random().nextInt(1000),
       title: null,
       description: null,
     ),

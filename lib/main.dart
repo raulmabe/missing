@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
 import './ui/homePage.dart';
+import './ui/missingDetails.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+
+  
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+/* 
+      initialRoute: '/',
+      routes: {
+        // When we navigate to the "/" route, build the FirstScreen Widget
+        '/': (context) => HomePage(),
+        // When we navigate to the "/second" route, build the SecondScreen Widget
+        '/missingDetails': (context) => MissingDetails(),
+      }, */
       title: 'missing',
       debugShowCheckedModeBanner: false,
       color: Color(0xffff7675),
