@@ -52,78 +52,85 @@ class _ProfileBodyState extends State<ProfileBody> {
           ]
         )
       ),
-      padding: const EdgeInsets.all(10.0),
       child: SafeArea(
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+        child: Material(
+          color: Colors.transparent,
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                IconButton(
-                onPressed: (){print("Chat tapped");},
-                icon: Icon(
-                  Icons.chat,
-                  color: Colors.white,
-                  size: 30,
-                  ),
-                ),
-                IconButton(
-                onPressed: (){print("Settings tapped");},
-                icon: Icon(
-                  Icons.settings,
-                  color: Colors.white,
-                  size: 30,
-                  ),
-                ),
-              ]
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                // Profile image
-                Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    IconButton(
+                    onPressed: (){print("Chat tapped");},
+                    splashColor: Theme.of(context).splashColor,
+                    icon: Icon(
+                      Icons.chat,
                       color: Colors.white,
-                      width: 3.0
-                      )
+                      size: 30,
+                      ),
+                    ),
+                    IconButton(
+                    onPressed: (){print("Settings tapped");},
+                    splashColor: Theme.of(context).splashColor,
+                    icon: Icon(
+                      Icons.settings,
+                      color: Colors.white,
+                      size: 30,
+                      ),
+                    ),
+                  ]
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    // Profile image
+                    Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 3.0
+                          )
+                      ),
+                      child: CircleAvatar(
+                      backgroundImage: AssetImage("assets/profile_pic.jpg"),
+                      radius: 50.0,
+                    ),
+                    ),
+                    getTextColumn(
+                      number: 0,
+                      text: "Found"
+                    ),
+                    getTextColumn(
+                      number: 2,
+                      text: "Missings"
+                    ),
+                  ],
+                ),
+                getInfo(),
+                Divider(
+                  color: Colors.white,
+                ),
+                Expanded(
+                  child: StaggeredGridView.count(
+                    controller: _scrollController,
+                    padding: EdgeInsets.only(top: 10.0, bottom: 10.0, left: 10.0, right: 10.0),
+                    crossAxisCount: 4,
+                    mainAxisSpacing: 15.0,
+                    crossAxisSpacing: 10.0,
+                    children: myPosts,
+                    staggeredTiles: myPosts
+                                  .map<StaggeredTile>((_) => StaggeredTile.fit(2))
+                                  .toList(),
                   ),
-                  child: CircleAvatar(
-                  backgroundImage: AssetImage("assets/profile_pic.jpg"),
-                  radius: 50.0,
-                ),
-                ),
-                getTextColumn(
-                  number: 0,
-                  text: "Found"
-                ),
-                getTextColumn(
-                  number: 2,
-                  text: "Missings"
-                ),
+                ), 
               ],
             ),
-            getInfo(),
-            Divider(
-              color: Colors.white,
-            ),
-            Expanded(
-              child: StaggeredGridView.count(
-                controller: _scrollController,
-                padding: EdgeInsets.only(top: 10.0, bottom: 10.0, left: 10.0, right: 10.0),
-                crossAxisCount: 4,
-                mainAxisSpacing: 15.0,
-                crossAxisSpacing: 10.0,
-                children: myPosts,
-                staggeredTiles: myPosts
-                              .map<StaggeredTile>((_) => StaggeredTile.fit(2))
-                              .toList(),
-              ),
-            ), 
-          ],
+          ),
         ),
       ),
     );

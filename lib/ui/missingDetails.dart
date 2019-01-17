@@ -24,11 +24,12 @@ class MissingDetails extends StatelessWidget {
           )
           ),
         actions: <Widget>[
-          IconButton(
+          // Favourite missings
+          /* IconButton(
             icon: Icon(Icons.favorite_border),
             onPressed: (){},
             color: Colors.white,
-          ),
+          ), */
           IconButton(
             icon: Icon(Icons.share),
             onPressed: (){},
@@ -83,6 +84,7 @@ class MissingDetails extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
                           Text("50"),
+                          SizedBox(width: 5.0,),
                           Icon(Icons.remove_red_eye)
                         ],
                       ),

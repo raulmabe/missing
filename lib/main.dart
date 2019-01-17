@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
       color: Color(0xffff7675),
       theme: ThemeData(
         primaryColor: Color(0xffff7675),
+        splashColor: Colors.red[50],
         fontFamily: "Montserrat",
         primarySwatch: const MaterialColor(0xffff7675,
         const {
