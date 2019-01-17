@@ -11,11 +11,13 @@ class Body extends StatefulWidget{
 
   @override
     State<StatefulWidget> createState() {
-      return _BodyState();
+      return _BodyState(type);
     }
 }
 
 class _BodyState extends State<Body>{
+
+  Type type;
 
   ScrollController _scrollController;
 
@@ -82,6 +84,12 @@ class _BodyState extends State<Body>{
           ),
   ];
 
+  _BodyState(this.type){
+    if(type == Type.PEOPLE){
+      children = [];
+    }
+  }
+
   @override
   void initState(){
     super.initState();
@@ -101,6 +109,27 @@ class _BodyState extends State<Body>{
         
   @override
   Widget build(BuildContext context) {
+    if(children.length == 0) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Text("Fortunately, there is no ", 
+            style: TextStyle(
+              color: Colors.grey[600],
+              fontSize: 18.0
+            ),
+          ),
+          Text("missing ",
+            style: TextStyle(
+              color: Colors.grey[600],
+              fontStyle: FontStyle.italic,
+              fontSize: 18.0
+            )
+          )
+        ],
+      );
+    }
     return SafeArea(
       child: StaggeredGridView.count(
         controller: _scrollController,

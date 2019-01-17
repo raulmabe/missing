@@ -30,59 +30,61 @@ class _MissingCardState extends State<MissingCard> {
   @override
   Widget build(BuildContext context) {
     
-    return InkWell(
-      onTap: (){
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => MissingDetails(id: id),
-          ),
-        );
-      },
-      child: Material(
-        elevation: 1.0,
-        borderRadius: BorderRadius.circular(5.0),
-        color: Colors.white,
-        child:Column(
-          children: <Widget>[
-            Hero(
-              tag: id,
-              child: Container(
-                height: (new Random().nextDouble() * 100) + 100,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5.0),
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage("assets/perro1.jpg"),
-                  )
+    return Material(
+      elevation: 1.0,
+      borderRadius: BorderRadius.circular(5.0),
+      color: Colors.white,
+      child: InkWell(
+        onTap: (){
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MissingDetails(id: id),
+            ),
+          );
+        },
+        child: Container(
+          child: Column(
+            children: <Widget>[
+              Hero(
+                tag: id,
+                child: Container(
+                  height: (new Random().nextDouble() * 100) + 100,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5.0),
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage("assets/gato1.jpg"),
+                    )
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.w700,
+              Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
-                  ),
-                  Text(
-                    description,
-                    style: TextStyle(
-                      fontSize: 16.0,
+                    Text(
+                      description,
+                      style: TextStyle(
+                        fontSize: 16.0,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
-        )
-      ),
+            ],
+          ),
+        ),
+      )
     );
   }
 }

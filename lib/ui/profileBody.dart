@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './widgets/missingCards.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'dart:math';
+import './widgets/uploadCard.dart';
 
 class ProfileBody extends StatefulWidget {
   @override
@@ -14,6 +15,7 @@ class _ProfileBodyState extends State<ProfileBody> {
   ScrollController _scrollController;
 
   List<Widget> myPosts = [
+    UploadCard(),
     MissingCard(
       id: new Random().nextInt(1000),
       title: null,
@@ -56,16 +58,26 @@ class _ProfileBodyState extends State<ProfileBody> {
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Align(
-              alignment: Alignment.centerRight,
-              child: InkWell(
-                onTap: (){print("Settings tapped");},
-                child: Icon(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                IconButton(
+                onPressed: (){print("Chat tapped");},
+                icon: Icon(
+                  Icons.chat,
+                  color: Colors.white,
+                  size: 30,
+                  ),
+                ),
+                IconButton(
+                onPressed: (){print("Settings tapped");},
+                icon: Icon(
                   Icons.settings,
                   color: Colors.white,
                   size: 30,
+                  ),
                 ),
-              ),
+              ]
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
