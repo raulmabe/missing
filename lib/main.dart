@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import './ui/homePage.dart';
-import './ui/missingDetails.dart';
+import './ui/pages/homePage.dart';
 
 void main() => runApp(MyApp());
 
