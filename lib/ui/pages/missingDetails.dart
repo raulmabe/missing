@@ -181,7 +181,7 @@ class MissingDetails extends StatelessWidget {
       backgroundColor: Theme.of(context).primaryColor,
       
       bottomNavigationBar: BottomAppBar(
-        color: Colors.redAccent[100],
+        color: Theme.of(context).primaryColorLight,
         child: SafeArea(
           child: InkWell(
             onTap: () {

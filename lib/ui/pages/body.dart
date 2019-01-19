@@ -111,30 +111,33 @@ class _BodyState extends State<Body>{
   Widget build(BuildContext context) {
     if(children.length == 0) {
       return Center(
-        child: Wrap(
-          direction: Axis.horizontal,
-          alignment: WrapAlignment.center,
-          children: <Widget>[
-            Text("Fortunately, there are no ", 
-              style: TextStyle(
-                color: Colors.grey[600],
-                fontSize: 18.0
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Wrap(
+            direction: Axis.horizontal,
+            alignment: WrapAlignment.center,
+            children: <Widget>[
+              Text("Fortunately, there are no ", 
+                style: TextStyle(
+                  color: Colors.grey[600],
+                  fontSize: 18.0
+                ),
               ),
-            ),
-            Text("missings ",
-              style: TextStyle(
-                color: Colors.grey[600],
-                fontStyle: FontStyle.italic,
-                fontSize: 18.0
-              )
-            ),
-            Text("at the moment. ", 
-              style: TextStyle(
-                color: Colors.grey[600],
-                fontSize: 18.0
+              Text("missings ",
+                style: TextStyle(
+                  color: Colors.grey[600],
+                  fontStyle: FontStyle.italic,
+                  fontSize: 18.0
+                )
               ),
-            ),
-          ],
+              Text("at the moment. ", 
+                style: TextStyle(
+                  color: Colors.grey[600],
+                  fontSize: 18.0
+                ),
+              ),
+            ],
+          ),
         ),
       );
     }

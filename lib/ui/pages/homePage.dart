@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             ],
           ),
           (_tabController.index == _tabController.length-1) ? new Container() : Positioned(
-            top: 4.0,
+            top: 10.0,
             right: 20.0,
             left: 20.0,
             child: SafeArea(
@@ -64,11 +64,10 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
       ),
       bottomNavigationBar: Container(
         color: Theme.of(context).primaryColor,
-        height: 100,
         child: SafeArea(
           child: TabBar(
             controller: _tabController,
-            labelColor: Colors.white,
+            indicatorColor: Theme.of(context).primaryColor,
             tabs: <Widget>[
               Tab(
                 text: "People",

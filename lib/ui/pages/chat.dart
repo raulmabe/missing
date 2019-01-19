@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 import '../../utils.dart';
+import '../../themeData.dart';
 
 class Chat extends StatefulWidget {
 
@@ -39,7 +40,7 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin{
           vsync: this,
         duration: new Duration(milliseconds: 200)
       ),
-      isMe: new Random().nextBool(),
+      isntMe: new Random().nextBool(),
       delivered: true,
       time: "12:00",
     );
@@ -94,7 +95,7 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin{
           onPressed: () => Navigator.pop(context),
         ),
       ),
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: Theme.of(context).primaryColorDark,
       body: Stack(
         children: <Widget>[
           Column(
@@ -118,7 +119,7 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin{
                 padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 10.0 ),
                 child: Material(
                   borderRadius: BorderRadius.circular(50.0),
-                  color: Colors.redAccent[100],
+                  color: Theme.of(context).primaryColorLight,
                   elevation: 2.0,
                   child: Padding(
                     padding: EdgeInsets.symmetric(vertical: 7.0, horizontal: 20.0),
@@ -172,19 +173,19 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin{
 
 class BubbleMessage extends StatelessWidget {
 
-  BubbleMessage({this.message, this.time, this.delivered, this.isMe, this.animationController});
+  BubbleMessage({this.message, this.time, this.delivered, this.isntMe, this.animationController});
 
   final String message, time;
-  final bool delivered, isMe;
+  final bool delivered, isntMe;
   final AnimationController animationController;
 
   @override
   Widget build(BuildContext context) {
-    final bg = isMe ? Theme.of(context).splashColor : Colors.redAccent[100];
-    final align = isMe ? CrossAxisAlignment.start : CrossAxisAlignment.end;
+    final bg = isntMe ? MyTheme.of(context).kNotMyMessageColor : MyTheme.of(context).kMyMessageColor;
+    final align = isntMe ? CrossAxisAlignment.start : CrossAxisAlignment.end;
     final icon = delivered ? Icons.done_all : Icons.done;
-    final textColor = isMe ? null : Colors.white;
-    final radius = isMe
+    final textColor = isntMe ? null : Colors.white;
+    final radius = isntMe
         ? BorderRadius.only(
             topRight: Radius.circular(5.0),
             bottomLeft: Radius.circular(10.0),

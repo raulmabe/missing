@@ -49,7 +49,7 @@ class _ProfileBodyState extends State<ProfileBody> {
           end: Alignment.topLeft,
           colors: [
             Theme.of(context).primaryColor,
-            Colors.redAccent[100]
+            Theme.of(context).primaryColorLight
           ]
         )
       ),

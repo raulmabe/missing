@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './body.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './chat.dart';
+import '../../themeData.dart';
 
 class ChatsPage extends StatelessWidget {
 
@@ -61,9 +62,8 @@ class ChatItem extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 2.0),
       child: Material(
         borderRadius: BorderRadius.circular(5.0),
-        color: Theme.of(context).splashColor,
+        color: MyTheme.of(context).kChatsCards,
         child: InkWell(
-          splashColor: Theme.of(context).primaryColor,
           onTap: () {
             Navigator.push(
                 context,
@@ -78,7 +78,7 @@ class ChatItem extends StatelessWidget {
               padding: EdgeInsets.only(right: 12.0),
               decoration: BoxDecoration(
                 border: Border(
-                  right: BorderSide(width: 1.0, color: Theme.of(context).primaryColor)
+                  right: BorderSide(width: 1.0, color: MyTheme.of(context).kIconsDark)
                 )
               ),
               child: CircleAvatar(
@@ -91,7 +91,7 @@ class ChatItem extends StatelessWidget {
             ),
             subtitle: Row(
               children: <Widget>[
-                Icon(Icons.done, color: Theme.of(context).primaryColor),
+                Icon(Icons.done, color: MyTheme.of(context).kIconsDark),
                 SizedBox(width: 5.0,),
                 Text(
                   lastMessage
@@ -103,7 +103,7 @@ class ChatItem extends StatelessWidget {
                 switch(type){
                   case Type.PETS: return Icon(
                       Icons.pets,
-                      color: Theme.of(context).primaryColor,
+                      color: MyTheme.of(context).kIconsDark,
                     );
                   case Type.PEOPLE: return Icon(
                       Icons.face,
