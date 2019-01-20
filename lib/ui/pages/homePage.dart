@@ -3,6 +3,7 @@ import './body.dart';
 import './profileBody.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../widgets/searchBar.dart';
+import '../../themeData.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -63,11 +64,13 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         ],
       ),
       bottomNavigationBar: Container(
-        color: Theme.of(context).primaryColor,
+        color: Colors.white,
         child: SafeArea(
           child: TabBar(
+            labelColor: Theme.of(context).primaryColor,
+            unselectedLabelColor: Theme.of(context).primaryColorLight,
             controller: _tabController,
-            indicatorColor: Theme.of(context).primaryColor,
+            indicatorColor: Colors.white,
             tabs: <Widget>[
               Tab(
                 text: "People",

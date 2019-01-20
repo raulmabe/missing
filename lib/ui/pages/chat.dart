@@ -63,13 +63,15 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 1.0,
+        backgroundColor: Colors.white,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Text(
               Utils.getFirstWord(name),
               style: TextStyle(
-                color: Colors.white,
+                color: Theme.of(context).primaryColor,
                 fontSize: 25.0,
                 fontWeight: FontWeight.w400,
                 letterSpacing: 2.0
@@ -79,7 +81,7 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin{
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: Colors.white,
+                  color: Theme.of(context).primaryColor,
                   width: 2.0
                   )
               ),
@@ -91,11 +93,11 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin{
         ),
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
-          color: Colors.white,
+          color: Theme.of(context).primaryColor,
           onPressed: () => Navigator.pop(context),
         ),
       ),
-      backgroundColor: Theme.of(context).primaryColorDark,
+      backgroundColor: Colors.white,
       body: Stack(
         children: <Widget>[
           Column(
@@ -119,7 +121,7 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin{
                 padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 10.0 ),
                 child: Material(
                   borderRadius: BorderRadius.circular(50.0),
-                  color: Theme.of(context).primaryColorLight,
+                  color: Theme.of(context).primaryColor,
                   elevation: 2.0,
                   child: Padding(
                     padding: EdgeInsets.symmetric(vertical: 7.0, horizontal: 20.0),

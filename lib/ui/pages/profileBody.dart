@@ -5,6 +5,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'dart:math';
 import '../widgets/uploadCard.dart';
 import './chatsPage.dart';
+import '../../themeData.dart';
 
 class ProfileBody extends StatefulWidget {
   @override
@@ -44,15 +45,16 @@ class _ProfileBodyState extends State<ProfileBody> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      /* decoration: BoxDecoration(
         gradient: LinearGradient(
           end: Alignment.topLeft,
           colors: [
             Theme.of(context).primaryColor,
-            Theme.of(context).primaryColorLight
+            MyTheme.of(context).kSecondaryLight
           ]
         )
-      ),
+      ), */
+      color: Colors.white,
       child: SafeArea(
         child: Material(
           color: Colors.transparent,
@@ -77,7 +79,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                     splashColor: Theme.of(context).splashColor,
                     icon: Icon(
                       Icons.chat,
-                      color: Colors.white,
+                      color: Theme.of(context).primaryColor,
                       size: 30,
                       ),
                     ),
@@ -86,7 +88,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                     splashColor: Theme.of(context).splashColor,
                     icon: Icon(
                       Icons.settings,
-                      color: Colors.white,
+                      color: Theme.of(context).primaryColor,
                       size: 30,
                       ),
                     ),
@@ -100,7 +102,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: Colors.white,
+                          color: Theme.of(context).primaryColor,
                           width: 3.0
                           )
                       ),
@@ -121,7 +123,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                 ),
                 getInfo(),
                 Divider(
-                  color: Colors.white,
+                  color: Theme.of(context).primaryColor,
                 ),
                 Expanded(
                   child: StaggeredGridView.count(
@@ -153,7 +155,7 @@ class _ProfileBodyState extends State<ProfileBody> {
           "$number",
           style: TextStyle(
             fontSize: 25.0,
-            color: Colors.grey[50]
+            color: Theme.of(context).primaryColor
           )
           ),
         Text(
@@ -161,7 +163,7 @@ class _ProfileBodyState extends State<ProfileBody> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20.0,
-            color: Colors.grey[50]
+            color: Theme.of(context).primaryColor
           )
         )
       ],
@@ -186,7 +188,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                   "Raul Mateo Beneyto",
                   style: TextStyle(
                     fontSize: 18.0,
-                    color: Colors.white,
+                    color: Theme.of(context).primaryColor,
                     fontWeight: FontWeight.bold
                   ),
                   ),
@@ -201,7 +203,7 @@ class _ProfileBodyState extends State<ProfileBody> {
               Icon(
                 FontAwesomeIcons.mapMarkerAlt,
                 size: 20.0,
-                color: Colors.white,
+                color: Theme.of(context).primaryColor,
                 ),
               Padding(
                 padding: EdgeInsets.only(left: 5.0),
@@ -209,7 +211,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                   "Premià de mar, Barcelona",
                   style: TextStyle(
                     fontSize: 18.0,
-                    color: Colors.white
+                    color: Theme.of(context).primaryColor
                   ),
                   ),
               )

@@ -181,7 +181,7 @@ class MissingDetails extends StatelessWidget {
       backgroundColor: Theme.of(context).primaryColor,
       
       bottomNavigationBar: BottomAppBar(
-        color: Theme.of(context).primaryColorLight,
+        color: Colors.white,
         child: SafeArea(
           child: InkWell(
             onTap: () {
@@ -201,7 +201,7 @@ class MissingDetails extends StatelessWidget {
                     "Chat",
                     style: TextStyle(
                       fontSize: 25.0,
-                      color: Colors.white
+                      color: Theme.of(context).primaryColor
                     )
                   )
                 ],

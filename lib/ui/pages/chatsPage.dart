@@ -14,10 +14,12 @@ class ChatsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: Colors.white,
         title: Text(
           "Chats",
           style: TextStyle(
-            color: Colors.white,
+            color: Theme.of(context).primaryColor,
             fontSize: 25.0,
             fontWeight: FontWeight.w400,
             letterSpacing: 2.0
@@ -25,11 +27,11 @@ class ChatsPage extends StatelessWidget {
         ),
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
-          color: Colors.white,
+          color: Theme.of(context).primaryColor,
           onPressed: () => Navigator.pop(context),
         ),
       ),
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: Colors.white,
       body: Container(
         padding: EdgeInsets.only(top: 10.0),
         child: ListView.builder(
@@ -58,8 +60,7 @@ class ChatItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 0.0,
-      margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 2.0),
+      elevation: 1.0,
       child: Material(
         borderRadius: BorderRadius.circular(5.0),
         color: MyTheme.of(context).kChatsCards,
@@ -78,7 +79,7 @@ class ChatItem extends StatelessWidget {
               padding: EdgeInsets.only(right: 12.0),
               decoration: BoxDecoration(
                 border: Border(
-                  right: BorderSide(width: 1.0, color: MyTheme.of(context).kIconsDark)
+                  right: BorderSide(width: 1.0, color: MyTheme.of(context).kPrimaryColor)
                 )
               ),
               child: CircleAvatar(
@@ -91,7 +92,7 @@ class ChatItem extends StatelessWidget {
             ),
             subtitle: Row(
               children: <Widget>[
-                Icon(Icons.done, color: MyTheme.of(context).kIconsDark),
+                Icon(Icons.done, color: MyTheme.of(context).kPrimaryColor),
                 SizedBox(width: 5.0,),
                 Text(
                   lastMessage
@@ -103,7 +104,7 @@ class ChatItem extends StatelessWidget {
                 switch(type){
                   case Type.PETS: return Icon(
                       Icons.pets,
-                      color: MyTheme.of(context).kIconsDark,
+                      color: MyTheme.of(context).kPrimaryColor,
                     );
                   case Type.PEOPLE: return Icon(
                       Icons.face,
