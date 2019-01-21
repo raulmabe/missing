@@ -1,0 +1,4 @@
+#Sun Jan 20 15:37:42 CET 2019
+base.0=/Users/raulmateobeneyto/Documents/missing/build/app/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex

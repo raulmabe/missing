@@ -5,7 +5,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'dart:math';
 import '../widgets/uploadCard.dart';
 import './chatsPage.dart';
-import '../../themeData.dart';
+import '../../types.dart';
 
 class ProfileBody extends StatefulWidget {
   @override
@@ -22,11 +22,13 @@ class _ProfileBodyState extends State<ProfileBody> {
       id: new Random().nextInt(1000),
       title: null,
       description: null,
+      type: AppType.PETS,
     ),
     MissingCard(
       id: new Random().nextInt(1000),
       title: null,
       description: null,
+      type: AppType.PETS,
     ),
   ];
 

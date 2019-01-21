@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import './ui/pages/homePage.dart';
 import './themeData.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
 
@@ -10,6 +12,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    
     return MyTheme(
           child: Builder(
             builder: (context){
@@ -41,7 +44,7 @@ class MyApp extends StatelessWidget {
       primaryColor: MyTheme.of(context).kPrimaryColor,
       primaryColorLight: MyTheme.of(context).kPrimaryLight,
       primaryColorDark: MyTheme.of(context).kPrimaryDark,
-      splashColor: MyTheme.of(context).kSplashColor
+      splashColor: MyTheme.of(context).kPrimaryColor.withAlpha(150)
     );
   }
 }

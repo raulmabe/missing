@@ -1,92 +1,45 @@
 import 'package:flutter/material.dart';
 import '../widgets/missingCards.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'dart:math';
+import 'package:flutter/rendering.dart';
+import '../../types.dart';
+
+typedef onScrollVoid = void Function(ScrollDirection); 
 
 class Body extends StatefulWidget{
 
-  Type type;
+  AppType type;
+  onScrollVoid onScroll;
 
-  Body({@required this.type});
+  Body({@required this.type, this.onScroll});
 
   @override
     State<StatefulWidget> createState() {
-      return _BodyState(type);
+      return _BodyState(type, onScroll);
     }
 }
 
 class _BodyState extends State<Body>{
 
-  Type type;
+  AppType type;
 
   ScrollController _scrollController;
+  onScrollVoid onScroll;
 
-  List<Widget> children = [
-          MissingCard(
-            id: 0,
-            title: null,
-            description: null,
-          ),
-          MissingCard(
-            id: 1,
-            title: null,
-            description: null,
-          ),
-          MissingCard(
-            id: 2,
-            title: null,
-            description: null,
-          ),
-          MissingCard(
-            id: 3,
-            title: null,
-            description: null,
-          ),
-          MissingCard(
-            id: 4,
-            title: null,
-            description: null,
-          ),
-          MissingCard(
-            id: 5,
-            title: null,
-            description: null,
-          ),
-          MissingCard(
-            id: 6,
-            title: null,
-            description: null,
-          ),
-          MissingCard(
-            id: 7,
-            title: null,
-            description: null,
-          ),
-          MissingCard(
-            id: 8,
-            title: null,
-            description: null,
-          ),
-          MissingCard(
-            id: 9,
-            title: null,
-            description: null,
-          ),
-          MissingCard(
-            id: 10,
-            title: null,
-            description: null,
-          ),
-          MissingCard(
-            id: 11,
-            title: null,
-            description: null,
-          ),
-  ];
+  List<Widget> children;
 
-  _BodyState(this.type){
-    if(type == Type.PEOPLE){
-      children = [];
+  _BodyState(this.type, this.onScroll){
+    children = [];
+    if(type != AppType.PEOPLE){
+      for(int i = 0; i < 100; ++i){
+        children.add(new MissingCard(
+          id: i,
+          title: null,
+          description: null,
+          tags: null,
+          type: type,
+        ));
+      }
     }
   }
 
@@ -99,6 +52,7 @@ class _BodyState extends State<Body>{
 
   void _handleScroll(){
     // Save offset to Redux state
+    onScroll(_scrollController.position.userScrollDirection);
   }
 
   @override
@@ -155,8 +109,4 @@ class _BodyState extends State<Body>{
       ),
     );
   }
-}
-
-enum Type{
-  PETS,PEOPLE,THINGS
 }

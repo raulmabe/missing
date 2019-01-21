@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './body.dart';
+import '../../types.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './chat.dart';
 import '../../themeData.dart';
@@ -14,6 +14,7 @@ class ChatsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        brightness: Brightness.light,
         elevation: 0.0,
         backgroundColor: Colors.white,
         title: Text(
@@ -39,7 +40,7 @@ class ChatsPage extends StatelessWidget {
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
           itemBuilder: (context, index){
-            return ChatItem(Type.PETS);
+            return ChatItem(AppType.PETS, index);
           },
         ),
       ),
@@ -49,20 +50,25 @@ class ChatsPage extends StatelessWidget {
 
 class ChatItem extends StatelessWidget {
 
-  final Type type;
+  final AppType type;
+  final int index;
   String name, lastMessage;
 
-  ChatItem(this.type){
+  ChatItem(this.type, this.index){
     name = "Alicia Sanchez";
     lastMessage = "He encontrado a tu perro!";
   }
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 1.0,
+    return Container(
+      decoration: BoxDecoration(
+        border: BorderDirectional(
+          bottom: BorderSide(color: Theme.of(context).primaryColor.withAlpha(70)),
+          top: index == 0 ? BorderSide(color: Theme.of(context).primaryColor.withAlpha(70)) : BorderSide(color: Colors.transparent),
+        )
+      ),
       child: Material(
-        borderRadius: BorderRadius.circular(5.0),
         color: MyTheme.of(context).kChatsCards,
         child: InkWell(
           onTap: () {
@@ -102,15 +108,15 @@ class ChatItem extends StatelessWidget {
             trailing: Builder(
               builder: (context){
                 switch(type){
-                  case Type.PETS: return Icon(
+                  case AppType.PETS: return Icon(
                       Icons.pets,
                       color: MyTheme.of(context).kPrimaryColor,
                     );
-                  case Type.PEOPLE: return Icon(
+                  case AppType.PEOPLE: return Icon(
                       Icons.face,
                       color: Theme.of(context).primaryColor,
                     );
-                  case Type.THINGS: return Icon(
+                  case AppType.THINGS: return Icon(
                       FontAwesomeIcons.archive,
                       color: Theme.of(context).primaryColor,
                     );

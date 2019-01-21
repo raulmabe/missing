@@ -1,35 +1,43 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 import '../pages/missingDetails.dart';
+import '../../types.dart';
 
 class MissingCard extends StatefulWidget {
 
   final int id;
-  final String title, description;
+  final String title, description, location;
   final List<String> tags;
+  final AppType type;
 
-  MissingCard({@required this.id, @required this.title, @required this.description, this.tags});
+  MissingCard({@required this.id, @required this.title, @required this.description, this.location, this.tags, this.type});
 
   @override
-  _MissingCardState createState() => _MissingCardState(id,title, description, tags);
+  _MissingCardState createState() => _MissingCardState(id,title, description, location, tags, type);
 }
 
 class _MissingCardState extends State<MissingCard> {
 
   int id;
 
-  String title, description;
+  String title, description, location;
   List<String> tags;
+  AppType type;
 
-  _MissingCardState(this.id, this.title, this.description, this.tags){
-    if(id == null) print("ID == NULL");
+  _MissingCardState(this.id, this.title, this.description, this.location, this.tags, this.type){
+    assert(id != null);
+    assert(type != null);
     if(title == null) title = "Item";
-    if(description == null) description = "My dog named Woof has been lost for 5 days in machasustets jfnrenfjee jrenfjnerjfnr jwen fjinwejkadwmsq djqwnsmwqpd";
+    if(description == null) description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+    if(location == null) location = "Malgrat de Mar, Barcelona";
+    if(tags == null) {
+      tags = [];
+      tags.addAll(["gato", "claro", "sua", "pequeña"]);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    
     return Material(
       elevation: 1.0,
       borderRadius: BorderRadius.circular(5.0),
@@ -39,50 +47,68 @@ class _MissingCardState extends State<MissingCard> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => MissingDetails(id: id),
+              builder: (context) => MissingDetails(
+                id: id,
+                title: title,
+                description: description,
+                location: location,
+                type: this.type,
+                tags: tags,
+              ),
             ),
           );
         },
-        child: Container(
-          child: Column(
-            children: <Widget>[
-              Hero(
-                tag: id,
-                child: Container(
-                  height: (new Random().nextDouble() * 100) + 100,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5.0),
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage("assets/gato1.jpg"),
-                    )
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Hero(
+              tag: id,
+              child: Container(
+                height: (new Random().nextDouble() * 100) + 100,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5.0),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage("assets/gato1.jpg"),
+                  )
+                ),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(10.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      title,
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.w700,
+                  Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.location_on,
+                        size: 18.0,
                       ),
-                    ),
-                    Text(
-                      description,
-                      style: TextStyle(
-                        fontSize: 16.0,
+                      Expanded(
+                        child: Text(
+                          location,
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  )
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       )
     );

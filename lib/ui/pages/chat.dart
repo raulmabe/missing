@@ -4,7 +4,6 @@ import '../../utils.dart';
 import '../../themeData.dart';
 
 class Chat extends StatefulWidget {
-
   final String name;
 
   Chat(this.name);
@@ -13,8 +12,7 @@ class Chat extends StatefulWidget {
   _ChatState createState() => _ChatState(name);
 }
 
-class _ChatState extends State<Chat> with TickerProviderStateMixin{
-
+class _ChatState extends State<Chat> with TickerProviderStateMixin {
   TextEditingController _textController = new TextEditingController();
   final List<BubbleMessage> _messages = <BubbleMessage>[];
   bool _isWriting = false;
@@ -25,21 +23,19 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin{
   _ChatState(this.name);
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
   }
 
   void _submitMessage(String text) {
     FocusScope.of(context).requestFocus(_focusNode);
-    if(text.length == 0) return;
+    if (text.length == 0) return;
     _textController.clear();
     _isWriting = false;
     BubbleMessage msg = new BubbleMessage(
       message: text,
       animationController: new AnimationController(
-          vsync: this,
-        duration: new Duration(milliseconds: 200)
-      ),
+          vsync: this, duration: new Duration(milliseconds: 200)),
       isntMe: new Random().nextBool(),
       delivered: true,
       time: "12:00",
@@ -63,34 +59,35 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        brightness: Brightness.light,
         elevation: 1.0,
         backgroundColor: Colors.white,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(
-              Utils.getFirstWord(name),
-              style: TextStyle(
-                color: Theme.of(context).primaryColor,
-                fontSize: 25.0,
-                fontWeight: FontWeight.w400,
-                letterSpacing: 2.0
-              )
-            ),
-            Container(
-              decoration: BoxDecoration(
+        actions: <Widget>[
+          Container(
+            decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: Theme.of(context).primaryColor,
-                  width: 2.0
-                  )
-              ),
-              child: CircleAvatar(
-                backgroundImage: AssetImage("assets/perro2.jpg"),
-              ),
-            )
-          ],
-        ),
+                    color: Theme.of(context).primaryColor, width: 2.0)),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                CircleAvatar(
+                  radius: 24.0,
+                  backgroundImage: AssetImage("assets/perro2.jpg"),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            width: 12.0,
+          )
+        ],
+        title: Text(name,
+            style: TextStyle(
+                color: Theme.of(context).primaryColor,
+                fontSize: 22.0,
+                fontWeight: FontWeight.w400,
+                letterSpacing: 2.0)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
           color: Theme.of(context).primaryColor,
@@ -107,7 +104,11 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin{
                   itemBuilder: (_, index) => _messages[index],
                   itemCount: _messages.length,
                   reverse: true,
-                  padding: EdgeInsets.only(top: 6.0, bottom: 110.0, left: 6.0, right: 6.0),
+                  padding: EdgeInsets.only(
+                      top: 6.0,
+                      bottom: MediaQuery.of(context).size.height / 10,
+                      left: 6.0,
+                      right: 6.0),
                 ),
               )
             ],
@@ -118,13 +119,15 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin{
             bottom: 0,
             child: SafeArea(
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 10.0 ),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 6.0, horizontal: 10.0),
                 child: Material(
                   borderRadius: BorderRadius.circular(50.0),
                   color: Theme.of(context).primaryColor,
                   elevation: 2.0,
                   child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 7.0, horizontal: 20.0),
+                    padding:
+                        EdgeInsets.symmetric(vertical: 7.0, horizontal: 20.0),
                     child: Row(
                       children: <Widget>[
                         Flexible(
@@ -140,22 +143,18 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin{
                                 _isWriting = txt.length > 0;
                               });
                             },
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20.0
-                            ),
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 20.0),
                             decoration: InputDecoration.collapsed(
-                              hintText: "Send a message",
-                              hintStyle: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20.0
-                              )
-                            ),
+                                hintText: "Send a message",
+                                hintStyle: TextStyle(
+                                    color: Colors.white, fontSize: 20.0)),
                           ),
                         ),
                         IconButton(
-                          onPressed: _isWriting ? () => _submitMessage(_textController.text)
-                            : null,
+                          onPressed: _isWriting
+                              ? () => _submitMessage(_textController.text)
+                              : null,
                           icon: Icon(Icons.send),
                           color: Colors.white,
                           disabledColor: Colors.grey[350],
@@ -174,8 +173,12 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin{
 }
 
 class BubbleMessage extends StatelessWidget {
-
-  BubbleMessage({this.message, this.time, this.delivered, this.isntMe, this.animationController});
+  BubbleMessage(
+      {this.message,
+      this.time,
+      this.delivered,
+      this.isntMe,
+      this.animationController});
 
   final String message, time;
   final bool delivered, isntMe;
@@ -183,26 +186,26 @@ class BubbleMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bg = isntMe ? MyTheme.of(context).kNotMyMessageColor : MyTheme.of(context).kMyMessageColor;
+    final bg = isntMe
+        ? MyTheme.of(context).kNotMyMessageColor
+        : MyTheme.of(context).kPrimaryColor;
     final align = isntMe ? CrossAxisAlignment.start : CrossAxisAlignment.end;
     final icon = delivered ? Icons.done_all : Icons.done;
     final textColor = isntMe ? null : Colors.white;
     final radius = isntMe
         ? BorderRadius.only(
             topRight: Radius.circular(5.0),
-            bottomLeft: Radius.circular(10.0),
+            topLeft: Radius.circular(10.0),
             bottomRight: Radius.circular(5.0),
           )
         : BorderRadius.only(
             topLeft: Radius.circular(5.0),
             bottomLeft: Radius.circular(5.0),
-            bottomRight: Radius.circular(10.0),
+            topRight: Radius.circular(10.0),
           );
     return SizeTransition(
       sizeFactor: CurvedAnimation(
-        parent: animationController,
-        curve: Curves.bounceInOut
-      ),
+          parent: animationController, curve: Curves.bounceInOut),
       axisAlignment: 0.0,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -227,12 +230,10 @@ class BubbleMessage extends StatelessWidget {
                   alignment: WrapAlignment.end,
                   crossAxisAlignment: WrapCrossAlignment.end,
                   children: <Widget>[
-                    Text(message,
+                    Text(
+                      message,
                       softWrap: true,
-                      style: TextStyle(
-                        color: textColor,
-                        fontSize: 18.0
-                      ),
+                      style: TextStyle(color: textColor, fontSize: 18.0),
                     ),
                     SizedBox(width: 10.0),
                     Text(time,

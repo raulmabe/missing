@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class MyTheme extends InheritedWidget{
 
   // My Colors
-  final kPrimaryColor = const Color(0xffff7675);
+  final kPrimaryColor = const Color.fromRGBO(58, 66, 86, 1.0); //const Color(0xffFF7675);
   final kPrimaryLight = Colors.red[100];  //const Color(0xFFffcdd2);
   final kPrimaryDark = const Color(0xFFCC6866);
   final kSecondaryColor = const Color(0xFFFFEBEE);
