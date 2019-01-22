@@ -3,16 +3,24 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './chat.dart';
 import '../../types.dart';
 import '../widgets/chips.dart';
+import 'dart:async';
+import 'package:url_launcher/url_launcher.dart';
 
 class MissingDetails extends StatelessWidget {
-
   final int id;
   String title, description, location;
   final List<String> tags;
   AppType type;
   bool missing;
 
-  MissingDetails({@required this.id,@required this.missing, @required this.title, @required this.description,@required this.location, @required this.type, this.tags});
+  MissingDetails(
+      {@required this.id,
+      @required this.missing,
+      @required this.title,
+      @required this.description,
+      @required this.location,
+      @required this.type,
+      this.tags});
 
   @override
   Widget build(BuildContext context) {
@@ -21,28 +29,23 @@ class MissingDetails extends StatelessWidget {
         brightness: Brightness.light,
         backgroundColor: Colors.white,
         actions: <Widget>[
-          // Favourite missings
-          /* IconButton(
-            icon: Icon(Icons.favorite_border),
-            onPressed: (){},
-            color: Colors.white,
-          ), */
           IconButton(
             icon: Icon(Icons.share),
-            onPressed: (){},
+            onPressed: _sharePost,
             color: Theme.of(context).primaryColor,
           ),
           IconButton(
             icon: Icon(Icons.more_vert),
-            onPressed: (){},
+            onPressed: () {},
             color: Theme.of(context).primaryColor,
           )
         ],
         leading: IconButton(
-          onPressed: (){
+          onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back_ios, color: Theme.of(context).primaryColor),
+          icon:
+              Icon(Icons.arrow_back_ios, color: Theme.of(context).primaryColor),
         ),
         elevation: 0.0,
       ),
@@ -51,11 +54,9 @@ class MissingDetails extends StatelessWidget {
         child: SingleChildScrollView(
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5.0),
-              border: Border.all(
-                color: Theme.of(context).primaryColor.withAlpha(70)
-              )
-            ),
+                borderRadius: BorderRadius.circular(5.0),
+                border: Border.all(
+                    color: Theme.of(context).primaryColor.withAlpha(70))),
             child: Material(
               elevation: 6.0,
               borderRadius: BorderRadius.circular(5.0),
@@ -64,17 +65,16 @@ class MissingDetails extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   Hero(
-                  tag: id,
-                  child: Container(
-                    height: 300,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.0),
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage("assets/gato1.jpg"),
-                      )
+                    tag: id,
+                    child: Container(
+                      height: 300,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5.0),
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage("assets/gato1.jpg"),
+                          )),
                     ),
-                  ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
@@ -89,25 +89,27 @@ class MissingDetails extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: <Widget>[
                             Text("50"),
-                            SizedBox(width: 5.0,),
+                            SizedBox(
+                              width: 5.0,
+                            ),
                             Icon(Icons.remove_red_eye)
                           ],
                         ),
-                        Text(
-                          title,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0
-                          )
+                        Text(title,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20.0)),
+                        SizedBox(
+                          height: 10.0,
                         ),
-                        SizedBox(height: 10.0,),
                         Text(
                           description,
                           style: TextStyle(
                             fontSize: 16.0,
                           ),
                         ),
-                        SizedBox(height: 30.0,),
+                        SizedBox(
+                          height: 30.0,
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
@@ -118,17 +120,17 @@ class MissingDetails extends StatelessWidget {
                             SizedBox(
                               width: 10.0,
                             ),
-                            Text("Perdida en: ",
+                            Text(
+                              "Perdida en: ",
                               style: TextStyle(
                                 fontSize: 16.0,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
                             Expanded(
-                              child: Text(location,
-                                style: TextStyle(
-                                  fontSize: 16.0
-                                ),
+                              child: Text(
+                                location,
+                                style: TextStyle(fontSize: 16.0),
                               ),
                             ),
                           ],
@@ -138,8 +140,26 @@ class MissingDetails extends StatelessWidget {
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: buildTags(context, tags),
                         ),
-                        SizedBox(
-                          height: 20.0,
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 20.0),
+                          child: FlatButton(
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(color: Colors.blueGrey[600],),
+                              borderRadius: BorderRadius.circular(50.0)
+                            ),
+                            onPressed: _sharePost,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Text(
+                                "Share",
+                                style: TextStyle(
+                                  color: Colors.blueGrey[600],
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.w100
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                         Divider(),
                         SizedBox(
@@ -148,7 +168,8 @@ class MissingDetails extends StatelessWidget {
                         Row(
                           children: <Widget>[
                             CircleAvatar(
-                              backgroundImage: AssetImage("assets/profile_pic.jpg"),
+                              backgroundImage:
+                                  AssetImage("assets/profile_pic.jpg"),
                               radius: 30.0,
                             ),
                             SizedBox(
@@ -157,16 +178,16 @@ class MissingDetails extends StatelessWidget {
                             Text(
                               "Raul M.",
                               style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20.0
-                              ),
+                                  fontWeight: FontWeight.w600, fontSize: 20.0),
                             ),
                           ],
+                        ),
+                        SizedBox(
+                          height: 20.0,
                         ),
                       ],
                     ),
                   ),
-
 
                   // Google maps, still on beta, doesnt work well
                   /* Container(
@@ -191,37 +212,68 @@ class MissingDetails extends StatelessWidget {
         ),
       ),
       backgroundColor: Colors.white,
-      
       bottomNavigationBar: BottomAppBar(
         color: Theme.of(context).primaryColor,
         child: SafeArea(
-          child: InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Chat("Alicia"),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    _launchURL();
+                  },
+                  child: Container(
+                    padding: EdgeInsets.all(15.0),
+                    decoration: BoxDecoration(
+                      border: Border(right: BorderSide(color: Colors.white.withAlpha(80)))
+                    ),
+                    child: Icon(
+                      Icons.call,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
-              );
-            },
-            child: Container(
-              height: 50.0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    "Chat",
-                    style: TextStyle(
-                      fontSize: 25.0,
-                      color: Colors.white
-                    )
-                  )
-                ],
               ),
-            ),
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Chat("Alicia"),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    padding: EdgeInsets.all(15.0),
+                    decoration: BoxDecoration(
+                      border: Border(left: BorderSide(color: Colors.white.withAlpha(80)))
+                    ),
+                    child: Icon(
+                      Icons.chat,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
     );
+  }
+
+  void _sharePost() async{
+    print("Sharing post");
+  }
+
+  void _launchURL() async {
+    const url = 'tel:+34 691014930';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

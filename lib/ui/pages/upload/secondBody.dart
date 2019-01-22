@@ -33,7 +33,7 @@ class _SecondBodyState extends State<SecondBody> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(bottom: 20.0),
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
               child: TextFormField(
                 validator: (txt) =>
                     txt.length < 3 ? "Location is too short" : null,
@@ -176,6 +176,7 @@ class _SecondBodyState extends State<SecondBody> {
       list.add(Chip(
         label: Text(tags[i]),
         onDeleted: () => deleteTag(tags[i]),
+        backgroundColor: Theme.of(context).primaryColor.withAlpha(150),
       ));
     }
     return list;
