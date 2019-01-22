@@ -144,7 +144,7 @@ class MissingDetails extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(vertical: 20.0),
                           child: FlatButton(
                             shape: RoundedRectangleBorder(
-                              side: BorderSide(color: Colors.blueGrey[600],),
+                              side: BorderSide(color: Theme.of(context).primaryColor,),
                               borderRadius: BorderRadius.circular(50.0)
                             ),
                             onPressed: _sharePost,
@@ -153,9 +153,9 @@ class MissingDetails extends StatelessWidget {
                               child: Text(
                                 "Share",
                                 style: TextStyle(
-                                  color: Colors.blueGrey[600],
+                                  color: Theme.of(context).primaryColor,
                                   fontSize: 20.0,
-                                  fontWeight: FontWeight.w100
+                                  fontWeight: FontWeight.w300
                                 ),
                               ),
                             ),
