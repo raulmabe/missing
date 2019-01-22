@@ -10,33 +10,45 @@ class _SearchBarState extends State<SearchBar> {
   Widget build(BuildContext context) {
     return Material(
       borderRadius: BorderRadius.circular(50.0),
-      color: Theme.of(context).primaryColor,
+      color: Colors.transparent,
       elevation: 12.0,
-      child: Padding(
-        padding: EdgeInsets.all(10.0),
-        child: Stack(
-          alignment: Alignment.centerRight,
-          children: <Widget>[
-            TextField(
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20.0
-              ),
-              textAlign: TextAlign.center,
-              decoration: new InputDecoration.collapsed(
-                hintText: "Found any missing?",
-                hintStyle: TextStyle(
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(50.0),
+          gradient: LinearGradient(
+            colors: [
+              Theme.of(context).primaryColorLight,
+              Theme.of(context).primaryColor,
+
+            ]
+          )
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(10.0),
+          child: Stack(
+            alignment: Alignment.centerRight,
+            children: <Widget>[
+              TextField(
+                style: TextStyle(
                   color: Colors.white,
                   fontSize: 20.0
-                )
+                ),
+                textAlign: TextAlign.center,
+                decoration: new InputDecoration.collapsed(
+                  hintText: "Found any missing?",
+                  hintStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0
+                  )
+                ),
               ),
-            ),
-            Icon(
-              Icons.search,
-              color: Colors.white,
-              size: 25.0,
-            )
-          ],
+              Icon(
+                Icons.search,
+                color: Colors.white,
+                size: 25.0,
+              )
+            ],
+          ),
         ),
       )
     );

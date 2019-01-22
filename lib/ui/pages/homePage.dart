@@ -26,7 +26,9 @@ class _HomePageState extends State<HomePage>
   }
 
   void _handleTabSelection() {
-    setState(() {});
+    setState(() {
+      _showSearchBar = true;
+    });
   }
 
   @override

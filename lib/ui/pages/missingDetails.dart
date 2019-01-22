@@ -69,7 +69,10 @@ class MissingDetails extends StatelessWidget {
                     child: Container(
                       height: 300,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5.0),
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(5.0),
+                            topRight: Radius.circular(5.0),
+                          ),
                           image: DecorationImage(
                             fit: BoxFit.cover,
                             image: AssetImage("assets/gato1.jpg"),
@@ -144,19 +147,19 @@ class MissingDetails extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(vertical: 20.0),
                           child: FlatButton(
                             shape: RoundedRectangleBorder(
-                              side: BorderSide(color: Theme.of(context).primaryColor,),
-                              borderRadius: BorderRadius.circular(50.0)
-                            ),
+                                side: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                                borderRadius: BorderRadius.circular(50.0)),
                             onPressed: _sharePost,
                             child: Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: Text(
                                 "Share",
                                 style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.w300
-                                ),
+                                    color: Theme.of(context).primaryColor,
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w300),
                               ),
                             ),
                           ),
@@ -226,8 +229,9 @@ class MissingDetails extends StatelessWidget {
                   child: Container(
                     padding: EdgeInsets.all(15.0),
                     decoration: BoxDecoration(
-                      border: Border(right: BorderSide(color: Colors.white.withAlpha(80)))
-                    ),
+                        border: Border(
+                            right:
+                                BorderSide(color: Colors.white.withAlpha(80)))),
                     child: Icon(
                       Icons.call,
                       color: Colors.white,
@@ -248,8 +252,9 @@ class MissingDetails extends StatelessWidget {
                   child: Container(
                     padding: EdgeInsets.all(15.0),
                     decoration: BoxDecoration(
-                      border: Border(left: BorderSide(color: Colors.white.withAlpha(80)))
-                    ),
+                        border: Border(
+                            left:
+                                BorderSide(color: Colors.white.withAlpha(80)))),
                     child: Icon(
                       Icons.chat,
                       color: Colors.white,
@@ -264,7 +269,7 @@ class MissingDetails extends StatelessWidget {
     );
   }
 
-  void _sharePost() async{
+  void _sharePost() async {
     print("Sharing post");
   }
 

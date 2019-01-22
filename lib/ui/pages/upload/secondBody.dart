@@ -174,7 +174,7 @@ class _SecondBodyState extends State<SecondBody> {
     List<Widget> list = [];
     for (int i = 0; i < tags.length; ++i) {
       list.add(Chip(
-        label: Text(tags[i]),
+        label: Text(tags[i], style: TextStyle(color: Colors.white)),
         onDeleted: () => deleteTag(tags[i]),
         backgroundColor: Theme.of(context).primaryColor.withAlpha(150),
       ));
