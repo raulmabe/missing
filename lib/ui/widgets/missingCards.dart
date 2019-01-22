@@ -9,11 +9,12 @@ class MissingCard extends StatefulWidget {
   final String title, description, location;
   final List<String> tags;
   final AppType type;
+  final bool missing;
 
-  MissingCard({@required this.id, @required this.title, @required this.description, this.location, this.tags, this.type});
+  MissingCard({@required this.id, @required this.title, @required this.description, this.location, this.tags, this.missing, this.type});
 
   @override
-  _MissingCardState createState() => _MissingCardState(id,title, description, location, tags, type);
+  _MissingCardState createState() => _MissingCardState(id,title, description, location, tags,missing, type);
 }
 
 class _MissingCardState extends State<MissingCard> {
@@ -23,10 +24,12 @@ class _MissingCardState extends State<MissingCard> {
   String title, description, location;
   List<String> tags;
   AppType type;
+  bool missing;
 
-  _MissingCardState(this.id, this.title, this.description, this.location, this.tags, this.type){
+  _MissingCardState(this.id, this.title, this.description, this.location, this.tags, this.missing,this.type){
     assert(id != null);
     assert(type != null);
+    if(missing == null) missing = new Random().nextBool();
     if(title == null) title = "Item";
     if(description == null) description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
     if(location == null) location = "Malgrat de Mar, Barcelona";
@@ -53,6 +56,7 @@ class _MissingCardState extends State<MissingCard> {
                 description: description,
                 location: location,
                 type: this.type,
+                missing: missing,
                 tags: tags,
               ),
             ),
@@ -76,6 +80,7 @@ class _MissingCardState extends State<MissingCard> {
               ),
             ),
             Container(
+              color: missing ? Colors.red[100] : Colors.green[100],
               padding: EdgeInsets.all(10.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,

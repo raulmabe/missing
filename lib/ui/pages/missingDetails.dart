@@ -10,8 +10,9 @@ class MissingDetails extends StatelessWidget {
   String title, description, location;
   final List<String> tags;
   AppType type;
+  bool missing;
 
-  MissingDetails({@required this.id, @required this.title, @required this.description,@required this.location, @required this.type, this.tags});
+  MissingDetails({@required this.id,@required this.missing, @required this.title, @required this.description,@required this.location, @required this.type, this.tags});
 
   @override
   Widget build(BuildContext context) {

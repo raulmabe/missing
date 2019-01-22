@@ -6,7 +6,7 @@ class MyTheme extends InheritedWidget{
   final kPrimaryColor = const Color.fromRGBO(58, 66, 86, 1.0); //const Color(0xffFF7675);
   final kPrimaryLight = Colors.red[100];  //const Color(0xFFffcdd2);
   final kPrimaryDark = const Color(0xFFCC6866);
-  final kSecondaryColor = const Color(0xFFFFEBEE);
+  final kSecondaryColor = const Color(0xff1abc9c);
   final kSecondaryLight = Colors.redAccent[100];
   final kSecondaryDark = const Color(0xFF009faf);
 

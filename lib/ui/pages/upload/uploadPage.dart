@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import './firstBody.dart';
+import './secondBody.dart';
+import '../../../themeData.dart';
 
 class UploadPage extends StatefulWidget {
   @override
@@ -40,11 +42,7 @@ class _UploadPageState extends State<UploadPage>
         controller: _tabController,
         children: <Widget>[
           FirstBody(),
-          Container(
-            width: 100.0,
-            height: 100.0,
-            color: Colors.grey,
-          ),
+          SecondBody(),
           Container(
             width: 100.0,
             height: 100.0,
