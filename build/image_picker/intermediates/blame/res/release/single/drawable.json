@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/raulmateobeneyto/Documents/missing/build/image_picker/intermediates/res/merged/release/drawable/notification_bg.xml",
+        "source": "/Users/raulmateobeneyto/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/952ccd29bb9869e5c51f900b089d132c/res/drawable/notification_bg.xml"
+    },
+    {
+        "merged": "/Users/raulmateobeneyto/Documents/missing/build/image_picker/intermediates/res/merged/release/drawable/notification_tile_bg.xml",
+        "source": "/Users/raulmateobeneyto/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/952ccd29bb9869e5c51f900b089d132c/res/drawable/notification_tile_bg.xml"
+    },
+    {
+        "merged": "/Users/raulmateobeneyto/Documents/missing/build/image_picker/intermediates/res/merged/release/drawable/notification_icon_background.xml",
+        "source": "/Users/raulmateobeneyto/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/952ccd29bb9869e5c51f900b089d132c/res/drawable/notification_icon_background.xml"
+    },
+    {
+        "merged": "/Users/raulmateobeneyto/Documents/missing/build/image_picker/intermediates/res/merged/release/drawable/notification_bg_low.xml",
+        "source": "/Users/raulmateobeneyto/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/952ccd29bb9869e5c51f900b089d132c/res/drawable/notification_bg_low.xml"
+    }
+]

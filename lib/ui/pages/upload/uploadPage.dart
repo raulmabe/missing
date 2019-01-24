@@ -12,12 +12,15 @@ class UploadPage extends StatefulWidget {
 class _UploadPageState extends State<UploadPage>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
-  List tabs;
+  List<Widget> tabs;
 
   @override
   void initState() {
     super.initState();
-    tabs = ["", "", ""];
+    tabs = [
+      FirstBody(),
+      SecondBody(),
+    ];
     _tabController = new TabController(vsync: this, length: tabs.length);
   }
 
@@ -45,15 +48,7 @@ class _UploadPageState extends State<UploadPage>
         body: TabBarView(
           physics: NeverScrollableScrollPhysics(),
           controller: _tabController,
-          children: <Widget>[
-            FirstBody(),
-            SecondBody(),
-            Container(
-              width: 100.0,
-              height: 100.0,
-              color: Colors.red,
-            ),
-          ],
+          children: tabs,
         ),
         bottomNavigationBar: Container(
           height: 100.0,
@@ -115,12 +110,13 @@ class _UploadPageState extends State<UploadPage>
     );
   }
 
-  Future<bool> _onWillPop() async{
+  Future<bool> _onWillPop() async {
     if (_tabController.index != 0) {
       setState(() {
         _tabController.animateTo(_tabController.index - 1);
       });
       return false;
-    }else return true;
+    } else
+      return true;
   }
 }

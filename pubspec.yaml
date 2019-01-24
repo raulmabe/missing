@@ -24,6 +24,7 @@ dependencies:
   google_maps_flutter: ^0.0.3+3
   image_picker:
   url_launcher:
+  liquid_pull_to_refresh: 1.0.0
 
 dev_dependencies:
   flutter_test:

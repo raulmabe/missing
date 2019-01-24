@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/raulmateobeneyto/Documents/missing/build/google_maps_flutter/intermediates/res/merged/release/layout-v21/notification_template_icon_group.xml",
+        "source": "/Users/raulmateobeneyto/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/50016e479953f5f704e56c2f67bc02b3/res/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/Users/raulmateobeneyto/Documents/missing/build/google_maps_flutter/intermediates/res/merged/release/layout-v21/notification_action_tombstone.xml",
+        "source": "/Users/raulmateobeneyto/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/50016e479953f5f704e56c2f67bc02b3/res/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/raulmateobeneyto/Documents/missing/build/google_maps_flutter/intermediates/res/merged/release/layout-v21/notification_template_custom_big.xml",
+        "source": "/Users/raulmateobeneyto/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/50016e479953f5f704e56c2f67bc02b3/res/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/Users/raulmateobeneyto/Documents/missing/build/google_maps_flutter/intermediates/res/merged/release/layout-v21/notification_action.xml",
+        "source": "/Users/raulmateobeneyto/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/50016e479953f5f704e56c2f67bc02b3/res/layout-v21/notification_action.xml"
+    }
+]

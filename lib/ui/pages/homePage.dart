@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../widgets/searchBar.dart';
 import 'package:flutter/rendering.dart';
 import '../../types.dart';
+import 'package:flutter/services.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -51,6 +52,7 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
@@ -88,6 +90,7 @@ class _HomePageState extends State<HomePage>
                         : Container())
           ],
         ),
+        backgroundColor: Colors.grey[200],
         bottomNavigationBar: Container(
           color: Colors.white,
           child: SafeArea(

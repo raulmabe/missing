@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:async';
+import '../../widgets/chips.dart';
 
 class SecondBody extends StatefulWidget {
   @override
@@ -173,10 +174,10 @@ class _SecondBodyState extends State<SecondBody> {
   List<Widget> makeTags() {
     List<Widget> list = [];
     for (int i = 0; i < tags.length; ++i) {
-      list.add(Chip(
-        label: Text(tags[i], style: TextStyle(color: Colors.white)),
+      list.add(Tag(
+        tag: tags[i],
+        context: context,
         onDeleted: () => deleteTag(tags[i]),
-        backgroundColor: Theme.of(context).primaryColor.withAlpha(150),
       ));
     }
     return list;

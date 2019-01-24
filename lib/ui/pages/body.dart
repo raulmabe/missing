@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import '../widgets/missingCards.dart';
+import '../../viewModels/cardViewModel.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter/rendering.dart';
 import '../../types.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 typedef onScrollVoid = void Function(ScrollDirection); 
 
 class Body extends StatefulWidget{
 
-  AppType type;
-  onScrollVoid onScroll;
+  final AppType type;
+  final onScrollVoid onScroll;
 
   Body({@required this.type, this.onScroll});
 
@@ -26,22 +27,7 @@ class _BodyState extends State<Body>{
   ScrollController _scrollController;
   onScrollVoid onScroll;
 
-  List<Widget> children;
-
-  _BodyState(this.type, this.onScroll){
-    children = [];
-    if(type != AppType.PEOPLE){
-      for(int i = 0; i < 100; ++i){
-        children.add(new MissingCard(
-          id: i,
-          title: null,
-          description: null,
-          tags: null,
-          type: type,
-        ));
-      }
-    }
-  }
+  _BodyState(this.type, this.onScroll);
 
   @override
   void initState(){
@@ -63,7 +49,7 @@ class _BodyState extends State<Body>{
         
   @override
   Widget build(BuildContext context) {
-    if(children.length == 0) {
+    if(type == AppType.PEOPLE){  //children.length == 0) {
       return Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -96,17 +82,30 @@ class _BodyState extends State<Body>{
       );
     }
     return SafeArea(
-      child: StaggeredGridView.count(
-        controller: _scrollController,
-        padding: EdgeInsets.only(top: 70.0, bottom: 10.0, left: 10.0, right: 10.0),
-        crossAxisCount: 4,
-        mainAxisSpacing: 15.0,
-        crossAxisSpacing: 10.0,
-        children: children,
-        staggeredTiles: children
-                      .map<StaggeredTile>((_) => StaggeredTile.fit(2))
-                      .toList(),
+      child: LiquidPullToRefresh(
+        showChildOpacityTransition: false,
+        color: Theme.of(context).primaryColor,
+        springAnimationDurationInMilliseconds: 500,
+        backgroundColor: Colors.white,
+        onRefresh: _handleUpdate,
+              child: StaggeredGridView.count(
+          controller: _scrollController,
+          physics: const AlwaysScrollableScrollPhysics (),
+          padding: EdgeInsets.only(top: 70.0, bottom: 10.0, left: 10.0, right: 10.0),
+          crossAxisCount: 4,
+          mainAxisSpacing: 15.0,
+          crossAxisSpacing: 10.0,
+          children: cardsMockUps(),
+          staggeredTiles: cardsMockUps()
+                        .map<StaggeredTile>((_) => StaggeredTile.fit(2))
+                        .toList(),
+        ),
       ),
     );
+  }
+
+  Future<void> _handleUpdate() async{
+    print("Updating");
+    await Future.delayed(Duration(seconds: 3));
   }
 }

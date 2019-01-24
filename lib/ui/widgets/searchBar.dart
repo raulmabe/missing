@@ -17,9 +17,8 @@ class _SearchBarState extends State<SearchBar> {
           borderRadius: BorderRadius.circular(50.0),
           gradient: LinearGradient(
             colors: [
-              Theme.of(context).primaryColorLight,
               Theme.of(context).primaryColor,
-
+              Theme.of(context).primaryColorLight,
             ]
           )
         ),
@@ -35,7 +34,7 @@ class _SearchBarState extends State<SearchBar> {
                 ),
                 textAlign: TextAlign.center,
                 decoration: new InputDecoration.collapsed(
-                  hintText: "Found any missing?",
+                  hintText: "Search",
                   hintStyle: TextStyle(
                     color: Colors.white,
                     fontSize: 20.0

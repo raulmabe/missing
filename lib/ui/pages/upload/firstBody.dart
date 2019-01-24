@@ -44,16 +44,19 @@ class _FirstBodyState extends State<FirstBody> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 new CustomRadio(
+                  color: Colors.grey,
                   onTap: onChangedCategory,
                   type: AppType.values[0],
                   isSelected: categories[0],
                 ),
                 new CustomRadio(
+                  color: Colors.grey,
                   onTap: onChangedCategory,
                   type: AppType.values[1],
                   isSelected: categories[1],
                 ),
                 new CustomRadio(
+                  color: Colors.grey,
                   onTap: onChangedCategory,
                   type: AppType.values[2],
                   isSelected: categories[2],

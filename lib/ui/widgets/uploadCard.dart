@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../themeData.dart';
 import '../pages/upload/uploadPage.dart';
+import 'package:flutter/cupertino.dart';
 
 class UploadCard extends StatelessWidget {
   @override
@@ -13,7 +14,7 @@ class UploadCard extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(
+            CupertinoPageRoute(
               builder: (context) => UploadPage(),
             ),
           );

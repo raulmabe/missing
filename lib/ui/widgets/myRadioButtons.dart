@@ -9,8 +9,9 @@ class CustomRadio extends StatelessWidget{
   int2void onTap;
   final bool isSelected;
   final AppType type;
+  final Color color;
 
-  CustomRadio({this.isSelected, this.type, this.onTap});
+  CustomRadio({this.isSelected, this.type, this.onTap, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +19,14 @@ class CustomRadio extends StatelessWidget{
       width: 80,
       height: 80,
       decoration: BoxDecoration(
-          color: isSelected ? Theme.of(context).primaryColor : Colors.white,
+          color: isSelected ? color : Colors.white,
           borderRadius: BorderRadius.circular(5.0),
           border:
-              Border.all(color: Theme.of(context).primaryColor, width: 3.0)),
+              Border.all(color: color, width: 3.0)),
       child: Material(
         color: Colors.transparent,
         child: InkWell(onTap: () => onTap(type.index),
+        splashColor: color.withAlpha(170),
          child: Builder(
           builder: (context) {
             switch (type) {
@@ -33,7 +35,7 @@ class CustomRadio extends StatelessWidget{
                   Icons.face,
                   color: isSelected
                       ? Colors.white
-                      : Theme.of(context).primaryColor,
+                      : color,
                   size: 30.0,
                 );
               case AppType.PETS:
@@ -41,7 +43,7 @@ class CustomRadio extends StatelessWidget{
                   Icons.pets,
                   color: isSelected
                       ? Colors.white
-                      : Theme.of(context).primaryColor,
+                      : color,
                   size: 30.0,
                 );
               case AppType.THINGS:
@@ -49,7 +51,7 @@ class CustomRadio extends StatelessWidget{
                   FontAwesomeIcons.archive,
                   color: isSelected
                       ? Colors.white
-                      : Theme.of(context).primaryColor,
+                      : color,
                   size: 30.0,
                 );
             }

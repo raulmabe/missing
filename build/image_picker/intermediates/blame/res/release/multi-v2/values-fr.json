@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/raulmateobeneyto/Documents/missing/build/image_picker/intermediates/res/merged/release/values-fr/values-fr.xml",
+            "map": [
+                {
+                    "source": "/Users/raulmateobeneyto/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/952ccd29bb9869e5c51f900b089d132c/res/values-fr/values-fr.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/raulmateobeneyto/Documents/missing/build/image_picker/intermediates/incremental/mergeReleaseResources/merged.dir/values-fr/values-fr.xml",
+            "map": [
+                {
+                    "source": "/Users/raulmateobeneyto/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/952ccd29bb9869e5c51f900b089d132c/res/values-fr/values-fr.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        }
+    ]
+}
