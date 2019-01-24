@@ -50,6 +50,7 @@ class _MissingDetailsState extends State<MissingDetails> {
           CustomScrollView(
             slivers: <Widget>[
               SliverAppBar(
+                brightness: Brightness.light,
                 backgroundColor: Colors.transparent,
                 actions: <Widget>[
                   IconButton(

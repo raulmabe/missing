@@ -36,11 +36,11 @@ class MissingCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Hero(
-                tag: card.id,
-                child: Stack(
-                  children: <Widget>[
-                    Container(
+              Stack(
+                children: <Widget>[
+                  Hero(
+                    tag: card.id,
+                                      child: Container(
                       height: card.height,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
@@ -52,12 +52,15 @@ class MissingCard extends StatelessWidget {
                             image: card.images[0],
                           )),
                     ),
-                    Positioned(
-                      bottom: 0,
-                      right: 10,
-                      child: Transform.translate(
-                        offset: Offset(0, 20),
-                        child: Container(
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    right: 10,
+                    child: Transform.translate(
+                      offset: Offset(0, 20),
+                      child: Hero(
+                        tag: "icon${card.id}",
+                                              child: Container(
                           height: 40,
                           width: 40,
                           decoration: BoxDecoration(
@@ -72,9 +75,9 @@ class MissingCard extends StatelessWidget {
                               color: Colors.white),
                         ),
                       ),
-                    )
-                  ],
-                ),
+                    ),
+                  )
+                ],
               ),
               Container(
                 //     missing ? Colors.redAccent : MyTheme.of(context).foundColor
@@ -118,22 +121,12 @@ class MissingCard extends StatelessWidget {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    Row(
-                      children: <Widget>[
-                        Icon(
-                          Icons.location_on,
-                          size: 18.0,
-                        ),
-                        Expanded(
-                          child: Text(
-                            card.location,
-                            style: TextStyle(
-                              fontSize: 14.0,
-                              fontWeight: FontWeight.w300,
-                            ),
-                          ),
-                        ),
-                      ],
+                    Text(
+                      card.location,
+                      style: TextStyle(
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w300,
+                      ),
                     )
                   ],
                 ),

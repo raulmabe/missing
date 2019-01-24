@@ -52,19 +52,22 @@ class MissingCardExpanded extends StatelessWidget {
                     ),
                     Icon(Icons.remove_red_eye),
                     SizedBox(width: 20,),
-                    Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                          color: card.missing
-                              ? MyTheme.of(context).missingColor
-                              : MyTheme.of(context).foundColor,
-                          borderRadius: BorderRadius.circular(50.0)),
-                      child: Icon(
-                          card.missing
-                              ? FontAwesomeIcons.search
-                              : FontAwesomeIcons.mapMarkedAlt,
-                          color: Colors.white),
+                    Hero(
+                      tag: "icon${card.id}", 
+                                          child: Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                            color: card.missing
+                                ? MyTheme.of(context).missingColor
+                                : MyTheme.of(context).foundColor,
+                            borderRadius: BorderRadius.circular(50.0)),
+                        child: Icon(
+                            card.missing
+                                ? FontAwesomeIcons.search
+                                : FontAwesomeIcons.mapMarkedAlt,
+                            color: Colors.white),
+                      ),
                     ),
                   ],
                 ),
