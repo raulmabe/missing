@@ -10,6 +10,9 @@ class MyTheme extends InheritedWidget{
   final kSecondaryLight = Colors.redAccent[100];
   final kSecondaryDark = const Color(0xFF009faf);
 
+  final foundColor = const Color(0xff00b894);
+  final missingColor = const Color(0xffEC4B5C);
+
   final kSplashColor = const Color(0xFFFFDDDC);
 
   final kChatsCards = const Color(0xFFFFFFFF);

@@ -36,7 +36,7 @@ List<MissingCard> cardsMockUps() {
   for (int i = 0; i < 100; ++i) {
     list.add(MissingCard(
         card: CardViewModel(
-            images: [AssetImage("assets/gato${(i%3) + 1}.jpg")],
+            images: [AssetImage("assets/perro${(i%3) + 1}.jpg")],
             id: 100-i,
             title: "Item",
             description:

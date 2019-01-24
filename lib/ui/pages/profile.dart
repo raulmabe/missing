@@ -5,207 +5,151 @@ import '../widgets/uploadCard.dart';
 import './chatsPage.dart';
 import '../../viewModels/cardViewModel.dart';
 import 'package:flutter/cupertino.dart';
+import '../../viewModels/userViewModel.dart';
 
-class ProfileBody extends StatefulWidget {
-  @override
-  _ProfileBodyState createState() => _ProfileBodyState();
-}
+class Profile extends StatelessWidget {
+  final UserViewModel user;
 
-class _ProfileBodyState extends State<ProfileBody> {
-
-  ScrollController _scrollController;
-
-
-  @override
-  void initState(){
-    super.initState();
-    _scrollController = ScrollController();
-  }
-
-  @override
-  void dispose(){
-    _scrollController.dispose();
-    super.dispose();
-  }
+  Profile({this.user});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      /* decoration: BoxDecoration(
-        gradient: LinearGradient(
-          end: Alignment.topLeft,
-          colors: [
-            Theme.of(context).primaryColor,
-            MyTheme.of(context).kSecondaryLight
-          ]
-        )
-      ), */
-      color: Colors.white,
-      child: SafeArea(
-        child: Material(
-          color: Colors.transparent,
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    IconButton(
-                    onPressed: (){
-                      Navigator.push(
-                        context,
-                        CupertinoPageRoute(
-                          builder: (context) => ChatsPage(),
-                        ),
-                      );
-                    },
-                    splashColor: Theme.of(context).splashColor,
-                    icon: Icon(
-                      Icons.chat,
-                      color: Theme.of(context).primaryColor,
-                      size: 30,
-                      ),
-                    ),
-                    IconButton(
-                    onPressed: (){print("Settings tapped");},
-                    splashColor: Theme.of(context).splashColor,
-                    icon: Icon(
-                      Icons.settings,
-                      color: Theme.of(context).primaryColor,
-                      size: 30,
-                      ),
-                    ),
-                  ]
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Stack(
+          children: <Widget>[
+            Container(
+              height: 250,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      alignment: Alignment.topCenter,
+                      image: AssetImage("assets/map.jpg"),
+                      colorFilter: ColorFilter.mode(
+                          Theme.of(context).primaryColor, BlendMode.softLight),
+                      fit: BoxFit.cover)),
+            ),
+            Positioned(
+              top: 0,
+              right: 0,
+              child: SafeArea(
+                child: Material(
+                  color: Colors.transparent,
+                  child: IconButton(
+                    icon: Icon(Icons.settings),
+                    color: Colors.white,
+                    onPressed: () => print("Settings"),
+                  ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              ),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.only(left: 30.0, right: 30.0, top: 140.0),
+              child: Material(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0)),
+                color: Colors.white.withAlpha(230),
+                elevation: 2.0,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    // Profile image
-                    Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: Theme.of(context).primaryColor,
-                          width: 3.0
-                          )
+                    Transform.translate(
+                      offset: Offset(0, -40),
+                      child: Material(
+                        shadowColor: Theme.of(context).primaryColor,
+                        elevation: 20.0,
+                        shape: CircleBorder(),
+                        child: CircleAvatar(
+                          backgroundImage: user.image,
+                          radius: 50.0,
+                        ),
                       ),
-                      child: CircleAvatar(
-                      backgroundImage: AssetImage("assets/profile_pic.jpg"),
-                      radius: 50.0,
                     ),
+                    Transform.translate(
+                      offset: Offset(0, -10),
+                      child: Text(user.name,
+                          style: TextStyle(
+                              color: Colors.grey[800],
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w600)),
                     ),
-                    getTextColumn(
-                      number: 0,
-                      text: "Found"
-                    ),
-                    getTextColumn(
-                      number: 2,
-                      text: "Missings"
+                    Text(user.location,
+                        style: TextStyle(
+                            fontFamily: "Quicksand",
+                            color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.w300)),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 15.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Text("found".toUpperCase(),
+                                  style: TextStyle(
+                                      color: Colors.grey[800],
+                                      fontSize: 15.0,
+                                      fontWeight: FontWeight.w200)),
+                              Text(user.founds.toString(),
+                                  style: TextStyle(
+                                      fontSize: 25.0,
+                                      fontWeight: FontWeight.w200)),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Text("missings".toUpperCase(),
+                                  style: TextStyle(
+                                      color: Colors.grey[800],
+                                      fontSize: 15.0,
+                                      fontWeight: FontWeight.w200)),
+                              Text(user.missings.toString(),
+                                  style: TextStyle(
+                                      fontSize: 25.0,
+                                      fontWeight: FontWeight.w200)),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
-                getInfo(),
-                Divider(
-                  color: Theme.of(context).primaryColor,
-                ),
-                Expanded(
-                  child: StaggeredGridView.count(
-                    controller: _scrollController,
-                    padding: EdgeInsets.only(top: 10.0, bottom: 10.0, left: 10.0, right: 10.0),
-                    crossAxisCount: 4,
-                    mainAxisSpacing: 15.0,
-                    crossAxisSpacing: 10.0,
-                    children: []..add(UploadCard())..addAll(cardsMockUps().getRange(0, 2)),
-                    staggeredTiles: ([]..add(UploadCard())..addAll(cardsMockUps().getRange(0, 2)))
-                                  .map<StaggeredTile>((_) => StaggeredTile.fit(2))
-                                  .toList(),
-                  ),
-                ), 
-              ],
+              ),
             ),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Text("Posts",
+              style: TextStyle(
+                  color: Colors.grey[800],
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.w600)),
+        ),
+        Expanded(
+          child: StaggeredGridView.count(
+            physics: AlwaysScrollableScrollPhysics(),
+            padding: EdgeInsets.only(
+                top: 10.0, bottom: 10.0, left: 10.0, right: 10.0),
+            crossAxisCount: 4,
+            mainAxisSpacing: 15.0,
+            crossAxisSpacing: 10.0,
+            children: []
+              ..add(UploadCard())
+              ..addAll(cardsMockUps().getRange(0, 2)),
+            staggeredTiles: ([]
+                  ..add(UploadCard())
+                  ..addAll(cardsMockUps().getRange(0, 2)))
+                .map<StaggeredTile>((_) => StaggeredTile.fit(2))
+                .toList(),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget getTextColumn({@required int number, @required String text}){
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Text(
-          "$number",
-          style: TextStyle(
-            fontSize: 25.0,
-            color: Theme.of(context).primaryColor
-          )
-          ),
-        Text(
-          text,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 20.0,
-            color: Theme.of(context).primaryColor
-          )
-        )
       ],
     );
   }
-
-  Widget getInfo() {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        vertical: 15.0,
-        horizontal: 40,
-      ),
-      child: Column(
-        children: <Widget>[
-          // Usuario
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: 5.0),
-                child: Text(
-                  "Raul Mateo Beneyto",
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    color: Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.bold
-                  ),
-                  ),
-              )
-            ],
-          ),
-
-          // Ubicacion
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Icon(
-                FontAwesomeIcons.mapMarkerAlt,
-                size: 20.0,
-                color: Theme.of(context).primaryColor,
-                ),
-              Padding(
-                padding: EdgeInsets.only(left: 5.0),
-                child: Text(
-                  "Premià de mar, Barcelona",
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    color: Theme.of(context).primaryColor
-                  ),
-                  ),
-              )
-            ],
-          ),
-        ],
-      ),
-    );
-  }
 }
-

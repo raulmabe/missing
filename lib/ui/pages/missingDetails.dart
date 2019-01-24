@@ -5,11 +5,22 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../viewModels/cardViewModel.dart';
 import '../widgets/missingCardExpanded.dart';
 import 'package:flutter/cupertino.dart';
+import '../../themeData.dart';
+import '../../domain/actions.dart';
 
-class MissingDetails extends StatelessWidget {
+class MissingDetails extends StatefulWidget {
   final CardViewModel card;
-  
+
   MissingDetails({@required this.card});
+
+  @override
+  _MissingDetailsState createState() => _MissingDetailsState(card);
+}
+
+class _MissingDetailsState extends State<MissingDetails> {
+  CardViewModel card;
+
+  _MissingDetailsState(this.card);
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +34,17 @@ class MissingDetails extends StatelessWidget {
             child: Container(
               height: 200.0,
               decoration: ShapeDecoration(
-                shape: BeveledRectangleBorder(),
-                gradient: LinearGradient(
-                  colors: [
-                    Theme.of(context).primaryColor,
-                    Theme.of(context).primaryColorLight,
-                  ]
-                )
-              ),
+                  shape: BeveledRectangleBorder(),
+                  gradient: LinearGradient(
+                      colors: card.missing
+                          ? [
+                              MyTheme.of(context).missingColor,
+                              Theme.of(context).primaryColorLight,
+                            ]
+                          : [
+                              MyTheme.of(context).foundColor,
+                              Colors.teal[200]
+                            ])),
             ),
           ),
           CustomScrollView(
@@ -53,14 +67,15 @@ class MissingDetails extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: Icon(Icons.arrow_back_ios,
-                      color: Colors.white),
+                  icon: Icon(Icons.arrow_back_ios, color: Colors.white),
                 ),
               ),
               SliverToBoxAdapter(
                 child: Padding(
                   padding: EdgeInsets.all(20.0),
-                  child: MissingCardExpanded(card: card,),
+                  child: MissingCardExpanded(
+                    card: card,
+                  ),
                 ),
               )
             ],
@@ -75,10 +90,13 @@ class MissingDetails extends StatelessWidget {
               topLeft: Radius.circular(20.0),
               topRight: Radius.circular(20.0),
             )),
-            gradient: LinearGradient(colors: [
-              Theme.of(context).primaryColor,
-              Theme.of(context).primaryColorLight
-            ])),
+            gradient: LinearGradient(
+                colors: card.missing
+                    ? [
+                        MyTheme.of(context).missingColor,
+                        Theme.of(context).primaryColorLight,
+                      ]
+                    : [MyTheme.of(context).foundColor, Colors.teal[200]])),
         child: SafeArea(
           child: Material(
             color: Colors.transparent,

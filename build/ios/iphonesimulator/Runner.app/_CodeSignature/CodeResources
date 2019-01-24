@@ -860,15 +860,23 @@
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		Xa2+W0VbZueZzyWLxv3gBDwkC9M=
+		Ew0YmHtlWBbrmJimYHJHyVSy8wU=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
-		HNYpjT1t8jOTnnanRFzuH/YSbIM=
+		VherJvr2skQpltwIHZ/+o7w7jUU=
 		</data>
 		<key>flutter_assets/LICENSE</key>
 		<data>
 		8qcwBx/PdZtbH5lC5y7gLgcLbo8=
+		</data>
+		<key>flutter_assets/assets/fonts/Montserrat.ttf</key>
+		<data>
+		/x6102CkLAxnXY7Pypo+W3CdMCo=
+		</data>
+		<key>flutter_assets/assets/fonts/Quicksand.ttf</key>
+		<data>
+		dpIELtgqQgNddaSx2A91kmjnLBQ=
 		</data>
 		<key>flutter_assets/assets/gato1.jpg</key>
 		<data>
@@ -881,6 +889,10 @@
 		<key>flutter_assets/assets/gato3.jpg</key>
 		<data>
 		gZm/qgl9dV+DhD6QvIOMeYLrmYY=
+		</data>
+		<key>flutter_assets/assets/map.jpg</key>
+		<data>
+		t5llDVRfH0I+Qtpk2VEO1MW1lUw=
 		</data>
 		<key>flutter_assets/assets/perro1.jpg</key>
 		<data>
@@ -912,7 +924,7 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		A/dhcX3eBry5T6OBAiSIcPsvDRI=
+		rOyS2HE/1FcxXKhwaLeKKYmAV88=
 		</data>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -2727,22 +2739,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Xa2+W0VbZueZzyWLxv3gBDwkC9M=
+			Ew0YmHtlWBbrmJimYHJHyVSy8wU=
 			</data>
 			<key>hash2</key>
 			<data>
-			i0/PbjFmAcENXhdx0Lv2T5PFN9SNu/aDg04GU8XFZEc=
+			l4yRTTsotugq0SxDQxgFGuzKInOLYaMlBbTw4DLhSl0=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			HNYpjT1t8jOTnnanRFzuH/YSbIM=
+			VherJvr2skQpltwIHZ/+o7w7jUU=
 			</data>
 			<key>hash2</key>
 			<data>
-			IKQSWJLbeCDyNXlZ6L54n9ooE9RXx1eTrsL7k+KFI5E=
+			PVMjh4RlP6vfKesNR+ThKE+i+ddN1ps+LREVNsHkZLg=
 			</data>
 		</dict>
 		<key>flutter_assets/LICENSE</key>
@@ -2754,6 +2766,28 @@
 			<key>hash2</key>
 			<data>
 			8aTAvY0qs1wZG5+2wlmHxO8zGSGLzNMF1ccd10zv7fY=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/fonts/Montserrat.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			/x6102CkLAxnXY7Pypo+W3CdMCo=
+			</data>
+			<key>hash2</key>
+			<data>
+			gevDkWtSQAe3VtkdnfE8dnPsQBFh8srRYWYtCNzxzHI=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/fonts/Quicksand.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			dpIELtgqQgNddaSx2A91kmjnLBQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			dm9tgbw93CIB7Fm+mxjZF+H2+7hgDGm1c3kbt9AayUw=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/gato1.jpg</key>
@@ -2787,6 +2821,17 @@
 			<key>hash2</key>
 			<data>
 			WGSo7I9dWO4HwZYDt4VaCoVJTy0SpKvdwsCw8SdniXg=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/map.jpg</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			t5llDVRfH0I+Qtpk2VEO1MW1lUw=
+			</data>
+			<key>hash2</key>
+			<data>
+			aWoHEooMfK8ZFj6cXX3BuSf3YY0jWzo73um3sIUOUyA=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/perro1.jpg</key>
@@ -2870,11 +2915,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			A/dhcX3eBry5T6OBAiSIcPsvDRI=
+			rOyS2HE/1FcxXKhwaLeKKYmAV88=
 			</data>
 			<key>hash2</key>
 			<data>
-			WCIDyoV0ZuGkTq3iyD09mrcQqbO6MfRKAm9+U4wPx3w=
+			3VFALIMaxfBbdgbOWZ3b5lbfEopcZHBCEH/pDv+CPOw=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>

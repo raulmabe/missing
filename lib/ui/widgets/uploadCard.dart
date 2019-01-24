@@ -8,7 +8,7 @@ class UploadCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       elevation: 1.0,
-      borderRadius: BorderRadius.circular(5.0),
+      borderRadius: BorderRadius.circular(10.0),
       color: MyTheme.of(context).kUploadCard,
       child: InkWell(
         onTap: () {
@@ -22,7 +22,7 @@ class UploadCard extends StatelessWidget {
         child: Container(
           height: 200.0,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5.0),
+              borderRadius: BorderRadius.circular(10.0),
               border: Border.all(
                   color: Theme.of(context).primaryColor.withAlpha(100),
                   width: 3.0)),

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import './body.dart';
-import './profileBody.dart';
+import './profile.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../widgets/searchBar.dart';
 import 'package:flutter/rendering.dart';
 import '../../types.dart';
 import 'package:flutter/services.dart';
+import '../../viewModels/userViewModel.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -74,7 +75,7 @@ class _HomePageState extends State<HomePage>
                   type: AppType.values[2],
                   onScroll: onScroll,
                 ),
-                new ProfileBody(),
+                new Profile(user: user,),
               ],
             ),
             (_tabController.index == _tabController.length - 1)
