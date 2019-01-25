@@ -38,6 +38,7 @@ class _BodyState extends State<Body>{
 
   void _handleScroll(){
     // Save offset to Redux state
+    print("updating");
     onScroll(_scrollController.position.userScrollDirection);
   }
 

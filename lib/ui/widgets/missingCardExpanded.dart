@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './chips.dart';
 import '../../domain/actions.dart';
 import '../../themeData.dart';
+import '../widgets/imageCarousel.dart';
 
 class MissingCardExpanded extends StatelessWidget {
   final CardViewModel card;
@@ -23,15 +24,9 @@ class MissingCardExpanded extends StatelessWidget {
             tag: card.id,
             child: Container(
               height: 300,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10.0),
-                    topRight: Radius.circular(10.0),
-                  ),
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: card.images[0],
-                  )),
+              child: ImageCarousel(
+                images: card.images
+              ),
             ),
           ),
           Padding(
