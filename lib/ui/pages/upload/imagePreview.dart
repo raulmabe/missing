@@ -97,16 +97,22 @@ class _ImagePreviewState extends State<ImagePreview>
                         fit: BoxFit.cover, image: FileImage(widget.image)),
                   )),
               Material(
-                  color: Colors.transparent,
-                  child: FloatingActionButton(
-                    onPressed: () {
-                      widget.back();
-                      widget.remove(widget.image);
-                    },
-                    backgroundColor: Colors.white,
-                    foregroundColor: Theme.of(context).primaryColor,
-                    child: Icon(Icons.delete),
-                  ))
+                shape: CircleBorder(
+                  
+                ),
+                color: Colors.white,
+                elevation: 6.0,
+                child: InkWell(
+                  onTap: (){
+                    widget.back();
+                    widget.remove(widget.image);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Icon(Icons.delete, color: Theme.of(context).primaryColor, size: 30.0,),
+                  ),
+                ),
+              )
             ],
           ),
         ),
