@@ -3,6 +3,7 @@ import '../../../viewModels/cardViewModel.dart';
 import '../../widgets/chips.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:async';
+import './imagePreview.dart';
 
 class InfoCard extends StatefulWidget {
   final GlobalKey formKey;
@@ -174,19 +175,14 @@ class _InfoCardState extends State<InfoCard> {
     for (int i = 0; i < images.length; ++i) {
       list.add(Padding(
           padding: const EdgeInsets.all(8.0),
-          child: GestureDetector(
-            onTap: () => _addOverlay(i),
-            child: Container(
-              height: 80,
-              width: 80,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      fit: BoxFit.cover, image: FileImage(images[i])),
-                  border: Border.all(
-                      color: Theme.of(context).primaryColor, width: 3.0),
-                  borderRadius: BorderRadius.circular(5.0)),
-            ),
-          )));
+          child: UploadImageIcon(
+            image: images[i],
+            removeImage: (image){
+              setState(() {
+                images.remove(image);
+              });
+            },)
+          ));
     }
     return list;
   }
@@ -219,40 +215,5 @@ class _InfoCardState extends State<InfoCard> {
       ));
     }
     return list;
-  }
-
-  void _addOverlay(int i) async {
-    _overlayEntry = _createOverlayImage(i);
-    Overlay.of(context).insert(_overlayEntry);
-    /* 
-    await Future.delayed(Duration(seconds: 4));
-    _overlayEntry.remove(); */
-  }
-
-  OverlayEntry _createOverlayImage(int i) {
-    return OverlayEntry(builder: (context) {
-      return Stack(
-        fit: StackFit.expand,
-        children: <Widget>[
-          GestureDetector(
-            onTap: () => _overlayEntry.remove(),
-            child: Container(
-              color: Colors.blueGrey.withOpacity(.5),
-            ),
-          ),
-          Positioned(
-            top: MediaQuery.of(context).size.height / 3,
-            bottom: MediaQuery.of(context).size.height / 3,
-            left: 30,
-            right: 30,
-            child: Container(
-                decoration: BoxDecoration(
-              image: DecorationImage(
-                  fit: BoxFit.cover, image: FileImage(images[i])),
-            )),
-          ),
-        ],
-      );
-    });
   }
 }
