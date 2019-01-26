@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../viewModels/cardViewModel.dart';
 import '../../widgets/chips.dart';
 import 'package:image_picker/image_picker.dart';
-import '../../widgets/overlay.dart';
+import 'dart:async';
 
 class InfoCard extends StatefulWidget {
   final GlobalKey formKey;
@@ -19,16 +19,13 @@ class _InfoCardState extends State<InfoCard> {
 
   List images;
 
-  int selectedImage = -1;
-  bool _showImage;
-
+  OverlayEntry _overlayEntry;
   @override
   void initState() {
     super.initState();
     _tagsNode = FocusNode();
     _controller = TextEditingController();
     images = [];
-    _showImage = false;
   }
 
   @override
@@ -59,8 +56,7 @@ class _InfoCardState extends State<InfoCard> {
                   ),
                   TextFormField(
                     decoration: InputDecoration(labelText: "Title"),
-                    validator: (str) =>
-                        str.length < 2 ? "Title invalid" : null,
+                    validator: (str) => str.length < 2 ? "Title invalid" : null,
                     onSaved: (str) => widget.card.title = str,
                   ),
                   SizedBox(
@@ -179,13 +175,7 @@ class _InfoCardState extends State<InfoCard> {
       list.add(Padding(
           padding: const EdgeInsets.all(8.0),
           child: GestureDetector(
-            onTap: () {
-              setState(() {
-                print("ey");
-                _showImage = true;
-                selectedImage = i;
-              });
-            },
+            onTap: () => _addOverlay(i),
             child: Container(
               height: 80,
               width: 80,
@@ -217,9 +207,9 @@ class _InfoCardState extends State<InfoCard> {
     }
     for (int i = 0; i < widget.card.tags.length; ++i) {
       list.add(Tag(
-        tag: (widget.card.tags[i].length < 20) ?
-        widget.card.tags[i]
-        : "" + widget.card.tags[i].substring(0,15) + "..." ,
+        tag: (widget.card.tags[i].length < 20)
+            ? widget.card.tags[i]
+            : "" + widget.card.tags[i].substring(0, 15) + "...",
         context: context,
         onDeleted: () {
           setState(() {
@@ -229,5 +219,40 @@ class _InfoCardState extends State<InfoCard> {
       ));
     }
     return list;
+  }
+
+  void _addOverlay(int i) async {
+    _overlayEntry = _createOverlayImage(i);
+    Overlay.of(context).insert(_overlayEntry);
+    /* 
+    await Future.delayed(Duration(seconds: 4));
+    _overlayEntry.remove(); */
+  }
+
+  OverlayEntry _createOverlayImage(int i) {
+    return OverlayEntry(builder: (context) {
+      return Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          GestureDetector(
+            onTap: () => _overlayEntry.remove(),
+            child: Container(
+              color: Colors.blueGrey.withOpacity(.5),
+            ),
+          ),
+          Positioned(
+            top: MediaQuery.of(context).size.height / 3,
+            bottom: MediaQuery.of(context).size.height / 3,
+            left: 30,
+            right: 30,
+            child: Container(
+                decoration: BoxDecoration(
+              image: DecorationImage(
+                  fit: BoxFit.cover, image: FileImage(images[i])),
+            )),
+          ),
+        ],
+      );
+    });
   }
 }
