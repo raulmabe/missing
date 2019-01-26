@@ -39,11 +39,11 @@ class _MissingDetailsState extends State<MissingDetails> {
                       colors: card.missing
                           ? [
                               MyTheme.of(context).missingColor,
-                              Theme.of(context).primaryColorLight,
+                              MyTheme.of(context).missingColorLight,
                             ]
                           : [
                               MyTheme.of(context).foundColor,
-                              Colors.teal[200]
+                              MyTheme.of(context).foundColorLight,
                             ])),
             ),
           ),
@@ -95,9 +95,9 @@ class _MissingDetailsState extends State<MissingDetails> {
                 colors: card.missing
                     ? [
                         MyTheme.of(context).missingColor,
-                        Theme.of(context).primaryColorLight,
+                        MyTheme.of(context).missingColorLight
                       ]
-                    : [MyTheme.of(context).foundColor, Colors.teal[200]])),
+                    : [MyTheme.of(context).foundColor, MyTheme.of(context).foundColorLight])),
         child: SafeArea(
           child: Material(
             color: Colors.transparent,

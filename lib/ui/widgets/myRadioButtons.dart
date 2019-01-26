@@ -9,24 +9,28 @@ class CustomRadio extends StatelessWidget{
   int2void onTap;
   final bool isSelected;
   final AppType type;
-  final Color color;
+  final Color unselectedColor;
+  final Color selectedColor;
 
-  CustomRadio({this.isSelected, this.type, this.onTap, this.color});
+
+  final double size;
+
+  CustomRadio({this.isSelected, this.size, this.type, this.onTap, this.unselectedColor, this.selectedColor});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 80,
-      height: 80,
+      width: size,
+      height: size,
       decoration: BoxDecoration(
-          color: isSelected ? color : Colors.white,
+          color: isSelected ? selectedColor : Colors.white,
           borderRadius: BorderRadius.circular(5.0),
           border:
-              Border.all(color: color, width: 3.0)),
+              Border.all(color: isSelected ? selectedColor : unselectedColor, width: 3.0)),
       child: Material(
         color: Colors.transparent,
         child: InkWell(onTap: () => onTap(type.index),
-        splashColor: color.withAlpha(170),
+        splashColor: selectedColor.withOpacity(.5),
          child: Builder(
           builder: (context) {
             switch (type) {
@@ -35,24 +39,24 @@ class CustomRadio extends StatelessWidget{
                   Icons.face,
                   color: isSelected
                       ? Colors.white
-                      : color,
-                  size: 30.0,
+                      : unselectedColor,
+                  size: size / (80/40),
                 );
               case AppType.PETS:
                 return Icon(
                   Icons.pets,
                   color: isSelected
                       ? Colors.white
-                      : color,
-                  size: 30.0,
+                      : unselectedColor,
+                  size: size / (80/40),
                 );
               case AppType.THINGS:
                 return Icon(
                   FontAwesomeIcons.archive,
                   color: isSelected
                       ? Colors.white
-                      : color,
-                  size: 30.0,
+                      : unselectedColor,
+                  size: size / (80/40),
                 );
             }
           },

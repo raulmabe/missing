@@ -33,15 +33,15 @@ class Profile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     IconButton(
-                      icon: Icon(Icons.chat),
+                      icon: Icon(FontAwesomeIcons.slidersH),
                       color: Colors.white,
                       onPressed: () {},
                     ),
                     IconButton(
-                      icon: Icon(Icons.settings),
+                      icon: Icon(Icons.send),
                       color: Colors.white,
                       onPressed: () {},
                     ),

@@ -5,7 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../widgets/searchBar.dart';
 import 'package:flutter/rendering.dart';
 import '../../types.dart';
-import 'package:flutter/services.dart';
+import 'dart:ui' as ui;
 import '../../viewModels/userViewModel.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,17 +18,48 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
-  bool _showSearchBar = true;
+  bool _showSearchBar;
+  List<IconData> tabs;
+  List<Widget> tabsBodies;
+  IconData selectedTab;
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(vsync: this, length: 4);
+    _showSearchBar = true;
+    tabs = [
+      FontAwesomeIcons.solidIdBadge,
+      FontAwesomeIcons.paw,
+      FontAwesomeIcons.archive,
+      FontAwesomeIcons.userAstronaut
+    ];
+    tabsBodies = [
+      Body(
+        type: AppType.values[0],
+        onScroll: onScroll,
+      ),
+      Body(
+        type: AppType.values[1],
+        onScroll: onScroll,
+      ),
+      Body(
+        type: AppType.values[2],
+        onScroll: onScroll,
+      ),
+      Profile(
+        user: user,
+      ),
+    ];
+    assert(tabs.length == tabsBodies.length);
+    _tabController = TabController(vsync: this, length: tabs.length);
+    _tabController.index = 2;
+    selectedTab = FontAwesomeIcons.archive;
     _tabController.addListener(_handleTabSelection);
   }
 
   void _handleTabSelection() {
     setState(() {
+      selectedTab = tabs[_tabController.index];
       _showSearchBar = true;
     });
   }
@@ -57,72 +88,55 @@ class _HomePageState extends State<HomePage>
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-        body: Stack(
-          children: <Widget>[
-            TabBarView(
-              physics: NeverScrollableScrollPhysics(),
-              controller: _tabController,
-              children: <Widget>[
-                new Body(
-                  type: AppType.values[0],
-                  onScroll: onScroll,
-                ),
-                new Body(
-                  type: AppType.values[1],
-                  onScroll: onScroll,
-                ),
-                new Body(
-                  type: AppType.values[2],
-                  onScroll: onScroll,
-                ),
-                new Profile(
-                  user: user,
-                ),
-              ],
-            ),
-            (_tabController.index == _tabController.length - 1 ||
-                    !_showSearchBar)
-                ? new Container()
-                : Positioned(
-                    top: 10.0,
-                    right: 20.0,
-                    left: 20.0,
-                    child: SafeArea(
-                      child: SearchBar(),
-                    )),
-          ],
-        ),
-        backgroundColor: Colors.grey[200],
-        bottomNavigationBar: Container(
-          color: Colors.white,
-          child: SafeArea(
-            child: TabBar(
-              labelColor: Theme.of(context).primaryColor,
-              unselectedLabelColor: Colors.black26,
-              controller: _tabController,
-              indicatorColor: Colors.white,
-              tabs: <Widget>[
-                Tab(
-                  text: "People",
-                  icon: Icon(Icons.face, size: 20.0),
-                ),
-                Tab(
-                  text: "Pets",
-                  icon: Icon(Icons.pets, size: 20.0),
-                ),
-                Tab(
-                  text: "Things",
-                  icon: Icon(FontAwesomeIcons.archive, size: 20.0),
-                ),
-                Tab(
-                  text: "Profile",
-                  icon: Icon(Icons.person, size: 20.0),
-                ),
-              ],
-            ),
+          body: Stack(
+            children: <Widget>[
+              TabBarView(
+                physics: NeverScrollableScrollPhysics(),
+                controller: _tabController,
+                children: tabsBodies,
+              ),
+              (_tabController.index == _tabController.length - 1 ||
+                      !_showSearchBar)
+                  ? new Container()
+                  : Positioned(
+                      top: 10.0,
+                      right: 20.0,
+                      left: 20.0,
+                      child: SafeArea(
+                        child: SearchBar(),
+                      )),
+            ],
           ),
-        ),
-      ),
+          backgroundColor: Colors.grey[200],
+          bottomNavigationBar: BottomNavigationBar(
+            onTap: (index) {
+              setState(() {
+                _tabController.animateTo(index);
+              });
+            },
+            type: BottomNavigationBarType.fixed,
+            currentIndex: _tabController.index,
+            items: tabs.map((data) {
+              return BottomNavigationBarItem(
+                  icon: selectedTab == data
+                      ? ShaderMask(
+                          blendMode: BlendMode.srcIn,
+                          shaderCallback: (Rect bounds) {
+                            return ui.Gradient.linear(
+                              Offset(4.0, 24.0),
+                              Offset(24.0, 4.0),
+                              [
+                                Colors.blue[200],
+                                Colors.greenAccent,
+                              ],
+                            );
+                          },
+                          child: Icon(data),
+                        )
+                      : Icon(data, color: Colors.grey),
+                  title: Container());
+            }).toList(),
+          )),
     );
   }
 

@@ -56,7 +56,7 @@ class MissingCardExpanded extends StatelessWidget {
                             color: card.missing
                                 ? MyTheme.of(context).missingColor
                                 : MyTheme.of(context).foundColor,
-                            borderRadius: BorderRadius.circular(50.0)),
+                                shape: BoxShape.circle),
                         child: Icon(
                             card.missing
                                 ? FontAwesomeIcons.search
