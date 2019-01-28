@@ -8,7 +8,7 @@ class ImageCarousel extends StatefulWidget {
   _ImageCarouselState createState() => _ImageCarouselState();
 }
 
-class _ImageCarouselState extends State<ImageCarousel> {
+class _ImageCarouselState extends State<ImageCarousel> with SingleTickerProviderStateMixin{
   PageController _controller;
 
   int index;
@@ -21,7 +21,9 @@ class _ImageCarouselState extends State<ImageCarousel> {
       viewportFraction: 1.0,
     );
     _controller.addListener(() {
-      setState(() {index = _controller.page.toInt();});
+      setState(() {
+        index = _controller.page.toInt();
+      });
     });
   }
 
@@ -35,12 +37,29 @@ class _ImageCarouselState extends State<ImageCarousel> {
             children: List.generate(
                 widget.images.length, (index) => _buildImage(index))),
         Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: new PhotoIndicator(
-                widget.images.length, index))
+          bottom: 0,
+          left: 0,
+          right: 0,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+                widget.images.length, (i) => _buildIndicator(index == i)),
+          ),
+        )
       ],
+    );
+  }
+
+  Widget _buildIndicator(bool selected) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 6.0, vertical: 3),
+      child: Container(
+        decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: (selected) ? Colors.white : Colors.black.withOpacity(0.3)),
+        width: 10,
+        height: 10,
+      ),
     );
   }
 
@@ -68,33 +87,6 @@ class _ImageCarouselState extends State<ImageCarousel> {
           )),
         ),
       ],
-    );
-  }
-}
-
-class PhotoIndicator extends StatelessWidget {
-  final int length;
-
-  final int activeIndex;
-
-  PhotoIndicator(this.length, this.activeIndex);
-
-  Widget _buildIndicator(bool selected) {
-    return Expanded(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 6.0, vertical: 3),
-        child: Container(
-          height: 3.0,
-          color: (selected) ? Colors.white : Colors.black.withOpacity(0.3)
-        ),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: List.generate(length, (index) => _buildIndicator(activeIndex == index)),
     );
   }
 }

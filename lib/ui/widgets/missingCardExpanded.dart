@@ -20,7 +20,7 @@ class MissingCardExpanded extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Hero(
+          (card.images != null && card.images.isNotEmpty) ? Hero(
             tag: card.id,
             child: Container(
               height: 300,
@@ -28,7 +28,7 @@ class MissingCardExpanded extends StatelessWidget {
                 images: card.images
               ),
             ),
-          ),
+          ) : Container(),
           Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 30.0,

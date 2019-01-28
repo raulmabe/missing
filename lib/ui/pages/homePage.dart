@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage>
                       )),
             ],
           ),
-          backgroundColor: Colors.grey[200],
+          backgroundColor: Colors.blueGrey[50],
           bottomNavigationBar: BottomNavigationBar(
             onTap: (index) {
               setState(() {
@@ -126,8 +126,8 @@ class _HomePageState extends State<HomePage>
                               Offset(4.0, 24.0),
                               Offset(24.0, 4.0),
                               [
-                                Colors.blue[200],
-                                Colors.greenAccent,
+                                Theme.of(context).primaryColor,
+                                Theme.of(context).primaryColorLight,
                               ],
                             );
                           },

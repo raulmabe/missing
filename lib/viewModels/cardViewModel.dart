@@ -33,7 +33,7 @@ List<MissingCard> list = [];
 
 List<MissingCard> cardsMockUps() {
   if(list.length != 0) return list;
-  for (int i = 0; i < 100; ++i) {
+  for (int i = 0; i < 5; ++i) {
     list.add(MissingCard(
         card: CardViewModel(
             images: [
@@ -50,5 +50,15 @@ List<MissingCard> cardsMockUps() {
             location: "Malgrat de Mar, Barcelona",
             tags: ["gato", "claro", "canela", "pequeña"])));
   }
+  list.add(MissingCard(
+        card: CardViewModel(
+            id: 900,
+            title: "Item",
+            description:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            type: AppType.THINGS,
+            missing: new Random().nextBool(),
+            location: "Malgrat de Mar, Barcelona",
+            tags: ["gato", "claro", "canela", "pequeña"])));
   return list;
 }

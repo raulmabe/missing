@@ -90,11 +90,12 @@ class _ImagePreviewState extends State<ImagePreview>
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Container(
-                  margin: EdgeInsets.all(30),
-                  height: MediaQuery.of(context).size.height / 3,
+                  margin: EdgeInsets.all(8),
+                  height: MediaQuery.of(context).size.height / 2,
+                  
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                        fit: BoxFit.cover, image: FileImage(widget.image)),
+                        fit: BoxFit.scaleDown, image: FileImage(widget.image)),
                   )),
               Material(
                 shape: CircleBorder(
