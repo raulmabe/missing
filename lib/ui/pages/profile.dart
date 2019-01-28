@@ -14,140 +14,118 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(
-          height: 250,
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  alignment: Alignment.topCenter,
-                  image: AssetImage("assets/map.jpg"),
-                  colorFilter: ColorFilter.mode(
-                      Theme.of(context).primaryColor, BlendMode.softLight),
-                  fit: BoxFit.cover)),
-        ),
-        SafeArea(
-          child: Material(
-            color: Colors.transparent,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    IconButton(
-                      icon: Icon(FontAwesomeIcons.slidersH),
-                      color: Colors.white,
-                      onPressed: () {},
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.send),
-                      color: Colors.white,
-                      onPressed: () {},
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 35,
-                    left: 30,
-                    right: 30,
-                    bottom: 20,
+          color: Theme.of(context).primaryColor,
+          child: Column(
+            children: <Widget>[
+              SafeArea(
+                child: Material(
+                  color: Colors.transparent,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(FontAwesomeIcons.slidersH),
+                        color: Colors.white,
+                        onPressed: () {},
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20),
+                        child: Material(
+                          shadowColor: Theme.of(context).primaryColor,
+                          elevation: 20.0,
+                          shape: CircleBorder(),
+                          child: CircleAvatar(
+                            backgroundImage: user.image,
+                            radius: 50.0,
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.send),
+                        color: Colors.white,
+                        onPressed: () {},
+                      ),
+                    ],
                   ),
-                  child: Material(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0)),
-                    color: Colors.white.withAlpha(230),
-                    elevation: 2.0,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                ),
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Text(user.name,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w600)),
+                  Text(user.location,
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.w300)),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 15.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        Transform.translate(
-                          offset: Offset(0, -40),
-                          child: Material(
-                            shadowColor: Theme.of(context).primaryColor,
-                            elevation: 20.0,
-                            shape: CircleBorder(),
-                            child: CircleAvatar(
-                              backgroundImage: user.image,
-                              radius: 50.0,
-                            ),
-                          ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Text("found".toUpperCase(),
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.w200)),
+                            Text(user.founds.toString(),
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 25.0,
+                                    fontWeight: FontWeight.w200)),
+                          ],
                         ),
-                        Transform.translate(
-                          offset: Offset(0, -10),
-                          child: Text(user.name,
-                              style: TextStyle(
-                                  color: Colors.grey[800],
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.w600)),
-                        ),
-                        Text(user.location,
-                            style: TextStyle(
-                                color: Theme.of(context).primaryColor,
-                                fontWeight: FontWeight.w300)),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 15.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  Text("found".toUpperCase(),
-                                      style: TextStyle(
-                                          color: Colors.grey[800],
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.w200)),
-                                  Text(user.founds.toString(),
-                                      style: TextStyle(
-                                          fontSize: 25.0,
-                                          fontWeight: FontWeight.w200)),
-                                ],
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  Text("missings".toUpperCase(),
-                                      style: TextStyle(
-                                          color: Colors.grey[800],
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.w200)),
-                                  Text(user.missings.toString(),
-                                      style: TextStyle(
-                                          fontSize: 25.0,
-                                          fontWeight: FontWeight.w200)),
-                                ],
-                              ),
-                            ],
-                          ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Text("missings".toUpperCase(),
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.w200)),
+                            Text(user.missings.toString(),
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 25.0,
+                                    fontWeight: FontWeight.w200)),
+                          ],
                         ),
                       ],
                     ),
                   ),
-                ),
-                Expanded(
-                  child: StaggeredGridView.count(
-                    physics: AlwaysScrollableScrollPhysics(),
-                    padding: EdgeInsets.only(
-                        top: 10.0, bottom: 10.0, left: 10.0, right: 10.0),
-                    crossAxisCount: 4,
-                    mainAxisSpacing: 15.0,
-                    crossAxisSpacing: 10.0,
-                    children: []
-                      ..add(UploadCard())
-                      ..addAll(cardsMockUps().getRange(0, 2)),
-                    staggeredTiles: ([]
-                          ..add(UploadCard())
-                          ..addAll(cardsMockUps().getRange(0, 2)))
-                        .map<StaggeredTile>((_) => StaggeredTile.fit(2))
-                        .toList(),
-                  ),
-                ),
-              ],
-            ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        Expanded(
+          child: StaggeredGridView.count(
+            physics: AlwaysScrollableScrollPhysics(),
+            padding: EdgeInsets.only(
+                top: 10.0, bottom: 10.0, left: 10.0, right: 10.0),
+            crossAxisCount: 4,
+            mainAxisSpacing: 15.0,
+            crossAxisSpacing: 10.0,
+            children: []
+              ..add(UploadCard())
+              ..addAll(cardsMockUps().getRange(0, 2)),
+            staggeredTiles: ([]
+                  ..add(UploadCard())
+                  ..addAll(cardsMockUps().getRange(0, 2)))
+                .map<StaggeredTile>((_) => StaggeredTile.fit(2))
+                .toList(),
           ),
         ),
       ],
