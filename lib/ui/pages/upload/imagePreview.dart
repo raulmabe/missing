@@ -72,52 +72,57 @@ class _ImagePreviewState extends State<ImagePreview>
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      fit: StackFit.expand,
-      children: <Widget>[
-        GestureDetector(
-          onTap: () {
-            widget.back();
-          },
-          child: Container(
-            color: Colors.blueGrey.withOpacity(_opacityAnim.value),
+    return WillPopScope(
+      onWillPop: (){
+        widget.back();
+      },
+          child: Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          GestureDetector(
+            onTap: () {
+              widget.back();
+            },
+            child: Container(
+              color: Colors.blueGrey.withOpacity(_opacityAnim.value),
+            ),
           ),
-        ),
-        ScaleTransition(
-          scale: _scaleAnim,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Container(
-                  margin: EdgeInsets.all(8),
-                  height: MediaQuery.of(context).size.height / 2,
-                  
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        fit: BoxFit.scaleDown, image: FileImage(widget.image)),
-                  )),
-              Material(
-                shape: CircleBorder(
-                  
-                ),
-                color: Colors.white,
-                elevation: 6.0,
-                child: InkWell(
-                  onTap: (){
-                    widget.back();
-                    widget.remove(widget.image);
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Icon(Icons.delete, color: Theme.of(context).primaryColor, size: 30.0,),
+          ScaleTransition(
+            scale: _scaleAnim,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Container(
+                    margin: EdgeInsets.all(8),
+                    height: MediaQuery.of(context).size.height / 2,
+                    
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          fit: BoxFit.scaleDown, image: FileImage(widget.image)),
+                    )),
+                Material(
+                  shape: CircleBorder(
+                    
                   ),
-                ),
-              )
-            ],
+                  color: Colors.white,
+                  elevation: 6.0,
+                  child: InkWell(
+                    onTap: (){
+                      widget.back();
+                      widget.remove(widget.image);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Icon(Icons.delete, color: Theme.of(context).primaryColor, size: 30.0,),
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -94,7 +94,7 @@ class _GeneralCardState extends State<GeneralCard> {
   }
 
   Widget _buildToggle(bool missing) {
-    bool selected = !(missing ^ (widget.card.missing ?? true));
+    bool selected = !(missing ^ (widget.card.missing ?? !missing));
     return Material(
       color: selected
           ? (missing

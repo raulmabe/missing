@@ -66,7 +66,7 @@ class MissingCardExpanded extends StatelessWidget {
                     ),
                   ],
                 ),
-                Text("${card.title} nº${card.id}",
+                Text(card.title,
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
                 SizedBox(
@@ -89,10 +89,10 @@ class MissingCardExpanded extends StatelessWidget {
                       size: 18.0,
                     ),
                     SizedBox(
-                      width: 10.0,
+                      width: 3.0,
                     ),
                     Text(
-                      "Perdida en: ",
+                      (card.missing) ? "Perdida en: " : "Encontrada en: ",
                       style: TextStyle(
                         fontSize: 16.0,
                         fontWeight: FontWeight.w600,

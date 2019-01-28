@@ -86,7 +86,6 @@ class Profile extends StatelessWidget {
                         ),
                         Text(user.location,
                             style: TextStyle(
-                                fontFamily: "Quicksand",
                                 color: Theme.of(context).primaryColor,
                                 fontWeight: FontWeight.w300)),
                         Padding(

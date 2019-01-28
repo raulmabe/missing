@@ -136,16 +136,23 @@ class MissingCard extends StatelessWidget {
                         bottomRight: Radius.circular(borderRadius),
                       ),
                     )),
-                padding: EdgeInsets.all(10.0),
+                padding: EdgeInsets.only(
+                  bottom: 10.0,
+                  left: 10.0,
+                  right: 10,
+                  top: 10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
-                    Text(
-                      "${card.title} nº${card.id}",
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.w700,
+                    Padding(
+                      padding: const EdgeInsets.only(right: 30),
+                      child: Text(
+                        card.title,
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                     Text(

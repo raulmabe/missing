@@ -3,12 +3,12 @@ import '../viewModels/cardViewModel.dart';
 import '../ui/widgets/missingCards.dart';
 
 void addCard(CardViewModel card) {
-  list.insert(0, MissingCard(card: card,));
+  cards.insert(0, MissingCard(card: card,));
 }
 
 CardViewModel getSideCard(int id, bool next){
-  if(next) return list[id+1].card;
-  return list[id-1].card;
+  if(next) return cards[id+1].card;
+  return cards[id-1].card;
 }
 
 void sharePost() async {

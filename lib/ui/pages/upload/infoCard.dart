@@ -74,6 +74,14 @@ class _InfoCardState extends State<InfoCard> {
                   SizedBox(
                     height: padding,
                   ),
+                  TextFormField(
+                    decoration: InputDecoration(labelText: "Location"),
+                    validator: (str) => str.length < 2 ? "Location invalid" : null,
+                    onSaved: (str) => widget.card.location = str,
+                  ),
+                  SizedBox(
+                    height: padding,
+                  ),
                   Divider(),
                   SizedBox(
                     height: padding,
@@ -189,6 +197,7 @@ class _InfoCardState extends State<InfoCard> {
 
   Future _getImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    if(image == null) return;
     images.add(image);
     setState(() {});
   }

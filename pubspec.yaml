@@ -25,6 +25,7 @@ dependencies:
   image_picker:
   url_launcher:
   liquid_pull_to_refresh: 1.0.0
+  flutter_spinkit: "^3.1.0"
 
 dev_dependencies:
   flutter_test:

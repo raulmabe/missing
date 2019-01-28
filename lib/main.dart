@@ -7,17 +7,13 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-
-  
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    
-    return MyTheme(
-          child: Builder(
-            builder: (context){
-              return MaterialApp(
-      /* 
+    return MyTheme(child: Builder(
+      builder: (context) {
+        return MaterialApp(
+          /* 
               initialRoute: '/',
               routes: {
                 // When we navigate to the "/" route, build the FirstScreen Widget
@@ -25,29 +21,30 @@ class MyApp extends StatelessWidget {
                 // When we navigate to the "/second" route, build the SecondScreen Widget
                 '/missingDetails': (context) => MissingDetails(),
               }, */
-                title: 'missing',
-                debugShowCheckedModeBanner: false,
-                color: Color(0xffff7675),
-                theme: buildTheme(context, false),
-                home: HomePage(),
-            );
-            },
-          )
-    );
+          title: 'missing',
+          debugShowCheckedModeBanner: false,
+          color: Color(0xffff7675),
+          theme: buildTheme(context, false),
+          home: HomePage(),
+        );
+      },
+    ));
   }
 
-  ThemeData buildTheme(context, bool darkTheme){
-    ThemeData baseTheme = (darkTheme) ? 
-      ThemeData(brightness: Brightness.dark, fontFamily: "Montserrat")
-      : ThemeData(brightness: Brightness.light, fontFamily: "Montserrat");
+  ThemeData buildTheme(context, bool darkTheme) {
+    ThemeData baseTheme = (darkTheme)
+        ? ThemeData(
+            brightness: Brightness.dark,
+            fontFamily: "Quicksand",
+          )
+        : ThemeData(
+            brightness: Brightness.light,
+            fontFamily: "Quicksand",
+          );
     return baseTheme.copyWith(
-      primaryColor: MyTheme.of(context).kPrimaryColor,
-      primaryColorLight: MyTheme.of(context).kPrimaryLight,
-      primaryColorDark: MyTheme.of(context).kPrimaryDark,
-      splashColor: MyTheme.of(context).kPrimaryColor.withAlpha(150)
-    );
+        primaryColor: MyTheme.of(context).kPrimaryColor,
+        primaryColorLight: MyTheme.of(context).kPrimaryLight,
+        primaryColorDark: MyTheme.of(context).kPrimaryDark,
+        splashColor: MyTheme.of(context).kPrimaryColor.withAlpha(150));
   }
 }
-
-
-
