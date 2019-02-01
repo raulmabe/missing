@@ -1,4 +1,4 @@
-import '../models/model.dart';
+import '../models/card.dart';
 import 'dart:math';
 import '../utils/appType.dart';
 
@@ -28,4 +28,13 @@ class DeleteCard {
   final CardModel card;
 
   DeleteCard({this.card});
+}
+
+class GetCards{}
+
+class LoadedCards{
+  final List<CardModel> cards;
+  LoadedCards(this.cards){
+    print(cards.length);
+  }
 }

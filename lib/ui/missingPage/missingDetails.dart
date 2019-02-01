@@ -4,7 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../widgets/missingCardExpanded.dart';
 import 'package:flutter/cupertino.dart';
 import '../../themeData.dart';
-import '../../models/model.dart';
+import '../../models/card.dart';
 
 class MissingDetails extends StatefulWidget {
   final CardModel card;

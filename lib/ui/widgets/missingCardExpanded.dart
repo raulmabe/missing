@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../models/model.dart';
+import '../../models/card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './chips.dart';
 import '../../themeData.dart';

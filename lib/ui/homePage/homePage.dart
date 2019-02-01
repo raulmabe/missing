@@ -6,9 +6,9 @@ import '../widgets/searchBar.dart';
 import 'package:flutter/rendering.dart';
 import 'dart:ui' as ui;
 
-import '../../models/model.dart';
+import '../../models/appState.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:redux/redux.dart';
+import './homePage_vm.dart';
 import '../../themeData.dart';
 import '../../utils/appType.dart';
 
@@ -161,15 +161,5 @@ class _HomePageState extends State<HomePage>
                 ),
               ],
             ));
-  }
-}
-
-class ViewModel {
-  final List<CardModel> cards;
-
-  ViewModel({this.cards});
-
-  factory ViewModel.create(Store<AppState> store) {
-    return ViewModel(cards: store.state.cards);
   }
 }

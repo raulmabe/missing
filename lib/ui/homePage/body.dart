@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter/rendering.dart';
 import '../../utils/appType.dart';
-import './homePage.dart';
+import './homePage_vm.dart';
 import '../widgets/missingCards.dart';
 
 typedef onScrollVoid = void Function(ScrollDirection);
@@ -21,7 +21,6 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  AppType type;
 
   ScrollController _scrollController;
 
@@ -76,7 +75,7 @@ class _BodyState extends State<Body> {
   }
 
   Future<void> _handleUpdate() async {
-    print("Updating");
+    widget.viewModel.refreshCards();
     await Future.delayed(Duration(seconds: 3));
   }
 }

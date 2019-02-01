@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import './generalCard.dart';
 import './infoCard.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import '../../models/model.dart';
+import '../../models/appState.dart';
 import './uploadPage_vm.dart';
 import './customAlert.dart';
 import 'dart:math';
@@ -188,7 +188,10 @@ class _UploadPageState extends State<UploadPage> {
   }
 
   bool _globalValidate(var form) {
-    bool _errrCategory = false, _errrStatus = false, validation = !form.validate();;
+    bool _errrCategory = false,
+        _errrStatus = false,
+        validation = !form.validate();
+    ;
     if (card.type == null) _errrCategory = true;
     if (card.missing == null) _errrStatus = true;
     // search if repeated

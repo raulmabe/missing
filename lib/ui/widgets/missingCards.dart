@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../missingPage/missingDetails.dart';
 import '../widgets/customBorder.dart';
-import '../../models/model.dart';
+import '../../models/card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../themeData.dart';

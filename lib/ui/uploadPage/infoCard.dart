@@ -9,7 +9,7 @@ import './uploadPage_vm.dart';
 class InfoCard extends StatefulWidget {
   final GlobalKey formKey;
   final TempCardModel card;
-  InfoCard({@required this.formKey, this.card});
+  InfoCard({@required this.formKey,@required this.card,});
 
   @override
   _InfoCardState createState() => _InfoCardState();

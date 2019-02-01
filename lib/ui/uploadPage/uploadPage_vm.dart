@@ -1,4 +1,5 @@
-import '../../models/model.dart';
+import '../../models/card.dart';
+import '../../models/appState.dart';
 import 'package:redux/redux.dart';
 import '../../redux/actions.dart';
 import '../../utils/appType.dart';

@@ -81,7 +81,7 @@ class CheckPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     // Background canvas
     var rect = Offset(0, 0) & size;
-    _paint.color = Colors.greenAccent.withOpacity(.1);
+    _paint.color = Colors.greenAccent.withOpacity(.05);
 
     double line1x1 = size.width / 2 +
         size.width * cos(Angle.fromDegrees(_startingAngle).radians) * .5;

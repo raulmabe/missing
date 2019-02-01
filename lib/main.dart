@@ -5,11 +5,11 @@ import 'package:flutter/services.dart';
 
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
-
-import './models/model.dart';
-import './redux/actions.dart';
+import './models/appState.dart';
 import './redux/reducers.dart';
 import 'package:redux_logging/redux_logging.dart';
+import './redux/middleware.dart';
+import './redux/actions.dart';
 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -23,12 +23,12 @@ class MyApp extends StatelessWidget {
     final Store<AppState> store = Store<AppState>(
       appStateReducer,
       initialState: AppState.initialState(),
-      middleware: [new LoggingMiddleware.printer()]
+      middleware: [new LoggingMiddleware.printer(),
+        ]
     );
 
     return StoreProvider<AppState>(
       store: store,
-      
       child: MyTheme(child: Builder(
         builder: (context) {
           return MaterialApp(
@@ -36,7 +36,10 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             color: Color(0xffff7675),
             theme: buildTheme(context, false),
-            home: HomePage(),
+            home: StoreBuilder<AppState>(
+              onInit: (store) => store.dispatch(GetCards()),
+              builder: (context, store) => HomePage(),
+            ),
           );
         },
       )),
