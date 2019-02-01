@@ -9,6 +9,7 @@ import 'package:redux/redux.dart';
 import './models/model.dart';
 import './redux/actions.dart';
 import './redux/reducers.dart';
+import 'package:redux_logging/redux_logging.dart';
 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -22,10 +23,12 @@ class MyApp extends StatelessWidget {
     final Store<AppState> store = Store<AppState>(
       appStateReducer,
       initialState: AppState.initialState(),
+      middleware: [new LoggingMiddleware.printer()]
     );
 
     return StoreProvider<AppState>(
       store: store,
+      
       child: MyTheme(child: Builder(
         builder: (context) {
           return MaterialApp(

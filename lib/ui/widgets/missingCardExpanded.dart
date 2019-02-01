@@ -19,15 +19,17 @@ class MissingCardExpanded extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          (card.images != null && card.images.isNotEmpty) ? Hero(
-            tag: card.id,
-            child: Container(
-              height: 300,
-              child: ImageCarousel(
-                images: card.images
-              ),
-            ),
-          ) : Container(),
+          (card.images != null && card.images.isNotEmpty)
+              ? Hero(
+                  tag: card.id,
+                  child: Container(
+                    height: 300,
+                    child: ImageCarousel(
+                      images: card.images,
+                    ),
+                  ),
+                )
+              : Container(),
           Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 30.0,
@@ -45,17 +47,19 @@ class MissingCardExpanded extends StatelessWidget {
                       width: 5.0,
                     ),
                     Icon(Icons.remove_red_eye),
-                    SizedBox(width: 20,),
+                    SizedBox(
+                      width: 20,
+                    ),
                     Hero(
-                      tag: "icon${card.id}", 
-                                          child: Container(
+                      tag: "icon${card.id}",
+                      child: Container(
                         height: 40,
                         width: 40,
                         decoration: BoxDecoration(
                             color: card.missing
                                 ? MyTheme.of(context).missingColor
                                 : MyTheme.of(context).foundColor,
-                                shape: BoxShape.circle),
+                            shape: BoxShape.circle),
                         child: Icon(
                             card.missing
                                 ? FontAwesomeIcons.search
@@ -118,7 +122,7 @@ class MissingCardExpanded extends StatelessWidget {
                           color: Theme.of(context).primaryColor,
                         ),
                         borderRadius: BorderRadius.circular(50.0)),
-                    onPressed: ()=>print("Share"),
+                    onPressed: () => print("Share"),
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Text(

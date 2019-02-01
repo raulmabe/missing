@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ImageCarousel extends StatefulWidget {
-  final List<AssetImage> images;
+  final List images;
   ImageCarousel({@required this.images});
 
   @override
@@ -75,7 +75,7 @@ class _ImageCarouselState extends State<ImageCarousel> with SingleTickerProvider
               ),
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: widget.images[index],
+                image: FileImage(widget.images[index]),
               )),
         ),
         DecoratedBox(

@@ -69,6 +69,8 @@ class _EditCardDialogState extends State<EditCardDialog>
         scale: _scaleAnim,
         child: Center(
           child: Container(
+            height: MediaQuery.of(context).size.height/4,
+            width: MediaQuery.of(context).size.width*.8,
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(10)),
               padding:
@@ -79,9 +81,8 @@ class _EditCardDialogState extends State<EditCardDialog>
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       CheckAnimation(
-                        onComplete: (){
-                          widget.back();
-                          Navigator.pop(context);
+                        onComplete: (){ widget.back();
+                          Navigator.pop(context); 
                         },
                       ),
                       Container(

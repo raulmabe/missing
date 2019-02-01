@@ -4,7 +4,7 @@ import 'dart:math';
 import 'dart:core';
 
 class CheckAnimation extends StatefulWidget {
-  final Size size;
+  final double size;
   final VoidCallback onComplete;
 
   CheckAnimation({this.size, this.onComplete});
@@ -38,8 +38,8 @@ class _CheckAnimationState extends State<CheckAnimation>
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: widget.size == null ? 100 : widget.size.height,
-      width: widget.size == null ? 100 : widget.size.width,
+      height: widget.size ?? 100,
+      width: widget.size ?? 100,
       color: Colors.transparent,
       child: CustomPaint(
         painter: CheckPainter(value: curve.value),
@@ -134,17 +134,12 @@ class CheckPainter extends CustomPainter {
       }
     }
 
-/* 
-    print("Line1 Value: $line1Value");
-    print("Line2 Value: $line2Value");
-    print("Offset/20 Value: ${_offset/20}"); */
-
     double auxLine1x1 = (line1x2 - line1x1) * getMin(line1Value, .8);
     double auxLine1y1 =
         (((auxLine1x1) - line1x1) / (line1x2 - line1x1)) * (line1y2 - line1y1) +
             line1y1;
 
-    if (_offset == 0) {
+    if (_offset < 60) {
       auxLine1x1 = line1x1;
       auxLine1y1 = line1y1;
     }

@@ -74,6 +74,7 @@ class _ImagePreviewState extends State<ImagePreview>
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: (){
+        print("Back pressed");
         widget.back();
       },
           child: Stack(

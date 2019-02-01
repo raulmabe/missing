@@ -72,7 +72,7 @@ class MissingCard extends StatelessWidget {
                                 ),
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
-                                  image: card.images[0],
+                                  image: FileImage(card.images[0]),
                                 )),
                           ),
                         );

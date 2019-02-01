@@ -3,6 +3,7 @@ import '../widgets/chips.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:async';
 import './imagePreview.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './uploadPage_vm.dart';
 
 class InfoCard extends StatefulWidget {
@@ -16,17 +17,15 @@ class InfoCard extends StatefulWidget {
 
 class _InfoCardState extends State<InfoCard> {
   TextEditingController _controller;
-  FocusNode _tagsNode;
 
-  List images;
+  bool infoTagsSelected;
 
   OverlayEntry _overlayEntry;
   @override
   void initState() {
     super.initState();
-    _tagsNode = FocusNode();
     _controller = TextEditingController();
-    images = [];
+    infoTagsSelected = false;
   }
 
   @override
@@ -57,7 +56,7 @@ class _InfoCardState extends State<InfoCard> {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: images.length < 5
+                    children: widget.card.images.length < 5
                         ? ([]
                           ..add(Container(
                             height: 80,
@@ -143,9 +142,30 @@ class _InfoCardState extends State<InfoCard> {
                   SizedBox(
                     height: padding,
                   ),
-                  Text("Tags", style: TextStyle(color: Colors.grey[600])),
+                  Row(
+                    children: <Widget>[
+                      Text("Tags", style: TextStyle(color: Colors.grey[600])),
+                      IconButton(
+                        onPressed: (){
+                          setState(() {
+                            infoTagsSelected = !infoTagsSelected;
+                          });
+                        },
+                        iconSize: 20,
+                        color: Colors.grey,
+                        icon: Icon(infoTagsSelected ? FontAwesomeIcons.solidQuestionCircle : FontAwesomeIcons.questionCircle,)
+                      )
+                    ],
+                  ),
                   SizedBox(
-                    height: padding,
+                    height: padding/2,
+                  ),
+                  (infoTagsSelected) ? Text(
+                    "A tag is a keyword or label that categorizes your post with other, similar posts. Better your tags describes your post, more helpful will be for the searching system",
+                    style: TextStyle(color: Colors.grey[600])
+                  ) : Container(),
+                  SizedBox(
+                    height: padding/2,
                   ),
                   Wrap(
                     direction: Axis.horizontal,
@@ -155,7 +175,6 @@ class _InfoCardState extends State<InfoCard> {
                       ..addAll(_makeTags())
                       ..add(
                         TextFormField(
-                          focusNode: _tagsNode,
                           controller: _controller,
                           decoration: InputDecoration(labelText: "Add tag"),
                           validator: (str) {
@@ -164,7 +183,6 @@ class _InfoCardState extends State<InfoCard> {
                             } else return null;
                           },
                           onFieldSubmitted: (str) {
-                            FocusScope.of(context).requestFocus(_tagsNode);
                             _controller.clear();
                             if (str.isNotEmpty &&
                                 !widget.card.tags.contains(str)) {
@@ -187,14 +205,14 @@ class _InfoCardState extends State<InfoCard> {
 
   List<Widget> _makeImages() {
     List<Widget> list = [];
-    for (int i = 0; i < images.length; ++i) {
+    for (int i = 0; i < widget.card.images.length; ++i) {
       list.add(Padding(
           padding: const EdgeInsets.all(8.0),
           child: UploadImageIcon(
-            image: images[i],
+            image: widget.card.images[i],
             removeImage: (image){
               setState(() {
-                images.remove(image);
+                widget.card.images.remove(image);
               });
             },)
           ));
@@ -205,7 +223,7 @@ class _InfoCardState extends State<InfoCard> {
   Future _getImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
     if(image == null) return;
-    images.add(image);
+    widget.card.images.add(image);
     setState(() {});
   }
 
