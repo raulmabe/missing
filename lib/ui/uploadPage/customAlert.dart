@@ -83,12 +83,8 @@ class _EditCardDialogState extends State<EditCardDialog>
                     child: (_posted) ? AspectRatio(
                       aspectRatio: 1,
                       child: CheckAnimation(
-                        onComplete: (){
-                          setState(() {
-                            _posted = false;
-                          });
-                          /* widget.back();
-                          Navigator.pop(context); */
+                        onComplete: (){ widget.back();
+                          Navigator.pop(context); 
                         },
                       ) ,
                     ):

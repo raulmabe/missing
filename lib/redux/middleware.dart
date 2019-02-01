@@ -25,8 +25,19 @@ Future<AppState> loadFromPrefs() async{
 }
 
 void appStateMiddleware(Store<AppState> store, action, NextDispatcher next) async{
+  next(action);
   if(action is AddCard
     ||  action is DeleteCard){
+
+    print("Card gotten:");
+    print(" Id: ${action.card.id}");
+    print(" Type: ${action.card.type}");
+    print(" Missing: ${action.card.missing}");
+    print(" Title: ${action.card.title}");
+    print(" Description: ${action.card.description}");
+    print(" Location: ${action.card.location}");
+    print(" Tags: ${action.card.tags}");
+    print(" Images count: ${action.card.images.length}");
       print("CARDS: ${store.state.cards.length}");
       saveToPrefs(store.state);
     }

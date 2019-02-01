@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
     final Store<AppState> store = Store<AppState>(
       appStateReducer,
       initialState: AppState.initialState(),
-      middleware: [new LoggingMiddleware.printer(),
+      middleware: [new LoggingMiddleware.printer(),appStateMiddleware
         ]
     );
 
