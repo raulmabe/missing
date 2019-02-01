@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import './chat.dart';
-import '../../domain/actions.dart';
+import '../singleChatPage/chat.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../viewModels/cardViewModel.dart';
 import '../widgets/missingCardExpanded.dart';
 import 'package:flutter/cupertino.dart';
 import '../../themeData.dart';
-import '../../domain/actions.dart';
+import '../../models/model.dart';
 
 class MissingDetails extends StatefulWidget {
-  final CardViewModel card;
+  final CardModel card;
 
   MissingDetails({@required this.card});
 
@@ -18,7 +16,7 @@ class MissingDetails extends StatefulWidget {
 }
 
 class _MissingDetailsState extends State<MissingDetails> {
-  CardViewModel card;
+  CardModel card;
 
   _MissingDetailsState(this.card);
 
@@ -55,7 +53,7 @@ class _MissingDetailsState extends State<MissingDetails> {
                 actions: <Widget>[
                   IconButton(
                     icon: Icon(Icons.share),
-                    onPressed: sharePost,
+                    onPressed: () => print("Share"),
                     color: Colors.white,
                   ),
                   IconButton(

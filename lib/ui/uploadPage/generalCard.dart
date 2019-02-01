@@ -1,26 +1,33 @@
 import 'package:flutter/material.dart';
-import '../../widgets/myRadioButtons.dart';
-import '../../../themeData.dart';
-import '../../../types.dart';
-import '../../../viewModels/cardViewModel.dart';
+import '../../themeData.dart';
+import '../widgets/myRadioButtons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-
-typedef bool2void = Function(bool);
+import './uploadPage_vm.dart';
+import '../../utils/appType.dart';
 
 class GeneralCard extends StatefulWidget {
+  final TempCardModel card;
+  final bool categoryError;
+  final bool statusError;
 
-  final int2void onCategoryChanged;
-  final bool2void onBoolChanged;
-  final CardViewModel card;
-
-  GeneralCard({this.card, this.onBoolChanged, this.onCategoryChanged});
+  GeneralCard({Key key, this.card, this.categoryError, this.statusError})
+      : super(key: key);
 
   @override
   _GeneralCardState createState() => _GeneralCardState();
 }
 
 class _GeneralCardState extends State<GeneralCard> {
+  final String _errorStatusMssg = "Status must be assigned";
+  final String _errorCategoryMssg = "Category must be assigned";
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    assert(widget.categoryError != null);
+    assert(widget.statusError != null);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,36 +51,47 @@ class _GeneralCardState extends State<GeneralCard> {
                 children: <Widget>[
                   new CustomRadio(
                     unselectedColor: Colors.grey,
-                    selectedColor: Theme.of(context).primaryColorLight,
-                    onTap: widget.onCategoryChanged,
+                    selectedColor: const Color(0xff7a6ad4),
+                    onTap: (i) {
+                      setState(() {
+                        widget.card.type = AppType.values[i];
+                      });
+                    },
                     type: AppType.values[0],
                     isSelected: widget.card.type == AppType.values[0],
                     size: 50,
                   ),
                   new CustomRadio(
                     unselectedColor: Colors.grey,
-                    selectedColor: Theme.of(context).primaryColorLight,
-                    onTap: widget.onCategoryChanged,
+                    selectedColor: const Color(0xff7a6ad4),
+                    onTap: (i) {
+                      setState(() {
+                        widget.card.type = AppType.values[i];
+                      });
+                    },
                     type: AppType.values[1],
                     isSelected: widget.card.type == AppType.values[1],
                     size: 50,
                   ),
                   new CustomRadio(
                     unselectedColor: Colors.grey,
-                    selectedColor: Theme.of(context).primaryColorLight,
-                    onTap: widget.onCategoryChanged,
+                    selectedColor: const Color(0xff7a6ad4),
+                    onTap: (i) {
+                      setState(() {
+                        widget.card.type = AppType.values[i];
+                      });
+                    },
                     type: AppType.values[2],
                     isSelected: widget.card.type == AppType.values[2],
                     size: 50,
                   ),
                 ],
               ),
+              _errorText(widget.categoryError, _errorCategoryMssg),
               SizedBox(
                 height: padding,
               ),
-              Divider(
-                color: Theme.of(context).primaryColor.withOpacity(.5),
-              ),
+              Divider(),
               SizedBox(
                 height: padding,
               ),
@@ -87,7 +105,8 @@ class _GeneralCardState extends State<GeneralCard> {
                   _buildToggle(true),
                   _buildToggle(false),
                 ],
-              )
+              ),
+              _errorText(widget.statusError, _errorStatusMssg)
             ],
           ),
         ));
@@ -101,22 +120,46 @@ class _GeneralCardState extends State<GeneralCard> {
               ? MyTheme.of(context).missingColor
               : MyTheme.of(context).foundColor)
           : Colors.white,
-          shape: RoundedRectangleBorder(side: BorderSide(color: selected ? (missing ? MyTheme.of(context).missingColor : MyTheme.of(context).foundColor) : Colors.grey,),
-            borderRadius: BorderRadius.circular(5.0)
+      shape: RoundedRectangleBorder(
+          side: BorderSide(
+            color: selected
+                ? (missing
+                    ? MyTheme.of(context).missingColor
+                    : MyTheme.of(context).foundColor)
+                : Colors.grey,
           ),
+          borderRadius: BorderRadius.circular(5.0)),
       child: InkWell(
-        splashColor: selected ? (missing ? MyTheme.of(context).missingColor.withOpacity(0.5) : MyTheme.of(context).foundColor.withOpacity(.5)) : Colors.grey,
-        onTap: () => widget.onBoolChanged(missing),
+        splashColor: selected
+            ? (missing
+                ? MyTheme.of(context).missingColor.withOpacity(0.5)
+                : MyTheme.of(context).foundColor.withOpacity(.5))
+            : Colors.grey,
+        onTap: () {
+          setState(() {
+            widget.card.missing = missing;
+          });
+        },
         child: Padding(
           padding: EdgeInsets.all(10),
           child: Icon(
             missing ? FontAwesomeIcons.search : FontAwesomeIcons.mapMarkedAlt,
-            color: selected
-                ? Colors.white
-                : Colors.grey,
+            color: selected ? Colors.white : Colors.grey,
           ),
         ),
       ),
+    );
+  }
+
+  Widget _errorText(bool isError, String msg) {
+    if (!isError) return Container();
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 2.0),
+      child: Text(msg,
+          style: TextStyle(
+            color: Colors.red,
+            fontSize: 13,
+          )),
     );
   }
 }

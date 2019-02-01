@@ -860,19 +860,27 @@
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		Ew0YmHtlWBbrmJimYHJHyVSy8wU=
+		l+1OELqHNSDMrhe99ortF4/q9nI=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
-		VherJvr2skQpltwIHZ/+o7w7jUU=
+		g4ffd7r9XZLnv2nU+TJBcftwBRI=
 		</data>
 		<key>flutter_assets/LICENSE</key>
 		<data>
-		TIM4A8Eq+x3NpKOMRG73L1KQ88k=
+		+kLAGYe+1O545E/V/60TmSiQMOM=
 		</data>
 		<key>flutter_assets/assets/fonts/Montserrat.ttf</key>
 		<data>
 		/x6102CkLAxnXY7Pypo+W3CdMCo=
+		</data>
+		<key>flutter_assets/assets/fonts/Nunito-ExtraLight.ttf</key>
+		<data>
+		EB3dl544j92DwZO4lhJe5b4dyOE=
+		</data>
+		<key>flutter_assets/assets/fonts/Nunito-Regular.ttf</key>
+		<data>
+		sQKbHZZtFzLmJBZ3dzOToxNYX7M=
 		</data>
 		<key>flutter_assets/assets/fonts/Quicksand.ttf</key>
 		<data>
@@ -924,7 +932,7 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		nmvf1H67H2ny/nkrj+N/KGAO3JM=
+		VVTWG73o0FMiiLTjABNnkHoxZIQ=
 		</data>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -2739,33 +2747,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Ew0YmHtlWBbrmJimYHJHyVSy8wU=
+			l+1OELqHNSDMrhe99ortF4/q9nI=
 			</data>
 			<key>hash2</key>
 			<data>
-			l4yRTTsotugq0SxDQxgFGuzKInOLYaMlBbTw4DLhSl0=
+			3gWzRGi0pmjibkBg+v+wN/igOmCUuyi7loYg/BtUQ04=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			VherJvr2skQpltwIHZ/+o7w7jUU=
+			g4ffd7r9XZLnv2nU+TJBcftwBRI=
 			</data>
 			<key>hash2</key>
 			<data>
-			PVMjh4RlP6vfKesNR+ThKE+i+ddN1ps+LREVNsHkZLg=
+			9eKk3fzo2CEUKhMw1SyqdZWxf5Cj6XvCfnr5nFQ/XDU=
 			</data>
 		</dict>
 		<key>flutter_assets/LICENSE</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			TIM4A8Eq+x3NpKOMRG73L1KQ88k=
+			+kLAGYe+1O545E/V/60TmSiQMOM=
 			</data>
 			<key>hash2</key>
 			<data>
-			QVpGPuVmlySix24N64lK/vVtGgMatCLEn4yVTzcqNKQ=
+			K3cvBnv6EWPmwkW3lpYoVyYHpmoFF5/IsOUq22S7y5Q=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/fonts/Montserrat.ttf</key>
@@ -2777,6 +2785,28 @@
 			<key>hash2</key>
 			<data>
 			gevDkWtSQAe3VtkdnfE8dnPsQBFh8srRYWYtCNzxzHI=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/fonts/Nunito-ExtraLight.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			EB3dl544j92DwZO4lhJe5b4dyOE=
+			</data>
+			<key>hash2</key>
+			<data>
+			7KXHUFja5wNV17wl5LSViavyNo7olmLiBZjh4GpvqpY=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/fonts/Nunito-Regular.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			sQKbHZZtFzLmJBZ3dzOToxNYX7M=
+			</data>
+			<key>hash2</key>
+			<data>
+			lqK/eT3WY0B/SbzSGf5avKjVLOmNR7YGPjhD210XvN0=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/fonts/Quicksand.ttf</key>
@@ -2915,11 +2945,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			nmvf1H67H2ny/nkrj+N/KGAO3JM=
+			VVTWG73o0FMiiLTjABNnkHoxZIQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			Lx/GZwXinAUBRJn2qL/hkizAb99hJtNnU6XOfyl7vK8=
+			8jAmcCQgfOh/f1s8pGFPc6TvpIvms+E7ocO5SsqnyYc=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>

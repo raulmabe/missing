@@ -4,9 +4,13 @@ import './profile.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../widgets/searchBar.dart';
 import 'package:flutter/rendering.dart';
-import '../../types.dart';
 import 'dart:ui' as ui;
-import '../../viewModels/userViewModel.dart';
+
+import '../../models/model.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:redux/redux.dart';
+import '../../themeData.dart';
+import '../../utils/appType.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -20,7 +24,6 @@ class _HomePageState extends State<HomePage>
   TabController _tabController;
   bool _showSearchBar;
   List<IconData> tabs;
-  List<Widget> tabsBodies;
   IconData selectedTab;
 
   @override
@@ -33,24 +36,6 @@ class _HomePageState extends State<HomePage>
       FontAwesomeIcons.archive,
       FontAwesomeIcons.userAstronaut
     ];
-    tabsBodies = [
-      Body(
-        type: AppType.values[0],
-        onScroll: onScroll,
-      ),
-      Body(
-        type: AppType.values[1],
-        onScroll: onScroll,
-      ),
-      Body(
-        type: AppType.values[2],
-        onScroll: onScroll,
-      ),
-      Profile(
-        user: user,
-      ),
-    ];
-    assert(tabs.length == tabsBodies.length);
     _tabController = TabController(vsync: this, length: tabs.length);
     _tabController.index = 2;
     selectedTab = FontAwesomeIcons.archive;
@@ -88,26 +73,46 @@ class _HomePageState extends State<HomePage>
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-          body: Stack(
-            children: <Widget>[
-              TabBarView(
-                physics: NeverScrollableScrollPhysics(),
-                controller: _tabController,
-                children: tabsBodies,
-              ),
-              (_tabController.index == _tabController.length - 1 ||
-                      !_showSearchBar)
-                  ? new Container()
-                  : Positioned(
-                      top: 10.0,
-                      right: 20.0,
-                      left: 20.0,
-                      child: SafeArea(
-                        child: SearchBar(),
-                      )),
-            ],
+          body: StoreConnector<AppState, ViewModel>(
+            converter: (store) => ViewModel.create(store),
+            builder: (context, viewModel) => Stack(
+                  children: <Widget>[
+                    TabBarView(
+                      physics: NeverScrollableScrollPhysics(),
+                      controller: _tabController,
+                      children: <Widget>[
+                        Body(
+                          type: AppType.values[0],
+                          onScroll: onScroll,
+                          viewModel: viewModel,
+                        ),
+                        Body(
+                          type: AppType.values[1],
+                          onScroll: onScroll,
+                          viewModel: viewModel,
+                        ),
+                        Body(
+                          type: AppType.values[2],
+                          onScroll: onScroll,
+                          viewModel: viewModel,
+                        ),
+                        Profile(),
+                      ],
+                    ),
+                    (_tabController.index == _tabController.length - 1 ||
+                            !_showSearchBar)
+                        ? new Container()
+                        : Positioned(
+                            top: 10.0,
+                            right: 20.0,
+                            left: 20.0,
+                            child: SafeArea(
+                              child: SearchBar(),
+                            )),
+                  ],
+                ),
           ),
-          backgroundColor: Colors.blueGrey[50],
+          backgroundColor: MyTheme.of(context).kBackground,
           bottomNavigationBar: BottomNavigationBar(
             onTap: (index) {
               setState(() {
@@ -156,5 +161,15 @@ class _HomePageState extends State<HomePage>
                 ),
               ],
             ));
+  }
+}
+
+class ViewModel {
+  final List<CardModel> cards;
+
+  ViewModel({this.cards});
+
+  factory ViewModel.create(Store<AppState> store) {
+    return ViewModel(cards: store.state.cards);
   }
 }

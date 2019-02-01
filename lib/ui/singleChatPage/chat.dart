@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-import '../../utils.dart';
 import '../../themeData.dart';
 
 class Chat extends StatefulWidget {

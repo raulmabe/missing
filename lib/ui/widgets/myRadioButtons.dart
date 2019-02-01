@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../types.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../../utils/appType.dart';
 import './iconType.dart';
+
 
 typedef int2void = Function(int);
 
@@ -31,7 +31,7 @@ class CustomRadio extends StatelessWidget {
           color: isSelected ? selectedColor : Colors.white,
           borderRadius: BorderRadius.circular(5.0),
           border: Border.all(
-              color: isSelected ? selectedColor : unselectedColor, width: 3.0)),
+              color: isSelected ? selectedColor : unselectedColor, width: 1.0)),
       child: Material(
         color: Colors.transparent,
         child: InkWell(

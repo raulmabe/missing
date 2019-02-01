@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import '../../../viewModels/cardViewModel.dart';
-import '../../widgets/chips.dart';
+import '../widgets/chips.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:async';
 import './imagePreview.dart';
+import './uploadPage_vm.dart';
 
 class InfoCard extends StatefulWidget {
   final GlobalKey formKey;
-  final CardViewModel card;
+  final TempCardModel card;
   InfoCard({@required this.formKey, this.card});
 
   @override
@@ -41,6 +41,63 @@ class _InfoCardState extends State<InfoCard> {
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(10.0),
               topRight: Radius.circular(10.0),
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(padding),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Text("Optional", style: TextStyle(color: Colors.grey[600])),
+                SizedBox(
+                  height: padding,
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: images.length < 5
+                        ? ([]
+                          ..add(Container(
+                            height: 80,
+                            width: 80,
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: Colors.grey,
+                                    width: 1.0),
+                                borderRadius: BorderRadius.circular(5.0)),
+                            child: Material(
+                              color: Colors.transparent,
+                              child: InkWell(
+                                splashColor: Colors.grey.shade200,
+                                onTap: () => _getImage(),
+                                child: Icon(
+                                  Icons.add_a_photo,
+                                  color: Colors.grey,
+                                  size: 35.0,
+                                ),
+                              ),
+                            ),
+                          ))
+                          ..addAll(_makeImages()))
+                        : _makeImages(),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+
+        SizedBox(
+          height: padding / 2,
+        ),
+        Material(
+          elevation: 2.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(10.0),
+              bottomRight: Radius.circular(10.0),
             ),
           ),
           child: Padding(
@@ -101,6 +158,11 @@ class _InfoCardState extends State<InfoCard> {
                           focusNode: _tagsNode,
                           controller: _controller,
                           decoration: InputDecoration(labelText: "Add tag"),
+                          validator: (str) {
+                            if(widget.card.tags == null || widget.card.tags.isEmpty){
+                              return "Tags can't be empty";
+                            } else return null;
+                          },
                           onFieldSubmitted: (str) {
                             FocusScope.of(context).requestFocus(_tagsNode);
                             _controller.clear();
@@ -116,61 +178,6 @@ class _InfoCardState extends State<InfoCard> {
                   )
                 ],
               ),
-            ),
-          ),
-        ),
-        SizedBox(
-          height: padding / 2,
-        ),
-        Material(
-          elevation: 2.0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(10.0),
-              bottomRight: Radius.circular(10.0),
-            ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(padding),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Text("Optional", style: TextStyle(color: Colors.grey[600])),
-                SizedBox(
-                  height: padding,
-                ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: images.length < 5
-                        ? ([]
-                          ..add(Container(
-                            height: 80,
-                            width: 80,
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: Theme.of(context).primaryColor,
-                                    width: 3.0),
-                                borderRadius: BorderRadius.circular(5.0)),
-                            child: Material(
-                              color: Colors.transparent,
-                              child: InkWell(
-                                onTap: () => _getImage(),
-                                child: Icon(
-                                  Icons.add_a_photo,
-                                  color: Theme.of(context).primaryColor,
-                                  size: 35.0,
-                                ),
-                              ),
-                            ),
-                          ))
-                          ..addAll(_makeImages()))
-                        : _makeImages(),
-                  ),
-                ),
-              ],
             ),
           ),
         ),
@@ -205,7 +212,7 @@ class _InfoCardState extends State<InfoCard> {
   List<Widget> _makeTags() {
     List<Widget> list = [];
     if (widget.card.tags == null) {
-      widget.card.tags = [];
+      //widget.card.tags = [];
     }
     if (widget.card.tags.isEmpty) {
       return list;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../types.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../../utils/appType.dart';
 
 class IconType extends StatelessWidget {
   final Color color;

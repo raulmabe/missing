@@ -24,8 +24,9 @@ dependencies:
   google_maps_flutter: ^0.0.3+3
   image_picker:
   url_launcher:
-  liquid_pull_to_refresh: 1.0.0
-  flutter_spinkit: "^3.1.0"
+  flutter_redux:
+  redux_logging: ^0.3.0
+  angles: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -75,6 +76,14 @@ flutter:
     - family: Quicksand
       fonts:
        - asset: assets/fonts/Quicksand.ttf
+
+
+    - family: Nunito
+      fonts:
+       - asset: assets/fonts/Nunito-Regular.ttf
+       - asset: assets/fonts/Nunito-ExtraLight.ttf
+         weight: 200
+       
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

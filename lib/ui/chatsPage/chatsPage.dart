@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../types.dart';
+import '../../utils/appType.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import './chat.dart';
+import '../singleChatPage/chat.dart';
 import '../../themeData.dart';
 
 class ChatsPage extends StatelessWidget {
-
-  ChatsPage(){
-
-  }
 
   @override
   Widget build(BuildContext context) {

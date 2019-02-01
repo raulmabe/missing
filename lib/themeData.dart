@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class MyTheme extends InheritedWidget {
   // My Colors
-  final kPrimaryColor = const Color(0xff477998); //const Color(0xff6c5ce7); // const Color(0xffEC4B5C);
-  final kPrimaryLight = const Color(0xff477998);// const Color(0xffa29bfe); // const Color(0xffFF7675);
+  final kPrimaryColor = const Color(0xffff4f75);
+  final kPrimaryLight = const Color(0xffFF5858);
   final kPrimaryDark = const Color(0xFFCC6866);
-  final kSecondaryColor = const Color(0xff1abc9c);
+  final kSecondaryColor = const Color(0xff72d0c3);
   final kSecondaryLight = Colors.redAccent[100];
   final kSecondaryDark = const Color(0xFF009faf);
 
@@ -14,7 +14,7 @@ class MyTheme extends InheritedWidget {
   final missingColor = const Color(0xffEC4B5C);
   final missingColorLight = const Color(0xffFF7675);
 
-  final kSplashColor = const Color(0xFFFFDDDC);
+  final kBackground = Colors.white;
 
   final kChatsCards = const Color(0xFFFFFFFF);
   final kMyMessageColor = const Color(0xffff7675);

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import '../pages/missingDetails.dart';
+import '../missingPage/missingDetails.dart';
 import '../widgets/customBorder.dart';
-import '../../viewModels/cardViewModel.dart';
+import '../../models/model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../themeData.dart';
 import './iconType.dart';
 
 class MissingCard extends StatelessWidget {
-  CardViewModel card;
+  final CardModel card;
 
-  double borderRadius = 10.0;
+  final double borderRadius = 10.0;
 
   MissingCard({this.card});
 
@@ -64,7 +64,7 @@ class MissingCard extends StatelessWidget {
                         return Hero(
                           tag: card.id,
                           child: Container(
-                            height: card.height,
+                            height: 300,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(borderRadius),

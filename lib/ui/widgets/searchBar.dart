@@ -18,7 +18,7 @@ class _SearchBarState extends State<SearchBar> {
           gradient: LinearGradient(
             colors: [
               Theme.of(context).primaryColor,
-              Theme.of(context).primaryColorLight,
+              Theme.of(context).primaryColor,
             ]
           )
         ),
@@ -27,18 +27,20 @@ class _SearchBarState extends State<SearchBar> {
           child: Stack(
             alignment: Alignment.centerRight,
             children: <Widget>[
-              TextField(
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20.0
-                ),
-                textAlign: TextAlign.center,
-                decoration: new InputDecoration.collapsed(
-                  hintText: "Search",
-                  hintStyle: TextStyle(
+              Padding(
+                padding: const EdgeInsets.only(left: 30.0),
+                child: TextField(
+                  style: TextStyle(
                     color: Colors.white,
                     fontSize: 20.0
-                  )
+                  ),
+                  decoration: new InputDecoration.collapsed(
+                    hintText: "Search",
+                    hintStyle: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0
+                    )
+                  ),
                 ),
               ),
               Icon(

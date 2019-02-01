@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../themeData.dart';
-import '../pages/upload/uploadPage.dart';
+import '../uploadPage/uploadPage.dart';
 import 'package:flutter/cupertino.dart';
 
 class UploadCard extends StatelessWidget {

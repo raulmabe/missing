@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../viewModels/cardViewModel.dart';
+import '../../models/model.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './chips.dart';
-import '../../domain/actions.dart';
 import '../../themeData.dart';
 import '../widgets/imageCarousel.dart';
 
 class MissingCardExpanded extends StatelessWidget {
-  final CardViewModel card;
+  final CardModel card;
 
   MissingCardExpanded({this.card});
 
@@ -119,7 +118,7 @@ class MissingCardExpanded extends StatelessWidget {
                           color: Theme.of(context).primaryColor,
                         ),
                         borderRadius: BorderRadius.circular(50.0)),
-                    onPressed: sharePost,
+                    onPressed: ()=>print("Share"),
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Text(
