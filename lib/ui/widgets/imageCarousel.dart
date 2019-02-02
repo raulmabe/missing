@@ -8,7 +8,8 @@ class ImageCarousel extends StatefulWidget {
   _ImageCarouselState createState() => _ImageCarouselState();
 }
 
-class _ImageCarouselState extends State<ImageCarousel> with SingleTickerProviderStateMixin{
+class _ImageCarouselState extends State<ImageCarousel>
+    with SingleTickerProviderStateMixin {
   PageController _controller;
 
   int index;
@@ -67,16 +68,16 @@ class _ImageCarouselState extends State<ImageCarousel> with SingleTickerProvider
     return Stack(
       fit: StackFit.expand,
       children: <Widget>[
-        DecoratedBox(
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10.0),
-                topRight: Radius.circular(10.0),
-              ),
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: FileImage(widget.images[index]),
-              )),
+        ClipRRect(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(10),
+            topRight: Radius.circular(10)
+          ),
+          child: Image.memory(
+            widget.images[index],
+            fit: BoxFit.cover,
+            gaplessPlayback: true,
+          ),
         ),
         DecoratedBox(
           decoration: BoxDecoration(

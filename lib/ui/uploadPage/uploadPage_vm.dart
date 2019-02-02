@@ -28,7 +28,7 @@ class ViewModel {
 }
 
 class TempCardModel{
-  List images = [];
+  List<List<int>> images = [];
   int id;
   AppType type;
   bool missing;

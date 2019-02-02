@@ -3,7 +3,7 @@ import '../utils/appType.dart';
 
 
 class CardModel {
-  final List images;
+  final List<List<int>> images;
   final int id;
   final AppType type;
   final bool missing;

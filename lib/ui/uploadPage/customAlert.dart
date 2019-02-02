@@ -69,174 +69,97 @@ class _EditCardDialogState extends State<EditCardDialog>
         scale: _scaleAnim,
         child: Center(
           child: Container(
-              height: MediaQuery.of(context).size.height / 4,
-              width: MediaQuery.of(context).size.width * .8,
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 100, vertical: 30),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Expanded(
-                    flex: (_posted) ? 3 : 1,
-                    child: (_posted) ? AspectRatio(
-                      aspectRatio: 1,
-                      child: CheckAnimation(
-                        onComplete: (){ widget.back();
-                          Navigator.pop(context); 
-                        },
-                      ) ,
-                    ):
-                      Transform(
-                        transform: Matrix4.translation(_getTranslation()),
-                        child: Icon(
-                          FontAwesomeIcons.exclamationTriangle,
-                          size: 50,
-                          color: Colors.grey,
-                        ),
-                      ),
-                  ),
-                  Expanded(
-                    flex: (_posted) ? 2 : 1,
-                    child: (_posted) ? Container(
-                      margin: EdgeInsets.only(top: 10),
-                      child: Text(
-                      "Posted!",
-                      style: TextStyle(
-                        fontSize: 20
-                      ),
-                    ),
-                    ) : Column(
-                      children: <Widget>[
-                        Material(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0)),
-                          child: InkWell(
-                            onTap: () => widget.back(),
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 5, horizontal: 30),
-                              child: Text(
-                                "Edit".toUpperCase(),
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: MyTheme.of(context).kSecondaryColor,
-                                ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.white
+            ),
+            height: MediaQuery.of(context).size.height*.3,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 100, vertical: 30),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Expanded(
+                      flex: (_posted) ? 3 : 1,
+                      child: (_posted)
+                          ? AspectRatio(
+                              aspectRatio: 1,
+                              child: CheckAnimation(
+                                onComplete: () {
+                                  widget.back();
+                                  Navigator.pop(context);
+                                },
+                              ),
+                            )
+                          : Transform(
+                              transform: Matrix4.translation(_getTranslation()),
+                              child: Icon(
+                                Icons.error_outline,
+                                size: 70,
+                                color: Colors.grey,
                               ),
                             ),
-                          ),
-                        ),
-                        Spacer(),
-                        Material(
-                          color: Theme.of(context).primaryColor,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0)),
-                          child: InkWell(
-                              onTap: _submit,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  "GO ahead".toUpperCase(),
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: 14.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w600,
-                                      letterSpacing: 2.0),
-                                ),
-                              )),
-                        ),
-                      ],
                     ),
-                  ),
-                ],
-              )
-
-              /*Builder(
-                builder: (context) {
-                  if (_posted) return Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      CheckAnimation(
-                        onComplete: (){ widget.back();
-                          Navigator.pop(context); 
-                        },
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(top: 20),
-                        child: Text(
-                          "Posted!",
-                          style: TextStyle(
-                            fontSize: 18
-                          )
-                        ),
-                      )
-                    ],
-                  );
-                  return Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Transform(
-                        transform: Matrix4.translation(_getTranslation()),
-                        child: Icon(
-                          FontAwesomeIcons.exclamationTriangle,
-                          size: 50,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 30.0,
-                      ),
-                      Material(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0)),
-                        child: InkWell(
-                          onTap: () => widget.back(),
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 5, horizontal: 30),
-                            child: Text(
-                              "Edit".toUpperCase(),
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: MyTheme.of(context).kSecondaryColor,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 8.0,
-                      ),
-                      Material(
-                        color: Theme.of(context).primaryColor,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0)),
-                        child: InkWell(
-                            onTap: _submit,
-                            child: Container(
-                              margin: const EdgeInsets.symmetric(
-                                  vertical: 10.0, horizontal: 20),
-                              height: 20,
+                    Expanded(
+                      flex: (_posted) ? 2 : 1,
+                      child: (_posted)
+                          ? Container(
+                              margin: EdgeInsets.only(top: 10),
                               child: Text(
-                                "GO ahead".toUpperCase(),
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 14.0,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                    letterSpacing: 2.0),
+                                "Posted!",
+                                style: TextStyle(fontSize: 20),
                               ),
-                            )),
-                      ),
-                    ],
-                  );
-                },
-              )*/
-              ),
+                            )
+                          : Column(
+                              children: <Widget>[
+                                Material(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(10.0)),
+                                  child: InkWell(
+                                    onTap: () => widget.back(),
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 5, horizontal: 30),
+                                      child: Text(
+                                        "Edit".toUpperCase(),
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: MyTheme.of(context)
+                                              .kSecondaryColor,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Spacer(),
+                                Material(
+                                  color: Theme.of(context).primaryColor,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(10.0)),
+                                  child: InkWell(
+                                      onTap: _submit,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "GO ahead".toUpperCase(),
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: 14.0,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w600,
+                                              letterSpacing: 2.0),
+                                        ),
+                                      )),
+                                ),
+                              ],
+                            ),
+                    ),
+                  ],
+                ),
+              )),
         ),
       ),
     );

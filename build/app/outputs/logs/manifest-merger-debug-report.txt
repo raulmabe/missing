@@ -1,0 +1,241 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:1:1-44:12
+INJECTED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:1:1-44:12
+INJECTED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:1:1-44:12
+INJECTED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:1:1-44:12
+MERGED from [:shared_preferences] /home/raul/Documents/missing/build/shared_preferences/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:2:1-7:12
+MERGED from [:url_launcher] /home/raul/Documents/missing/build/url_launcher/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:2:1-14:12
+MERGED from [:google_maps_flutter] /home/raul/Documents/missing/build/google_maps_flutter/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:2:1-7:12
+MERGED from [:multi_image_picker] /home/raul/Documents/missing/build/multi_image_picker/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-maps:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-maps-15.0.1.aar/298069687fc262d7ca9b957b9b10a970/AndroidManifest.xml:17:1-32:12
+MERGED from [com.android.support:exifinterface:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/exifinterface-27.1.1.aar/decc659e0e41ba7d905c5c9fd74553f6/AndroidManifest.xml:17:1-22:12
+MERGED from [com.zhihu.android:matisse:0.5.1] /home/raul/.gradle/caches/transforms-1/files-1.1/matisse-0.5.1.aar/5a4ad6e274a18c56d0959a4c53128ae5/AndroidManifest.xml:17:1-33:12
+MERGED from [com.google.android.gms:play-services-base:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.1.aar/2b03b48235c117cc3d1a686ba71f22df/AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-tasks-15.0.1.aar/7c97689f9a9f3dc099f636654a60e462/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-basement-15.0.1.aar/e1a8c45fac8c2327ec287805007a1236/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/9c1a258bedaca72d5dc18351a35481c4/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.1.aar/d2084d4cce682fdfde5bf7c9e399ad01/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-v4:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/f88abaeecd11cec242c4fc991e2a3dfc/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/3b53840212db452ce5d0d8a05ca48873/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/e2f8488c52955fabd7ca75c60472c1f7/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/f450a1ee9d49d3ab4675a00983fa0acd/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/2b11c840581a14c435bb6f6ab388a77e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/44b35b700ee697682fc524df6487c025/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/541855066c367f25aa61aeb33241dd0c/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/103a53e46a9d590716dd5f592f6c0842/AndroidManifest.xml:17:1-22:12
+MERGED from [it.sephiroth.android.library.imagezoom:library:1.0.4] /home/raul/.gradle/caches/transforms-1/files-1.1/library-1.0.4.aar/02cdb05346df25d8206d04b354bbcff3/AndroidManifest.xml:1:106-7:12
+MERGED from [it.sephiroth.android.library.easing:library:1.0.2] /home/raul/.gradle/caches/transforms-1/files-1.1/library-1.0.2.aar/7b694a4be706214ea2dc077f78c825cc/AndroidManifest.xml:1:116-8:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /home/raul/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/cf5c100fe9f71741acec22e9ab3e6b78/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/raul/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/5cca0bdf59987c105d3e9eb7a19fcd8e/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /home/raul/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/66455f9b97131f34a31766a47631e96f/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] /home/raul/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/9a8f6357f7a3e78b8093fc6f20c4ec97/AndroidManifest.xml:17:1-22:12
+INJECTED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:1:1-44:12
+INJECTED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:1:1-44:12
+INJECTED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:1:1-44:12
+	package
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:2:5-34
+		INJECTED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml
+		INJECTED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:1:1-44:12
+		INJECTED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:1:1-44:12
+		INJECTED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:8:5-66
+MERGED from [com.google.android.gms:play-services-maps:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-maps-15.0.1.aar/298069687fc262d7ca9b957b9b10a970/AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-maps:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-maps-15.0.1.aar/298069687fc262d7ca9b957b9b10a970/AndroidManifest.xml:24:5-67
+	android:name
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:8:22-64
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:9:5-81
+MERGED from [com.zhihu.android:matisse:0.5.1] /home/raul/.gradle/caches/transforms-1/files-1.1/matisse-0.5.1.aar/5a4ad6e274a18c56d0959a4c53128ae5/AndroidManifest.xml:24:5-81
+MERGED from [com.zhihu.android:matisse:0.5.1] /home/raul/.gradle/caches/transforms-1/files-1.1/matisse-0.5.1.aar/5a4ad6e274a18c56d0959a4c53128ae5/AndroidManifest.xml:24:5-81
+	android:name
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:9:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:10:1-76
+MERGED from [com.zhihu.android:matisse:0.5.1] /home/raul/.gradle/caches/transforms-1/files-1.1/matisse-0.5.1.aar/5a4ad6e274a18c56d0959a4c53128ae5/AndroidManifest.xml:25:5-80
+MERGED from [com.zhihu.android:matisse:0.5.1] /home/raul/.gradle/caches/transforms-1/files-1.1/matisse-0.5.1.aar/5a4ad6e274a18c56d0959a4c53128ae5/AndroidManifest.xml:25:5-80
+	android:name
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:10:18-73
+uses-permission#android.permission.CAMERA
+ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:11:1-61
+	android:name
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:11:18-58
+application
+ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:18:5-43:19
+MERGED from [:url_launcher] /home/raul/Documents/missing/build/url_launcher/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:7:5-12:19
+MERGED from [:url_launcher] /home/raul/Documents/missing/build/url_launcher/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:7:5-12:19
+MERGED from [com.google.android.gms:play-services-maps:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-maps-15.0.1.aar/298069687fc262d7ca9b957b9b10a970/AndroidManifest.xml:30:5-20
+MERGED from [com.google.android.gms:play-services-maps:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-maps-15.0.1.aar/298069687fc262d7ca9b957b9b10a970/AndroidManifest.xml:30:5-20
+MERGED from [com.zhihu.android:matisse:0.5.1] /home/raul/.gradle/caches/transforms-1/files-1.1/matisse-0.5.1.aar/5a4ad6e274a18c56d0959a4c53128ae5/AndroidManifest.xml:27:5-31:19
+MERGED from [com.zhihu.android:matisse:0.5.1] /home/raul/.gradle/caches/transforms-1/files-1.1/matisse-0.5.1.aar/5a4ad6e274a18c56d0959a4c53128ae5/AndroidManifest.xml:27:5-31:19
+MERGED from [com.google.android.gms:play-services-base:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.1.aar/2b03b48235c117cc3d1a686ba71f22df/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.1.aar/2b03b48235c117cc3d1a686ba71f22df/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-tasks-15.0.1.aar/7c97689f9a9f3dc099f636654a60e462/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-tasks-15.0.1.aar/7c97689f9a9f3dc099f636654a60e462/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-basement-15.0.1.aar/e1a8c45fac8c2327ec287805007a1236/AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-basement-15.0.1.aar/e1a8c45fac8c2327ec287805007a1236/AndroidManifest.xml:22:5-26:19
+MERGED from [it.sephiroth.android.library.imagezoom:library:1.0.4] /home/raul/.gradle/caches/transforms-1/files-1.1/library-1.0.4.aar/02cdb05346df25d8206d04b354bbcff3/AndroidManifest.xml:5:5-19
+MERGED from [it.sephiroth.android.library.imagezoom:library:1.0.4] /home/raul/.gradle/caches/transforms-1/files-1.1/library-1.0.4.aar/02cdb05346df25d8206d04b354bbcff3/AndroidManifest.xml:5:5-19
+MERGED from [it.sephiroth.android.library.easing:library:1.0.2] /home/raul/.gradle/caches/transforms-1/files-1.1/library-1.0.2.aar/7b694a4be706214ea2dc077f78c825cc/AndroidManifest.xml:5:5-6:19
+MERGED from [it.sephiroth.android.library.easing:library:1.0.2] /home/raul/.gradle/caches/transforms-1/files-1.1/library-1.0.2.aar/7b694a4be706214ea2dc077f78c825cc/AndroidManifest.xml:5:5-6:19
+	android:label
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:20:9-32
+	android:icon
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:21:9-43
+	android:name
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:19:9-57
+meta-data#com.google.android.geo.API_KEY
+ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:22:9-23:73
+	android:value
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:23:16-71
+	android:name
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:22:20-65
+activity#com.example.missing.MainActivity
+ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:24:9-42:20
+	android:launchMode
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:26:13-43
+	android:hardwareAccelerated
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:29:13-47
+	android:windowSoftInputMode
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:30:13-55
+	android:configChanges
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:28:13-137
+	android:theme
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:27:13-47
+	android:name
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:25:13-41
+meta-data#io.flutter.app.android.SplashScreenUntilFirstFrame
+ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:35:13-37:40
+	android:value
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:37:17-37
+	android:name
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:36:17-82
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:38:13-41:29
+action#android.intent.action.MAIN
+ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:39:17-68
+	android:name
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:39:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:40:17-76
+	android:name
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml:40:27-74
+uses-sdk
+INJECTED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml
+INJECTED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml
+MERGED from [:shared_preferences] /home/raul/Documents/missing/build/shared_preferences/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] /home/raul/Documents/missing/build/shared_preferences/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher] /home/raul/Documents/missing/build/url_launcher/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher] /home/raul/Documents/missing/build/url_launcher/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:5:5-44
+MERGED from [:google_maps_flutter] /home/raul/Documents/missing/build/google_maps_flutter/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:5:5-44
+MERGED from [:google_maps_flutter] /home/raul/Documents/missing/build/google_maps_flutter/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:5:5-44
+MERGED from [:multi_image_picker] /home/raul/Documents/missing/build/multi_image_picker/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:5:5-44
+MERGED from [:multi_image_picker] /home/raul/Documents/missing/build/multi_image_picker/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-maps:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-maps-15.0.1.aar/298069687fc262d7ca9b957b9b10a970/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-maps-15.0.1.aar/298069687fc262d7ca9b957b9b10a970/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:exifinterface:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/exifinterface-27.1.1.aar/decc659e0e41ba7d905c5c9fd74553f6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:exifinterface:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/exifinterface-27.1.1.aar/decc659e0e41ba7d905c5c9fd74553f6/AndroidManifest.xml:20:5-44
+MERGED from [com.zhihu.android:matisse:0.5.1] /home/raul/.gradle/caches/transforms-1/files-1.1/matisse-0.5.1.aar/5a4ad6e274a18c56d0959a4c53128ae5/AndroidManifest.xml:20:5-22:41
+MERGED from [com.zhihu.android:matisse:0.5.1] /home/raul/.gradle/caches/transforms-1/files-1.1/matisse-0.5.1.aar/5a4ad6e274a18c56d0959a4c53128ae5/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.gms:play-services-base:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.1.aar/2b03b48235c117cc3d1a686ba71f22df/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.1.aar/2b03b48235c117cc3d1a686ba71f22df/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-tasks-15.0.1.aar/7c97689f9a9f3dc099f636654a60e462/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-tasks-15.0.1.aar/7c97689f9a9f3dc099f636654a60e462/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-basement-15.0.1.aar/e1a8c45fac8c2327ec287805007a1236/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-basement-15.0.1.aar/e1a8c45fac8c2327ec287805007a1236/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/9c1a258bedaca72d5dc18351a35481c4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/9c1a258bedaca72d5dc18351a35481c4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.1.aar/d2084d4cce682fdfde5bf7c9e399ad01/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.1.aar/d2084d4cce682fdfde5bf7c9e399ad01/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/f88abaeecd11cec242c4fc991e2a3dfc/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/f88abaeecd11cec242c4fc991e2a3dfc/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/3b53840212db452ce5d0d8a05ca48873/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/3b53840212db452ce5d0d8a05ca48873/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/e2f8488c52955fabd7ca75c60472c1f7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/e2f8488c52955fabd7ca75c60472c1f7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/f450a1ee9d49d3ab4675a00983fa0acd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/f450a1ee9d49d3ab4675a00983fa0acd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/2b11c840581a14c435bb6f6ab388a77e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/2b11c840581a14c435bb6f6ab388a77e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/44b35b700ee697682fc524df6487c025/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/44b35b700ee697682fc524df6487c025/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/541855066c367f25aa61aeb33241dd0c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/541855066c367f25aa61aeb33241dd0c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/103a53e46a9d590716dd5f592f6c0842/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /home/raul/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/103a53e46a9d590716dd5f592f6c0842/AndroidManifest.xml:20:5-44
+MERGED from [it.sephiroth.android.library.imagezoom:library:1.0.4] /home/raul/.gradle/caches/transforms-1/files-1.1/library-1.0.4.aar/02cdb05346df25d8206d04b354bbcff3/AndroidManifest.xml:3:5-72
+MERGED from [it.sephiroth.android.library.imagezoom:library:1.0.4] /home/raul/.gradle/caches/transforms-1/files-1.1/library-1.0.4.aar/02cdb05346df25d8206d04b354bbcff3/AndroidManifest.xml:3:5-72
+MERGED from [it.sephiroth.android.library.easing:library:1.0.2] /home/raul/.gradle/caches/transforms-1/files-1.1/library-1.0.2.aar/7b694a4be706214ea2dc077f78c825cc/AndroidManifest.xml:3:5-72
+MERGED from [it.sephiroth.android.library.easing:library:1.0.2] /home/raul/.gradle/caches/transforms-1/files-1.1/library-1.0.2.aar/7b694a4be706214ea2dc077f78c825cc/AndroidManifest.xml:3:5-72
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /home/raul/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/cf5c100fe9f71741acec22e9ab3e6b78/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /home/raul/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/cf5c100fe9f71741acec22e9ab3e6b78/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/raul/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/5cca0bdf59987c105d3e9eb7a19fcd8e/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/raul/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/5cca0bdf59987c105d3e9eb7a19fcd8e/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /home/raul/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/66455f9b97131f34a31766a47631e96f/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /home/raul/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/66455f9b97131f34a31766a47631e96f/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /home/raul/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/9a8f6357f7a3e78b8093fc6f20c4ec97/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /home/raul/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/9a8f6357f7a3e78b8093fc6f20c4ec97/AndroidManifest.xml:20:5-44
+INJECTED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml
+INJECTED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml
+		INJECTED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml
+		ADDED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml
+		INJECTED from /home/raul/Documents/missing/android/app/src/main/AndroidManifest.xml
+activity#io.flutter.plugins.urllauncher.UrlLauncherPlugin$WebViewActivity
+ADDED from [:url_launcher] /home/raul/Documents/missing/build/url_launcher/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:8:9-11:74
+	android:exported
+		ADDED from [:url_launcher] /home/raul/Documents/missing/build/url_launcher/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:10:13-37
+	android:theme
+		ADDED from [:url_launcher] /home/raul/Documents/missing/build/url_launcher/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:11:13-71
+	android:name
+		ADDED from [:url_launcher] /home/raul/Documents/missing/build/url_launcher/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:9:13-92
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.google.android.gms:play-services-maps:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-maps-15.0.1.aar/298069687fc262d7ca9b957b9b10a970/AndroidManifest.xml:23:5-79
+	android:name
+		ADDED from [com.google.android.gms:play-services-maps:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-maps-15.0.1.aar/298069687fc262d7ca9b957b9b10a970/AndroidManifest.xml:23:22-76
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-maps-15.0.1.aar/298069687fc262d7ca9b957b9b10a970/AndroidManifest.xml:26:5-28:35
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-maps-15.0.1.aar/298069687fc262d7ca9b957b9b10a970/AndroidManifest.xml:27:9-41
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-maps-15.0.1.aar/298069687fc262d7ca9b957b9b10a970/AndroidManifest.xml:28:9-32
+activity#com.zhihu.matisse.ui.MatisseActivity
+ADDED from [com.zhihu.android:matisse:0.5.1] /home/raul/.gradle/caches/transforms-1/files-1.1/matisse-0.5.1.aar/5a4ad6e274a18c56d0959a4c53128ae5/AndroidManifest.xml:28:9-73
+	android:name
+		ADDED from [com.zhihu.android:matisse:0.5.1] /home/raul/.gradle/caches/transforms-1/files-1.1/matisse-0.5.1.aar/5a4ad6e274a18c56d0959a4c53128ae5/AndroidManifest.xml:28:19-70
+activity#com.zhihu.matisse.internal.ui.AlbumPreviewActivity
+ADDED from [com.zhihu.android:matisse:0.5.1] /home/raul/.gradle/caches/transforms-1/files-1.1/matisse-0.5.1.aar/5a4ad6e274a18c56d0959a4c53128ae5/AndroidManifest.xml:29:9-87
+	android:name
+		ADDED from [com.zhihu.android:matisse:0.5.1] /home/raul/.gradle/caches/transforms-1/files-1.1/matisse-0.5.1.aar/5a4ad6e274a18c56d0959a4c53128ae5/AndroidManifest.xml:29:19-84
+activity#com.zhihu.matisse.internal.ui.SelectedPreviewActivity
+ADDED from [com.zhihu.android:matisse:0.5.1] /home/raul/.gradle/caches/transforms-1/files-1.1/matisse-0.5.1.aar/5a4ad6e274a18c56d0959a4c53128ae5/AndroidManifest.xml:30:9-90
+	android:name
+		ADDED from [com.zhihu.android:matisse:0.5.1] /home/raul/.gradle/caches/transforms-1/files-1.1/matisse-0.5.1.aar/5a4ad6e274a18c56d0959a4c53128ae5/AndroidManifest.xml:30:19-87
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.1.aar/2b03b48235c117cc3d1a686ba71f22df/AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.1.aar/2b03b48235c117cc3d1a686ba71f22df/AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.1.aar/2b03b48235c117cc3d1a686ba71f22df/AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.1.aar/2b03b48235c117cc3d1a686ba71f22df/AndroidManifest.xml:24:13-79
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-basement-15.0.1.aar/e1a8c45fac8c2327ec287805007a1236/AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-basement-15.0.1.aar/e1a8c45fac8c2327ec287805007a1236/AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:15.0.1] /home/raul/.gradle/caches/transforms-1/files-1.1/play-services-basement-15.0.1.aar/e1a8c45fac8c2327ec287805007a1236/AndroidManifest.xml:24:13-58

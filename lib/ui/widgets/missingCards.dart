@@ -53,27 +53,26 @@ class MissingCard extends StatelessWidget {
                               borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(borderRadius),
                                 topRight: Radius.circular(borderRadius),
-                              ),color: Colors.blueGrey[100]),
-                              child: IconType(
-                                type: card.type,
-                                color: Colors.blueGrey,
-                                size: 50
                               ),
+                              color: Colors.blueGrey[100]),
+                          child: IconType(
+                              type: card.type,
+                              color: Colors.blueGrey,
+                              size: 50),
                         );
                       } else {
                         return Hero(
                           tag: card.id,
-                          child: Container(
-                            height: 300,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(borderRadius),
-                                  topRight: Radius.circular(borderRadius),
-                                ),
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: FileImage(card.images[0]),
-                                )),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Container(
+                              height: 300,
+                              child: Image.memory(
+                                card.images[0],
+                                fit: BoxFit.cover,
+                                gaplessPlayback: true,
+                              ),
+                            ),
                           ),
                         );
                       }
@@ -137,10 +136,7 @@ class MissingCard extends StatelessWidget {
                       ),
                     )),
                 padding: EdgeInsets.only(
-                  bottom: 10.0,
-                  left: 10.0,
-                  right: 10,
-                  top: 10),
+                    bottom: 10.0, left: 10.0, right: 10, top: 10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.stretch,

@@ -31,7 +31,7 @@ class Profile extends StatelessWidget {
                     shape: CircleBorder(),
                     child: CircleAvatar(
                       backgroundImage: AssetImage("assets/profile_pic.jpg"),
-                      radius: 50.0,
+                      radius: MediaQuery.of(context).size.width*.1,
                     ),
                   ),
                 ),
@@ -62,7 +62,7 @@ class Profile extends StatelessWidget {
             Text("Raul Mateo Beneyto",
                 style: TextStyle(
                     color: Colors.black,
-                    fontSize: 20.0,
+                    fontSize: 20.0 * MediaQuery.of(context).textScaleFactor, // ! TEST
                     fontWeight: FontWeight.w600)),
             Text("Premià de Mar, Barcelona",
                 style: TextStyle(

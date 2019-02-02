@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 import '../widgets/chips.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:multi_image_picker/multi_image_picker.dart';
 import 'dart:async';
-import './imagePreview.dart';
+import './imageBox.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './uploadPage_vm.dart';
+import 'package:multi_image_picker/asset.dart';
+import 'package:flutter/services.dart';
+import '../../utils/softTransition.dart';
+import '../../utils/imagePreview.dart';
 
 class InfoCard extends StatefulWidget {
   final GlobalKey formKey;
   final TempCardModel card;
-  InfoCard({@required this.formKey,@required this.card,});
+  InfoCard({
+    @required this.formKey,
+    @required this.card,
+  });
 
   @override
   _InfoCardState createState() => _InfoCardState();
@@ -17,6 +24,10 @@ class InfoCard extends StatefulWidget {
 
 class _InfoCardState extends State<InfoCard> {
   TextEditingController _controller;
+
+  static const int maxImages = 5;
+  List<Asset> images;
+  List<ByteData> originalImages;
 
   bool infoTagsSelected;
 
@@ -26,6 +37,32 @@ class _InfoCardState extends State<InfoCard> {
     super.initState();
     _controller = TextEditingController();
     infoTagsSelected = false;
+    images = [];
+    originalImages = [];
+  }
+
+  void saveImages() async {
+    Iterable<Future<List<int>>> mapped = images.map((asset) async {
+      ByteData bytes = await asset.requestOriginal();
+      return bytes.buffer.asUint8List();
+    }).toList();
+
+    for (Future<List<int>> f in mapped) {
+      widget.card.images.add(await f);
+    }
+  }
+
+  @override
+  void dispose() {
+    saveImages();
+    for (Asset asset in images) {
+      asset.release();
+    }
+    for (ByteData bytes in originalImages) {
+      bytes = null;
+    }
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -56,21 +93,20 @@ class _InfoCardState extends State<InfoCard> {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: widget.card.images.length < 5
+                    children: images.length < maxImages
                         ? ([]
                           ..add(Container(
                             height: 80,
                             width: 80,
                             decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: Colors.grey,
-                                    width: 1.0),
+                                border:
+                                    Border.all(color: Colors.grey, width: 1.0),
                                 borderRadius: BorderRadius.circular(5.0)),
                             child: Material(
                               color: Colors.transparent,
                               child: InkWell(
                                 splashColor: Colors.grey.shade200,
-                                onTap: () => _getImage(),
+                                onTap: () => loadAssets(),
                                 child: Icon(
                                   Icons.add_a_photo,
                                   color: Colors.grey,
@@ -87,7 +123,6 @@ class _InfoCardState extends State<InfoCard> {
             ),
           ),
         ),
-
         SizedBox(
           height: padding / 2,
         ),
@@ -120,8 +155,8 @@ class _InfoCardState extends State<InfoCard> {
                     height: padding,
                   ),
                   TextFormField(
-                    maxLines: 20,
                     keyboardType: TextInputType.multiline,
+                    maxLines: null,
                     decoration: InputDecoration(labelText: "Description"),
                     validator: (str) =>
                         str.length < 10 ? "Description must be longer" : null,
@@ -132,7 +167,8 @@ class _InfoCardState extends State<InfoCard> {
                   ),
                   TextFormField(
                     decoration: InputDecoration(labelText: "Location"),
-                    validator: (str) => str.length < 2 ? "Location invalid" : null,
+                    validator: (str) =>
+                        str.length < 2 ? "Location invalid" : null,
                     onSaved: (str) => widget.card.location = str,
                   ),
                   SizedBox(
@@ -146,26 +182,30 @@ class _InfoCardState extends State<InfoCard> {
                     children: <Widget>[
                       Text("Tags", style: TextStyle(color: Colors.grey[600])),
                       IconButton(
-                        onPressed: (){
-                          setState(() {
-                            infoTagsSelected = !infoTagsSelected;
-                          });
-                        },
-                        iconSize: 20,
-                        color: Colors.grey,
-                        icon: Icon(infoTagsSelected ? FontAwesomeIcons.solidQuestionCircle : FontAwesomeIcons.questionCircle,)
-                      )
+                          onPressed: () {
+                            setState(() {
+                              infoTagsSelected = !infoTagsSelected;
+                            });
+                          },
+                          iconSize: 20,
+                          color: Colors.grey,
+                          icon: Icon(
+                            infoTagsSelected
+                                ? FontAwesomeIcons.solidQuestionCircle
+                                : FontAwesomeIcons.questionCircle,
+                          ))
                     ],
                   ),
                   SizedBox(
-                    height: padding/2,
+                    height: padding / 2,
                   ),
-                  (infoTagsSelected) ? Text(
-                    "A tag is a keyword or label that categorizes your post with other, similar posts. Better your tags describes your post, more helpful will be for the searching system",
-                    style: TextStyle(color: Colors.grey[600])
-                  ) : Container(),
+                  (infoTagsSelected)
+                      ? Text(
+                          "A tag is a keyword or label that categorizes your post with other, similar posts. Better your tags describes your post, more helpful will be for the searching system",
+                          style: TextStyle(color: Colors.grey[600]))
+                      : Container(),
                   SizedBox(
-                    height: padding/2,
+                    height: padding / 2,
                   ),
                   Wrap(
                     direction: Axis.horizontal,
@@ -178,9 +218,11 @@ class _InfoCardState extends State<InfoCard> {
                           controller: _controller,
                           decoration: InputDecoration(labelText: "Add tag"),
                           validator: (str) {
-                            if(widget.card.tags == null || widget.card.tags.isEmpty){
+                            if (widget.card.tags == null ||
+                                widget.card.tags.isEmpty) {
                               return "Tags can't be empty";
-                            } else return null;
+                            } else
+                              return null;
                           },
                           onFieldSubmitted: (str) {
                             _controller.clear();
@@ -203,28 +245,64 @@ class _InfoCardState extends State<InfoCard> {
     );
   }
 
+  List<Widget> widgetsImages = [];
+
   List<Widget> _makeImages() {
-    List<Widget> list = [];
-    for (int i = 0; i < widget.card.images.length; ++i) {
-      list.add(Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: UploadImageIcon(
-            image: widget.card.images[i],
-            removeImage: (image){
-              setState(() {
-                widget.card.images.remove(image);
-              });
-            },)
-          ));
+    if (widgetsImages.length == images.length) return widgetsImages;
+
+    for (int i = widgetsImages.length; i < images.length; ++i) {
+      widgetsImages.add(Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  SoftTransition(
+                      widget: ImagePreview(
+                    remove: (i) {
+                      setState(() {
+                        images.removeAt(i);
+                        widgetsImages.removeAt(i);
+                      });
+                    },
+                    images: originalImages,
+                    index: i,
+                  )));
+            },
+            child: ImageBox(
+              id: i,
+              image: images[i],
+            ),
+          )));
     }
-    return list;
+    return widgetsImages;
   }
 
-  Future _getImage() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
-    if(image == null) return;
-    widget.card.images.add(image);
-    setState(() {});
+  Future<void> loadAssets() async {
+    List<Asset> resultList;
+    String error;
+
+    try {
+      resultList = await MultiImagePicker.pickImages(
+        maxImages: maxImages - images.length,
+      );
+    } on PlatformException catch (e) {
+      error = e.message;
+    }
+
+    for (Asset asset in resultList) {
+      originalImages.add(await asset.requestOriginal());
+    }
+
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (!mounted) return;
+
+    setState(() {
+      images.addAll(resultList);
+      if (error == null) print("No error detected");
+    });
   }
 
   List<Widget> _makeTags() {
