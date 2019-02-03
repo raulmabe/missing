@@ -8,7 +8,7 @@ import './uploadPage_vm.dart';
 import 'package:multi_image_picker/asset.dart';
 import 'package:flutter/services.dart';
 import '../../utils/softTransition.dart';
-import '../../utils/imagePreview.dart';
+import './imagePreview.dart';
 
 class InfoCard extends StatefulWidget {
   final GlobalKey formKey;

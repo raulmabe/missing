@@ -1,4 +1,7 @@
+import '../../utils/softTransition.dart';
+import '../../utils/generalImagePreview.dart';
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 class ImageCarousel extends StatefulWidget {
   final List images;
@@ -8,24 +11,15 @@ class ImageCarousel extends StatefulWidget {
   _ImageCarouselState createState() => _ImageCarouselState();
 }
 
-class _ImageCarouselState extends State<ImageCarousel>
-    with SingleTickerProviderStateMixin {
+class _ImageCarouselState extends State<ImageCarousel> {
   PageController _controller;
-
-  int index;
 
   @override
   void initState() {
     super.initState();
-    index = 0;
     _controller = PageController(
       viewportFraction: 1.0,
     );
-    _controller.addListener(() {
-      setState(() {
-        index = _controller.page.toInt();
-      });
-    });
   }
 
   @override
@@ -38,29 +32,22 @@ class _ImageCarouselState extends State<ImageCarousel>
             children: List.generate(
                 widget.images.length, (index) => _buildImage(index))),
         Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(
-                widget.images.length, (i) => _buildIndicator(index == i)),
-          ),
-        )
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child: DotsIndicator(
+                controller: _controller,
+                itemCount: widget.images.length,
+                onPageSelected: (i) {
+                  _controller.animateToPage(i,
+                      duration: Duration(milliseconds: 300),
+                      curve: Curves.ease);
+                },
+              ),
+            ))
       ],
-    );
-  }
-
-  Widget _buildIndicator(bool selected) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 6.0, vertical: 3),
-      child: Container(
-        decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: (selected) ? Colors.white : Colors.black.withOpacity(0.3)),
-        width: 10,
-        height: 10,
-      ),
     );
   }
 
@@ -68,26 +55,104 @@ class _ImageCarouselState extends State<ImageCarousel>
     return Stack(
       fit: StackFit.expand,
       children: <Widget>[
-        ClipRRect(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(10),
-            topRight: Radius.circular(10)
-          ),
-          child: Image.memory(
-            widget.images[index],
-            fit: BoxFit.cover,
-            gaplessPlayback: true,
+        Hero(
+          tag: index,
+          child: ClipRRect(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+            child: Image.memory(
+              widget.images[index],
+              fit: BoxFit.cover,
+              gaplessPlayback: true,
+            ),
           ),
         ),
         DecoratedBox(
           decoration: BoxDecoration(
               gradient: LinearGradient(
             begin: FractionalOffset.bottomCenter,
-            end: FractionalOffset.topCenter,
-            colors: [Colors.black38, Colors.transparent],
+            end: FractionalOffset.center,
+            colors: [Colors.black, Colors.transparent],
           )),
         ),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context,
+                SoftTransition(
+                    widget: GeneralImagePreview(
+                  images: widget.images,
+                  index: index,
+                )));
+          },
+        )
       ],
+    );
+  }
+}
+
+/// An indicator showing the currently selected page of a PageController
+class DotsIndicator extends AnimatedWidget {
+  DotsIndicator({
+    this.controller,
+    this.itemCount,
+    this.onPageSelected,
+    this.color: Colors.white,
+  }) : super(listenable: controller);
+
+  /// The PageController that this DotsIndicator is representing.
+  final PageController controller;
+
+  /// The number of items managed by the PageController
+  final int itemCount;
+
+  /// Called when a dot is tapped
+  final ValueChanged<int> onPageSelected;
+
+  /// The color of the dots.
+  ///
+  /// Defaults to `Colors.white`.
+  final Color color;
+
+  // The base size of the dots
+  static const double _kDotSize = 8.0;
+
+  // The increase in the size of the selected dot
+  static const double _kMaxZoom = 1.5;
+
+  // The distance between the center of each dot
+  static const double _kDotSpacing = 25.0;
+
+  Widget _buildDot(int index) {
+    double selectedness = Curves.easeOut.transform(
+      max(
+        0.0,
+        1.0 - ((controller.page ?? controller.initialPage) - index).abs(),
+      ),
+    );
+    double zoom = 1.0 + (_kMaxZoom - 1.0) * selectedness;
+    return new Container(
+      width: _kDotSpacing,
+      child: new Center(
+        child: new Material(
+          color: color,
+          type: MaterialType.circle,
+          child: new Container(
+            width: _kDotSize * zoom,
+            height: _kDotSize * zoom,
+            child: new InkWell(
+              onTap: () => onPageSelected(index),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List<Widget>.generate(itemCount, _buildDot),
     );
   }
 }
