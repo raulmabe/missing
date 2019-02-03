@@ -75,7 +75,6 @@ class _BodyState extends State<Body> {
   }
 
   Future<void> _handleUpdate() async {
-    widget.viewModel.refreshCards();
     await Future.delayed(Duration(seconds: 3));
   }
 }

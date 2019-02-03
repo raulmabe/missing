@@ -26,41 +26,19 @@ class _InfoCardState extends State<InfoCard> {
   TextEditingController _controller;
 
   static const int maxImages = 5;
-  List<Asset> images;
-  List<ByteData> originalImages;
 
   bool infoTagsSelected;
 
-  OverlayEntry _overlayEntry;
   @override
   void initState() {
     super.initState();
     _controller = TextEditingController();
     infoTagsSelected = false;
-    images = [];
-    originalImages = [];
-  }
-
-  void saveImages() async {
-    Iterable<Future<List<int>>> mapped = images.map((asset) async {
-      ByteData bytes = await asset.requestOriginal();
-      return bytes.buffer.asUint8List();
-    }).toList();
-
-    for (Future<List<int>> f in mapped) {
-      widget.card.images.add(await f);
-    }
+    widget.card.images = [];
   }
 
   @override
   void dispose() {
-    saveImages();
-    for (Asset asset in images) {
-      asset.release();
-    }
-    for (ByteData bytes in originalImages) {
-      bytes = null;
-    }
     _controller.dispose();
     super.dispose();
   }
@@ -93,11 +71,12 @@ class _InfoCardState extends State<InfoCard> {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: images.length < maxImages
+                    children: widget.card.images.length < maxImages
                         ? ([]
                           ..add(Container(
                             height: 80,
                             width: 80,
+                            margin: EdgeInsets.only(right: 4),
                             decoration: BoxDecoration(
                                 border:
                                     Border.all(color: Colors.grey, width: 1.0),
@@ -115,8 +94,44 @@ class _InfoCardState extends State<InfoCard> {
                               ),
                             ),
                           ))
-                          ..addAll(_makeImages()))
-                        : _makeImages(),
+                          ..addAll(List.generate(
+                              widget.card.images.length,
+                              (i) => Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          SoftTransition(
+                                              widget: ImagePreview(
+                                            images: widget.card.images,
+                                            index: i,
+                                          )));
+                                    },
+                                    child: ImageBox(
+                                      id: i,
+                                      imageBytes: widget.card.images[i],
+                                    ),
+                                  )))))
+                        : List.generate(
+                            widget.card.images.length,
+                            (i) => Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        SoftTransition(
+                                            widget: ImagePreview(
+                                          images: widget.card.images,
+                                          index: i,
+                                        )));
+                                  },
+                                  child: ImageBox(
+                                    id: i,
+                                    imageBytes: widget.card.images[i],
+                                  ),
+                                ))),
                   ),
                 ),
               ],
@@ -211,8 +226,21 @@ class _InfoCardState extends State<InfoCard> {
                     direction: Axis.horizontal,
                     alignment: WrapAlignment.start,
                     spacing: 10.0,
-                    children: []
-                      ..addAll(_makeTags())
+                    children: List.generate(
+                        widget.card.tags.length,
+                        (i) => Tag(
+                              tag: (widget.card.tags[i].length < 20)
+                                  ? widget.card.tags[i]
+                                  : "" +
+                                      widget.card.tags[i].substring(0, 15) +
+                                      "...",
+                              context: context,
+                              onDeleted: () {
+                                setState(() {
+                                  widget.card.tags.remove(widget.card.tags[i]);
+                                });
+                              },
+                            ))
                       ..add(
                         TextFormField(
                           controller: _controller,
@@ -245,53 +273,16 @@ class _InfoCardState extends State<InfoCard> {
     );
   }
 
-  List<Widget> widgetsImages = [];
-
-  List<Widget> _makeImages() {
-    if (widgetsImages.length == images.length) return widgetsImages;
-
-    for (int i = widgetsImages.length; i < images.length; ++i) {
-      widgetsImages.add(Padding(
-          padding: const EdgeInsets.all(4.0),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.push(
-                  context,
-                  SoftTransition(
-                      widget: ImagePreview(
-                    remove: (i) {
-                      setState(() {
-                        images.removeAt(i);
-                        widgetsImages.removeAt(i);
-                      });
-                    },
-                    images: originalImages,
-                    index: i,
-                  )));
-            },
-            child: ImageBox(
-              id: i,
-              image: images[i],
-            ),
-          )));
-    }
-    return widgetsImages;
-  }
-
   Future<void> loadAssets() async {
     List<Asset> resultList;
     String error;
 
     try {
       resultList = await MultiImagePicker.pickImages(
-        maxImages: maxImages - images.length,
+        maxImages: maxImages - widget.card.images.length,
       );
     } on PlatformException catch (e) {
       error = e.message;
-    }
-
-    for (Asset asset in resultList) {
-      originalImages.add(await asset.requestOriginal());
     }
 
     // If the widget was removed from the tree while the asynchronous platform
@@ -299,33 +290,15 @@ class _InfoCardState extends State<InfoCard> {
     // setState to update our non-existent appearance.
     if (!mounted) return;
 
+    for (Asset asset in resultList) {
+      ByteData bytes = await asset.requestOriginal();
+      widget.card.images.add(bytes.buffer.asUint8List());
+      asset.release();
+    }
+
+
     setState(() {
-      images.addAll(resultList);
       if (error == null) print("No error detected");
     });
-  }
-
-  List<Widget> _makeTags() {
-    List<Widget> list = [];
-    if (widget.card.tags == null) {
-      //widget.card.tags = [];
-    }
-    if (widget.card.tags.isEmpty) {
-      return list;
-    }
-    for (int i = 0; i < widget.card.tags.length; ++i) {
-      list.add(Tag(
-        tag: (widget.card.tags[i].length < 20)
-            ? widget.card.tags[i]
-            : "" + widget.card.tags[i].substring(0, 15) + "...",
-        context: context,
-        onDeleted: () {
-          setState(() {
-            widget.card.tags.remove(widget.card.tags[i]);
-          });
-        },
-      ));
-    }
-    return list;
   }
 }

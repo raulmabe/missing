@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
             color: Color(0xffff7675),
             theme: buildTheme(context, false),
             home: StoreBuilder<AppState>(
-              onInit: (store) => store.dispatch(GetCards()),
+              // onInit: (store) => store.dispatch(GetCards()),
               builder: (context, store) => HomePage(),
             ),
           );

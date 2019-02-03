@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:multi_image_picker/asset.dart';
-import 'package:multi_image_picker/multi_image_picker.dart';
 
 class ImagePreview extends StatefulWidget {
-  final images;
+  final List<List<int>> images;
   final index;
-  final Function(int) remove;
-
-  ImagePreview({this.remove,@required this.images, this.index});
+  ImagePreview({@required this.images, this.index});
 
   @override
   ImagePreviewState createState() {
@@ -15,28 +11,36 @@ class ImagePreview extends StatefulWidget {
   }
 }
 
-class ImagePreviewState extends State<ImagePreview> {
+class ImagePreviewState extends State<ImagePreview>
+    with SingleTickerProviderStateMixin {
+  AnimationController _animationController;
+  Animation<double> opacityAnim;
+  Animation<Offset> translateAnim;
+
   PageController _controller;
-  int currentIndex;
+
+  int imageToDelete;
 
   @override
   void initState() {
     super.initState();
-    _controller = PageController(initialPage: widget.index);
-    currentIndex = widget.index;
+    imageToDelete = widget.index;
+    _controller =
+        PageController(initialPage: widget.index, viewportFraction: 1);
 
-    _controller.addListener(() {
-      setState(() {
-        currentIndex = (_controller.page.toInt());
-      });
-    });
+    _animationController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 300));
+    opacityAnim = Tween(begin: 1.0, end: 0.0).animate(CurvedAnimation(
+        parent: _animationController, curve: Curves.fastOutSlowIn));
+    translateAnim = Tween<Offset>(begin: Offset(0, 0), end: Offset(0, -1000))
+        .animate(CurvedAnimation(
+            parent: _animationController, curve: Curves.fastOutSlowIn));
+
+    _animationController.addListener(_handleDeleteAnimation);
   }
 
   @override
   void dispose() {
-    for (var bytes in widget.images) {
-      bytes = null;
-    }
     super.dispose();
   }
 
@@ -46,34 +50,43 @@ class ImagePreviewState extends State<ImagePreview> {
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
-          Center(
-            child: AspectRatio(
-              aspectRatio: 1,
-                      child: PageView(
-                        controller: _controller,
-                children: List.generate(widget.images.length, (i) {
-                  return Hero(
-                    tag: currentIndex,
-                    child: Image.memory(
-                      widget.images[i].buffer.asUint8List(),
-                      fit: BoxFit.cover,
-                      gaplessPlayback: true,
-                    ),
+          PageView.builder(
+              itemCount: widget.images.length,
+              controller: _controller,
+              physics: AlwaysScrollableScrollPhysics(),
+              onPageChanged: (i) => imageToDelete = i,
+              itemBuilder: (context, index) {
+                return List.generate(widget.images.length, (i) {
+                  return Stack(
+                    children: <Widget>[
+                      GestureDetector(
+                        onTap: () => Navigator.pop(context),
+                      ),
+                      Transform.translate(
+                          offset: translateAnim.value,
+                          child: Opacity(
+                            opacity: opacityAnim.value,
+                            child: Hero(
+                              tag: i,
+                              child: Center(
+                                child: Image.memory(
+                                  widget.images[i],
+                                  fit: BoxFit.contain,
+                                  gaplessPlayback: true,
+                                ),
+                              ),
+                            ),
+                          )),
+                    ],
                   );
-                }),
-              ),
-            ),
-          ),
+                })[index];
+              }),
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
               padding: const EdgeInsets.only(bottom: 40.0),
               child: FloatingActionButton(
-                onPressed: () {
-                  
-                  widget.remove(currentIndex);
-
-                },
+                onPressed: () => _animationController.forward(),
                 child: Icon(
                   Icons.delete,
                   size: 30,
@@ -85,5 +98,17 @@ class ImagePreviewState extends State<ImagePreview> {
         ],
       ),
     );
+  }
+
+  void _handleDeleteAnimation() {
+    setState(() {
+      if (_animationController.isCompleted) {
+        print('Deleting ${imageToDelete}');
+        if (imageToDelete != null && widget.images.length >= imageToDelete)
+          widget.images.removeAt(imageToDelete);
+        if (widget.images.isEmpty) Navigator.pop(context);
+        _animationController.reset();
+      }
+    });
   }
 }

@@ -4,6 +4,7 @@
         <!-- Show a splash screen on the activity. Automatically removed when
              Flutter draws its first frame -->
         <item name="android:windowBackground">@drawable/launch_background</item>
+        <item name="android:defaultFocusHighlightEnabled">false</item>
     </style>
 
     <string name="error_over_count_default">You have reached max selectable</string>

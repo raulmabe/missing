@@ -31,7 +31,7 @@ class Profile extends StatelessWidget {
                     shape: CircleBorder(),
                     child: CircleAvatar(
                       backgroundImage: AssetImage("assets/profile_pic.jpg"),
-                      radius: MediaQuery.of(context).size.width*.1,
+                      radius: MediaQuery.of(context).size.width * .1,
                     ),
                   ),
                 ),
@@ -62,7 +62,8 @@ class Profile extends StatelessWidget {
             Text("Raul Mateo Beneyto",
                 style: TextStyle(
                     color: Colors.black,
-                    fontSize: 20.0 * MediaQuery.of(context).textScaleFactor, // ! TEST
+                    fontSize:
+                        20.0 * MediaQuery.of(context).textScaleFactor, // ! TEST
                     fontWeight: FontWeight.w600)),
             Text("Premià de Mar, Barcelona",
                 style: TextStyle(
@@ -77,12 +78,12 @@ class Profile extends StatelessWidget {
                     children: <Widget>[
                       Text("found".toUpperCase(),
                           style: TextStyle(
-                    color: Colors.black,
+                              color: Colors.black,
                               fontSize: 15.0,
                               fontWeight: FontWeight.w200)),
                       Text(2.toString(),
                           style: TextStyle(
-                    color: Colors.black,
+                              color: Colors.black,
                               fontSize: 25.0,
                               fontWeight: FontWeight.w200)),
                     ],
@@ -92,12 +93,12 @@ class Profile extends StatelessWidget {
                     children: <Widget>[
                       Text("missings".toUpperCase(),
                           style: TextStyle(
-                    color: Colors.black,
+                              color: Colors.black,
                               fontSize: 15.0,
                               fontWeight: FontWeight.w200)),
                       Text(3.toString(),
                           style: TextStyle(
-                    color: Colors.black,
+                              color: Colors.black,
                               fontSize: 25.0,
                               fontWeight: FontWeight.w200)),
                     ],
@@ -107,23 +108,44 @@ class Profile extends StatelessWidget {
             ),
           ],
         ),
-        Divider(color: Theme.of(context).primaryColor,),
-        Expanded(
-          child: StaggeredGridView.count(
-            physics: AlwaysScrollableScrollPhysics(),
-            padding: EdgeInsets.only(
-                top: 10.0, bottom: 10.0, left: 10.0, right: 10.0),
-            crossAxisCount: 4,
-            mainAxisSpacing: 15.0,
-            crossAxisSpacing: 10.0,
-            children: []..add(UploadCard()),
-            //..addAll(cardsMockUps().getRange(0, 2)),
-            staggeredTiles: ([]..add(UploadCard()))
-                //..addAll(cardsMockUps().getRange(0, 2)))
-                .map<StaggeredTile>((_) => StaggeredTile.fit(2))
-                .toList(),
-          ),
+        Divider(
+          color: Theme.of(context).primaryColor,
         ),
+        Expanded(child: LayoutBuilder(
+          builder: (context, constraints) {
+            if (constraints.hasBoundedWidth) {
+              return StaggeredGridView.count(
+                physics: AlwaysScrollableScrollPhysics(),
+                padding: EdgeInsets.only(
+                    top: 10.0, bottom: 10.0, left: 10.0, right: 10.0),
+                crossAxisCount: 2,
+                mainAxisSpacing: 15.0,
+                crossAxisSpacing: 10.0,
+                children: []..add(UploadCard()),
+                //..addAll(cardsMockUps().getRange(0, 2)),
+                staggeredTiles: ([]..add(UploadCard()))
+                    //..addAll(cardsMockUps().getRange(0, 2)))
+                    .map<StaggeredTile>((_) => StaggeredTile.fit(1))
+                    .toList(),
+              );
+            } else {
+              return StaggeredGridView.count(
+                physics: AlwaysScrollableScrollPhysics(),
+                padding: EdgeInsets.only(
+                    top: 10.0, bottom: 10.0, left: 10.0, right: 10.0),
+                crossAxisCount: 4,
+                mainAxisSpacing: 15.0,
+                crossAxisSpacing: 10.0,
+                children: []..add(UploadCard()),
+                //..addAll(cardsMockUps().getRange(0, 2)),
+                staggeredTiles: ([]..add(UploadCard()))
+                    //..addAll(cardsMockUps().getRange(0, 2)))
+                    .map<StaggeredTile>((_) => StaggeredTile.fit(2))
+                    .toList(),
+              );
+            }
+          },
+        )),
       ],
     );
   }

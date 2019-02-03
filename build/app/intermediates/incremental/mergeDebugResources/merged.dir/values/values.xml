@@ -1773,6 +1773,7 @@
         <!-- Show a splash screen on the activity. Automatically removed when
              Flutter draws its first frame -->
         <item name="android:windowBackground">@drawable/launch_background</item>
+        <item name="android:defaultFocusHighlightEnabled">false</item>
     </style>
     <style name="Matisse.Dracula" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">@color/dracula_primary</item>
