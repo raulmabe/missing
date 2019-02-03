@@ -103,7 +103,6 @@ class ImagePreviewState extends State<ImagePreview>
   void _handleDeleteAnimation() {
     setState(() {
       if (_animationController.isCompleted) {
-        print('Deleting ${imageToDelete}');
         if (imageToDelete != null && widget.images.length >= imageToDelete)
           widget.images.removeAt(imageToDelete);
         if (widget.images.isEmpty) Navigator.pop(context);

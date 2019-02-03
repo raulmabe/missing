@@ -3,7 +3,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter/rendering.dart';
 import '../../utils/appType.dart';
 import './homePage_vm.dart';
-import '../widgets/missingCards.dart';
+import '../widgets/missingCard.dart';
 
 typedef onScrollVoid = void Function(ScrollDirection);
 
