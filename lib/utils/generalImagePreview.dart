@@ -4,8 +4,9 @@ import 'package:vector_math/vector_math_64.dart' as vector;
 class GeneralImagePreview extends StatefulWidget {
   final List<List<int>> images;
   final index;
-  final List<Widget> tags;
-  GeneralImagePreview({@required this.images, this.index, this.tags});
+final Function(int) onChangeImage;
+
+  GeneralImagePreview({@required this.images, this.index, this.onChangeImage});
 
   @override
   GeneralImagePreviewState createState() {
@@ -14,8 +15,6 @@ class GeneralImagePreview extends StatefulWidget {
 }
 
 class GeneralImagePreviewState extends State<GeneralImagePreview> {
-  double _zoom;
-  double _previousZoom;
 
   PageController _controller;
 
@@ -24,9 +23,6 @@ class GeneralImagePreviewState extends State<GeneralImagePreview> {
     super.initState();
     _controller =
         PageController(initialPage: widget.index, viewportFraction: 1);
-
-    _zoom = 1.0;
-    _previousZoom = null;
   }
 
   @override
@@ -42,6 +38,7 @@ class GeneralImagePreviewState extends State<GeneralImagePreview> {
           itemCount: widget.images.length,
           controller: _controller,
           physics: AlwaysScrollableScrollPhysics(),
+          onPageChanged: (page) => widget.onChangeImage(page) ,
           itemBuilder: (context, index) {
             return List.generate(widget.images.length, (i) {
               return Stack(
@@ -51,20 +48,11 @@ class GeneralImagePreviewState extends State<GeneralImagePreview> {
                   ),
                   Hero(
                     tag: i,
-                    child: GestureDetector(
-                      onScaleStart: _handleScaleStart,
-                      onScaleUpdate: _handleScaleUpdate,
-                      onDoubleTap: _handleScaleReset,
-                      child: Transform(
-                        transform: Matrix4.diagonal3(
-                            new vector.Vector3(_zoom, _zoom, _zoom)),
-                        child: Center(
-                          child: Image.memory(
-                            widget.images[i],
-                            fit: BoxFit.contain,
-                            gaplessPlayback: true,
-                          ),
-                        ),
+                    child: Center(
+                      child: Image.memory(
+                        widget.images[i],
+                        fit: BoxFit.contain,
+                        gaplessPlayback: true,
                       ),
                     ),
                   ),
@@ -73,23 +61,5 @@ class GeneralImagePreviewState extends State<GeneralImagePreview> {
             })[index];
           }),
     );
-  }
-
-  void _handleScaleStart(ScaleStartDetails start) {
-    setState(() {
-      _previousZoom = _zoom;
-    });
-  }
-
-  void _handleScaleUpdate(ScaleUpdateDetails update) {
-    setState(() {
-      _zoom = _previousZoom * update.scale;
-    });
-  }
-
-  void _handleScaleReset() {
-    setState(() {
-      _zoom = 1.0;
-    });
   }
 }

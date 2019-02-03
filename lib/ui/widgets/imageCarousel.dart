@@ -57,14 +57,10 @@ class _ImageCarouselState extends State<ImageCarousel> {
       children: <Widget>[
         Hero(
           tag: index,
-          child: ClipRRect(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-            child: Image.memory(
-              widget.images[index],
-              fit: BoxFit.cover,
-              gaplessPlayback: true,
-            ),
+          child: Image.memory(
+            widget.images[index],
+            fit: BoxFit.cover,
+            gaplessPlayback: true,
           ),
         ),
         DecoratedBox(
@@ -83,6 +79,11 @@ class _ImageCarouselState extends State<ImageCarousel> {
                     widget: GeneralImagePreview(
                   images: widget.images,
                   index: index,
+                  onChangeImage: (int page){
+                    _controller.animateToPage(page,
+                    duration: Duration(milliseconds: 300),
+                    curve: Curves.ease);
+                  },
                 )));
           },
         )

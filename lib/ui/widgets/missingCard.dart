@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../missingPage/missingDetails.dart';
+import '../missingPage/missingPage.dart';
 import '../widgets/customBorder.dart';
 import '../../models/card.dart';
 import 'package:flutter/cupertino.dart';
