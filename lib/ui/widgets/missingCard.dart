@@ -108,22 +108,22 @@ class MissingCard extends StatelessWidget {
   Widget _buildImage(context) {
     return Stack(
       children: <Widget>[
-        Builder(
-          builder: (context) {
-            if (card.images == null || card.images.isEmpty) {
-              return Container(
-                height: imageHeight,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(borderRadius),
-                    color: Colors.blueGrey[100]),
-                child:
-                    IconType(type: card.type, color: Colors.blueGrey, size: 50),
-              );
-            } else {
-              return Hero(
-                tag: card.id,
-                child: ClipRRect(
+        Hero(
+          tag: card.id,
+          child: Builder(
+            builder: (context) {
+              if (card.images == null || card.images.isEmpty) {
+                return Container(
+                  height: imageHeight,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(borderRadius),
+                      color: Colors.blueGrey[100]),
+                  child:
+                      IconType(type: card.type, color: Colors.blueGrey, size: 50),
+                );
+              } else {
+                return ClipRRect(
                   borderRadius: BorderRadius.circular(borderRadius),
                   child: Container(
                     height: imageHeight,
@@ -133,10 +133,10 @@ class MissingCard extends StatelessWidget {
                       gaplessPlayback: true,
                     ),
                   ),
-                ),
-              );
-            }
-          },
+                );
+              }
+            },
+          ),
         ),
         Positioned(
           bottom: 0,

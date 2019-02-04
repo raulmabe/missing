@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:missing/ui/widgets/iconType.dart';
 import '../singleChatPage/chat.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../widgets/chips.dart';
@@ -59,10 +60,20 @@ class _MissingDetailsState extends State<MissingDetails> {
                 ),
                 Hero(
                   tag: card.id,
-                  child: Container(
-                    height: 300,
-                    child: ImageCarousel(
-                      images: card.images,
+                  child: (card.images.isNotEmpty)
+                      ? Container(
+                        height: 300,
+                        child: ImageCarousel(
+                          images: card.images,
+                        ),
+                      )
+                      : Container(
+                    height: 200,
+                    color: Colors.blueGrey[100],
+                    child: IconType(
+                      type: card.type,
+                      color: Colors.blueGrey,
+                      size: 70,
                     ),
                   ),
                 ),

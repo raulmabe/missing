@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../missingPage/missingDetails.dart';
-import '../widgets/customBorder.dart';
-import '../../models/card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../themeData.dart';
-import './iconType.dart';
+import 'package:missing/models/card.dart';
+import 'package:missing/themeData.dart';
+import 'package:missing/trash/missingDetails.dart';
+import 'package:missing/ui/widgets/customBorder.dart';
+import 'package:missing/ui/widgets/iconType.dart';
 
 class MissingCard extends StatelessWidget {
   final CardModel card;

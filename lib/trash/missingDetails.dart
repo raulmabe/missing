@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../singleChatPage/chat.dart';
+import 'package:missing/models/card.dart';
+import 'package:missing/trash/missingCardExpanded.dart';
+import 'package:missing/ui/singleChatPage/chat.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../widgets/missingCardExpanded.dart';
 import 'package:flutter/cupertino.dart';
-import '../../themeData.dart';
-import '../../models/card.dart';
+import '../themeData.dart';
 
 class MissingDetails extends StatefulWidget {
   final CardModel card;

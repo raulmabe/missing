@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../models/card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import './chips.dart';
-import '../../themeData.dart';
-import '../widgets/imageCarousel.dart';
+import 'package:missing/models/card.dart';
+import 'package:missing/themeData.dart';
+import 'package:missing/ui/widgets/chips.dart';
+import 'package:missing/ui/widgets/imageCarousel.dart';
 
 class MissingCardExpanded extends StatelessWidget {
   final CardModel card;
