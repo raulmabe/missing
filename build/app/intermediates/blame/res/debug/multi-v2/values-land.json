@@ -4,7 +4,11 @@
             "outputFile": "/home/raul/Documents/missing/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
             "map": [
                 {
+<<<<<<< HEAD
                     "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/appcompat-1.0.0-rc01.aar/4a8c5d9c01409187497130451f8d93af/res/values-land/values-land.xml",
+=======
+                    "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/appcompat-1.0.2.aar/426cf597d041cfd757273e7c1b0c1f24/res/values-land/values-land.xml",
+>>>>>>> builtvalue
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",

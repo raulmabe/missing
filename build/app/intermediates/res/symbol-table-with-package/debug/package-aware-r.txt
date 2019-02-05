@@ -722,7 +722,6 @@ drawable ic_arrow_drop_down_white_24dp
 drawable ic_check_white_18dp
 drawable ic_empty_dracula
 drawable ic_empty_zhihu
-drawable ic_emtpy_light
 drawable ic_gif
 drawable ic_photo_camera_white_24dp
 drawable ic_play_circle_outline_white_48dp
@@ -910,6 +909,7 @@ id title_template
 id toolbar
 id top
 id topPanel
+id top_toolbar
 id uniform
 id up
 id useLogo
@@ -1050,7 +1050,6 @@ string common_signin_button_text_long
 string empty_text
 string error_file_type
 string error_no_video_activity
-string error_over_count
 string error_over_count_default
 string error_over_original_count
 string error_over_original_size

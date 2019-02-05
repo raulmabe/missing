@@ -38,7 +38,11 @@
                     }
                 },
                 {
+<<<<<<< HEAD
                     "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/appcompat-1.0.0-rc01.aar/4a8c5d9c01409187497130451f8d93af/res/values-eu/values-eu.xml",
+=======
+                    "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/appcompat-1.0.2.aar/426cf597d041cfd757273e7c1b0c1f24/res/values-eu/values-eu.xml",
+>>>>>>> builtvalue
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -55,7 +59,11 @@
                     }
                 },
                 {
+<<<<<<< HEAD
                     "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/core-1.0.0-rc01.aar/53957653785d12bcc2e36fbbfd1eae6b/res/values-eu/values-eu.xml",
+=======
+                    "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/core-1.0.1.aar/576dbd17fc5c6e53f3e8b74c29171789/res/values-eu/values-eu.xml",
+>>>>>>> builtvalue
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

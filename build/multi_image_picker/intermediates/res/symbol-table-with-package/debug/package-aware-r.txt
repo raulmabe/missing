@@ -312,7 +312,6 @@ attr windowNoTitle
 bool abc_action_bar_embed_tabs
 bool abc_allow_stacked_button_bar
 bool abc_config_actionMenuItemAllCaps
-bool abc_config_showMenuShortcutsWhenKeyboardPresent
 color abc_background_cache_hint_selector_material_dark
 color abc_background_cache_hint_selector_material_light
 color abc_btn_colored_borderless_text_material
@@ -378,7 +377,10 @@ color dracula_preview_bottom_toolbar_apply_text_disable
 color dracula_preview_bottom_toolbar_back_text
 color dracula_primary
 color dracula_primary_dark
+<<<<<<< HEAD
 color error_color_material
+=======
+>>>>>>> builtvalue
 color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
@@ -399,7 +401,6 @@ color material_grey_850
 color material_grey_900
 color notification_action_color_filter
 color notification_icon_bg_color
-color notification_material_background_media_default_color
 color preview_bottom_size
 color preview_bottom_toolbar_bg
 color primary_dark_material_dark
@@ -457,7 +458,6 @@ dimen abc_action_bar_elevation_material
 dimen abc_action_bar_icon_vertical_padding_material
 dimen abc_action_bar_overflow_padding_end_material
 dimen abc_action_bar_overflow_padding_start_material
-dimen abc_action_bar_progress_bar_size
 dimen abc_action_bar_stacked_max_height
 dimen abc_action_bar_stacked_tab_max_width
 dimen abc_action_bar_subtitle_bottom_margin_material
@@ -664,7 +664,6 @@ drawable ic_arrow_drop_down_white_24dp
 drawable ic_check_white_18dp
 drawable ic_empty_dracula
 drawable ic_empty_zhihu
-drawable ic_emtpy_light
 drawable ic_gif
 drawable ic_photo_camera_white_24dp
 drawable ic_play_circle_outline_white_48dp
@@ -684,7 +683,6 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
-id action0
 id action_bar
 id action_bar_activity_content
 id action_bar_container
@@ -717,7 +715,6 @@ id buttonPanel
 id button_apply
 id button_back
 id button_preview
-id cancel_action
 id check_view
 id checkbox
 id chronometer
@@ -732,7 +729,6 @@ id edit_query
 id empty_view
 id empty_view_content
 id end
-id end_padder
 id expand_activities_button
 id expanded_menu
 id forever
@@ -752,7 +748,6 @@ id line1
 id line3
 id listMode
 id list_item
-id media_actions
 id media_thumbnail
 id message
 id multiply
@@ -797,7 +792,6 @@ id src_atop
 id src_in
 id src_over
 id start
-id status_bar_latest_event_content
 id submenuarrow
 id submit_area
 id tabMode
@@ -815,6 +809,7 @@ id title_template
 id toolbar
 id top
 id topPanel
+id top_toolbar
 id uniform
 id up
 id video_duration
@@ -862,17 +857,8 @@ layout media_grid_content
 layout media_grid_item
 layout notification_action
 layout notification_action_tombstone
-layout notification_media_action
-layout notification_media_cancel_action
-layout notification_template_big_media
-layout notification_template_big_media_custom
-layout notification_template_big_media_narrow
-layout notification_template_big_media_narrow_custom
 layout notification_template_custom_big
 layout notification_template_icon_group
-layout notification_template_lines_media
-layout notification_template_media
-layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
 layout photo_capture_item
@@ -1183,14 +1169,9 @@ style TextAppearance_AppCompat_Widget_Switch
 style TextAppearance_AppCompat_Widget_TextView_SpinnerItem
 style TextAppearance_Compat_Notification
 style TextAppearance_Compat_Notification_Info
-style TextAppearance_Compat_Notification_Info_Media
 style TextAppearance_Compat_Notification_Line2
-style TextAppearance_Compat_Notification_Line2_Media
-style TextAppearance_Compat_Notification_Media
 style TextAppearance_Compat_Notification_Time
-style TextAppearance_Compat_Notification_Time_Media
 style TextAppearance_Compat_Notification_Title
-style TextAppearance_Compat_Notification_Title_Media
 style TextAppearance_Widget_AppCompat_ExpandedMenu_Item
 style TextAppearance_Widget_AppCompat_Toolbar_Subtitle
 style TextAppearance_Widget_AppCompat_Toolbar_Title

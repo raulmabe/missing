@@ -38,7 +38,10 @@
     <string name="button_apply_default">Применить</string>
     <string name="button_back">Назад</string>
     <string name="button_ok">OK</string>
+    <string name="button_original">Оригинал</string>
     <string name="button_preview">Предпросмотр</string>
+    <string name="button_sure">Применить(%1$d)</string>
+    <string name="button_sure_default">Применить</string>
     <string msgid="8585111718777012708" name="common_google_play_services_enable_button">"Включить"</string>
     <string msgid="7045129128108380659" name="common_google_play_services_enable_text">"Для работы приложения \"<ns1:g id="APP_NAME">%1$s</ns1:g>\" требуется включить сервисы Google Play."</string>
     <string msgid="3147157405986503375" name="common_google_play_services_enable_title">"Включите сервисы Google Play"</string>

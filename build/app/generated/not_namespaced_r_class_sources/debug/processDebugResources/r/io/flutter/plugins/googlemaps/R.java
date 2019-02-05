@@ -139,6 +139,7 @@ public final class R {
         public static final int common_google_signin_btn_text_light_normal_background = 0x7f060066;
         public static final int googleg_disabled_color_18 = 0x7f060067;
         public static final int googleg_standard_color_18 = 0x7f060068;
+<<<<<<< HEAD
         public static final int notification_action_background = 0x7f060074;
         public static final int notification_bg = 0x7f060075;
         public static final int notification_bg_low = 0x7f060076;
@@ -151,6 +152,20 @@ public final class R {
         public static final int notification_template_icon_low_bg = 0x7f06007d;
         public static final int notification_tile_bg = 0x7f06007e;
         public static final int notify_panel_notification_icon_bg = 0x7f06007f;
+=======
+        public static final int notification_action_background = 0x7f060073;
+        public static final int notification_bg = 0x7f060074;
+        public static final int notification_bg_low = 0x7f060075;
+        public static final int notification_bg_low_normal = 0x7f060076;
+        public static final int notification_bg_low_pressed = 0x7f060077;
+        public static final int notification_bg_normal = 0x7f060078;
+        public static final int notification_bg_normal_pressed = 0x7f060079;
+        public static final int notification_icon_background = 0x7f06007a;
+        public static final int notification_template_icon_bg = 0x7f06007b;
+        public static final int notification_template_icon_low_bg = 0x7f06007c;
+        public static final int notification_tile_bg = 0x7f06007d;
+        public static final int notify_panel_notification_icon_bg = 0x7f06007e;
+>>>>>>> builtvalue
     }
     public static final class id {
         private id() {}
@@ -205,7 +220,11 @@ public final class R {
         public static final int time = 0x7f0700a0;
         public static final int title = 0x7f0700a1;
         public static final int top = 0x7f0700a5;
+<<<<<<< HEAD
         public static final int wide = 0x7f0700ac;
+=======
+        public static final int wide = 0x7f0700ad;
+>>>>>>> builtvalue
     }
     public static final class integer {
         private integer() {}

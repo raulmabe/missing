@@ -4,7 +4,11 @@
             "outputFile": "/home/raul/Documents/missing/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-tr-rTR/values-tr-rTR.xml",
             "map": [
                 {
+<<<<<<< HEAD
                     "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/jetified-matisse-0.5.1.aar/73ab660265deb30cff63f3e120c05b03/res/values-tr-rTR/values-tr-rTR.xml",
+=======
+                    "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/Matisse-040393d.aar/7a3ece047d69388944856da49388b1fc/res/values-tr-rTR/values-tr-rTR.xml",
+>>>>>>> builtvalue
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

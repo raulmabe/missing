@@ -1944,7 +1944,6 @@
     <string name="empty_text">No media yet</string>
     <string name="error_file_type">Unsupported file type</string>
     <string name="error_no_video_activity">No App found supporting video preview</string>
-    <string name="error_over_count">You can only select up to %1$d media files</string>
     <string name="error_over_count_default">You have reached max selectable</string>
     <string name="error_over_original_count">%1$d images over %2$d MB. Original will be unchecked</string>
     <string name="error_over_original_size">Can\'t select the images larger than %1$d MB</string>

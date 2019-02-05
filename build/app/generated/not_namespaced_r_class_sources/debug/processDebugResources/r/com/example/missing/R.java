@@ -3333,6 +3333,7 @@ public final class R {
     public static final int ic_check_white_18dp=0x7f06006a;
     public static final int ic_empty_dracula=0x7f06006b;
     public static final int ic_empty_zhihu=0x7f06006c;
+<<<<<<< HEAD
     public static final int ic_emtpy_light=0x7f06006d;
     public static final int ic_gif=0x7f06006e;
     public static final int ic_photo_camera_white_24dp=0x7f06006f;
@@ -3354,6 +3355,28 @@ public final class R {
     public static final int notify_panel_notification_icon_bg=0x7f06007f;
     public static final int tooltip_frame_dark=0x7f060080;
     public static final int tooltip_frame_light=0x7f060081;
+=======
+    public static final int ic_gif=0x7f06006d;
+    public static final int ic_photo_camera_white_24dp=0x7f06006e;
+    public static final int ic_play_circle_outline_white_48dp=0x7f06006f;
+    public static final int ic_preview_radio_off=0x7f060070;
+    public static final int ic_preview_radio_on=0x7f060071;
+    public static final int launch_background=0x7f060072;
+    public static final int notification_action_background=0x7f060073;
+    public static final int notification_bg=0x7f060074;
+    public static final int notification_bg_low=0x7f060075;
+    public static final int notification_bg_low_normal=0x7f060076;
+    public static final int notification_bg_low_pressed=0x7f060077;
+    public static final int notification_bg_normal=0x7f060078;
+    public static final int notification_bg_normal_pressed=0x7f060079;
+    public static final int notification_icon_background=0x7f06007a;
+    public static final int notification_template_icon_bg=0x7f06007b;
+    public static final int notification_template_icon_low_bg=0x7f06007c;
+    public static final int notification_tile_bg=0x7f06007d;
+    public static final int notify_panel_notification_icon_bg=0x7f06007e;
+    public static final int tooltip_frame_dark=0x7f06007f;
+    public static final int tooltip_frame_light=0x7f060080;
+>>>>>>> builtvalue
   }
   public static final class id {
     public static final int ALT=0x7f070000;
@@ -3523,6 +3546,7 @@ public final class R {
     public static final int toolbar=0x7f0700a4;
     public static final int top=0x7f0700a5;
     public static final int topPanel=0x7f0700a6;
+<<<<<<< HEAD
     public static final int uniform=0x7f0700a7;
     public static final int up=0x7f0700a8;
     public static final int useLogo=0x7f0700a9;
@@ -3531,6 +3555,17 @@ public final class R {
     public static final int wide=0x7f0700ac;
     public static final int withText=0x7f0700ad;
     public static final int wrap_content=0x7f0700ae;
+=======
+    public static final int top_toolbar=0x7f0700a7;
+    public static final int uniform=0x7f0700a8;
+    public static final int up=0x7f0700a9;
+    public static final int useLogo=0x7f0700aa;
+    public static final int video_duration=0x7f0700ab;
+    public static final int video_play_button=0x7f0700ac;
+    public static final int wide=0x7f0700ad;
+    public static final int withText=0x7f0700ae;
+    public static final int wrap_content=0x7f0700af;
+>>>>>>> builtvalue
   }
   public static final class integer {
     public static final int abc_config_activityDefaultDur=0x7f080000;
@@ -3673,7 +3708,10 @@ public final class R {
     public static final int empty_text=0x7f0c0042;
     public static final int error_file_type=0x7f0c0043;
     public static final int error_no_video_activity=0x7f0c0044;
+<<<<<<< HEAD
     public static final int error_over_count=0x7f0c0045;
+=======
+>>>>>>> builtvalue
     public static final int error_over_count_default=0x7f0c0046;
     public static final int error_over_original_count=0x7f0c0047;
     public static final int error_over_original_size=0x7f0c0048;

@@ -108,7 +108,11 @@ packages:
       name: multi_image_picker
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "3.0.11"
+=======
+    version: "3.0.12"
+>>>>>>> builtvalue
   path:
     dependency: transitive
     description:

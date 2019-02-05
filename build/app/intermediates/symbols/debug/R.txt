@@ -721,6 +721,7 @@ int drawable ic_arrow_drop_down_white_24dp 0x7f060069
 int drawable ic_check_white_18dp 0x7f06006a
 int drawable ic_empty_dracula 0x7f06006b
 int drawable ic_empty_zhihu 0x7f06006c
+<<<<<<< HEAD
 int drawable ic_emtpy_light 0x7f06006d
 int drawable ic_gif 0x7f06006e
 int drawable ic_photo_camera_white_24dp 0x7f06006f
@@ -742,6 +743,28 @@ int drawable notification_tile_bg 0x7f06007e
 int drawable notify_panel_notification_icon_bg 0x7f06007f
 int drawable tooltip_frame_dark 0x7f060080
 int drawable tooltip_frame_light 0x7f060081
+=======
+int drawable ic_gif 0x7f06006d
+int drawable ic_photo_camera_white_24dp 0x7f06006e
+int drawable ic_play_circle_outline_white_48dp 0x7f06006f
+int drawable ic_preview_radio_off 0x7f060070
+int drawable ic_preview_radio_on 0x7f060071
+int drawable launch_background 0x7f060072
+int drawable notification_action_background 0x7f060073
+int drawable notification_bg 0x7f060074
+int drawable notification_bg_low 0x7f060075
+int drawable notification_bg_low_normal 0x7f060076
+int drawable notification_bg_low_pressed 0x7f060077
+int drawable notification_bg_normal 0x7f060078
+int drawable notification_bg_normal_pressed 0x7f060079
+int drawable notification_icon_background 0x7f06007a
+int drawable notification_template_icon_bg 0x7f06007b
+int drawable notification_template_icon_low_bg 0x7f06007c
+int drawable notification_tile_bg 0x7f06007d
+int drawable notify_panel_notification_icon_bg 0x7f06007e
+int drawable tooltip_frame_dark 0x7f06007f
+int drawable tooltip_frame_light 0x7f060080
+>>>>>>> builtvalue
 int id ALT 0x7f070000
 int id CTRL 0x7f070001
 int id FUNCTION 0x7f070002
@@ -909,6 +932,7 @@ int id title_template 0x7f0700a3
 int id toolbar 0x7f0700a4
 int id top 0x7f0700a5
 int id topPanel 0x7f0700a6
+<<<<<<< HEAD
 int id uniform 0x7f0700a7
 int id up 0x7f0700a8
 int id useLogo 0x7f0700a9
@@ -917,6 +941,17 @@ int id video_play_button 0x7f0700ab
 int id wide 0x7f0700ac
 int id withText 0x7f0700ad
 int id wrap_content 0x7f0700ae
+=======
+int id top_toolbar 0x7f0700a7
+int id uniform 0x7f0700a8
+int id up 0x7f0700a9
+int id useLogo 0x7f0700aa
+int id video_duration 0x7f0700ab
+int id video_play_button 0x7f0700ac
+int id wide 0x7f0700ad
+int id withText 0x7f0700ae
+int id wrap_content 0x7f0700af
+>>>>>>> builtvalue
 int integer abc_config_activityDefaultDur 0x7f080000
 int integer abc_config_activityShortDur 0x7f080001
 int integer cancel_button_image_alpha 0x7f080002
@@ -1049,7 +1084,10 @@ int string common_signin_button_text_long 0x7f0c0041
 int string empty_text 0x7f0c0042
 int string error_file_type 0x7f0c0043
 int string error_no_video_activity 0x7f0c0044
+<<<<<<< HEAD
 int string error_over_count 0x7f0c0045
+=======
+>>>>>>> builtvalue
 int string error_over_count_default 0x7f0c0046
 int string error_over_original_count 0x7f0c0047
 int string error_over_original_size 0x7f0c0048
