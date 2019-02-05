@@ -215,7 +215,7 @@ class _MissingDetailsState extends State<MissingDetails> {
           )
         ],
       ),
-      backgroundColor: MyTheme.of(context).kBackground,
+      backgroundColor:  MyTheme.of(context).kBackground,
       bottomNavigationBar: Container(
         decoration: ShapeDecoration(
             shape: RoundedRectangleBorder(

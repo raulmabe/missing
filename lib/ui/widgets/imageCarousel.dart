@@ -5,7 +5,9 @@ import 'dart:math';
 
 class ImageCarousel extends StatefulWidget {
   final List images;
-  ImageCarousel({@required this.images});
+  final double viewport;
+  final double borderRadius;
+  ImageCarousel({@required this.images, this.borderRadius, this.viewport = 1});
 
   @override
   _ImageCarouselState createState() => _ImageCarouselState();
@@ -18,7 +20,7 @@ class _ImageCarouselState extends State<ImageCarousel> {
   void initState() {
     super.initState();
     _controller = PageController(
-      viewportFraction: 1.0,
+      viewportFraction: widget.viewport,
     );
   }
 
@@ -52,42 +54,51 @@ class _ImageCarouselState extends State<ImageCarousel> {
   }
 
   Widget _buildImage(int index) {
-    return Stack(
-      fit: StackFit.expand,
-      children: <Widget>[
-        Hero(
-          tag: index,
-          child: Image.memory(
-            widget.images[index],
-            fit: BoxFit.cover,
-            gaplessPlayback: true,
+    return Transform.scale(
+      scale: 1, //(index.toDouble() ==_controller.page) ? 1 : .8,
+          child: Padding(
+        padding: const EdgeInsets.all(2.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(widget.borderRadius ?? 0),
+          child: Stack(
+            fit: StackFit.expand,
+            children: <Widget>[
+              Hero(
+                tag: index,
+                child: Image.memory(
+                  widget.images[index],
+                  fit: BoxFit.cover,
+                  gaplessPlayback: true,
+                ),
+              ),
+              DecoratedBox(
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                  begin: FractionalOffset.bottomCenter,
+                  end: FractionalOffset.center,
+                  colors: [Colors.black, Colors.transparent],
+                )),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      SoftTransition(
+                          widget: GeneralImagePreview(
+                        images: widget.images,
+                        index: index,
+                        onChangeImage: (int page) {
+                          _controller.animateToPage(page,
+                              duration: Duration(milliseconds: 300),
+                              curve: Curves.ease);
+                        },
+                      )));
+                },
+              )
+            ],
           ),
         ),
-        DecoratedBox(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-            begin: FractionalOffset.bottomCenter,
-            end: FractionalOffset.center,
-            colors: [Colors.black, Colors.transparent],
-          )),
-        ),
-        GestureDetector(
-          onTap: () {
-            Navigator.push(
-                context,
-                SoftTransition(
-                    widget: GeneralImagePreview(
-                  images: widget.images,
-                  index: index,
-                  onChangeImage: (int page){
-                    _controller.animateToPage(page,
-                    duration: Duration(milliseconds: 300),
-                    curve: Curves.ease);
-                  },
-                )));
-          },
-        )
-      ],
+      ),
     );
   }
 }
