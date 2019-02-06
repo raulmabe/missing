@@ -10,6 +10,7 @@ import './redux/reducers.dart';
 import 'package:redux_logging/redux_logging.dart';
 import './redux/middleware.dart';
 import './redux/actions.dart';
+import 'package:built_collection/built_collection.dart';
 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final Store<AppState> store = Store<AppState>(
       appStateReducer,
-      initialState: AppState.initialState(),
+      initialState: AppState((b) => b.cards = ListBuilder([])),
       middleware: [new LoggingMiddleware.printer(),appStateMiddleware
         ]
     );
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
             color: Color(0xffff7675),
             theme: buildTheme(context, false),
             home: StoreBuilder<AppState>(
-              // onInit: (store) => store.dispatch(GetCards()),
+              onInit: (store) => store.dispatch(GetCards()),
               builder: (context, store) => HomePage(),
             ),
           );

@@ -10,7 +10,7 @@ import '../../models/appState.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import './homePage_vm.dart';
 import '../../themeData.dart';
-import '../../utils/appType.dart';
+import '../../models/appTypes.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -82,17 +82,17 @@ class _HomePageState extends State<HomePage>
                       controller: _tabController,
                       children: <Widget>[
                         Body(
-                          type: AppType.values[0],
+                          type: AppTypes.values.toList()[0],
                           onScroll: onScroll,
                           viewModel: viewModel,
                         ),
                         Body(
-                          type: AppType.values[1],
+                          type: AppTypes.values.toList()[1],
                           onScroll: onScroll,
                           viewModel: viewModel,
                         ),
                         Body(
-                          type: AppType.values[2],
+                          type: AppTypes.values.toList()[2],
                           onScroll: onScroll,
                           viewModel: viewModel,
                         ),

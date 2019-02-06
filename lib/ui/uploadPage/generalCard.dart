@@ -3,7 +3,7 @@ import '../../themeData.dart';
 import '../widgets/myRadioButtons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './uploadPage_vm.dart';
-import '../../utils/appType.dart';
+import '../../models/appTypes.dart';
 
 class GeneralCard extends StatefulWidget {
   final TempCardModel card;
@@ -52,37 +52,37 @@ class _GeneralCardState extends State<GeneralCard> {
                   new CustomRadio(
                     unselectedColor: Colors.grey,
                     selectedColor: const Color(0xff7a6ad4),
-                    onTap: (i) {
+                    onTap: (type) {
                       setState(() {
-                        widget.card.type = AppType.values[i];
+                        widget.card.type = type;
                       });
                     },
-                    type: AppType.values[0],
-                    isSelected: widget.card.type == AppType.values[0],
+                    type: AppTypes.values.toList()[0],
+                    isSelected: widget.card.type == AppTypes.values.toList()[0],
                     size: 50,
                   ),
                   new CustomRadio(
                     unselectedColor: Colors.grey,
                     selectedColor: const Color(0xff7a6ad4),
-                    onTap: (i) {
+                    onTap: (type) {
                       setState(() {
-                        widget.card.type = AppType.values[i];
+                        widget.card.type = type;
                       });
                     },
-                    type: AppType.values[1],
-                    isSelected: widget.card.type == AppType.values[1],
+                    type: AppTypes.values.toList()[1],
+                    isSelected: widget.card.type == AppTypes.values.toList()[1],
                     size: 50,
                   ),
                   new CustomRadio(
                     unselectedColor: Colors.grey,
                     selectedColor: const Color(0xff7a6ad4),
-                    onTap: (i) {
+                    onTap: (type) {
                       setState(() {
-                        widget.card.type = AppType.values[i];
+                        widget.card.type = type;
                       });
                     },
-                    type: AppType.values[2],
-                    isSelected: widget.card.type == AppType.values[2],
+                    type: AppTypes.values.toList()[2],
+                    isSelected: widget.card.type == AppTypes.values.toList()[2],
                     size: 50,
                   ),
                 ],

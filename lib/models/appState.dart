@@ -1,19 +1,28 @@
-import 'package:flutter/foundation.dart';
 import './card.dart';
+import 'package:built_collection/built_collection.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
+import 'dart:convert';
+import './serializers.dart';
 
-class AppState{
-  List<CardModel> cards;
+part 'appState.g.dart';
 
-  AppState({
-    @required this.cards
-  });
+abstract class AppState implements Built<AppState, AppStateBuilder>{
 
-  AppState.initialState() : cards = List.unmodifiable(<CardModel>[]);
+  BuiltList<CardModel> get cards;
 
-  AppState.fromJson(Map json)
-    : cards = (json["cards"] as List).map(
-      (i) => CardModel.fromJson(i)
-    ).toList();
+  AppState._();
 
-    Map toJson()=>{"cards" : cards};
+  factory AppState([updates(AppStateBuilder b)]) = _$AppState;
+
+  static Serializer<AppState> get serializer => _$appStateSerializer;
+
+  String toJson(){
+    return json.encode(serializers.serializeWith(AppState.serializer, this));
+  }
+
+  static AppState fromJson(String jsonString){
+    return serializers.deserializeWith(AppState.serializer, json.decode(jsonString));
+  }
+
 }

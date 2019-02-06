@@ -71,7 +71,7 @@ class MissingCard extends StatelessWidget {
                             child: Container(
                               height: 250,
                               child: Image.memory(
-                                card.images[0],
+                                card.images[0].toList(),
                                 fit: BoxFit.cover,
                                 gaplessPlayback: true,
                               ),

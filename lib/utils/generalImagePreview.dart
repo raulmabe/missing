@@ -1,8 +1,9 @@
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math_64.dart' as vector;
 
 class GeneralImagePreview extends StatefulWidget {
-  final List<List<int>> images;
+  final images;
   final index;
 final Function(int) onChangeImage;
 
@@ -50,7 +51,7 @@ class GeneralImagePreviewState extends State<GeneralImagePreview> {
                     tag: i,
                     child: Center(
                       child: Image.memory(
-                        widget.images[i],
+                        Uint8List.fromList(widget.images[i].toList()),
                         fit: BoxFit.contain,
                         gaplessPlayback: true,
                       ),

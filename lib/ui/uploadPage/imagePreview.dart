@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:typed_data';
 
 class ImagePreview extends StatefulWidget {
   final List<List<int>> images;
@@ -71,7 +72,7 @@ class ImagePreviewState extends State<ImagePreview>
                               tag: i,
                               child: Center(
                                 child: Image.memory(
-                                  widget.images[i],
+                                  Uint8List.fromList(widget.images[i]),
                                   fit: BoxFit.contain,
                                   gaplessPlayback: true,
                                 ),

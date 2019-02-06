@@ -1,7 +1,7 @@
 import '../../models/card.dart';
 import '../../models/appState.dart';
 import 'package:redux/redux.dart';
-import '../../utils/appType.dart';
+import '../../models/appTypes.dart';
 import '../../redux/actions.dart';
 
 class ViewModel {
@@ -15,7 +15,7 @@ class ViewModel {
 
   factory ViewModel.create(Store<AppState> store) {
 
-    _getCardsByType(AppType type){
+    _getCardsByType(AppTypes type){
       store.dispatch(CardsByType(type: type));
     }
 
@@ -23,6 +23,6 @@ class ViewModel {
       store.dispatch(GetCards());
     }
 
-    return ViewModel(cards: store.state.cards, );
+    return ViewModel(cards: store.state.cards.asList(), );
   }
 }

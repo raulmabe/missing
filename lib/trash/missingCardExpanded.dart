@@ -25,7 +25,7 @@ class MissingCardExpanded extends StatelessWidget {
                   child: Container(
                     height: 300,
                     child: ImageCarousel(
-                      images: card.images,
+                      images: card.images.toList(),
                     ),
                   ),
                 )

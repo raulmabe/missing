@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../themeData.dart';
 import './iconType.dart';
+import 'dart:typed_data';
 
 class MissingCard extends StatelessWidget {
   final CardModel card;
@@ -128,7 +129,7 @@ class MissingCard extends StatelessWidget {
                   child: Container(
                     height: imageHeight,
                     child: Image.memory(
-                      card.images[0],
+                      Uint8List.fromList(card.images[0].asList()),
                       fit: BoxFit.cover,
                       gaplessPlayback: true,
                     ),

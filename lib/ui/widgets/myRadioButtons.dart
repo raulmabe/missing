@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import '../../utils/appType.dart';
+import '../../models/appTypes.dart';
 import './iconType.dart';
+import '../../models/appTypes.dart';
 
-
-typedef int2void = Function(int);
+typedef int2void = Function(AppTypes);
 
 class CustomRadio extends StatelessWidget {
   int2void onTap;
   final bool isSelected;
-  final AppType type;
+  final AppTypes type;
   final Color unselectedColor;
   final Color selectedColor;
 
@@ -35,7 +35,7 @@ class CustomRadio extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: () => onTap(type.index),
+          onTap: () => onTap(type),
           splashColor: selectedColor.withOpacity(.5),
           child: IconType(
             type: type,

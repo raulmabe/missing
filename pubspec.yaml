@@ -28,10 +28,15 @@ dependencies:
   redux_logging: ^0.3.0
   angles: ^1.0.0
   shared_preferences: ^0.5.0
+  built_value: 
+  built_collection:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  
+  build_runner:
+  built_value_generator:
 
 
 # For information on the generic Dart part of this file, see the

@@ -291,7 +291,7 @@ class _InfoCardState extends State<InfoCard> {
     if (!mounted) return;
 
     for (Asset asset in resultList) {
-      ByteData bytes = await asset.requestOriginal();
+      ByteData bytes = await asset.requestOriginal(quality: 10);
       widget.card.images.add(bytes.buffer.asUint8List());
       asset.release();
     }

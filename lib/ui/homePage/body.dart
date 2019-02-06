@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter/rendering.dart';
-import '../../utils/appType.dart';
+import '../../models/appTypes.dart';
 import './homePage_vm.dart';
 import '../widgets/missingCard.dart';
 
 typedef onScrollVoid = void Function(ScrollDirection);
 
 class Body extends StatefulWidget {
-  final AppType type;
+  final AppTypes type;
   final onScrollVoid onScroll;
   final ViewModel viewModel;
 

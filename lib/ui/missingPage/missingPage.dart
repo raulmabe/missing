@@ -8,6 +8,7 @@ import '../../themeData.dart';
 import '../../models/card.dart';
 import '../widgets/imageCarousel.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../../models/appTypes.dart';
 
 class MissingDetails extends StatefulWidget {
   final CardModel card;

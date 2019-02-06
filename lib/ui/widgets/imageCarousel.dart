@@ -1,10 +1,11 @@
+import 'dart:typed_data';
 import '../../utils/softTransition.dart';
 import '../../utils/generalImagePreview.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
 class ImageCarousel extends StatefulWidget {
-  final List images;
+  final images;
   final double viewport;
   final double borderRadius;
   ImageCarousel({@required this.images, this.borderRadius, this.viewport = 1});
@@ -66,7 +67,7 @@ class _ImageCarouselState extends State<ImageCarousel> {
               Hero(
                 tag: index,
                 child: Image.memory(
-                  widget.images[index],
+                  Uint8List.fromList(widget.images[index].toList()),
                   fit: BoxFit.cover,
                   gaplessPlayback: true,
                 ),

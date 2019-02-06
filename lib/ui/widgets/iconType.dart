@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../utils/appType.dart';
+import '../../models/appTypes.dart';
 
 class IconType extends StatelessWidget {
   final Color color;
   final double size;
-  final AppType type;
+  final AppTypes type;
   final bool light;
 
   IconType(
@@ -18,14 +18,14 @@ class IconType extends StatelessWidget {
   Widget build(BuildContext context) {
     IconData icon;
     switch (type) {
-      case AppType.PEOPLE:
+      case AppTypes.PEOPLE:
         icon =
             (light) ? FontAwesomeIcons.idBadge : FontAwesomeIcons.solidIdBadge;
         break;
-      case AppType.PETS:
+      case AppTypes.PETS:
         icon = FontAwesomeIcons.paw;
         break;
-      case AppType.THINGS:
+      case AppTypes.THINGS:
         icon = FontAwesomeIcons.archive;
         break;
     }

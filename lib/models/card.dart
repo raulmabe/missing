@@ -1,67 +1,44 @@
-import 'package:flutter/foundation.dart';
-import '../utils/appType.dart';
+import './appTypes.dart';
+import 'package:built_collection/built_collection.dart';
+import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
+import 'dart:convert';
+import './serializers.dart';
+
+part 'card.g.dart';
+
+abstract class CardModel implements Built<CardModel, CardModelBuilder>{
+
+  @nullable
+  BuiltList<BuiltList<int>> get images;
+
+  int get id;
+
+  AppTypes get type;
+
+  bool get missing;
+
+  String get title;
+
+  String get description;
+
+  String get location;
+
+  BuiltList<String> get tags;
+
+  CardModel._();
+  factory CardModel([updates(CardModelBuilder b)]) = _$CardModel;
+  
+  static Serializer<CardModel> get serializer => _$cardModelSerializer;
 
 
-class CardModel {
-  final List<List<int>> images;
-  final int id;
-  final AppType type;
-  final bool missing;
-  final String title;
-  final String description;
-  final String location;
-  final List<String> tags;
-  // int userId;
 
-  CardModel(
-      {this.images,
-      @required this.id,
-      @required this.missing,
-      @required this.type,
-      @required this.title,
-      @required this.description,
-      @required this.location,
-      @required this.tags});
+  String toJson(){
+    return json.encode(serializers.serializeWith(CardModel.serializer, this));
+  }
 
-  CardModel copyWith({List images,
-       int id,
-       bool missing,
-       AppType type,
-       String title,
-       String description,
-       String location,
-       List<String> tags}){
-         return CardModel(
-           id: id ?? this.id,
-           images: images ?? this.images,
-           missing: missing ?? this.missing,
-           type: type ?? this.type,
-           title: title ?? this.title,
-           description: description ?? this.description,
-           location: location ?? this.location,
-           tags: tags ?? this.tags,
-         );
-       }
+  static CardModel fromJson(String jsonString){
+    return serializers.deserializeWith(CardModel.serializer, json.decode(jsonString));
+  }
 
-  CardModel.fromJson(Map json)
-    : id = json["id"],
-     title = json["title"],
-     description = json["description"],
-     images = json["images"],
-     location = json["location"],
-     missing = json["missing"],
-     tags = json["tags"],
-     type = json["type"];
-
-
-  Map toJson() => {
-    "id" : (id as int),
-    "title" : title,
-    "description" : description,
-    "images" : images,
-    "location" : location,
-    "missing" : missing,
-    "type" : type,
-    "tags" : tags
-  };
 }

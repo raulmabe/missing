@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../utils/appType.dart';
+import '../../models/appTypes.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../singleChatPage/chat.dart';
 import '../../themeData.dart';
@@ -36,7 +36,7 @@ class ChatsPage extends StatelessWidget {
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
           itemBuilder: (context, index){
-            return ChatItem(AppType.PETS, index);
+            return ChatItem(AppTypes.PETS, index);
           },
         ),
       ),
@@ -46,7 +46,7 @@ class ChatsPage extends StatelessWidget {
 
 class ChatItem extends StatelessWidget {
 
-  final AppType type;
+  final AppTypes type;
   final int index;
   String name, lastMessage;
 
@@ -104,15 +104,15 @@ class ChatItem extends StatelessWidget {
             trailing: Builder(
               builder: (context){
                 switch(type){
-                  case AppType.PETS: return Icon(
+                  case AppTypes.PETS: return Icon(
                       Icons.pets,
                       color: MyTheme.of(context).kPrimaryColor,
                     );
-                  case AppType.PEOPLE: return Icon(
+                  case AppTypes.PEOPLE: return Icon(
                       Icons.face,
                       color: Theme.of(context).primaryColor,
                     );
-                  case AppType.THINGS: return Icon(
+                  case AppTypes.THINGS: return Icon(
                       FontAwesomeIcons.archive,
                       color: Theme.of(context).primaryColor,
                     );
