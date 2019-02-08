@@ -1,3 +1,4 @@
+import './ui/loginPage/loginPage.dart';
 import 'package:flutter/material.dart';
 import './ui/homePage/homePage.dart';
 import './themeData.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
             theme: buildTheme(context, false),
             home: StoreBuilder<AppState>(
               onInit: (store) => store.dispatch(GetCards()),
-              builder: (context, store) => HomePage(),
+              builder: (context, store) => HomePage(),//HomePage(),
             ),
           );
         },

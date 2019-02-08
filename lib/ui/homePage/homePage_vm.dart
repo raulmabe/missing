@@ -15,9 +15,6 @@ class ViewModel {
 
   factory ViewModel.create(Store<AppState> store) {
 
-    _getCardsByType(AppTypes type){
-      store.dispatch(CardsByType(type: type));
-    }
 
     _refreshCards(){
       store.dispatch(GetCards());

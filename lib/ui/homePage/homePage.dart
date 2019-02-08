@@ -11,6 +11,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import './homePage_vm.dart';
 import '../../themeData.dart';
 import '../../models/appTypes.dart';
+import './fancyTabBar.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -73,75 +74,83 @@ class _HomePageState extends State<HomePage>
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-          body: StoreConnector<AppState, ViewModel>(
-            converter: (store) => ViewModel.create(store),
-            builder: (context, viewModel) => Stack(
-                  children: <Widget>[
-                    TabBarView(
-                      physics: NeverScrollableScrollPhysics(),
-                      controller: _tabController,
-                      children: <Widget>[
-                        Body(
-                          type: AppTypes.values.toList()[0],
-                          onScroll: onScroll,
-                          viewModel: viewModel,
-                        ),
-                        Body(
-                          type: AppTypes.values.toList()[1],
-                          onScroll: onScroll,
-                          viewModel: viewModel,
-                        ),
-                        Body(
-                          type: AppTypes.values.toList()[2],
-                          onScroll: onScroll,
-                          viewModel: viewModel,
-                        ),
-                        Profile(),
-                      ],
-                    ),
-                    (_tabController.index == _tabController.length - 1 ||
-                            !_showSearchBar)
-                        ? new Container()
-                        : Positioned(
-                            top: 10.0,
-                            right: 20.0,
-                            left: 20.0,
-                            child: SafeArea(
-                              child: SearchBar(),
-                            )),
-                  ],
-                ),
-          ),
-          backgroundColor: MyTheme.of(context).kBackground,
-          bottomNavigationBar: BottomNavigationBar(
-            onTap: (index) {
-              setState(() {
-                _tabController.animateTo(index);
-              });
-            },
-            type: BottomNavigationBarType.fixed,
-            currentIndex: _tabController.index,
-            items: tabs.map((data) {
-              return BottomNavigationBarItem(
-                  icon: selectedTab == data
-                      ? ShaderMask(
-                          blendMode: BlendMode.srcIn,
-                          shaderCallback: (Rect bounds) {
-                            return ui.Gradient.linear(
-                              Offset(4.0, 24.0),
-                              Offset(24.0, 4.0),
-                              [
-                                Theme.of(context).primaryColor,
-                                Theme.of(context).primaryColorLight,
-                              ],
-                            );
-                          },
-                          child: Icon(data),
-                        )
-                      : Icon(data, color: Colors.grey),
-                  title: Container());
-            }).toList(),
-          )),
+        body: StoreConnector<AppState, ViewModel>(
+          converter: (store) => ViewModel.create(store),
+          builder: (context, viewModel) => Stack(
+                children: <Widget>[
+                  TabBarView(
+                    physics: NeverScrollableScrollPhysics(),
+                    controller: _tabController,
+                    children: <Widget>[
+                      Body(
+                        type: AppTypes.values.toList()[0],
+                        onScroll: onScroll,
+                        viewModel: viewModel,
+                      ),
+                      Body(
+                        type: AppTypes.values.toList()[1],
+                        onScroll: onScroll,
+                        viewModel: viewModel,
+                      ),
+                      Body(
+                        type: AppTypes.values.toList()[2],
+                        onScroll: onScroll,
+                        viewModel: viewModel,
+                      ),
+                      Profile(),
+                    ],
+                  ),
+                  (_tabController.index == _tabController.length - 1 ||
+                          !_showSearchBar)
+                      ? new Container()
+                      : Positioned(
+                          top: 10.0,
+                          right: 20.0,
+                          left: 20.0,
+                          child: SafeArea(
+                            child: SearchBar(),
+                          )),
+                ],
+              ),
+        ),
+        backgroundColor:MyTheme.of(context).kBackground,
+        bottomNavigationBar: FancyTabBar(
+          onTabTap: (i) {
+            setState(() {
+              _tabController.animateTo(i);
+            });
+          },
+        ),
+        // bottomNavigationBar: BottomNavigationBar(
+        //   onTap: (index) {
+        //     setState(() {
+        //       _tabController.animateTo(index);
+        //     });
+        //   },
+        //   type: BottomNavigationBarType.fixed,
+        //   currentIndex: _tabController.index,
+        //   items: tabs.map((data) {
+        //     return BottomNavigationBarItem(
+        //         icon: selectedTab == data
+        //             ? ShaderMask(
+        //                 blendMode: BlendMode.srcIn,
+        //                 shaderCallback: (Rect bounds) {
+        //                   return ui.Gradient.linear(
+        //                     Offset(4.0, 24.0),
+        //                     Offset(24.0, 4.0),
+        //                     [
+        //                       Theme.of(context).primaryColor,
+        //                       Theme.of(context).primaryColorLight,
+        //                     ],
+        //                   );
+        //                 },
+        //                 child: Icon(data),
+        //               )
+        //             : Icon(data, color: Colors.grey),
+        //         title: Container());
+        //   }).toList(),
+        // )),
+      ),
     );
   }
 

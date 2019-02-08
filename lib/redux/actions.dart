@@ -10,22 +10,16 @@ class AddCard {
   }
 }
 
-class CardsByType {
-  final AppTypes type;
-  CardsByType({this.type});
-}
-
 class DeleteCard {
   final CardModel card;
 
   DeleteCard({this.card});
 }
 
-class GetCards{}
+class GetCards{
+}
 
 class LoadedCards{
   final List<CardModel> cards;
-  LoadedCards(this.cards){
-    print(cards.length);
-  }
+  LoadedCards(this.cards);
 }

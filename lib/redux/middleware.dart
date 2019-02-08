@@ -18,7 +18,7 @@ void saveToPrefs(AppState state) async {
 Future<AppState> loadFromPrefs() async{
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var string = prefs.getString("cardsState");
-  if(string == null) return AppState((b) => b.cards = ListBuilder([]));
+  if(string == null) return AppState((b) => b.peopleCards = b.petsCards = b.thingsCards = ListBuilder([]));
   print('Card from JSON: $string');
   AppState appState = AppState.fromJson(string);
   return appState;
@@ -39,11 +39,14 @@ void appStateMiddleware(Store<AppState> store, action, NextDispatcher next) asyn
      print(" Location: ${action.card.location}");
      print(" Tags: ${action.card.tags}");
      print(" Images count: ${action.card.images.length}");
-       print("CARDS: ${store.state.cards.length}");
       saveToPrefs(store.state);
     }
 
     if(action is GetCards){
-      await loadFromPrefs().then((state) => store.dispatch(LoadedCards(state.cards.asList())));
+      await loadFromPrefs().then((state) => store.dispatch(LoadedCards(
+        peopleCards: state.peopleCards.asList(),
+        petsCards: state.petsCards.asList(),
+        thingsCards: state.thingsCards.asList(),
+        )));
     }
 }

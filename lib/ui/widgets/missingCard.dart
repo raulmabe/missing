@@ -128,6 +128,7 @@ class MissingCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(borderRadius),
                   child: Container(
                     height: imageHeight,
+                    width: double.infinity,
                     child: Image.memory(
                       Uint8List.fromList(card.images[0].asList()),
                       fit: BoxFit.cover,
