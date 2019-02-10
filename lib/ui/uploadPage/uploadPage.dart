@@ -84,44 +84,6 @@ class _UploadPageState extends State<UploadPage> {
                 ),
               ],
             ),
-            /*
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 10.0, horizontal: 10.0),
-                  child: StoreConnector<AppState, ViewModel>(
-                    converter: (store) => ViewModel.create(store),
-                    builder: (context, viewModel) => Material(
-                          color: Theme.of(context).primaryColor,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0)),
-                          child: InkWell(
-                              onTap: () => _submitUpload(viewModel),
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 10.0),
-                                child: Container(
-                                  height: 20,
-                                  child: Text(
-                                    "Submit".toUpperCase(),
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize: 18.0,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w600,
-                                        letterSpacing: 2.0),
-                                  ),
-                                ),
-                              )),
-                        ),
-                  ),
-                ),
-              ),
-            )*/
           ],
         ),
         bottomNavigationBar: SafeArea(

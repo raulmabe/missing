@@ -4,13 +4,15 @@ import './appState.dart';
 import './appTypes.dart';
 import 'package:built_value/standard_json_plugin.dart';
 import './card.dart';
+import './auth/authState.dart';
 
 part 'serializers.g.dart';
 
 @SerializersFor(const [
   AppState,
   CardModel,
-  AppTypes
+  AppTypes,
+  AuthState
 ])
 
 final Serializers serializers = (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

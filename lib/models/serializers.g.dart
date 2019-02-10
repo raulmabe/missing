@@ -9,6 +9,7 @@ part of 'serializers.dart';
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(AppState.serializer)
       ..add(AppTypes.serializer)
+      ..add(AuthState.serializer)
       ..add(CardModel.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [

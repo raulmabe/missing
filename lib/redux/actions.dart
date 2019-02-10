@@ -1,5 +1,6 @@
 import '../models/card.dart';
 import 'dart:math';
+import '../models/appState.dart';
 import '../models/appTypes.dart';
 
 class AddCard {
@@ -22,4 +23,14 @@ class GetCards{
 class LoadedCards{
   final List<CardModel> cards;
   LoadedCards(this.cards);
+}
+
+class StartLoading{}
+
+class StopLoading{}
+
+
+class LoadedState{
+  AppState state;
+  LoadedState({this.state});
 }
