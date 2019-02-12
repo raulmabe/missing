@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../themeData.dart';
 import '../uploadPage/uploadPage.dart';
 import 'package:flutter/cupertino.dart';
+import '../../utils/softTransition.dart';
 
 class UploadCard extends StatelessWidget {
   @override
@@ -14,8 +15,8 @@ class UploadCard extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            CupertinoPageRoute(
-              builder: (context) => UploadPage(),
+            SoftTransition(
+              widget: UploadPage(),
             ),
           );
         },
@@ -25,7 +26,7 @@ class UploadCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(10.0),
               border: Border.all(
                   color: Theme.of(context).primaryColor.withAlpha(100),
-                  width: 3.0)),
+                  width: 1.0)),
           child: Center(
             child: Icon(
               Icons.add,

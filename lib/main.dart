@@ -1,6 +1,6 @@
 import './ui/loginPage/loginPage_vm.dart';
 import 'package:flutter/material.dart';
-import './ui/homePage/homePage.dart';
+import './ui/homePage/homePage_vm.dart';
 import './themeData.dart';
 import 'package:flutter/services.dart';
 
@@ -11,13 +11,15 @@ import './redux/reducers.dart';
 import 'package:redux_logging/redux_logging.dart';
 import './redux/middleware.dart';
 import './redux/actions.dart';
-import 'package:built_collection/built_collection.dart';
 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: Colors.transparent,
-      systemNavigationBarIconBrightness: Brightness.light));
+      statusBarIconBrightness: Brightness.dark,
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarIconBrightness: Brightness.dark));
+
   runApp(MyApp());
 }
 
@@ -26,8 +28,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Store<AppState> store = Store<AppState>(appStateReducer,
-        initialState: AppState(),
-        middleware: [new LoggingMiddleware.printer(), appStateMiddleware]);
+        initialState: AppState.initial(),
+        middleware: [LoggingMiddleware.printer(), appStateMiddleware]);
 
     return StoreProvider<AppState>(
       store: store,
@@ -40,7 +42,7 @@ class MyApp extends StatelessWidget {
             theme: buildTheme(context, false),
             home: StoreBuilder<AppState>(
               onInit: (store) => store.dispatch(GetCards()),
-              builder: (context, store) => LoginPageBuilder(), //HomePage(),
+              builder: (context, store) =>  LoginPageBuilder(), //HomePage(),
             ),
           );
         },
@@ -63,6 +65,9 @@ class MyApp extends StatelessWidget {
         primaryColorLight: MyTheme.of(context).kPrimaryLight,
         primaryColorDark: MyTheme.of(context).kPrimaryDark,
         splashColor: MyTheme.of(context).kPrimaryColor.withAlpha(150),
-        canvasColor: Colors.white);
+        canvasColor: Colors.white,
+        iconTheme: IconThemeData(
+          color: MyTheme.of(context).iconsColor
+        ));
   }
 }

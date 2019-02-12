@@ -39,6 +39,9 @@ class _$CardModelSerializer implements StructuredSerializer<CardModel> {
       serializers.serialize(object.tags,
           specifiedType:
               const FullType(BuiltList, const [const FullType(String)])),
+      'time',
+      serializers.serialize(object.time,
+          specifiedType: const FullType(DateTime)),
     ];
     if (object.images != null) {
       result
@@ -99,6 +102,10 @@ class _$CardModelSerializer implements StructuredSerializer<CardModel> {
                       const FullType(BuiltList, const [const FullType(String)]))
               as BuiltList);
           break;
+        case 'time':
+          result.time = serializers.deserialize(value,
+              specifiedType: const FullType(DateTime)) as DateTime;
+          break;
       }
     }
 
@@ -123,6 +130,8 @@ class _$CardModel extends CardModel {
   final String location;
   @override
   final BuiltList<String> tags;
+  @override
+  final DateTime time;
 
   factory _$CardModel([void updates(CardModelBuilder b)]) =>
       (new CardModelBuilder()..update(updates)).build();
@@ -135,7 +144,8 @@ class _$CardModel extends CardModel {
       this.title,
       this.description,
       this.location,
-      this.tags})
+      this.tags,
+      this.time})
       : super._() {
     if (id == null) {
       throw new BuiltValueNullFieldError('CardModel', 'id');
@@ -158,6 +168,9 @@ class _$CardModel extends CardModel {
     if (tags == null) {
       throw new BuiltValueNullFieldError('CardModel', 'tags');
     }
+    if (time == null) {
+      throw new BuiltValueNullFieldError('CardModel', 'time');
+    }
   }
 
   @override
@@ -178,7 +191,8 @@ class _$CardModel extends CardModel {
         title == other.title &&
         description == other.description &&
         location == other.location &&
-        tags == other.tags;
+        tags == other.tags &&
+        time == other.time;
   }
 
   @override
@@ -188,13 +202,15 @@ class _$CardModel extends CardModel {
             $jc(
                 $jc(
                     $jc(
-                        $jc($jc($jc(0, images.hashCode), id.hashCode),
-                            type.hashCode),
-                        missing.hashCode),
-                    title.hashCode),
-                description.hashCode),
-            location.hashCode),
-        tags.hashCode));
+                        $jc(
+                            $jc($jc($jc(0, images.hashCode), id.hashCode),
+                                type.hashCode),
+                            missing.hashCode),
+                        title.hashCode),
+                    description.hashCode),
+                location.hashCode),
+            tags.hashCode),
+        time.hashCode));
   }
 
   @override
@@ -207,7 +223,8 @@ class _$CardModel extends CardModel {
           ..add('title', title)
           ..add('description', description)
           ..add('location', location)
-          ..add('tags', tags))
+          ..add('tags', tags)
+          ..add('time', time))
         .toString();
   }
 }
@@ -248,6 +265,10 @@ class CardModelBuilder implements Builder<CardModel, CardModelBuilder> {
   ListBuilder<String> get tags => _$this._tags ??= new ListBuilder<String>();
   set tags(ListBuilder<String> tags) => _$this._tags = tags;
 
+  DateTime _time;
+  DateTime get time => _$this._time;
+  set time(DateTime time) => _$this._time = time;
+
   CardModelBuilder();
 
   CardModelBuilder get _$this {
@@ -260,6 +281,7 @@ class CardModelBuilder implements Builder<CardModel, CardModelBuilder> {
       _description = _$v.description;
       _location = _$v.location;
       _tags = _$v.tags?.toBuilder();
+      _time = _$v.time;
       _$v = null;
     }
     return this;
@@ -291,7 +313,8 @@ class CardModelBuilder implements Builder<CardModel, CardModelBuilder> {
               title: title,
               description: description,
               location: location,
-              tags: tags.build());
+              tags: tags.build(),
+              time: time);
     } catch (_) {
       String _$failedField;
       try {

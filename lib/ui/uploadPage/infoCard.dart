@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/chips.dart';
+import '../widgets/tags.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'dart:async';
 import './imageBox.dart';

@@ -14,7 +14,7 @@ class AppTypes extends EnumClass {
 
   static const AppTypes PEOPLE = _$people;
   static const AppTypes PETS = _$pets;
-  static const AppTypes THINGS = _$things;
+  static const AppTypes ITEMS = _$items;
 
   const AppTypes._(String name) : super(name);
 

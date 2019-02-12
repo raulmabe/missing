@@ -2,6 +2,7 @@ import './modalSheet.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import './loginPage_vm.dart';
+import 'package:flutter/services.dart';
 
 class LoginPage extends StatefulWidget {
   final viewModel;
@@ -11,7 +12,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController _textController;
   GlobalKey<FormState> formKey;
 
   TempLoginModel loginInfo;
@@ -19,7 +19,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-    _textController = TextEditingController();
     formKey = GlobalKey<FormState>();
 
     loginInfo = TempLoginModel();
@@ -27,6 +26,16 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final page = ModalRoute.of(context);
+  page.didPush().then((x) {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        systemNavigationBarColor: Theme.of(context).primaryColor,
+        systemNavigationBarIconBrightness: Brightness.light
+      )
+    );
+  });
+
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       body: Column(

@@ -1,3 +1,4 @@
+import '../../utils/iconTypes.dart';
 import 'package:flutter/material.dart';
 import '../missingPage/missingPage.dart';
 import '../widgets/customBorder.dart';
@@ -5,18 +6,15 @@ import '../../models/card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../themeData.dart';
-import './iconType.dart';
 import 'dart:typed_data';
 
 class MissingCard extends StatelessWidget {
   final CardModel card;
 
   final double borderRadius = 10.0;
-  double imageHeight = 250.0;
+  final double imageHeight;
 
-  MissingCard({this.card}) {
-    if (card.images.isEmpty) imageHeight = 100;
-  }
+  MissingCard({this.card})  : imageHeight =card.images.isEmpty ? 100 : 250;
 
   @override
   Widget build(BuildContext context) {
@@ -89,12 +87,63 @@ class MissingCard extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Text(
-                        card.location,
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.w300,
-                        ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              card.location,
+                              style: TextStyle(
+                                fontSize: 14.0,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ),
+                          Builder(
+                            builder: (context) {
+                              String time;
+                              if (DateTime.now().difference(card.time).inDays >
+                                  0)
+                                time = DateTime.now()
+                                        .difference(card.time)
+                                        .inDays
+                                        .toString() +
+                                    "d";
+                              else if (DateTime.now()
+                                      .difference(card.time)
+                                      .inHours >
+                                  0)
+                                time = DateTime.now()
+                                        .difference(card.time)
+                                        .inHours
+                                        .toString() +
+                                    "h";
+                              else if (DateTime.now()
+                                      .difference(card.time)
+                                      .inMinutes >
+                                  0)
+                                time = DateTime.now()
+                                        .difference(card.time)
+                                        .inMinutes
+                                        .toString() +
+                                    "m";
+                              else
+                                time = DateTime.now()
+                                        .difference(card.time)
+                                        .inSeconds
+                                        .toString() +
+                                    "s";
+                              return Text(
+                                time,
+                                textAlign: TextAlign.end,
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              );
+                            },
+                          )
+                        ],
                       )
                     ],
                   ),
@@ -120,8 +169,8 @@ class MissingCard extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(borderRadius),
                       color: Colors.blueGrey[100]),
-                  child:
-                      IconType(type: card.type, color: Colors.blueGrey, size: 50),
+                  child: Icon(getTypeIcon(card.type),
+                      color: Colors.blueGrey, size: 50),
                 );
               } else {
                 return ClipRRect(

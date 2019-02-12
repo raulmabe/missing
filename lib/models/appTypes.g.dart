@@ -8,7 +8,7 @@ part of 'appTypes.dart';
 
 const AppTypes _$people = const AppTypes._('PEOPLE');
 const AppTypes _$pets = const AppTypes._('PETS');
-const AppTypes _$things = const AppTypes._('THINGS');
+const AppTypes _$items = const AppTypes._('ITEMS');
 
 AppTypes _$valueOf(String name) {
   switch (name) {
@@ -16,8 +16,8 @@ AppTypes _$valueOf(String name) {
       return _$people;
     case 'PETS':
       return _$pets;
-    case 'THINGS':
-      return _$things;
+    case 'ITEMS':
+      return _$items;
     default:
       throw new ArgumentError(name);
   }
@@ -26,7 +26,7 @@ AppTypes _$valueOf(String name) {
 final BuiltSet<AppTypes> _$values = new BuiltSet<AppTypes>(const <AppTypes>[
   _$people,
   _$pets,
-  _$things,
+  _$items,
 ]);
 
 Serializer<AppTypes> _$appTypesSerializer = new _$AppTypesSerializer();

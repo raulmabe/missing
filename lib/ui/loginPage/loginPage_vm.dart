@@ -12,8 +12,8 @@ class LoginPageBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, ViewModel>(
-      converter: (store) => ViewModel.create(store),
+    return StoreConnector<AppState, LoginViewModel>(
+      converter: (store) => LoginViewModel.create(store),
       builder: (context, viewModel) {
         return LoginPage(viewModel: viewModel);
       },
@@ -21,14 +21,14 @@ class LoginPageBuilder extends StatelessWidget {
   }
 }
 
-class ViewModel {
+class LoginViewModel {
   final Function(TempLoginModel, Function) onLogin;
 
   bool isLoading;
 
-  ViewModel({this.onLogin, this.isLoading});
+  LoginViewModel({this.onLogin, this.isLoading});
 
-  factory ViewModel.create(Store<AppState> store) {
+  factory LoginViewModel.create(Store<AppState> store) {
     _login(TempLoginModel loginModel, Function onComplete) {
       if(store.state.isLoading) return;
       Completer completer = Completer();
@@ -37,7 +37,7 @@ class ViewModel {
       completer.future.then((b) => onComplete(b, store.state.authState.error));
     }
 
-    return ViewModel(onLogin: _login, isLoading: store.state.isLoading);
+    return LoginViewModel(onLogin: _login, isLoading: store.state.isLoading);
   }
 }
 

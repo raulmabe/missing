@@ -36,21 +36,10 @@ void appStateMiddleware(
   next(action);
 
   if (action is AddCard || action is DeleteCard) {
-    print("Card gotten:");
-    print(" Id: ${action.card.id}");
-    print(" Type: ${action.card.type}");
-    print(" Missing: ${action.card.missing}");
-    print(" Title: ${action.card.title}");
-    print(" Description: ${action.card.description}");
-    print(" Location: ${action.card.location}");
-    print(" Tags: ${action.card.tags}");
-    print(" Images count: ${action.card.images.length}");
-    print("CARDS: ${store.state.cards.length}");
-    saveToPrefs(store.state);
+    //saveToPrefs(store.state);
   }
 
   if (action is GetCards) {
-    await resetPrefs().then((state) => store.dispatch(LoadedState(state: state)));
     // await loadFromPrefs().then((state) => store.dispatch(LoadedCards(state.cards.asList())));
   }
 

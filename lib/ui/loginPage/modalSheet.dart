@@ -3,10 +3,10 @@ import './loginPage_vm.dart';
 import '../animations/checkAnim.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import '../homePage/homePage.dart';
+import '../homePage/homePage_vm.dart';
 
 class ModalBottomSheet extends StatefulWidget {
-  final ViewModel viewModel;
+  final LoginViewModel viewModel;
   final TempLoginModel loginInfo;
   ModalBottomSheet({this.viewModel, this.loginInfo});
 
@@ -24,7 +24,7 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
       Future.delayed(Duration(seconds: 3)).then((b) {
         Navigator.pop(context);
         if (success)
-          Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => HomePage()));
+          Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => HomePageBuilder()));
       });
       setState(() {
         this.error = error;

@@ -18,8 +18,16 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
   Iterable serialize(Serializers serializers, AppState object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'cards',
-      serializers.serialize(object.cards,
+      'peopleCards',
+      serializers.serialize(object.peopleCards,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(CardModel)])),
+      'petsCards',
+      serializers.serialize(object.petsCards,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(CardModel)])),
+      'itemsCards',
+      serializers.serialize(object.itemsCards,
           specifiedType:
               const FullType(BuiltList, const [const FullType(CardModel)])),
       'authState',
@@ -44,8 +52,18 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'cards':
-          result.cards.replace(serializers.deserialize(value,
+        case 'peopleCards':
+          result.peopleCards.replace(serializers.deserialize(value,
+              specifiedType: const FullType(
+                  BuiltList, const [const FullType(CardModel)])) as BuiltList);
+          break;
+        case 'petsCards':
+          result.petsCards.replace(serializers.deserialize(value,
+              specifiedType: const FullType(
+                  BuiltList, const [const FullType(CardModel)])) as BuiltList);
+          break;
+        case 'itemsCards':
+          result.itemsCards.replace(serializers.deserialize(value,
               specifiedType: const FullType(
                   BuiltList, const [const FullType(CardModel)])) as BuiltList);
           break;
@@ -66,7 +84,11 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
 
 class _$AppState extends AppState {
   @override
-  final BuiltList<CardModel> cards;
+  final BuiltList<CardModel> peopleCards;
+  @override
+  final BuiltList<CardModel> petsCards;
+  @override
+  final BuiltList<CardModel> itemsCards;
   @override
   final AuthState authState;
   @override
@@ -75,9 +97,21 @@ class _$AppState extends AppState {
   factory _$AppState([void updates(AppStateBuilder b)]) =>
       (new AppStateBuilder()..update(updates)).build();
 
-  _$AppState._({this.cards, this.authState, this.isLoading}) : super._() {
-    if (cards == null) {
-      throw new BuiltValueNullFieldError('AppState', 'cards');
+  _$AppState._(
+      {this.peopleCards,
+      this.petsCards,
+      this.itemsCards,
+      this.authState,
+      this.isLoading})
+      : super._() {
+    if (peopleCards == null) {
+      throw new BuiltValueNullFieldError('AppState', 'peopleCards');
+    }
+    if (petsCards == null) {
+      throw new BuiltValueNullFieldError('AppState', 'petsCards');
+    }
+    if (itemsCards == null) {
+      throw new BuiltValueNullFieldError('AppState', 'itemsCards');
     }
     if (authState == null) {
       throw new BuiltValueNullFieldError('AppState', 'authState');
@@ -98,7 +132,9 @@ class _$AppState extends AppState {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is AppState &&
-        cards == other.cards &&
+        peopleCards == other.peopleCards &&
+        petsCards == other.petsCards &&
+        itemsCards == other.itemsCards &&
         authState == other.authState &&
         isLoading == other.isLoading;
   }
@@ -106,13 +142,19 @@ class _$AppState extends AppState {
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc(0, cards.hashCode), authState.hashCode), isLoading.hashCode));
+        $jc(
+            $jc($jc($jc(0, peopleCards.hashCode), petsCards.hashCode),
+                itemsCards.hashCode),
+            authState.hashCode),
+        isLoading.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('AppState')
-          ..add('cards', cards)
+          ..add('peopleCards', peopleCards)
+          ..add('petsCards', petsCards)
+          ..add('itemsCards', itemsCards)
           ..add('authState', authState)
           ..add('isLoading', isLoading))
         .toString();
@@ -122,10 +164,23 @@ class _$AppState extends AppState {
 class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   _$AppState _$v;
 
-  ListBuilder<CardModel> _cards;
-  ListBuilder<CardModel> get cards =>
-      _$this._cards ??= new ListBuilder<CardModel>();
-  set cards(ListBuilder<CardModel> cards) => _$this._cards = cards;
+  ListBuilder<CardModel> _peopleCards;
+  ListBuilder<CardModel> get peopleCards =>
+      _$this._peopleCards ??= new ListBuilder<CardModel>();
+  set peopleCards(ListBuilder<CardModel> peopleCards) =>
+      _$this._peopleCards = peopleCards;
+
+  ListBuilder<CardModel> _petsCards;
+  ListBuilder<CardModel> get petsCards =>
+      _$this._petsCards ??= new ListBuilder<CardModel>();
+  set petsCards(ListBuilder<CardModel> petsCards) =>
+      _$this._petsCards = petsCards;
+
+  ListBuilder<CardModel> _itemsCards;
+  ListBuilder<CardModel> get itemsCards =>
+      _$this._itemsCards ??= new ListBuilder<CardModel>();
+  set itemsCards(ListBuilder<CardModel> itemsCards) =>
+      _$this._itemsCards = itemsCards;
 
   AuthStateBuilder _authState;
   AuthStateBuilder get authState =>
@@ -140,7 +195,9 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
 
   AppStateBuilder get _$this {
     if (_$v != null) {
-      _cards = _$v.cards?.toBuilder();
+      _peopleCards = _$v.peopleCards?.toBuilder();
+      _petsCards = _$v.petsCards?.toBuilder();
+      _itemsCards = _$v.itemsCards?.toBuilder();
       _authState = _$v.authState?.toBuilder();
       _isLoading = _$v.isLoading;
       _$v = null;
@@ -167,14 +224,20 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
     try {
       _$result = _$v ??
           new _$AppState._(
-              cards: cards.build(),
+              peopleCards: peopleCards.build(),
+              petsCards: petsCards.build(),
+              itemsCards: itemsCards.build(),
               authState: authState.build(),
               isLoading: isLoading);
     } catch (_) {
       String _$failedField;
       try {
-        _$failedField = 'cards';
-        cards.build();
+        _$failedField = 'peopleCards';
+        peopleCards.build();
+        _$failedField = 'petsCards';
+        petsCards.build();
+        _$failedField = 'itemsCards';
+        itemsCards.build();
         _$failedField = 'authState';
         authState.build();
       } catch (e) {

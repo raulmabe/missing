@@ -26,6 +26,8 @@ abstract class CardModel implements Built<CardModel, CardModelBuilder>{
 
   BuiltList<String> get tags;
 
+  DateTime get time;
+
   CardModel._();
   factory CardModel([updates(CardModelBuilder b)]) = _$CardModel;
   

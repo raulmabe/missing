@@ -55,7 +55,7 @@ class _UploadPageState extends State<UploadPage> {
                       Navigator.pop(context);
                     },
                     icon: Icon(Icons.arrow_back_ios,
-                        color: Theme.of(context).primaryColor),
+                        color: Colors.grey.shade800),
                   ),
                 ),
                 SliverToBoxAdapter(

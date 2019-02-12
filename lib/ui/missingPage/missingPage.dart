@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:missing/ui/widgets/iconType.dart';
+import '../../utils/iconTypes.dart';
 import '../singleChatPage/chat.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../widgets/chips.dart';
+import '../widgets/tags.dart';
 import 'package:flutter/cupertino.dart';
 import '../../themeData.dart';
 import '../../models/card.dart';
 import '../widgets/imageCarousel.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../models/appTypes.dart';
 
 class MissingDetails extends StatefulWidget {
   final CardModel card;
@@ -36,12 +35,12 @@ class _MissingDetailsState extends State<MissingDetails> {
               IconButton(
                 icon: Icon(Icons.share),
                 onPressed: () => print("Share"),
-                color: Theme.of(context).primaryColor,
+                color: Theme.of(context).iconTheme.color,
               ),
               IconButton(
                 icon: Icon(Icons.more_vert),
                 onPressed: () {},
-                color: Theme.of(context).primaryColor,
+                color: Theme.of(context).iconTheme.color,
               )
             ],
             leading: IconButton(
@@ -49,7 +48,7 @@ class _MissingDetailsState extends State<MissingDetails> {
                 Navigator.pop(context);
               },
               icon: Icon(Icons.arrow_back_ios,
-                  color: Theme.of(context).primaryColor),
+                  color: Theme.of(context).iconTheme.color),
             ),
           ),
           SliverToBoxAdapter(
@@ -65,14 +64,15 @@ class _MissingDetailsState extends State<MissingDetails> {
                       ? Container(
                         height: 300,
                         child: ImageCarousel(
+                          viewport: .9,
                           images: card.images,
                         ),
                       )
                       : Container(
                     height: 200,
                     color: Colors.blueGrey[100],
-                    child: IconType(
-                      type: card.type,
+                    child: Icon(
+                      getTypeIcon(card.type),
                       color: Colors.blueGrey,
                       size: 70,
                     ),
@@ -168,7 +168,7 @@ class _MissingDetailsState extends State<MissingDetails> {
                         child: FlatButton(
                           shape: RoundedRectangleBorder(
                               side: BorderSide(
-                                color: Theme.of(context).primaryColor,
+                                color: Colors.grey,
                               ),
                               borderRadius: BorderRadius.circular(50.0)),
                           onPressed: () => print("Share"),
@@ -177,7 +177,7 @@ class _MissingDetailsState extends State<MissingDetails> {
                             child: Text(
                               "Share",
                               style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
+                                  color: Colors.grey,
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.w300),
                             ),

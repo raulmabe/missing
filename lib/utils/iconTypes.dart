@@ -8,10 +8,8 @@ IconData getTypeIcon(AppTypes type) {
       return Icons.face;
     case AppTypes.PETS:
       return FontAwesomeIcons.paw;
-    case AppTypes.THINGS:
+    case AppTypes.ITEMS:
       return FontAwesomeIcons.archive;
-    default:
-      return FontAwesomeIcons.userAstronaut;
   }
 }
 
@@ -21,9 +19,7 @@ String getTypeText(AppTypes type) {
       return "PEOPLE";
     case AppTypes.PETS:
       return "PETS";
-    case AppTypes.THINGS:
-      return "THINGS";
-    default:
-      return "PROFILE";
+    case AppTypes.ITEMS:
+      return "ITEMS";
   }
 }

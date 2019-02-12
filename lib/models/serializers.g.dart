@@ -21,6 +21,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
           () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(CardModel)]),
+          () => new ListBuilder<CardModel>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(CardModel)]),
+          () => new ListBuilder<CardModel>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(CardModel)]),
           () => new ListBuilder<CardModel>()))
     .build();
 
