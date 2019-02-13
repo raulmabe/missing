@@ -2,7 +2,7 @@ import './modalSheet.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import './loginPage_vm.dart';
-import 'package:flutter/services.dart';
+import '../../themeData.dart';
 
 class LoginPage extends StatefulWidget {
   final viewModel;
@@ -26,18 +26,9 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    final page = ModalRoute.of(context);
-  page.didPush().then((x) {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-        systemNavigationBarColor: Theme.of(context).primaryColor,
-        systemNavigationBarIconBrightness: Brightness.light
-      )
-    );
-  });
+    Color textColor = Colors.grey.shade700;
 
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
@@ -66,8 +57,8 @@ class _LoginPageState extends State<LoginPage> {
                               },
                               onSaved: (str) => loginInfo.email = str,
                               autocorrect: false,
-                              cursorColor: Colors.white,
-                              style: TextStyle(color: Colors.white),
+                              cursorColor: textColor,
+                              style: TextStyle(color: textColor),
                               decoration: InputDecoration(
                                   focusedErrorBorder: UnderlineInputBorder(
                                       borderSide:
@@ -78,13 +69,13 @@ class _LoginPageState extends State<LoginPage> {
                                           BorderSide(color: Colors.red[100])),
                                   focusedBorder: UnderlineInputBorder(
                                       borderSide:
-                                          BorderSide(color: Colors.white)),
+                                          BorderSide(color: textColor)),
                                   enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                          color: Colors.white.withOpacity(.8))),
+                                          color: textColor.withOpacity(.8))),
                                   labelText: "Email",
                                   labelStyle: TextStyle(
-                                      color: Colors.white.withOpacity(.8))),
+                                      color: textColor.withOpacity(.8))),
                             ),
                             TextFormField(
                               validator: (str) {
@@ -92,9 +83,9 @@ class _LoginPageState extends State<LoginPage> {
                               },
                               onSaved: (str) => loginInfo.password = str,
                               autocorrect: false,
-                              cursorColor: Colors.white,
+                              cursorColor: textColor,
                               obscureText: false,
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(color: textColor),
                               decoration: InputDecoration(
                                   focusedErrorBorder: UnderlineInputBorder(
                                       borderSide:
@@ -105,16 +96,16 @@ class _LoginPageState extends State<LoginPage> {
                                           BorderSide(color: Colors.red[100])),
                                   focusedBorder: UnderlineInputBorder(
                                       borderSide:
-                                          BorderSide(color: Colors.white)),
+                                          BorderSide(color: textColor)),
                                   enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                          color: Colors.white.withOpacity(.8))),
+                                          color: textColor.withOpacity(.8))),
                                   suffixText: "Forgot your password?",
                                   suffixStyle: TextStyle(
-                                      color: Colors.white.withOpacity(.8)),
+                                      color: textColor.withOpacity(.8)),
                                   labelText: "Password",
                                   labelStyle: TextStyle(
-                                      color: Colors.white.withOpacity(.8))),
+                                      color: textColor.withOpacity(.8))),
                             ),
                             LoginButton(onPressed: _submitLogIn),
                             GoogleLoginButton(),
@@ -162,7 +153,7 @@ class LoginButton extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: 20),
       width: double.infinity,
       decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(100)),
+          color: MyTheme.of(context).kPink, borderRadius: BorderRadius.circular(100)),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
@@ -175,7 +166,7 @@ class LoginButton extends StatelessWidget {
                 style: TextStyle(
                     letterSpacing: 2.0,
                     fontWeight: FontWeight.bold,
-                    color: Theme.of(context).primaryColor),
+                    color: Theme.of(context).canvasColor),
               )),
         ),
       ),
@@ -190,16 +181,13 @@ class Logo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white.withOpacity(.3),
-      child: Center(
-        child: CircleAvatar(
-          backgroundColor: Colors.white,
-          radius: 50,
-          child: FlutterLogo(
-            colors: Colors.pink,
-            size: 60,
-          ),
+    return Center(
+      child: CircleAvatar(
+        backgroundColor: Colors.white,
+        radius: 50,
+        child: FlutterLogo(
+          colors: Colors.pink,
+          size: 60,
         ),
       ),
     );

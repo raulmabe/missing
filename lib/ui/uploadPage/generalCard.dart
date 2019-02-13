@@ -117,23 +117,23 @@ class _GeneralCardState extends State<GeneralCard> {
     return Material(
       color: selected
           ? (missing
-              ? MyTheme.of(context).missingColor
-              : MyTheme.of(context).foundColor)
+              ? MyTheme.of(context).kPink
+              : MyTheme.of(context).kGreen)
           : Colors.white,
       shape: RoundedRectangleBorder(
           side: BorderSide(
             color: selected
                 ? (missing
-                    ? MyTheme.of(context).missingColor
-                    : MyTheme.of(context).foundColor)
+                    ? MyTheme.of(context).kPink
+                    : MyTheme.of(context).kGreen)
                 : Colors.grey,
           ),
           borderRadius: BorderRadius.circular(5.0)),
       child: InkWell(
         splashColor: selected
             ? (missing
-                ? MyTheme.of(context).missingColor.withOpacity(0.5)
-                : MyTheme.of(context).foundColor.withOpacity(.5))
+                ? MyTheme.of(context).kPink.withOpacity(0.5)
+                : MyTheme.of(context).kGreen.withOpacity(.5))
             : Colors.grey,
         onTap: () {
           setState(() {

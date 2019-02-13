@@ -9,17 +9,7 @@ IconData getTypeIcon(AppTypes type) {
     case AppTypes.PETS:
       return FontAwesomeIcons.paw;
     case AppTypes.ITEMS:
-      return FontAwesomeIcons.archive;
+      return FontAwesomeIcons.basketballBall;
   }
 }
 
-String getTypeText(AppTypes type) {
-  switch (type) {
-    case AppTypes.PEOPLE:
-      return "PEOPLE";
-    case AppTypes.PETS:
-      return "PETS";
-    case AppTypes.ITEMS:
-      return "ITEMS";
-  }
-}

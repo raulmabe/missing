@@ -101,8 +101,8 @@ class _MissingDetailsState extends State<MissingDetails> {
                               width: 40,
                               decoration: BoxDecoration(
                                   color: card.missing
-                                      ? MyTheme.of(context).missingColor
-                                      : MyTheme.of(context).foundColor,
+                                      ? MyTheme.of(context).kPink
+                                      : MyTheme.of(context).kGreen,
                                   shape: BoxShape.circle),
                               child: Icon(
                                   card.missing

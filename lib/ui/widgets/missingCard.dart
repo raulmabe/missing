@@ -23,8 +23,8 @@ class MissingCard extends StatelessWidget {
         color: Colors.white,
         child: InkWell(
           splashColor: card.missing
-              ? MyTheme.of(context).missingColor.withAlpha(170)
-              : MyTheme.of(context).foundColor.withAlpha(170),
+              ? MyTheme.of(context).kPink.withAlpha(170)
+              : MyTheme.of(context).kGreen.withAlpha(170),
           onTap: () {
             Navigator.push(
               context,
@@ -46,23 +46,23 @@ class MissingCard extends StatelessWidget {
                       shape: CustomRoundedRectangleBorder(
                         leftSide: BorderSide(
                             color: card.missing
-                                ? MyTheme.of(context).missingColor
-                                : MyTheme.of(context).foundColor,
+                                ? MyTheme.of(context).kPink
+                                : MyTheme.of(context).kGreen,
                             width: 3.0),
                         bottomSide: BorderSide(
                             color: card.missing
-                                ? MyTheme.of(context).missingColor
-                                : MyTheme.of(context).foundColor,
+                                ? MyTheme.of(context).kPink
+                                : MyTheme.of(context).kGreen,
                             width: 3.0),
                         bottomLeftCornerSide: BorderSide(
                             color: card.missing
-                                ? MyTheme.of(context).missingColor
-                                : MyTheme.of(context).foundColor,
+                                ? MyTheme.of(context).kPink
+                                : MyTheme.of(context).kGreen,
                             width: 3.0),
                         bottomRightCornerSide: BorderSide(
                             color: card.missing
-                                ? MyTheme.of(context).missingColor
-                                : MyTheme.of(context).foundColor,
+                                ? MyTheme.of(context).kPink
+                                : MyTheme.of(context).kGreen,
                             width: 3.0),
                         borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(borderRadius),
@@ -201,8 +201,8 @@ class MissingCard extends StatelessWidget {
                 width: 40,
                 decoration: BoxDecoration(
                   color: card.missing
-                      ? MyTheme.of(context).missingColor
-                      : MyTheme.of(context).foundColor,
+                      ? MyTheme.of(context).kPink
+                      : MyTheme.of(context).kGreen,
                   shape: BoxShape.circle,
                 ),
                 child: Icon(

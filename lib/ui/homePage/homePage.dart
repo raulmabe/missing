@@ -1,15 +1,14 @@
-import '../widgets/missingCard.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import './tabsUtils.dart';
 import 'package:flutter/material.dart';
-import '../profilePage/profilePage.dart';
+import './profile/profilePage.dart';
+import './chats/chatsPage.dart';
 import 'package:flutter/services.dart';
-import 'dart:math' as math;
 import 'package:flutter/rendering.dart';
 import './homePage_vm.dart';
 import '../../themeData.dart';
 import '../../models/appTypes.dart';
-import '../../utils/iconTypes.dart';
 import 'package:flutter/cupertino.dart';
+import './others/body.dart';
 
 class HomePage extends StatefulWidget {
   final ViewModel viewModel;
@@ -24,24 +23,20 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   TabController _tabController;
-  ScrollController _scrollController;
 
-  IconData selectedTab;
-  List<IconData> tabs;
-
-  FocusNode focusNodeSearchBar;
-
-  TextEditingController searchTextController;
-  AnimationController iconController;
+  AppTabs selectedTab;
+  List<AppTabs> tabs;
 
   @override
   void initState() {
     super.initState();
 
     tabs = [
-      getTypeIcon(AppTypes.PEOPLE),
-      getTypeIcon(AppTypes.PETS),
-      getTypeIcon(AppTypes.ITEMS),
+      AppTabs.PEOPLE,
+      AppTabs.PETS,
+      AppTabs.ITEMS,
+      AppTabs.CHATS,
+      AppTabs.PROFILE,
     ];
     _tabController = TabController(vsync: this, length: tabs.length);
     _tabController.index = 2;
@@ -51,19 +46,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       });
     });
     selectedTab = tabs[2];
-
-    _scrollController = ScrollController();
-
-    focusNodeSearchBar = FocusNode();
-    focusNodeSearchBar.addListener(() {
-      if (focusNodeSearchBar.hasFocus) {
-        iconController.forward();
-      } else
-        iconController.reverse();
-    });
-    searchTextController = TextEditingController();
-    iconController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 300));
   }
 
   @override
@@ -75,14 +57,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final page = ModalRoute.of(context);
-  page.didPush().then((x) {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-        systemNavigationBarColor: Theme.of(context).canvasColor,
-        systemNavigationBarIconBrightness: Brightness.dark
-      )
-    );
-  });
+    page.didPush().then((x) {
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+          systemNavigationBarColor: Theme.of(context).canvasColor,
+          systemNavigationBarIconBrightness: Brightness.dark));
+    });
 
     return WillPopScope(
       onWillPop: _onWillPop,
@@ -102,134 +81,50 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ],
             ),
           ),
-          body: NestedScrollView(
-            controller: _scrollController,
-            headerSliverBuilder: (context, boxIsScrolled) {
-              return [
-                SliverAppBar(
-                  brightness: Brightness.light,
-                  backgroundColor: Colors.transparent,
-                  forceElevated: boxIsScrolled,
-                  floating: true,
-                  snap: true,
-                  elevation: 0,
-                  automaticallyImplyLeading: false,
-                  title: Container(
-                    decoration: BoxDecoration(
-                        color: Theme.of(context).canvasColor,
-                        borderRadius: BorderRadius.circular(100),
-                        border: Border.all(color: Colors.grey, width: 1)),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: <Widget>[
-                        IconButton(
-                          icon: Icon(Icons.search),
-                          disabledColor: Theme.of(context).iconTheme.color,
-                          onPressed: null,
-                        ),
-                        Expanded(
-                          child: TextField(
-                            controller: searchTextController,
-                            autocorrect: false,
-                            focusNode: focusNodeSearchBar,
-                            decoration:
-                                InputDecoration.collapsed(hintText: "Search"),
-                          ),
-                        ),
-                        Builder(
-                          builder: (context) {
-                            return Transform.rotate(
-                              angle: math.pi,
-                              child: IconButton(
-                                icon: AnimatedIcon(
-                                  icon: AnimatedIcons.menu_close,
-                                  progress: iconController,
-                                ),
-                                color: Theme.of(context).iconTheme.color,
-                                onPressed: () {
-                                  if (focusNodeSearchBar.hasFocus) {
-                                    searchTextController.clear();
-                                    focusNodeSearchBar.unfocus();
-                                  } else if (iconController.status ==
-                                      AnimationStatus.dismissed)
-                                    Scaffold.of(context).openEndDrawer();
-                                },
-                              ),
-                            );
-                          },
-                        )
-                      ],
-                    ),
-                  ),
-                  actions: [Container()],
-                ),
-              ];
-            },
-            body: TabBarView(
-              physics: NeverScrollableScrollPhysics(),
-              controller: _tabController,
-              children: <Widget>[
-                buildGrid(AppTypes.PEOPLE),
-                buildGrid(AppTypes.PETS),
-                buildGrid(AppTypes.ITEMS),
-              ],
-            ),
+          body: TabBarView(
+            physics: NeverScrollableScrollPhysics(),
+            controller: _tabController,
+            children: <Widget>[
+              OthersBody(
+                type: AppTypes.PEOPLE,
+                viewModel: widget.viewModel,
+              ),
+              OthersBody(
+                type: AppTypes.PETS,
+                viewModel: widget.viewModel,
+              ),
+              OthersBody(
+                type: AppTypes.ITEMS,
+                viewModel: widget.viewModel,
+              ),
+              ChatsPage(),
+              ProfilePage()
+            ],
           ),
           backgroundColor: MyTheme.of(context).kBackground,
           bottomNavigationBar: BottomNavigationBar(
             onTap: (index) {
-              if (index == _tabController.index)
-                _scrollController.animateTo(
-                    _scrollController.position.minScrollExtent,
-                    duration: Duration(milliseconds: 200),
-                    curve: Curves.easeOut);
+              // scroll to top!
               setState(() {
                 _tabController.animateTo(index);
               });
             },
-            type: BottomNavigationBarType.fixed,
             currentIndex: _tabController.index,
-            items: tabs.map((data) {
+            items: tabs.map((tab) {
               return BottomNavigationBarItem(
-                  icon: selectedTab == data
+                  icon: selectedTab == tab
                       ? Icon(
-                          data,
-                          color: Theme.of(context).primaryColor,
+                          getIconFromTab(tab),
+                          color: getColorFromTab(context, tab),
                         )
-                      : Icon(data, color: Colors.grey),
-                  title: Container());
+                      : Icon(getIconFromTab(tab),
+                          color: getColorFromTab(context, tab).withOpacity(.4)),
+                  title: Text(getTitleFromTab(tab),
+                      style: TextStyle(
+                        color: getColorFromTab(context, tab),
+                      )));
             }).toList(),
           )),
-    );
-  }
-
-  StaggeredGridView buildGrid(AppTypes type) {
-    List cards;
-
-    switch (type) {
-      case AppTypes.ITEMS:
-        cards = widget.viewModel.itemsCards;
-        break;
-      case AppTypes.PEOPLE:
-        cards = widget.viewModel.peopleCards;
-        break;
-      case AppTypes.PETS:
-        cards = widget.viewModel.petsCards;
-        break;
-      default:
-        cards = [];
-    }
-
-    return StaggeredGridView.countBuilder(
-      crossAxisCount: 4,
-      padding: EdgeInsets.all(10),
-      itemCount: cards.length,
-      itemBuilder: (context, index) => MissingCard(
-            card: cards[index],
-          ),
-      mainAxisSpacing: 12.0,
-      crossAxisSpacing: 12.0,
-      staggeredTileBuilder: (_) => StaggeredTile.fit(2),
     );
   }
 

@@ -3,6 +3,7 @@ import '../../themeData.dart';
 import '../uploadPage/uploadPage.dart';
 import 'package:flutter/cupertino.dart';
 import '../../utils/softTransition.dart';
+import '../homePage/tabsUtils.dart';
 
 class UploadCard extends StatelessWidget {
   @override
@@ -10,7 +11,7 @@ class UploadCard extends StatelessWidget {
     return Material(
       elevation: 1.0,
       borderRadius: BorderRadius.circular(10.0),
-      color: MyTheme.of(context).kUploadCard,
+      color: Theme.of(context).canvasColor,
       child: InkWell(
         onTap: () {
           Navigator.push(
@@ -25,12 +26,12 @@ class UploadCard extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.0),
               border: Border.all(
-                  color: Theme.of(context).primaryColor.withAlpha(100),
+                  color: getColorFromTab(context, AppTabs.PROFILE),
                   width: 1.0)),
           child: Center(
             child: Icon(
               Icons.add,
-              color: Theme.of(context).primaryColor.withAlpha(100),
+              color: getColorFromTab(context, AppTabs.PROFILE),
               size: 50.0,
             ),
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 class MyTheme extends InheritedWidget {
   // My Colors
@@ -11,10 +12,11 @@ class MyTheme extends InheritedWidget {
 
   final iconsColor = Colors.grey.shade800;
 
-  final foundColor = const Color(0xff00b894);
-  final foundColorLight = Colors.teal[200];
-  final missingColor = const Color(0xffEC4B5C);
-  final missingColorLight = const Color(0xffFF7675);
+  final kYellow = const Color(0xffffc700);
+  final kGreen = const Color(0xff24f2ad);
+  final kBlue = const Color(0xff2f9bff);
+  final kPurple = const Color(0xff7218ff);
+  final kPink = const Color(0xffff3896);
 
   final kBackground = Colors.white;
 
@@ -22,10 +24,24 @@ class MyTheme extends InheritedWidget {
   final kMyMessageColor = const Color(0xffff7675);
   final kNotMyMessageColor = ThemeData.light().cardColor;
 
-  final kUploadCard = Colors.grey[50]; //Colors.redAccent[100];
+  Color getRandomOfFive(Color exclusive){
+    if(exclusive == null) exclusive = Colors.transparent;
+    int x = Random().nextInt(5);
+    switch(x){
+      case 0:
+      return exclusive == kYellow ? getRandomOfFive(exclusive) : kYellow;
+      case 1:
+      return exclusive == kGreen ? getRandomOfFive(exclusive) : kGreen;
+      case 2:
+      return exclusive == kBlue ? getRandomOfFive(exclusive) : kBlue;
+      case 3:
+      return exclusive == kPurple ? getRandomOfFive(exclusive) : kPurple;
+      case 4:
+      return exclusive == kPink ? getRandomOfFive(exclusive) : kPink;
+    }
 
-  final kIconsLight = Colors.white;
-  final kIconsDark = const Color(0xff732A26);
+  }
+
 
   MyTheme({child}) : super(child: child);
 
