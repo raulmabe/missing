@@ -21,15 +21,15 @@ dependencies:
   cupertino_icons: ^0.1.2
   font_awesome_flutter: ^8.2.0
   flutter_staggered_grid_view: "^0.2.7"
-  google_maps_flutter: ^0.0.3+3
-  multi_image_picker: ^3.0.11
-  url_launcher:
-  flutter_redux:
+  google_maps_flutter: ^0.2.0+2
+  multi_image_picker: ^3.0.13
+  url_launcher: ^5.0.1
+  flutter_redux: ^0.5.3
   redux_logging: ^0.3.0
   angles: ^1.0.0
-  shared_preferences: ^0.5.0
-  built_value: 
-  built_collection:
+  shared_preferences: ^0.5.1+1
+  built_value: ^6.3.0
+  built_collection: ^4.1.0
 
 dev_dependencies:
   flutter_test:

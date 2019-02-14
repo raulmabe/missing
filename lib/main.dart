@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
         primaryColorLight: MyTheme.of(context).kPrimaryLight,
         primaryColorDark: MyTheme.of(context).kPrimaryDark,
         splashColor: MyTheme.of(context).kPrimaryColor.withAlpha(150),
-        canvasColor: Colors.white,
+        canvasColor: MyTheme.of(context).kBackground,
         iconTheme: IconThemeData(
           color: MyTheme.of(context).iconsColor
         ));

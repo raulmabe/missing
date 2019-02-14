@@ -18,9 +18,14 @@ class MissingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Color borderColor = card.missing
+    //                             ? MyTheme.of(context).kPink
+    //                             : MyTheme.of(context).kGreen;
+    Color borderColor = MyTheme.of(context).getRandomOfFive(null);
+
     return Material(
         borderRadius: BorderRadius.circular(borderRadius),
-        color: Colors.white,
+        color: Theme.of(context).canvasColor,
         child: InkWell(
           splashColor: card.missing
               ? MyTheme.of(context).kPink.withAlpha(170)
@@ -45,24 +50,16 @@ class MissingCard extends StatelessWidget {
                       color: Colors.transparent,
                       shape: CustomRoundedRectangleBorder(
                         leftSide: BorderSide(
-                            color: card.missing
-                                ? MyTheme.of(context).kPink
-                                : MyTheme.of(context).kGreen,
+                            color: borderColor,
                             width: 3.0),
                         bottomSide: BorderSide(
-                            color: card.missing
-                                ? MyTheme.of(context).kPink
-                                : MyTheme.of(context).kGreen,
+                            color: borderColor,
                             width: 3.0),
                         bottomLeftCornerSide: BorderSide(
-                            color: card.missing
-                                ? MyTheme.of(context).kPink
-                                : MyTheme.of(context).kGreen,
+                            color: borderColor,
                             width: 3.0),
                         bottomRightCornerSide: BorderSide(
-                            color: card.missing
-                                ? MyTheme.of(context).kPink
-                                : MyTheme.of(context).kGreen,
+                            color: borderColor,
                             width: 3.0),
                         borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(borderRadius),
@@ -162,15 +159,15 @@ class MissingCard extends StatelessWidget {
           tag: card.id,
           child: Builder(
             builder: (context) {
-              if (card.images == null || card.images.isEmpty) {
+              if (card.images.isEmpty) {
                 return Container(
                   height: imageHeight,
                   width: double.infinity,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(borderRadius),
-                      color: Colors.blueGrey[100]),
+                      color: Colors.blueGrey.shade50),
                   child: Icon(getTypeIcon(card.type),
-                      color: Colors.blueGrey, size: 50),
+                      color: Colors.blueGrey.shade100, size: 50),
                 );
               } else {
                 return ClipRRect(

@@ -29,6 +29,7 @@ class _LoginPageState extends State<LoginPage> {
     Color textColor = Colors.grey.shade700;
 
     return Scaffold(
+      backgroundColor: Theme.of(context).canvasColor,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
@@ -57,7 +58,6 @@ class _LoginPageState extends State<LoginPage> {
                               },
                               onSaved: (str) => loginInfo.email = str,
                               autocorrect: false,
-                              cursorColor: textColor,
                               style: TextStyle(color: textColor),
                               decoration: InputDecoration(
                                   focusedErrorBorder: UnderlineInputBorder(
@@ -83,7 +83,6 @@ class _LoginPageState extends State<LoginPage> {
                               },
                               onSaved: (str) => loginInfo.password = str,
                               autocorrect: false,
-                              cursorColor: textColor,
                               obscureText: false,
                               style: TextStyle(color: textColor),
                               decoration: InputDecoration(

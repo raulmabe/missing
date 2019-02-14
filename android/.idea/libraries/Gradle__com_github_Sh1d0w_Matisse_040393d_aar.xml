@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.Sh1d0w:Matisse:040393d@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/Matisse-040393d.aar/87f3b7148eec67884b29f444d16e1fb6/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/Matisse-040393d.aar/87f3b7148eec67884b29f444d16e1fb6/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/Matisse-040393d.aar/87f3b7148eec67884b29f444d16e1fb6/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.Sh1d0w/Matisse/040393d/f9d4bd140dfde3118427a381a18e054cac3c836d/Matisse-040393d-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

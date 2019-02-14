@@ -27,9 +27,9 @@ Color getColorFromTab(context, AppTabs tab) {
     case AppTabs.PEOPLE:
       return MyTheme.of(context).kYellow;
     case AppTabs.PETS:
-      return MyTheme.of(context).kPink;
-    case AppTabs.ITEMS:
       return MyTheme.of(context).kGreen;
+    case AppTabs.ITEMS:
+      return MyTheme.of(context).kPink;
     case AppTabs.CHATS:
       return MyTheme.of(context).kBlue;
     case AppTabs.PROFILE:

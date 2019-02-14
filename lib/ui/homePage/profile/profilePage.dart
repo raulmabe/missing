@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../../widgets/uploadCard.dart';
 import 'package:flutter/cupertino.dart';
-import '../tabsUtils.dart';
+import '../../../themeData.dart';
 
 class ProfilePage extends StatelessWidget {
 
@@ -19,7 +19,7 @@ class ProfilePage extends StatelessWidget {
                 IconButton(
                   icon: Icon(Icons.menu),
                   onPressed: () => Scaffold.of(context).openEndDrawer(),
-                  color: getColorFromTab(context, AppTabs.PROFILE),
+                  color: MyTheme.of(context).iconsColor,
                 ),
               ],
               expandedHeight: MediaQuery.of(context).size.height / 3,
@@ -86,17 +86,32 @@ class ProfilePage extends StatelessWidget {
             ),
           ];
         },
-        body: StaggeredGridView.count(
-          physics: AlwaysScrollableScrollPhysics(),
-          padding:
-              EdgeInsets.only(top: 10.0, bottom: 10.0, left: 10.0, right: 10.0),
-          crossAxisCount: 4,
-          mainAxisSpacing: 15.0,
-          crossAxisSpacing: 10.0,
-          children: []..add(UploadCard()),
-          staggeredTiles: ([]..add(UploadCard()))
-              .map<StaggeredTile>((_) => StaggeredTile.fit(2))
-              .toList(),
+        body: Column(
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.all(8),
+              height: 4,
+              width: 35,
+              decoration: BoxDecoration(
+                color: Colors.black12,
+                borderRadius: BorderRadius.circular(100)
+              ),
+            ),
+            Expanded(
+                          child: StaggeredGridView.count(
+                physics: AlwaysScrollableScrollPhysics(),
+                padding:
+                    EdgeInsets.only(top: 10.0, bottom: 10.0, left: 10.0, right: 10.0),
+                crossAxisCount: 4,
+                mainAxisSpacing: 15.0,
+                crossAxisSpacing: 10.0,
+                children: []..add(UploadCard()),
+                staggeredTiles: ([]..add(UploadCard()))
+                    .map<StaggeredTile>((_) => StaggeredTile.fit(2))
+                    .toList(),
+              ),
+            ),
+          ],
         ));
   }
 }

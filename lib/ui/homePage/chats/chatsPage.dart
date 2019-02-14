@@ -18,10 +18,9 @@ class ChatsPage extends StatelessWidget {
             IconButton(
               icon: Icon(Icons.menu),
               onPressed: () => Scaffold.of(context).openEndDrawer(),
-              color: getColorFromTab(context, AppTabs.CHATS),
+              color: MyTheme.of(context).iconsColor
             ),
           ],
-          expandedHeight: MediaQuery.of(context).size.height / 5,
           flexibleSpace: FlexibleSpaceBar(
             title: Text(
               "Chats",
@@ -61,7 +60,7 @@ class ChatItem extends StatelessWidget {
             : BorderSide(color: Colors.transparent),
       )),
       child: Material(
-        color: MyTheme.of(context).kChatsCards,
+        color: Theme.of(context).canvasColor,
         child: InkWell(
           onTap: () {
             Navigator.push(
@@ -97,7 +96,7 @@ class ChatItem extends StatelessWidget {
             ),
             trailing: Icon(
               getTypeIcon(type),
-              color: MyTheme.of(context).kPrimaryColor,
+              color: getColorFromTab(context, getTabFromType(type)),
             ),
           ),
         ),

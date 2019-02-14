@@ -101,7 +101,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ProfilePage()
             ],
           ),
-          backgroundColor: MyTheme.of(context).kBackground,
+          backgroundColor: Theme.of(context).canvasColor,
           bottomNavigationBar: BottomNavigationBar(
             onTap: (index) {
               // scroll to top!
