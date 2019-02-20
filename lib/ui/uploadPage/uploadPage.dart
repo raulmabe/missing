@@ -41,48 +41,43 @@ class _UploadPageState extends State<UploadPage> {
     return WillPopScope(
       onWillPop: () {},
       child: Scaffold(
-        body: Stack(
-          fit: StackFit.expand,
-          children: <Widget>[
-            CustomScrollView(
-              controller: _controller,
-              slivers: <Widget>[
-                SliverAppBar(
-                  brightness: Brightness.light,
-                  backgroundColor: Colors.transparent,
-                  leading: IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(Icons.arrow_back_ios,
-                        color: Colors.grey.shade800),
-                  ),
-                ),
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: <Widget>[
-                        GeneralCard(
-                          key: UniqueKey(),
-                          categoryError: categoryError,
-                          statusError: statusError,
-                          card: card,
-                        ),
-                        SizedBox(
-                          height: 30.0,
-                        ),
-                        InfoCard(
-                          formKey: formKey,
-                          card: card,
-                        )
-                      ],
+        body: CustomScrollView(
+          controller: _controller,
+          slivers: <Widget>[
+            SliverAppBar(
+              brightness: Brightness.light,
+              backgroundColor: Colors.transparent,
+              leading: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(Icons.arrow_back_ios,
+                    color: Colors.grey.shade800),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    GeneralCard(
+                      key: UniqueKey(),
+                      categoryError: categoryError,
+                      statusError: statusError,
+                      card: card,
                     ),
-                  ),
+                    SizedBox(
+                      height: 30.0,
+                    ),
+                    InfoCard(
+                      formKey: formKey,
+                      card: card,
+                    )
+                  ],
                 ),
-              ],
+              ),
             ),
           ],
         ),

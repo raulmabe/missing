@@ -4,6 +4,7 @@ import '../animations/checkAnim.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../homePage/homePage_vm.dart';
+import '../mockPage/mockPage.dart';
 
 class ModalBottomSheet extends StatefulWidget {
   final LoginViewModel viewModel;
@@ -49,10 +50,12 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
           color: Colors.transparent,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              widget.viewModel.isLoading
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: widget.viewModel.isLoading
                   ? LoadingAnimation(
                       size: 100,
                       color: Theme.of(context).primaryColor,
@@ -72,6 +75,7 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
                           );
                       },
                     ),
+              ),
               Container(
                 child: Builder(
                   builder: (context) {

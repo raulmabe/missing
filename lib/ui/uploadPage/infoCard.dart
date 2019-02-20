@@ -35,6 +35,8 @@ class _InfoCardState extends State<InfoCard> {
     _controller = TextEditingController();
     infoTagsSelected = false;
     widget.card.images = [];
+
+    
   }
 
   @override
@@ -257,7 +259,7 @@ class _InfoCardState extends State<InfoCard> {
                             if (str.isNotEmpty &&
                                 !widget.card.tags.contains(str)) {
                               setState(() {
-                                widget.card.tags?.add(str);
+                                widget.card.tags?.add(str.trim().toLowerCase());
                               });
                             }
                           },

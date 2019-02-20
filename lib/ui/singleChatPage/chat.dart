@@ -94,78 +94,54 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin {
         ),
       ),
       backgroundColor: Colors.white,
-      body: Stack(
+      body: Column(
         children: <Widget>[
-          Column(
-            children: <Widget>[
-              Flexible(
-                child: ListView.builder(
-                  itemBuilder: (_, index) => _messages[index],
-                  itemCount: _messages.length,
-                  reverse: true,
-                  padding: EdgeInsets.only(
-                      top: 6.0,
-                      bottom: MediaQuery.of(context).size.height / 10,
-                      left: 6.0,
-                      right: 6.0),
-                ),
-              )
-            ],
-          ),
-          Positioned(
-            right: 0,
-            left: 0,
-            bottom: 0,
-            child: SafeArea(
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 6.0, horizontal: 10.0),
-                child: Material(
-                  borderRadius: BorderRadius.circular(50.0),
-                  color: Theme.of(context).primaryColor,
-                  elevation: 2.0,
-                  child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 7.0, horizontal: 20.0),
-                    child: Row(
-                      children: <Widget>[
-                        Flexible(
-                          child: TextField(
-                            focusNode: _focusNode,
-                            autocorrect: false,
-                            autofocus: true,
-                            cursorColor: Colors.white,
-                            controller: _textController,
-                            onSubmitted: _submitMessage,
-                            onChanged: (String txt) {
-                              setState(() {
-                                _isWriting = txt.length > 0;
-                              });
-                            },
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 20.0),
-                            decoration: InputDecoration.collapsed(
-                                hintText: "Send a message",
-                                hintStyle: TextStyle(
-                                    color: Colors.white, fontSize: 20.0)),
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: _isWriting
-                              ? () => _submitMessage(_textController.text)
-                              : null,
-                          icon: Icon(Icons.send),
-                          color: Colors.white,
-                          disabledColor: Colors.grey[350],
-                        )
-                      ],
-                    ),
-                  ),
-                ),
+          Flexible(
+            child: ListView.builder(
+              itemBuilder: (_, index) => _messages[index],
+              itemCount: _messages.length,
+              reverse: true,
+              padding: EdgeInsets.all(6),
+            ),
+          )
+        ],
+      ),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+            color: Theme.of(context).primaryColor,
+            borderRadius: BorderRadius.circular(100)),
+        margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+        padding: EdgeInsets.symmetric(vertical: 3, horizontal: 5),
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            Expanded(
+              child: TextField(
+                focusNode: _focusNode,
+                autocorrect: false,
+                autofocus: true,
+                cursorColor: Colors.white,
+                controller: _textController,
+                onSubmitted: _submitMessage,
+                onChanged: (String txt) {
+                  setState(() {
+                    _isWriting = txt.length > 0;
+                  });
+                },
+                style: TextStyle(color: Colors.white, fontSize: 20.0),
+                decoration: InputDecoration.collapsed(
+                    hintText: "Send a message",
+                    hintStyle: TextStyle(color: Colors.white, fontSize: 20.0)),
               ),
             ),
-          ),
-        ],
+            IconButton(
+              onPressed: _isWriting
+                  ? () => _submitMessage(_textController.text)
+                  : null,
+              icon: Icon(Icons.send),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -152,7 +152,7 @@ class LoginButton extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: 20),
       width: double.infinity,
       decoration: BoxDecoration(
-          color: MyTheme.of(context).kPink, borderRadius: BorderRadius.circular(100)),
+          color: MyTheme.of(context).kPrimaryColor, borderRadius: BorderRadius.circular(100)),
       child: Material(
         color: Colors.transparent,
         child: InkWell(

@@ -23,6 +23,8 @@ IconData getIconFromTab(AppTabs tab) {
 }
 
 Color getColorFromTab(context, AppTabs tab) {
+  return MyTheme.of(context).kPrimaryColor;
+
   switch (tab) {
     case AppTabs.PEOPLE:
       return MyTheme.of(context).kYellow;

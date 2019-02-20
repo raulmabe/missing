@@ -61,6 +61,14 @@ class OthersBodyState extends State<OthersBody>
         cards = [];
     }
   }
+  @override
+  void dispose() {
+    searchTextController.dispose();
+    iconController.dispose();
+    _scrollController.dispose();
+    focusNodeSearchBar.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,46 +92,49 @@ class OthersBodyState extends State<OthersBody>
                         color: getColorFromTab(
                             context, getTabFromType(widget.type)),
                         width: 2)),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: <Widget>[
-                    IconButton(
-                      icon: Icon(Icons.search),
-                      disabledColor: Theme.of(context).iconTheme.color,
-                      onPressed: null,
-                    ),
-                    Expanded(
-                      child: TextField(
-                        controller: searchTextController,
-                        autocorrect: false,
-                        focusNode: focusNodeSearchBar,
-                        decoration:
-                            InputDecoration.collapsed(hintText: "Search"),
+                child: Material(
+                  color: Colors.transparent,
+                                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(Icons.search),
+                        disabledColor: Theme.of(context).iconTheme.color,
+                        onPressed: null,
                       ),
-                    ),
-                    Builder(
-                      builder: (context) {
-                        return Transform.rotate(
-                          angle: math.pi,
-                          child: IconButton(
-                            icon: AnimatedIcon(
-                              icon: AnimatedIcons.menu_close,
-                              progress: iconController,
+                      Expanded(
+                        child: TextField(
+                          controller: searchTextController,
+                          autocorrect: false,
+                          focusNode: focusNodeSearchBar,
+                          decoration:
+                              InputDecoration.collapsed(hintText: "Search"),
+                        ),
+                      ),
+                      Builder(
+                        builder: (context) {
+                          return Transform.rotate(
+                            angle: math.pi,
+                            child: IconButton(
+                              icon: AnimatedIcon(
+                                icon: AnimatedIcons.menu_close,
+                                progress: iconController,
+                              ),
+                              color: Theme.of(context).iconTheme.color,
+                              onPressed: () {
+                                if (focusNodeSearchBar.hasFocus) {
+                                  searchTextController.clear();
+                                  focusNodeSearchBar.unfocus();
+                                } else if (iconController.status ==
+                                    AnimationStatus.dismissed)
+                                  Scaffold.of(context).openEndDrawer();
+                              },
                             ),
-                            color: Theme.of(context).iconTheme.color,
-                            onPressed: () {
-                              if (focusNodeSearchBar.hasFocus) {
-                                searchTextController.clear();
-                                focusNodeSearchBar.unfocus();
-                              } else if (iconController.status ==
-                                  AnimationStatus.dismissed)
-                                Scaffold.of(context).openEndDrawer();
-                            },
-                          ),
-                        );
-                      },
-                    )
-                  ],
+                          );
+                        },
+                      )
+                    ],
+                  ),
                 ),
               ),
               actions: [Container()],

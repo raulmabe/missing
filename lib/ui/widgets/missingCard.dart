@@ -18,10 +18,9 @@ class MissingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Color borderColor = card.missing
-    //                             ? MyTheme.of(context).kPink
-    //                             : MyTheme.of(context).kGreen;
-    Color borderColor = MyTheme.of(context).getRandomOfFive(null);
+    Color borderColor = card.missing
+                                ? MyTheme.of(context).kPink
+                                : MyTheme.of(context).kGreen;
 
     return Material(
         borderRadius: BorderRadius.circular(borderRadius),
