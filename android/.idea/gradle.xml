@@ -3,21 +3,8 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <compositeConfiguration>
-          <compositeBuild compositeDefinitionSource="SCRIPT" />
-        </compositeConfiguration>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter-0.2.0+2/android" />
-            <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/multi_image_picker-3.0.13/android" />
-            <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.1+1/android" />
-            <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher-5.0.1/android" />
-          </set>
-        </option>
         <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
