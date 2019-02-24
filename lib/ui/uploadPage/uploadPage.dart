@@ -17,7 +17,7 @@ class _UploadPageState extends State<UploadPage> {
 
   ScrollController _controller;
 
-  GlobalKey<FormState> formKey;
+  static final GlobalKey<FormState> formKey  = GlobalKey<FormState>();
 
   bool categoryError;
   bool statusError;
@@ -28,7 +28,6 @@ class _UploadPageState extends State<UploadPage> {
   void initState() {
     super.initState();
     _controller = ScrollController();
-    formKey = GlobalKey<FormState>();
 
     categoryError = false;
     statusError = false;

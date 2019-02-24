@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../homePage/homePage_vm.dart';
 
 class MockPage extends StatefulWidget {
   @override
@@ -12,8 +13,23 @@ class _MockPageState extends State<MockPage> {
 
     return Scaffold(
       appBar: AppBar(),
-      body: TextField(
-        autofocus: true,
+      body: Column(
+        children: <Widget>[
+          TextField(
+            autofocus: true,
+          ),
+          IconButton(
+            icon: Icon(Icons.arrow_forward_ios),
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MockPage(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
     );
   }

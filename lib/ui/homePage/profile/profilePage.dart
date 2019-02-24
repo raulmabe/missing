@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import '../../../themeData.dart';
 
 class ProfilePage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return NestedScrollView(
@@ -93,15 +92,14 @@ class ProfilePage extends StatelessWidget {
               height: 4,
               width: 35,
               decoration: BoxDecoration(
-                color: Colors.black12,
-                borderRadius: BorderRadius.circular(100)
-              ),
+                  color: Colors.black12,
+                  borderRadius: BorderRadius.circular(100)),
             ),
             Expanded(
-                          child: StaggeredGridView.count(
+              child: StaggeredGridView.count(
                 physics: AlwaysScrollableScrollPhysics(),
-                padding:
-                    EdgeInsets.only(top: 10.0, bottom: 10.0, left: 10.0, right: 10.0),
+                padding: EdgeInsets.only(
+                    top: 10.0, bottom: 10.0, left: 10.0, right: 10.0),
                 crossAxisCount: 4,
                 mainAxisSpacing: 15.0,
                 crossAxisSpacing: 10.0,

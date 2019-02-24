@@ -79,18 +79,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   accountEmail: Text("raulmateob@gmail.com"),
                   accountName: Text("Raul Mateo"),
                 ),
-                IconButton(
-                  onPressed: () {
-                    
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => MockPage(),
-                      ),
-                    );
-                  },
-                  icon: Icon(Icons.golf_course),
-                )
               ],
             ),
           ),

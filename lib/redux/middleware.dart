@@ -44,6 +44,9 @@ void appStateMiddleware(
   }
 
   if (action is UserLoginRequest) {
+    store.dispatch(UpdateStatus("Checking if user exists"));
+    await Future.delayed(Duration(seconds: 1));
+    store.dispatch(UpdateStatus("Pursuing dogs"));
     checkIfUserExists(action.email, action.password).then((success) {
       action.completer.complete(success);
       !success

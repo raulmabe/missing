@@ -5,29 +5,26 @@ import './loginPage_vm.dart';
 import '../../themeData.dart';
 
 class LoginPage extends StatefulWidget {
-  final viewModel;
-  LoginPage({this.viewModel});
+  LoginPage();
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-  GlobalKey<FormState> formKey;
+  static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   TempLoginModel loginInfo;
 
   @override
   void initState() {
     super.initState();
-    formKey = GlobalKey<FormState>();
-
     loginInfo = TempLoginModel();
   }
 
   @override
   Widget build(BuildContext context) {
     Color textColor = Colors.grey.shade700;
-
+    
     return Scaffold(
       backgroundColor: Theme.of(context).canvasColor,
       body: Column(
@@ -129,8 +126,7 @@ class _LoginPageState extends State<LoginPage> {
       showModalBottomSheet(
           context: context,
           builder: (context) {
-            return ModalBottomSheet(
-              viewModel: widget.viewModel,
+            return ModalSheetBuilder(
               loginInfo: loginInfo,
             );
           });

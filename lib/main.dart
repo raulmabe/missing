@@ -1,9 +1,8 @@
-import './ui/loginPage/loginPage_vm.dart';
+import './ui/loginPage/loginPage.dart';
 import 'package:flutter/material.dart';
 import './ui/homePage/homePage_vm.dart';
 import './themeData.dart';
 import 'package:flutter/services.dart';
-
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import './models/appState.dart';
@@ -42,7 +41,7 @@ class MyApp extends StatelessWidget {
             theme: buildTheme(context, false),
             home: StoreBuilder<AppState>(
               onInit: (store) => store.dispatch(GetCards()),
-              builder: (context, store) =>  LoginPageBuilder(), //HomePage(),
+              builder: (context, store) =>  LoginPage(), //HomePage(),
             ),
           );
         },

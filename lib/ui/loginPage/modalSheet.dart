@@ -16,21 +16,22 @@ class ModalBottomSheet extends StatefulWidget {
 
 class _ModalBottomSheetState extends State<ModalBottomSheet> {
   String error;
-  bool success = false;
+  bool success;
 
   @override
   void initState() {
     super.initState();
-    widget.viewModel.onLogin(widget.loginInfo, (b, error) async {
-      Future.delayed(Duration(seconds: 3)).then((b) {
-        Navigator.pop(context);
-        if (success)
-          Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => HomePageBuilder()));
-      });
+    success = false;
+    error = "";
+    widget.viewModel.onLogin(widget.loginInfo, (hasSucceded, error) async {
       setState(() {
         this.error = error;
-        success = b;
-        widget.viewModel.isLoading = false;
+        success = hasSucceded;
+      });
+      Future.delayed(Duration(seconds: 3)).then((b) {
+        Navigator.pop(context);
+        // if (success)
+        //   Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => HomePageBuilder()));
       });
     });
   }
@@ -56,34 +57,39 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
               Padding(
                 padding: EdgeInsets.all(10),
                 child: widget.viewModel.isLoading
-                  ? LoadingAnimation(
-                      size: 100,
-                      color: Theme.of(context).primaryColor,
-                    )
-                  : Builder(
-                      builder: (context) {
-                        if (success)
-                          return CheckAnimation(
-                            size: 100,
-                            onComplete: () {},
-                          );
-                        else
-                          return Icon(
-                            Icons.error_outline,
-                            size: 100,
-                            color: Colors.red[800],
-                          );
-                      },
-                    ),
+                    ? LoadingAnimation(
+                        size: 100,
+                        color: Theme.of(context).primaryColor,
+                      )
+                    : Builder(
+                        builder: (context) {
+                          if (success)
+                            return CheckAnimation(
+                              size: 100,
+                              onComplete: () {},
+                            );
+                          else
+                            return Icon(
+                              Icons.error_outline,
+                              size: 100,
+                              color: Colors.red[800],
+                            );
+                        },
+                      ),
+              ),
+              Container(
+                child: Text(widget.viewModel.status ?? "None"),
+              ),
+              Container(
+                child: Text(widget.viewModel.isLoading ? "Loading" : "Ya no"),
               ),
               Container(
                 child: Builder(
                   builder: (context) {
                     if (widget.viewModel.isLoading) {
                       return Text(
-                        "Loading",
+                        "Waiting",
                         style: TextStyle(
-                          fontSize: 20,
                           color: Colors.grey[800],
                         ),
                       );
@@ -92,7 +98,6 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
                       return Text(
                         "Success!",
                         style: TextStyle(
-                          fontSize: 20,
                           color: Colors.green,
                         ),
                       );
@@ -100,13 +105,13 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
                       return Text(
                         error ?? "Something went wrong",
                         style: TextStyle(
-                          fontSize: 20,
                           color: Colors.red[800],
                         ),
                       );
                   },
                 ),
-              )
+              ),
+              Container()
             ],
           ),
         ),

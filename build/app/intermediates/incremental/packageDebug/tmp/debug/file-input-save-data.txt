@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Feb 20 17:02:45 CET 2019
+#Fri Feb 22 22:46:23 CET 2019
 17.baseType=DIRECTORY
 4.path=flutter_assets/assets/perro2.jpg
 25.base=/home/raul/Documents/missing/build/app/intermediates/transforms/mergeJniLibs/debug/0

@@ -2,6 +2,7 @@ import '../models/card.dart';
 import '../models/appState.dart';
 import './actions.dart';
 import '../models/appTypes.dart';
+import './auth/auth_actions.dart';
 import 'package:built_collection/built_collection.dart';
 
 // General reducer
@@ -11,7 +12,8 @@ AppState appStateReducer(AppState prev, action) {
     ..peopleCards = ListBuilder(cardReducer(prev.peopleCards.asList(), action, AppTypes.PEOPLE))
     ..petsCards = ListBuilder(cardReducer(prev.petsCards.asList(), action, AppTypes.PETS))
     ..itemsCards = ListBuilder(cardReducer(prev.itemsCards.asList(), action, AppTypes.ITEMS))
-    ..isLoading = loadingReducer(action));
+    ..isLoading = loadingReducer(prev.isLoading, action)
+    ..authState.status = statusReducer(prev.authState.status, action));
 }
 
 // More specific reducers:
@@ -33,8 +35,13 @@ List<CardModel> cardReducer(List<CardModel> prev, action, AppTypes type) {
   return prev;
 }
 
-bool loadingReducer(action) {
+bool loadingReducer(bool prev, action) {
   if (action is StartLoading) return true;
   if (action is StopLoading) return false;
-  return false;
+  return prev;
+}
+
+String statusReducer(String prev, action) {
+  if (action is UpdateStatus) return action.status;
+  return prev;
 }

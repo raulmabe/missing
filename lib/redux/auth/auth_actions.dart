@@ -19,3 +19,8 @@ class UserLoginFailure implements StopLoading {
 
   final String error;
 }
+
+class UpdateStatus{
+  UpdateStatus(this.status);
+  final String status;
+}

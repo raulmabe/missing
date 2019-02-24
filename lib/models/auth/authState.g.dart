@@ -46,6 +46,12 @@ class _$AuthStateSerializer implements StructuredSerializer<AuthState> {
         ..add(serializers.serialize(object.error,
             specifiedType: const FullType(String)));
     }
+    if (object.status != null) {
+      result
+        ..add('status')
+        ..add(serializers.serialize(object.status,
+            specifiedType: const FullType(String)));
+    }
 
     return result;
   }
@@ -85,6 +91,10 @@ class _$AuthStateSerializer implements StructuredSerializer<AuthState> {
           result.error = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'status':
+          result.status = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
       }
     }
 
@@ -105,6 +115,8 @@ class _$AuthState extends AuthState {
   final int mobileNumber;
   @override
   final String error;
+  @override
+  final String status;
 
   factory _$AuthState([void updates(AuthStateBuilder b)]) =>
       (new AuthStateBuilder()..update(updates)).build();
@@ -115,7 +127,8 @@ class _$AuthState extends AuthState {
       this.password,
       this.prefixNumber,
       this.mobileNumber,
-      this.error})
+      this.error,
+      this.status})
       : super._() {
     if (isAuthenticated == null) {
       throw new BuiltValueNullFieldError('AuthState', 'isAuthenticated');
@@ -144,7 +157,8 @@ class _$AuthState extends AuthState {
         password == other.password &&
         prefixNumber == other.prefixNumber &&
         mobileNumber == other.mobileNumber &&
-        error == other.error;
+        error == other.error &&
+        status == other.status;
   }
 
   @override
@@ -152,11 +166,13 @@ class _$AuthState extends AuthState {
     return $jf($jc(
         $jc(
             $jc(
-                $jc($jc($jc(0, isAuthenticated.hashCode), email.hashCode),
-                    password.hashCode),
-                prefixNumber.hashCode),
-            mobileNumber.hashCode),
-        error.hashCode));
+                $jc(
+                    $jc($jc($jc(0, isAuthenticated.hashCode), email.hashCode),
+                        password.hashCode),
+                    prefixNumber.hashCode),
+                mobileNumber.hashCode),
+            error.hashCode),
+        status.hashCode));
   }
 
   @override
@@ -167,7 +183,8 @@ class _$AuthState extends AuthState {
           ..add('password', password)
           ..add('prefixNumber', prefixNumber)
           ..add('mobileNumber', mobileNumber)
-          ..add('error', error))
+          ..add('error', error)
+          ..add('status', status))
         .toString();
   }
 }
@@ -200,6 +217,10 @@ class AuthStateBuilder implements Builder<AuthState, AuthStateBuilder> {
   String get error => _$this._error;
   set error(String error) => _$this._error = error;
 
+  String _status;
+  String get status => _$this._status;
+  set status(String status) => _$this._status = status;
+
   AuthStateBuilder();
 
   AuthStateBuilder get _$this {
@@ -210,6 +231,7 @@ class AuthStateBuilder implements Builder<AuthState, AuthStateBuilder> {
       _prefixNumber = _$v.prefixNumber;
       _mobileNumber = _$v.mobileNumber;
       _error = _$v.error;
+      _status = _$v.status;
       _$v = null;
     }
     return this;
@@ -237,7 +259,8 @@ class AuthStateBuilder implements Builder<AuthState, AuthStateBuilder> {
             password: password,
             prefixNumber: prefixNumber,
             mobileNumber: mobileNumber,
-            error: error);
+            error: error,
+            status: status);
     replace(_$result);
     return _$result;
   }

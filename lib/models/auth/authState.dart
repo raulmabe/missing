@@ -26,5 +26,8 @@ abstract class AuthState implements Built<AuthState, AuthStateBuilder> {
   @nullable
   String get error;
 
+  @nullable
+  String get status;
+
   static Serializer<AuthState> get serializer => _$authStateSerializer;
 }
