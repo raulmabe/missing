@@ -23,8 +23,8 @@ class _CheckAnimationState extends State<CheckAnimation>
     // TODO: implement initState
     super.initState();
     _controller =
-        AnimationController(duration: Duration(seconds: 2), vsync: this);
-    curve = CurvedAnimation(parent: _controller, curve: Curves.bounceInOut);
+        AnimationController(duration: Duration(milliseconds: 850), vsync: this);
+    curve = CurvedAnimation(parent: _controller, curve: Curves.linear);
 
     _controller.addListener(() {
       setState(() {});

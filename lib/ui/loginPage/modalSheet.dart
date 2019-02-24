@@ -30,8 +30,8 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
       });
       Future.delayed(Duration(seconds: 3)).then((b) {
         Navigator.pop(context);
-        // if (success)
-        //   Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => HomePageBuilder()));
+         if (success)
+           Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => HomePageBuilder()));
       });
     });
   }
@@ -49,70 +49,72 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
         child: Container(
           width: double.infinity,
           color: Colors.transparent,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.all(10),
-                child: widget.viewModel.isLoading
-                    ? LoadingAnimation(
-                        size: 100,
-                        color: Theme.of(context).primaryColor,
-                      )
-                    : Builder(
-                        builder: (context) {
-                          if (success)
-                            return CheckAnimation(
-                              size: 100,
-                              onComplete: () {},
-                            );
-                          else
-                            return Icon(
-                              Icons.error_outline,
-                              size: 100,
-                              color: Colors.red[800],
-                            );
-                        },
-                      ),
-              ),
-              Container(
-                child: Text(widget.viewModel.status ?? "None"),
-              ),
-              Container(
-                child: Text(widget.viewModel.isLoading ? "Loading" : "Ya no"),
-              ),
-              Container(
-                child: Builder(
-                  builder: (context) {
-                    if (widget.viewModel.isLoading) {
-                      return Text(
-                        "Waiting",
-                        style: TextStyle(
-                          color: Colors.grey[800],
+          child: SafeArea(
+                      child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: widget.viewModel.isLoading
+                      ? LoadingAnimation(
+                          size: 100,
+                          color: Theme.of(context).primaryColor,
+                        )
+                      : Builder(
+                          builder: (context) {
+                            if (success)
+                              return CheckAnimation(
+                                size: 100,
+                                onComplete: () {},
+                              );
+                            else
+                              return Icon(
+                                Icons.error_outline,
+                                size: 100,
+                                color: Colors.red[800],
+                              );
+                          },
                         ),
-                      );
-                    }
-                    if (success) {
-                      return Text(
-                        "Success!",
-                        style: TextStyle(
-                          color: Colors.green,
-                        ),
-                      );
-                    } else
-                      return Text(
-                        error ?? "Something went wrong",
-                        style: TextStyle(
-                          color: Colors.red[800],
-                        ),
-                      );
-                  },
                 ),
-              ),
-              Container()
-            ],
+                Container(
+                  child: Text(widget.viewModel.status ?? "None"),
+                ),
+                Container(
+                  child: Text(widget.viewModel.isLoading ? "Loading" : "Ya no"),
+                ),
+                Container(
+                  child: Builder(
+                    builder: (context) {
+                      if (widget.viewModel.isLoading) {
+                        return Text(
+                          "Waiting",
+                          style: TextStyle(
+                            color: Colors.grey[800],
+                          ),
+                        );
+                      }
+                      if (success) {
+                        return Text(
+                          "Success!",
+                          style: TextStyle(
+                            color: Colors.green,
+                          ),
+                        );
+                      } else
+                        return Text(
+                          error ?? "Something went wrong",
+                          style: TextStyle(
+                            color: Colors.red[800],
+                          ),
+                        );
+                    },
+                  ),
+                ),
+                Container()
+              ],
+            ),
           ),
         ),
       ),

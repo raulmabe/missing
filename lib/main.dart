@@ -14,11 +14,10 @@ import './redux/actions.dart';
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: Colors.transparent,
+      SystemUiOverlayStyle(statusBarColor: Colors.white,
       statusBarIconBrightness: Brightness.dark,
       systemNavigationBarColor: Colors.transparent,
       systemNavigationBarIconBrightness: Brightness.dark));
-
   runApp(MyApp());
 }
 
@@ -29,7 +28,6 @@ class MyApp extends StatelessWidget {
     final Store<AppState> store = Store<AppState>(appStateReducer,
         initialState: AppState.initial(),
         middleware: [LoggingMiddleware.printer(), appStateMiddleware]);
-
     return StoreProvider<AppState>(
       store: store,
       child: MyTheme(child: Builder(

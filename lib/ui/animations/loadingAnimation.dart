@@ -16,7 +16,6 @@ class _LoadingAnimationState extends State<LoadingAnimation>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
   Animation<double> curve;
-  Animation<Color> colors;
 
   @override
   void initState() {
@@ -26,12 +25,6 @@ class _LoadingAnimationState extends State<LoadingAnimation>
     _controller =
         AnimationController(duration: Duration(seconds: 1), vsync: this);
     curve = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
-    colors = ColorTween(
-      begin: color,
-      end: const Color(0xff72d0c3)//color.withOpacity(.1)
-     ).animate(
-      CurvedAnimation(parent: _controller,curve: Curves.easeInOut)
-    );
 
     _controller.addListener(() {
       setState(() {});
@@ -52,7 +45,7 @@ class _LoadingAnimationState extends State<LoadingAnimation>
       height: widget.size ?? 100,
       width: widget.size ?? 100,
       child: CustomPaint(
-        painter: CheckPainter(value: curve.value, color: colors.value),
+        painter: CheckPainter(value: curve.value, color: Theme.of(context).primaryColor),
       ),
     );
   }
