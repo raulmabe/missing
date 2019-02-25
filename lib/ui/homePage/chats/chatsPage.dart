@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../models/appTypes.dart';
-import '../tabsUtils.dart';
+import '../../../utils/globalUtils.dart';
 import '../../singleChatPage/chat.dart';
 import '../../../themeData.dart';
-import '../../../utils/iconTypes.dart';
 
 class ChatsPage extends StatelessWidget {
   @override
@@ -54,9 +53,9 @@ class ChatItem extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           border: BorderDirectional(
-        bottom: BorderSide(color: Theme.of(context).primaryColor.withAlpha(70)),
+        bottom: BorderSide(color: Colors.grey.shade300),
         top: index == 0
-            ? BorderSide(color: Theme.of(context).primaryColor.withAlpha(70))
+            ? BorderSide(color: Colors.grey.shade300)
             : BorderSide(color: Colors.transparent),
       )),
       child: Material(
@@ -79,7 +78,7 @@ class ChatItem extends StatelessWidget {
                     border: Border(
                         right: BorderSide(
                             width: 1.0,
-                            color: MyTheme.of(context).kPrimaryColor))),
+                            color: Colors.grey.shade300))),
                 child: CircleAvatar(
                   backgroundImage: AssetImage("assets/perro2.jpg"),
                   radius: 30.0,
@@ -87,7 +86,7 @@ class ChatItem extends StatelessWidget {
             title: Text(name),
             subtitle: Row(
               children: <Widget>[
-                Icon(Icons.done, color: MyTheme.of(context).kPrimaryColor),
+                Icon(Icons.done, color: Colors.grey),
                 SizedBox(
                   width: 5.0,
                 ),

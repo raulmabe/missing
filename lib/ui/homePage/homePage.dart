@@ -1,5 +1,5 @@
 import '../mockPage/mockPage.dart';
-import './tabsUtils.dart';
+import '../../utils/globalUtils.dart';
 import 'package:flutter/material.dart';
 import './profile/profilePage.dart';
 import './chats/chatsPage.dart';
@@ -79,6 +79,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   accountEmail: Text("raulmateob@gmail.com"),
                   accountName: Text("Raul Mateo"),
                 ),
+                IconButton(
+                  icon: Icon(Icons.arrow_right),
+                  onPressed: (){
+                    Navigator.push(context, 
+                    MaterialPageRoute(
+                      builder: (context) => MockPage()
+                    ));
+                  },
+                )
               ],
             ),
           ),
@@ -118,7 +127,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           getIconFromTab(tab),
                           color: getColorFromTab(context, tab),
                         )
-                      : Icon(getIconFromTab(tab), color: Colors.grey.shade400),
+                      : Icon(getIconFromTab(tab), color: getColorFromTab(context, tab).withOpacity(.3)),
                   title: Text(getTitleFromTab(tab),
                       style: TextStyle(
                         color: getColorFromTab(context, tab),

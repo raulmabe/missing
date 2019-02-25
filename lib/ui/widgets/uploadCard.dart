@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../themeData.dart';
 import '../uploadPage/uploadPage.dart';
 import 'package:flutter/cupertino.dart';
 import '../../utils/softTransition.dart';
-import '../homePage/tabsUtils.dart';
+import '../../utils/globalUtils.dart';
 
 class UploadCard extends StatelessWidget {
   @override

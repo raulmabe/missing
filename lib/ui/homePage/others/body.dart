@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../models/appTypes.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../homePage_vm.dart';
-import '../../../themeData.dart';
-import '../tabsUtils.dart';
+import '../../../utils/globalUtils.dart';
 
 class OthersBody extends StatefulWidget {
   final AppTypes type;

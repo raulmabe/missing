@@ -10,6 +10,7 @@ import './redux/reducers.dart';
 import 'package:redux_logging/redux_logging.dart';
 import './redux/middleware.dart';
 import './redux/actions.dart';
+import './ui/mockPage/mockPage.dart';
 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
             theme: buildTheme(context, false),
             home: StoreBuilder<AppState>(
               onInit: (store) => store.dispatch(GetCards()),
-              builder: (context, store) =>  LoginPage(), //HomePage(),
+              builder: (context, store) => HomePageBuilder(), //HomePage(),
             ),
           );
         },

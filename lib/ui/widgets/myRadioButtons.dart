@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../models/appTypes.dart';
-import '../../utils/iconTypes.dart';
+import '../../utils/globalUtils.dart';
 
 typedef int2void = Function(AppTypes);
 

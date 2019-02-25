@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../themeData.dart';
 import '../widgets/myRadioButtons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './uploadPage_vm.dart';
 import '../../models/appTypes.dart';
+import '../../utils/globalUtils.dart';
 
 class GeneralCard extends StatefulWidget {
   final TempCardModel card;
@@ -51,7 +51,7 @@ class _GeneralCardState extends State<GeneralCard> {
                 children: <Widget>[
                   new CustomRadio(
                     unselectedColor: Colors.grey,
-                    selectedColor: const Color(0xff7a6ad4),
+                    selectedColor: getColorFromTab(context, AppTabs.PEOPLE),
                     onTap: (type) {
                       setState(() {
                         widget.card.type = type;
@@ -63,7 +63,7 @@ class _GeneralCardState extends State<GeneralCard> {
                   ),
                   new CustomRadio(
                     unselectedColor: Colors.grey,
-                    selectedColor: const Color(0xff7a6ad4),
+                    selectedColor: getColorFromTab(context, AppTabs.PETS),
                     onTap: (type) {
                       setState(() {
                         widget.card.type = type;
@@ -75,7 +75,7 @@ class _GeneralCardState extends State<GeneralCard> {
                   ),
                   new CustomRadio(
                     unselectedColor: Colors.grey,
-                    selectedColor: const Color(0xff7a6ad4),
+                    selectedColor: getColorFromTab(context, AppTabs.ITEMS),
                     onTap: (type) {
                       setState(() {
                         widget.card.type = type;
@@ -116,24 +116,19 @@ class _GeneralCardState extends State<GeneralCard> {
     bool selected = !(missing ^ (widget.card.missing ?? !missing));
     return Material(
       color: selected
-          ? (missing
-              ? MyTheme.of(context).kPink
-              : MyTheme.of(context).kGreen)
+          ? getColorByState(context, missing)
           : Colors.white,
       shape: RoundedRectangleBorder(
           side: BorderSide(
             color: selected
-                ? (missing
-                    ? MyTheme.of(context).kPink
-                    : MyTheme.of(context).kGreen)
+                ? getColorByState(context, missing)
                 : Colors.grey,
           ),
           borderRadius: BorderRadius.circular(5.0)),
       child: InkWell(
         splashColor: selected
-            ? (missing
-                ? MyTheme.of(context).kPink.withOpacity(0.5)
-                : MyTheme.of(context).kGreen.withOpacity(.5))
+            ? getColorByState(context, missing).withOpacity(0.5)
+               
             : Colors.grey,
         onTap: () {
           setState(() {

@@ -1,4 +1,4 @@
-import '../../utils/iconTypes.dart';
+import '../../utils/globalUtils.dart';
 import 'package:flutter/material.dart';
 import '../missingPage/missingPage.dart';
 import '../widgets/customBorder.dart';
@@ -50,16 +50,16 @@ class MissingCard extends StatelessWidget {
                       shape: CustomRoundedRectangleBorder(
                         leftSide: BorderSide(
                             color: borderColor,
-                            width: 3.0),
+                            width: 2.0),
                         bottomSide: BorderSide(
                             color: borderColor,
-                            width: 3.0),
+                            width: 2.0),
                         bottomLeftCornerSide: BorderSide(
                             color: borderColor,
-                            width: 3.0),
+                            width: 2.0),
                         bottomRightCornerSide: BorderSide(
                             color: borderColor,
-                            width: 3.0),
+                            width: 2.0),
                         borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(borderRadius),
                             topLeft: Radius.circular(borderRadius)),
@@ -189,22 +189,21 @@ class MissingCard extends StatelessWidget {
           bottom: 0,
           right: 10,
           child: Transform.translate(
-            offset: Offset(0, 20),
+            offset: Offset(0, 35/2),
             child: Hero(
               tag: "icon${card.id}",
               child: Container(
-                height: 40,
-                width: 40,
+                height: 35,
+                width: 35,
                 decoration: BoxDecoration(
-                  color: card.missing
-                      ? MyTheme.of(context).kPink
-                      : MyTheme.of(context).kGreen,
+                  color: getColorByState(context, card.missing),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
                     card.missing
                         ? FontAwesomeIcons.search
                         : FontAwesomeIcons.mapMarkedAlt,
+                        size: 20,
                     color: Colors.white),
               ),
             ),

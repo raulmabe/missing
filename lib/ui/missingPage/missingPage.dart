@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../utils/iconTypes.dart';
+import '../../utils/globalUtils.dart';
 import '../singleChatPage/chat.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../widgets/tags.dart';
@@ -100,9 +100,7 @@ class _MissingDetailsState extends State<MissingDetails> {
                               height: 40,
                               width: 40,
                               decoration: BoxDecoration(
-                                  color: card.missing
-                                      ? MyTheme.of(context).kPink
-                                      : MyTheme.of(context).kGreen,
+                                  color: getColorByState(context, card.missing),
                                   shape: BoxShape.circle),
                               child: Icon(
                                   card.missing

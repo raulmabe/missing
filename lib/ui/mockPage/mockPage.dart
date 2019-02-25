@@ -9,19 +9,16 @@ class MockPage extends StatefulWidget {
 class _MockPageState extends State<MockPage> {
   @override
   Widget build(BuildContext context) {
-    FocusScope.of(context).requestFocus(new FocusNode());
-
     return Scaffold(
       appBar: AppBar(),
       body: Column(
         children: <Widget>[
           TextField(
-            autofocus: true,
           ),
           IconButton(
             icon: Icon(Icons.arrow_forward_ios),
             onPressed: () {
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => MockPage(),
