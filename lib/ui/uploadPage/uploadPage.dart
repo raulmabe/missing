@@ -50,7 +50,7 @@ class _UploadPageState extends State<UploadPage> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                icon: Icon(Icons.arrow_back_ios,
+                icon: Icon(Icons.arrow_back,
                     color: Colors.grey.shade800),
               ),
             ),

@@ -57,6 +57,7 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).canvasColor,
       appBar: AppBar(
         brightness: Theme.of(context).brightness,
         elevation: 1.0,
@@ -77,7 +78,7 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin {
         ],
         title: Text(name, style: Theme.of(context).textTheme.headline),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
+          icon: Icon(Icons.arrow_back),
           color: MyTheme.of(context).iconsColor,
           onPressed: () => Navigator.pop(context),
         ),

@@ -86,7 +86,7 @@ class OthersBodyState extends State<OthersBody>
               title: Container(
                 decoration: BoxDecoration(
                     color: Theme.of(context).canvasColor,
-                    borderRadius: BorderRadius.circular(100),
+                    borderRadius: BorderRadius.circular(5),
                     ),
                 child: Material(
                   color: Colors.transparent,

@@ -47,7 +47,7 @@ class _MissingDetailsState extends State<MissingDetails> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: Icon(Icons.arrow_back_ios,
+              icon: Icon(Icons.arrow_back,
                   color: Theme.of(context).iconTheme.color),
             ),
             expandedHeight: 300,
@@ -166,7 +166,7 @@ class _MissingDetailsState extends State<MissingDetails> {
                               side: BorderSide(
                                 color: Colors.grey,
                               ),
-                              borderRadius: BorderRadius.circular(5.0)),
+                              borderRadius: BorderRadius.circular(100.0)),
                           onPressed: () => print("Share"),
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),

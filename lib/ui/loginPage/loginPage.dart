@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                     "or log in with your email",
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.body1.copyWith(
-                        color: Colors.grey.shade900,
+                        color: Colors.grey.shade500,
                         fontStyle: FontStyle.italic),
                   ),
                 ),
