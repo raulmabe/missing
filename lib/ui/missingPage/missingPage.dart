@@ -50,6 +50,24 @@ class _MissingDetailsState extends State<MissingDetails> {
               icon: Icon(Icons.arrow_back_ios,
                   color: Theme.of(context).iconTheme.color),
             ),
+            expandedHeight: 300,
+            flexibleSpace: FlexibleSpaceBar(
+              background: Hero(
+                tag: card.id,
+                child: (card.images.isNotEmpty)
+                    ? ImageCarousel(
+                      images: card.images,
+                    )
+                    : Container(
+                        color: Colors.blueGrey[100],
+                        child: Icon(
+                          getTypeIcon(card.type),
+                          color: Colors.blueGrey,
+                          size: 70,
+                        ),
+                      ),
+              ),
+            ),
           ),
           SliverToBoxAdapter(
             child: Column(
@@ -57,26 +75,6 @@ class _MissingDetailsState extends State<MissingDetails> {
               children: <Widget>[
                 SizedBox(
                   height: 20,
-                ),
-                Hero(
-                  tag: card.id,
-                  child: (card.images.isNotEmpty)
-                      ? Container(
-                        height: 300,
-                        child: ImageCarousel(
-                          viewport: .9,
-                          images: card.images,
-                        ),
-                      )
-                      : Container(
-                    height: 200,
-                    color: Colors.blueGrey[100],
-                    child: Icon(
-                      getTypeIcon(card.type),
-                      color: Colors.blueGrey,
-                      size: 70,
-                    ),
-                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.all(20),
@@ -168,7 +166,7 @@ class _MissingDetailsState extends State<MissingDetails> {
                               side: BorderSide(
                                 color: Colors.grey,
                               ),
-                              borderRadius: BorderRadius.circular(50.0)),
+                              borderRadius: BorderRadius.circular(5.0)),
                           onPressed: () => print("Share"),
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
@@ -214,18 +212,16 @@ class _MissingDetailsState extends State<MissingDetails> {
           )
         ],
       ),
-      backgroundColor:  MyTheme.of(context).kBackground,
+      backgroundColor: Theme.of(context).canvasColor,
       bottomNavigationBar: Container(
+        margin: EdgeInsets.symmetric(
+          horizontal: 20,
+        ),
         decoration: ShapeDecoration(
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20.0),
-              topRight: Radius.circular(20.0),
+                borderRadius: BorderRadius.circular(5
             )),
-            gradient: LinearGradient(colors: [
-              MyTheme.of(context).kPrimaryColor,
-              MyTheme.of(context).kPrimaryColor,
-            ])),
+            color: getColorByState(context, card.missing)),
         child: SafeArea(
           child: Material(
             color: Colors.transparent,

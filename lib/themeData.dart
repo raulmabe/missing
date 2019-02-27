@@ -3,21 +3,21 @@ import 'dart:math';
 
 class MyTheme extends InheritedWidget {
   // My Colors
-  final kPrimaryColor = const Color(0xffEA3775);
+  final kPrimaryColor = const Color(0xff2bcbba);
   final kPrimaryLight = const Color(0xffFF5858);
   final kPrimaryDark = const Color(0xFFCC6866);
-  final kSecondaryColor = const Color(0xff84B1ED);
+  final kSecondaryColor = const Color(0xffa55eea);
   final kSecondaryLight = Colors.redAccent[100];
   final kSecondaryDark = const Color(0xFF009faf);
 
   final iconsColor = Colors.grey.shade800;
 
   final kYellow = Colors.deepOrangeAccent;
-  final kGreen = const Color(0xff2dd7c7);
-  final kBlue = const Color(0xff09C2EE);
-  final kPurple = const Color(0xff7c2ce2);
+  final kGreen = const Color(0xff2bcbba);
+  final kBlue = const Color(0xff2d98da);
+  final kPurple = const Color(0xffa55eea); 
   final kPink = const Color(0xffEA3775);
-  final kRed = const Color(0xffEE3D5B);
+  final kRed = const Color(0xfffc5c65);
 
   final kBackground = Colors.white;
   final kDarkBackground = const Color(0xff1E252B);

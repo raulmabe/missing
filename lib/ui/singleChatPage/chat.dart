@@ -58,42 +58,30 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        brightness: Brightness.light,
+        brightness: Theme.of(context).brightness,
         elevation: 1.0,
         backgroundColor: Colors.white,
         actions: <Widget>[
-          Container(
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
-                    color: Theme.of(context).primaryColor, width: 2.0)),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                CircleAvatar(
-                  radius: 24.0,
-                  backgroundImage: AssetImage("assets/perro2.jpg"),
-                ),
-              ],
-            ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              CircleAvatar(
+                radius: 24.0,
+                backgroundImage: AssetImage("assets/perro2.jpg"),
+              ),
+            ],
           ),
           SizedBox(
             width: 12.0,
           )
         ],
-        title: Text(name,
-            style: TextStyle(
-                color: Theme.of(context).primaryColor,
-                fontSize: 22.0,
-                fontWeight: FontWeight.w400,
-                letterSpacing: 2.0)),
+        title: Text(name, style: Theme.of(context).textTheme.headline),
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
-          color: Theme.of(context).primaryColor,
+          color: MyTheme.of(context).iconsColor,
           onPressed: () => Navigator.pop(context),
         ),
       ),
-      backgroundColor: Colors.white,
       body: Column(
         children: <Widget>[
           Flexible(
@@ -106,6 +94,59 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin {
           )
         ],
       ),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          border: BorderDirectional(
+            top: BorderSide(color: Colors.grey.withOpacity(.3))
+          )
+        ),
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
+        child: Container(
+          margin: EdgeInsets.all(10),
+          padding: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(100),
+              border: Border.all(color: Colors.grey)),
+          child: Row(
+            children: <Widget>[
+              Expanded(
+                child: TextField(
+                  focusNode: _focusNode,
+                  autocorrect: false,
+                  cursorColor: Colors.grey,
+                  controller: _textController,
+                  onSubmitted: _submitMessage,
+                  onChanged: (str) {
+                    setState(() {
+                      _isWriting = str.length > 0;
+                    });
+                  },
+                  decoration:
+                      InputDecoration.collapsed(hintText: "Send a message"),
+                ),
+              ),
+              SizedBox(
+                width: 18,
+                height: 18,
+                child: IconButton(
+                  padding: EdgeInsets.all(0.0),
+                  onPressed: _isWriting
+                      ? () => _submitMessage(_textController.text)
+                      : null,
+                  icon: Icon(
+                    Icons.send,
+                    size: 18,
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+      
+      /*
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
             color: Theme.of(context).primaryColor,
@@ -143,6 +184,7 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin {
           ],
         ),
       ),
+      */
     );
   }
 }
@@ -163,7 +205,7 @@ class BubbleMessage extends StatelessWidget {
   Widget build(BuildContext context) {
     final bg = isntMe
         ? MyTheme.of(context).kNotMyMessageColor
-        : MyTheme.of(context).kPrimaryColor;
+        : MyTheme.of(context).kGreen;
     final align = isntMe ? CrossAxisAlignment.start : CrossAxisAlignment.end;
     final icon = delivered ? Icons.done_all : Icons.done;
     final textColor = isntMe ? null : Colors.white;

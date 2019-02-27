@@ -27,7 +27,19 @@ class _$AuthStateSerializer implements StructuredSerializer<AuthState> {
       'password',
       serializers.serialize(object.password,
           specifiedType: const FullType(String)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'location',
+      serializers.serialize(object.location,
+          specifiedType: const FullType(String)),
     ];
+    if (object.image != null) {
+      result
+        ..add('image')
+        ..add(serializers.serialize(object.image,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(int)])));
+    }
     if (object.prefixNumber != null) {
       result
         ..add('prefixNumber')
@@ -79,6 +91,20 @@ class _$AuthStateSerializer implements StructuredSerializer<AuthState> {
           result.password = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'location':
+          result.location = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'image':
+          result.image.replace(serializers.deserialize(value,
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(int)]))
+              as BuiltList);
+          break;
         case 'prefixNumber':
           result.prefixNumber = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -110,6 +136,12 @@ class _$AuthState extends AuthState {
   @override
   final String password;
   @override
+  final String name;
+  @override
+  final String location;
+  @override
+  final BuiltList<int> image;
+  @override
   final String prefixNumber;
   @override
   final int mobileNumber;
@@ -125,6 +157,9 @@ class _$AuthState extends AuthState {
       {this.isAuthenticated,
       this.email,
       this.password,
+      this.name,
+      this.location,
+      this.image,
       this.prefixNumber,
       this.mobileNumber,
       this.error,
@@ -138,6 +173,12 @@ class _$AuthState extends AuthState {
     }
     if (password == null) {
       throw new BuiltValueNullFieldError('AuthState', 'password');
+    }
+    if (name == null) {
+      throw new BuiltValueNullFieldError('AuthState', 'name');
+    }
+    if (location == null) {
+      throw new BuiltValueNullFieldError('AuthState', 'location');
     }
   }
 
@@ -155,6 +196,9 @@ class _$AuthState extends AuthState {
         isAuthenticated == other.isAuthenticated &&
         email == other.email &&
         password == other.password &&
+        name == other.name &&
+        location == other.location &&
+        image == other.image &&
         prefixNumber == other.prefixNumber &&
         mobileNumber == other.mobileNumber &&
         error == other.error &&
@@ -167,8 +211,16 @@ class _$AuthState extends AuthState {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, isAuthenticated.hashCode), email.hashCode),
-                        password.hashCode),
+                    $jc(
+                        $jc(
+                            $jc(
+                                $jc(
+                                    $jc($jc(0, isAuthenticated.hashCode),
+                                        email.hashCode),
+                                    password.hashCode),
+                                name.hashCode),
+                            location.hashCode),
+                        image.hashCode),
                     prefixNumber.hashCode),
                 mobileNumber.hashCode),
             error.hashCode),
@@ -181,6 +233,9 @@ class _$AuthState extends AuthState {
           ..add('isAuthenticated', isAuthenticated)
           ..add('email', email)
           ..add('password', password)
+          ..add('name', name)
+          ..add('location', location)
+          ..add('image', image)
           ..add('prefixNumber', prefixNumber)
           ..add('mobileNumber', mobileNumber)
           ..add('error', error)
@@ -205,6 +260,18 @@ class AuthStateBuilder implements Builder<AuthState, AuthStateBuilder> {
   String get password => _$this._password;
   set password(String password) => _$this._password = password;
 
+  String _name;
+  String get name => _$this._name;
+  set name(String name) => _$this._name = name;
+
+  String _location;
+  String get location => _$this._location;
+  set location(String location) => _$this._location = location;
+
+  ListBuilder<int> _image;
+  ListBuilder<int> get image => _$this._image ??= new ListBuilder<int>();
+  set image(ListBuilder<int> image) => _$this._image = image;
+
   String _prefixNumber;
   String get prefixNumber => _$this._prefixNumber;
   set prefixNumber(String prefixNumber) => _$this._prefixNumber = prefixNumber;
@@ -228,6 +295,9 @@ class AuthStateBuilder implements Builder<AuthState, AuthStateBuilder> {
       _isAuthenticated = _$v.isAuthenticated;
       _email = _$v.email;
       _password = _$v.password;
+      _name = _$v.name;
+      _location = _$v.location;
+      _image = _$v.image?.toBuilder();
       _prefixNumber = _$v.prefixNumber;
       _mobileNumber = _$v.mobileNumber;
       _error = _$v.error;
@@ -252,15 +322,31 @@ class AuthStateBuilder implements Builder<AuthState, AuthStateBuilder> {
 
   @override
   _$AuthState build() {
-    final _$result = _$v ??
-        new _$AuthState._(
-            isAuthenticated: isAuthenticated,
-            email: email,
-            password: password,
-            prefixNumber: prefixNumber,
-            mobileNumber: mobileNumber,
-            error: error,
-            status: status);
+    _$AuthState _$result;
+    try {
+      _$result = _$v ??
+          new _$AuthState._(
+              isAuthenticated: isAuthenticated,
+              email: email,
+              password: password,
+              name: name,
+              location: location,
+              image: _image?.build(),
+              prefixNumber: prefixNumber,
+              mobileNumber: mobileNumber,
+              error: error,
+              status: status);
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'image';
+        _image?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'AuthState', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

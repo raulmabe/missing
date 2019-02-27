@@ -4,7 +4,6 @@ import '../animations/checkAnim.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../homePage/homePage_vm.dart';
-import '../mockPage/mockPage.dart';
 
 class ModalBottomSheet extends StatefulWidget {
   final LoginViewModel viewModel;
@@ -30,8 +29,7 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
       });
       Future.delayed(Duration(seconds: 3)).then((b) {
         Navigator.pop(context);
-         if (success)
-           Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => HomePageBuilder()));
+        Navigator.pop(context);
       });
     });
   }

@@ -1,7 +1,7 @@
-import '../mockPage/mockPage.dart';
 import '../../utils/globalUtils.dart';
 import 'package:flutter/material.dart';
 import './profile/profilePage.dart';
+import './profile/profilePage_vm.dart';
 import './chats/chatsPage.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/rendering.dart';
@@ -10,6 +10,7 @@ import '../../themeData.dart';
 import '../../models/appTypes.dart';
 import 'package:flutter/cupertino.dart';
 import './others/body.dart';
+import 'dart:ui' as ui;
 
 class HomePage extends StatefulWidget {
   final ViewModel viewModel;
@@ -68,27 +69,37 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       onWillPop: _onWillPop,
       child: Scaffold(
           endDrawer: Drawer(
-            child: ListView(
-              children: <Widget>[
-                UserAccountsDrawerHeader(
-                  currentAccountPicture: CircleAvatar(
-                    backgroundColor: Colors.lightBlueAccent,
-                    foregroundColor: Colors.white,
-                    child: Text("R"),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListView(
+                children: <Widget>[
+                  DrawerHeader(
+                    child: SizedBox(
+                      height: 100,
+                    ),
+                    decoration: BoxDecoration(),
                   ),
-                  accountEmail: Text("raulmateob@gmail.com"),
-                  accountName: Text("Raul Mateo"),
-                ),
-                IconButton(
-                  icon: Icon(Icons.arrow_right),
-                  onPressed: (){
-                    Navigator.push(context, 
-                    MaterialPageRoute(
-                      builder: (context) => MockPage()
-                    ));
-                  },
-                )
-              ],
+                  ListTile(
+                    onTap: () => print("Settings"),
+                    leading: Icon(Icons.settings,
+                    color: Colors.grey.shade700),
+                    title: Text("Settings", 
+                    style: Theme.of(context).textTheme.headline.copyWith(
+                      color: Colors.grey.shade700
+                    ),),
+                  ),
+                  ListTile(
+                    onTap: () => print("log out"),
+                    leading: Icon(Icons.exit_to_app,
+                    color: Colors.grey.shade700),
+                    title: Text("Log out", 
+                    style: Theme.of(context).textTheme.headline.copyWith(
+                      color: Colors.grey.shade700
+                    ),),
+                  )
+
+                ],
+              ),
             ),
           ),
           body: TabBarView(
@@ -108,7 +119,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 viewModel: widget.viewModel,
               ),
               ChatsPage(),
-              ProfilePage()
+              ProfileBuilder()
             ],
           ),
           backgroundColor: Theme.of(context).canvasColor,
@@ -123,14 +134,37 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             items: tabs.map((tab) {
               return BottomNavigationBarItem(
                   icon: selectedTab == tab
-                      ? Icon(
-                          getIconFromTab(tab),
-                          color: getColorFromTab(context, tab),
+                      ? ShaderMask(
+                          blendMode: BlendMode.srcIn,
+                          shaderCallback: (Rect bounds) {
+                            return ui.Gradient.linear(
+                              Offset(0.0, 24.0),
+                              Offset(24.0, 0.0),
+                              [
+                                MyTheme.of(context).kBlue,
+                                MyTheme.of(context).kGreen,
+                              ],
+                            );
+                          },
+                          child: Icon(
+                            getIconFromTab(tab),
+                          ),
                         )
-                      : Icon(getIconFromTab(tab), color: getColorFromTab(context, tab).withOpacity(.3)),
-                  title: Text(getTitleFromTab(tab),
-                      style: TextStyle(
-                        color: getColorFromTab(context, tab),
+                      : Icon(getIconFromTab(tab), color: Colors.grey.shade400),
+                  title: ShaderMask(
+                      blendMode: BlendMode.srcIn,
+                      shaderCallback: (Rect bounds) {
+                        return ui.Gradient.linear(
+                          Offset(0.0, 24.0),
+                          Offset(24.0, 0.0),
+                          [
+                            MyTheme.of(context).kBlue,
+                            MyTheme.of(context).kGreen,
+                          ],
+                        );
+                      },
+                      child: Text(
+                        getTitleFromTab(tab),
                       )));
             }).toList(),
           )),

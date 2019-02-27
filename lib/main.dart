@@ -10,12 +10,11 @@ import './redux/reducers.dart';
 import 'package:redux_logging/redux_logging.dart';
 import './redux/middleware.dart';
 import './redux/actions.dart';
-import './ui/mockPage/mockPage.dart';
 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: Colors.white,
+      SystemUiOverlayStyle(statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,
       systemNavigationBarColor: Colors.transparent,
       systemNavigationBarIconBrightness: Brightness.dark));
@@ -62,10 +61,24 @@ class MyApp extends StatelessWidget {
         primaryColor: MyTheme.of(context).kPrimaryColor,
         primaryColorLight: MyTheme.of(context).kPrimaryLight,
         primaryColorDark: MyTheme.of(context).kPrimaryDark,
-        splashColor: MyTheme.of(context).kPrimaryColor.withAlpha(150),
+        splashColor: Colors.grey.shade300,
         canvasColor: MyTheme.of(context).kBackground,
         iconTheme: IconThemeData(
           color: MyTheme.of(context).iconsColor
+        ),
+        textTheme: baseTheme.textTheme.copyWith(
+          headline: baseTheme.textTheme.headline.copyWith(
+            fontSize: 20
+          ),
+          title: TextStyle(
+            color: Colors.grey.shade800,
+            fontSize: 18
+          ),
+          subtitle: TextStyle(
+            color: Colors.grey.shade600,
+            fontSize: 14,
+            fontWeight: FontWeight.w300
+          ),
         ));
   }
 }

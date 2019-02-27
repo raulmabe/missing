@@ -44,7 +44,7 @@ class _UploadPageState extends State<UploadPage> {
           controller: _controller,
           slivers: <Widget>[
             SliverAppBar(
-              brightness: Brightness.light,
+              brightness: Theme.of(context).brightness,
               backgroundColor: Colors.transparent,
               leading: IconButton(
                 onPressed: () {

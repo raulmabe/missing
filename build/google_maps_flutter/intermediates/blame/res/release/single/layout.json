@@ -1,0 +1,58 @@
+[
+    {
+        "merged": "/home/raul/Documents/missing/build/google_maps_flutter/intermediates/res/merged/release/layout/notification_template_media_custom.xml",
+        "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/media-1.0.0-rc01.aar/56512ccc7917362cd9c0899babf803e5/res/layout/notification_template_media_custom.xml"
+    },
+    {
+        "merged": "/home/raul/Documents/missing/build/google_maps_flutter/intermediates/res/merged/release/layout/notification_template_big_media_custom.xml",
+        "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/media-1.0.0-rc01.aar/56512ccc7917362cd9c0899babf803e5/res/layout/notification_template_big_media_custom.xml"
+    },
+    {
+        "merged": "/home/raul/Documents/missing/build/google_maps_flutter/intermediates/res/merged/release/layout/notification_template_part_chronometer.xml",
+        "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/core-1.0.0-rc01.aar/53957653785d12bcc2e36fbbfd1eae6b/res/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "/home/raul/Documents/missing/build/google_maps_flutter/intermediates/res/merged/release/layout/notification_template_media.xml",
+        "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/media-1.0.0-rc01.aar/56512ccc7917362cd9c0899babf803e5/res/layout/notification_template_media.xml"
+    },
+    {
+        "merged": "/home/raul/Documents/missing/build/google_maps_flutter/intermediates/res/merged/release/layout/notification_media_action.xml",
+        "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/media-1.0.0-rc01.aar/56512ccc7917362cd9c0899babf803e5/res/layout/notification_media_action.xml"
+    },
+    {
+        "merged": "/home/raul/Documents/missing/build/google_maps_flutter/intermediates/res/merged/release/layout/notification_action_tombstone.xml",
+        "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/core-1.0.0-rc01.aar/53957653785d12bcc2e36fbbfd1eae6b/res/layout/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/home/raul/Documents/missing/build/google_maps_flutter/intermediates/res/merged/release/layout/notification_template_lines_media.xml",
+        "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/media-1.0.0-rc01.aar/56512ccc7917362cd9c0899babf803e5/res/layout/notification_template_lines_media.xml"
+    },
+    {
+        "merged": "/home/raul/Documents/missing/build/google_maps_flutter/intermediates/res/merged/release/layout/notification_media_cancel_action.xml",
+        "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/media-1.0.0-rc01.aar/56512ccc7917362cd9c0899babf803e5/res/layout/notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "/home/raul/Documents/missing/build/google_maps_flutter/intermediates/res/merged/release/layout/notification_template_icon_group.xml",
+        "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/core-1.0.0-rc01.aar/53957653785d12bcc2e36fbbfd1eae6b/res/layout/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/home/raul/Documents/missing/build/google_maps_flutter/intermediates/res/merged/release/layout/notification_template_part_time.xml",
+        "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/core-1.0.0-rc01.aar/53957653785d12bcc2e36fbbfd1eae6b/res/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "/home/raul/Documents/missing/build/google_maps_flutter/intermediates/res/merged/release/layout/notification_template_big_media_narrow_custom.xml",
+        "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/media-1.0.0-rc01.aar/56512ccc7917362cd9c0899babf803e5/res/layout/notification_template_big_media_narrow_custom.xml"
+    },
+    {
+        "merged": "/home/raul/Documents/missing/build/google_maps_flutter/intermediates/res/merged/release/layout/notification_template_big_media_narrow.xml",
+        "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/media-1.0.0-rc01.aar/56512ccc7917362cd9c0899babf803e5/res/layout/notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "/home/raul/Documents/missing/build/google_maps_flutter/intermediates/res/merged/release/layout/notification_action.xml",
+        "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/core-1.0.0-rc01.aar/53957653785d12bcc2e36fbbfd1eae6b/res/layout/notification_action.xml"
+    },
+    {
+        "merged": "/home/raul/Documents/missing/build/google_maps_flutter/intermediates/res/merged/release/layout/notification_template_big_media.xml",
+        "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/media-1.0.0-rc01.aar/56512ccc7917362cd9c0899babf803e5/res/layout/notification_template_big_media.xml"
+    }
+]

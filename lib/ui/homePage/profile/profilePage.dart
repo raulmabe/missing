@@ -3,8 +3,13 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../../widgets/uploadCard.dart';
 import 'package:flutter/cupertino.dart';
 import '../../../themeData.dart';
+import './profilePage_vm.dart';
 
 class ProfilePage extends StatelessWidget {
+
+  final AuthViewModel viewModel;
+  ProfilePage({this.viewModel});
+
   @override
   Widget build(BuildContext context) {
     return NestedScrollView(

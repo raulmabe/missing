@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/home/raul/Documents/missing/build/google_maps_flutter/intermediates/res/merged/release/color/common_google_signin_btn_tint.xml",
+        "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/jetified-play-services-base-15.0.1.aar/4ada5b83b1bd539768f76ec45c92395f/res/color/common_google_signin_btn_tint.xml"
+    },
+    {
+        "merged": "/home/raul/Documents/missing/build/google_maps_flutter/intermediates/res/merged/release/color/common_google_signin_btn_text_light.xml",
+        "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/jetified-play-services-base-15.0.1.aar/4ada5b83b1bd539768f76ec45c92395f/res/color/common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "/home/raul/Documents/missing/build/google_maps_flutter/intermediates/res/merged/release/color/common_google_signin_btn_text_dark.xml",
+        "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/jetified-play-services-base-15.0.1.aar/4ada5b83b1bd539768f76ec45c92395f/res/color/common_google_signin_btn_text_dark.xml"
+    }
+]

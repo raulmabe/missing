@@ -14,13 +14,11 @@ class MissingCard extends StatelessWidget {
   final double borderRadius = 10.0;
   final double imageHeight;
 
-  MissingCard({this.card})  : imageHeight =card.images.isEmpty ? 100 : 250;
+  MissingCard({this.card}) : imageHeight = card.images.isEmpty ? 100 : 250;
 
   @override
   Widget build(BuildContext context) {
-    Color borderColor = card.missing
-                                ? MyTheme.of(context).kPink
-                                : MyTheme.of(context).kGreen;
+    Color borderColor = getColorByState(context, card.missing);
 
     return Material(
         borderRadius: BorderRadius.circular(borderRadius),
@@ -48,18 +46,12 @@ class MissingCard extends StatelessWidget {
                   decoration: ShapeDecoration(
                       color: Colors.transparent,
                       shape: CustomRoundedRectangleBorder(
-                        leftSide: BorderSide(
-                            color: borderColor,
-                            width: 2.0),
-                        bottomSide: BorderSide(
-                            color: borderColor,
-                            width: 2.0),
-                        bottomLeftCornerSide: BorderSide(
-                            color: borderColor,
-                            width: 2.0),
-                        bottomRightCornerSide: BorderSide(
-                            color: borderColor,
-                            width: 2.0),
+                        leftSide: BorderSide(color: borderColor, width: 2.0),
+                        bottomSide: BorderSide(color: borderColor, width: 2.0),
+                        bottomLeftCornerSide:
+                            BorderSide(color: borderColor, width: 2.0),
+                        bottomRightCornerSide:
+                            BorderSide(color: borderColor, width: 2.0),
                         borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(borderRadius),
                             topLeft: Radius.circular(borderRadius)),
@@ -77,10 +69,7 @@ class MissingCard extends StatelessWidget {
                         padding: const EdgeInsets.only(right: 30),
                         child: Text(
                           card.title,
-                          style: TextStyle(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.w700,
-                          ),
+                          style: Theme.of(context).textTheme.title,
                         ),
                       ),
                       Row(
@@ -90,10 +79,7 @@ class MissingCard extends StatelessWidget {
                           Expanded(
                             child: Text(
                               card.location,
-                              style: TextStyle(
-                                fontSize: 14.0,
-                                fontWeight: FontWeight.w300,
-                              ),
+                              style: Theme.of(context).textTheme.subtitle,
                             ),
                           ),
                           Builder(
@@ -133,9 +119,7 @@ class MissingCard extends StatelessWidget {
                               return Text(
                                 time,
                                 textAlign: TextAlign.end,
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                ),
+                                style: Theme.of(context).textTheme.subtitle,
                               );
                             },
                           )
@@ -189,7 +173,7 @@ class MissingCard extends StatelessWidget {
           bottom: 0,
           right: 10,
           child: Transform.translate(
-            offset: Offset(0, 35/2),
+            offset: Offset(0, 35 / 2),
             child: Hero(
               tag: "icon${card.id}",
               child: Container(
@@ -203,7 +187,7 @@ class MissingCard extends StatelessWidget {
                     card.missing
                         ? FontAwesomeIcons.search
                         : FontAwesomeIcons.mapMarkedAlt,
-                        size: 20,
+                    size: 20,
                     color: Colors.white),
               ),
             ),

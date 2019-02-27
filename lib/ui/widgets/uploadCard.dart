@@ -25,12 +25,12 @@ class UploadCard extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.0),
               border: Border.all(
-                  color: getColorFromTab(context, AppTabs.PROFILE),
+                  color: Colors.grey,
                   width: 1.0)),
           child: Center(
             child: Icon(
               Icons.add,
-              color: getColorFromTab(context, AppTabs.PROFILE),
+              color: Colors.grey,
               size: 50.0,
             ),
           ),

@@ -87,10 +87,7 @@ class OthersBodyState extends State<OthersBody>
                 decoration: BoxDecoration(
                     color: Theme.of(context).canvasColor,
                     borderRadius: BorderRadius.circular(100),
-                    border: Border.all(
-                        color: getColorFromTab(
-                            context, getTabFromType(widget.type)),
-                        width: 2)),
+                    ),
                 child: Material(
                   color: Colors.transparent,
                                   child: Row(
@@ -107,7 +104,7 @@ class OthersBodyState extends State<OthersBody>
                           autocorrect: false,
                           focusNode: focusNodeSearchBar,
                           decoration:
-                              InputDecoration.collapsed(hintText: "Search"),
+                              InputDecoration.collapsed(hintText: "Search on " + getTitleFromTab(getTabFromType(widget.type)).toLowerCase() ),
                         ),
                       ),
                       Builder(

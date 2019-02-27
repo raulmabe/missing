@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/home/raul/Documents/missing/build/multi_image_picker/intermediates/res/merged/release/layout-v21/notification_action_tombstone.xml",
+        "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/core-1.0.1.aar/576dbd17fc5c6e53f3e8b74c29171789/res/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/home/raul/Documents/missing/build/multi_image_picker/intermediates/res/merged/release/layout-v21/notification_template_custom_big.xml",
+        "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/core-1.0.1.aar/576dbd17fc5c6e53f3e8b74c29171789/res/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/home/raul/Documents/missing/build/multi_image_picker/intermediates/res/merged/release/layout-v21/notification_template_icon_group.xml",
+        "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/core-1.0.1.aar/576dbd17fc5c6e53f3e8b74c29171789/res/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/home/raul/Documents/missing/build/multi_image_picker/intermediates/res/merged/release/layout-v21/notification_action.xml",
+        "source": "/home/raul/.gradle/caches/transforms-1/files-1.1/core-1.0.1.aar/576dbd17fc5c6e53f3e8b74c29171789/res/layout-v21/notification_action.xml"
+    }
+]

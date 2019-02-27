@@ -23,9 +23,7 @@ class ChatsPage extends StatelessWidget {
           flexibleSpace: FlexibleSpaceBar(
             title: Text(
               "Chats",
-              style: TextStyle(
-                color: Colors.black,
-              ),
+              style: Theme.of(context).textTheme.headline,
             ),
           ),
         ),
@@ -46,7 +44,7 @@ class ChatItem extends StatelessWidget {
 
   ChatItem(this.type, this.index)
       : name = "Alicia Sanchez",
-        lastMessage = "He encontrado a tu perro!";
+        lastMessage = "He encontrado a tu perro!ghfdhgdfgherthrthrthrt";
 
   @override
   Widget build(BuildContext context) {
@@ -72,17 +70,10 @@ class ChatItem extends StatelessWidget {
           child: ListTile(
             contentPadding:
                 EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-            leading: Container(
-                padding: EdgeInsets.only(right: 12.0),
-                decoration: BoxDecoration(
-                    border: Border(
-                        right: BorderSide(
-                            width: 1.0,
-                            color: Colors.grey.shade300))),
-                child: CircleAvatar(
-                  backgroundImage: AssetImage("assets/perro2.jpg"),
-                  radius: 30.0,
-                )),
+            leading: CircleAvatar(
+              backgroundImage: AssetImage("assets/perro2.jpg"),
+              radius: 30.0,
+            ),
             title: Text(name),
             subtitle: Row(
               children: <Widget>[
@@ -90,13 +81,15 @@ class ChatItem extends StatelessWidget {
                 SizedBox(
                   width: 5.0,
                 ),
-                Text(lastMessage),
+                Expanded(child: Container(child: Text(lastMessage))),
+                Text("12:39",
+                style: Theme.of(context).textTheme.subtitle,)
               ],
             ),
             trailing: Icon(
-              getTypeIcon(type),
-              color: getColorFromTab(context, getTabFromType(type)),
-            ),
+                getTypeIcon(type),
+                color: Colors.grey,
+              ),
           ),
         ),
       ),
