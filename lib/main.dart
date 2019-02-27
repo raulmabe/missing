@@ -10,7 +10,7 @@ import './redux/reducers.dart';
 import 'package:redux_logging/redux_logging.dart';
 import './redux/middleware.dart';
 import './redux/actions.dart';
-
+ 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   SystemChrome.setSystemUIOverlayStyle(
