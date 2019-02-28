@@ -1,37 +1,74 @@
+import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import '../models/appTypes.dart';
 import '../themeData.dart';
 
+IconData basketball = IconData(0xf3df,
+    fontFamily: CupertinoIcons.iconFont,
+    fontPackage: CupertinoIcons.iconFontPackage);
+IconData basketball_solid = IconData(0xf3e0,
+    fontFamily: CupertinoIcons.iconFont,
+    fontPackage: CupertinoIcons.iconFontPackage);
+IconData people = IconData(0xf47d,
+    fontFamily: CupertinoIcons.iconFont,
+    fontPackage: CupertinoIcons.iconFontPackage);
+IconData people_solid = IconData(0xf47e,
+    fontFamily: CupertinoIcons.iconFont,
+    fontPackage: CupertinoIcons.iconFontPackage);
+IconData pets = IconData(0xf479,
+    fontFamily: CupertinoIcons.iconFont,
+    fontPackage: CupertinoIcons.iconFontPackage);
+IconData pets_solid = IconData(0xf47a,
+    fontFamily: CupertinoIcons.iconFont,
+    fontPackage: CupertinoIcons.iconFontPackage);
+IconData chats = IconData(0xf3fb,
+    fontFamily: CupertinoIcons.iconFont,
+    fontPackage: CupertinoIcons.iconFontPackage);
+IconData chats_solid = IconData(0xf3fc,
+    fontFamily: CupertinoIcons.iconFont,
+    fontPackage: CupertinoIcons.iconFontPackage);
+IconData profile = IconData(0xf419,
+    fontFamily: CupertinoIcons.iconFont,
+    fontPackage: CupertinoIcons.iconFontPackage);
+IconData profile_solid = IconData(0xf41A,
+    fontFamily: CupertinoIcons.iconFont,
+    fontPackage: CupertinoIcons.iconFontPackage);
+
 IconData getTypeIcon(AppTypes type) {
   switch (type) {
     case AppTypes.PEOPLE:
-      return Icons.face;
+      return people;
     case AppTypes.PETS:
-      return FontAwesomeIcons.paw;
+      return pets;
     case AppTypes.ITEMS:
-      return FontAwesomeIcons.basketballBall;
+      return basketball;
   }
 }
 
-Color getColorByState(BuildContext context, bool missing){
-  return (missing) ? MyTheme.of(context).kPurple :MyTheme.of(context).kGreen;
+Color getColorByState(BuildContext context, bool missing) {
+  return (missing) ? MyTheme.of(context).kPurple : MyTheme.of(context).kGreen;
 }
 
 enum AppTabs { PEOPLE, PETS, ITEMS, CHATS, PROFILE }
 
-IconData getIconFromTab(AppTabs tab) {
+IconData getIconFromTab(AppTabs tab, bool selected) {
   switch (tab) {
     case AppTabs.PEOPLE:
-      return getTypeIcon(AppTypes.PEOPLE);
+      return selected
+          ? people_solid : getTypeIcon(AppTypes.PEOPLE);
     case AppTabs.PETS:
-      return getTypeIcon(AppTypes.PETS);
+      return selected ? 
+      pets_solid :
+      getTypeIcon(AppTypes.PETS);
     case AppTabs.ITEMS:
-      return getTypeIcon(AppTypes.ITEMS);
+      return selected
+          ? basketball_solid
+          : getTypeIcon(AppTypes.ITEMS);
     case AppTabs.CHATS:
-      return Icons.send;
+      return selected ? chats_solid : chats;
     case AppTabs.PROFILE:
-      return FontAwesomeIcons.user;
+      return selected ? profile_solid :profile;
   }
   return null;
 }

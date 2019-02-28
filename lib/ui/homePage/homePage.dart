@@ -81,23 +81,28 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   ),
                   ListTile(
                     onTap: () => print("Settings"),
-                    leading: Icon(Icons.settings,
-                    color: Colors.grey.shade700),
-                    title: Text("Settings", 
-                    style: Theme.of(context).textTheme.headline.copyWith(
-                      color: Colors.grey.shade700
-                    ),),
+                    leading: Icon(CupertinoIcons.gear_solid,
+                        color: Colors.grey.shade700),
+                    title: Text(
+                      "Settings",
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline
+                          .copyWith(color: Colors.grey.shade700),
+                    ),
                   ),
                   ListTile(
                     onTap: () => print("log out"),
-                    leading: Icon(Icons.exit_to_app,
-                    color: Colors.grey.shade700),
-                    title: Text("Log out", 
-                    style: Theme.of(context).textTheme.headline.copyWith(
-                      color: Colors.grey.shade700
-                    ),),
+                    leading:
+                        Icon(Icons.exit_to_app, color: Colors.grey.shade700),
+                    title: Text(
+                      "Log out",
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline
+                          .copyWith(color: Colors.grey.shade700),
+                    ),
                   )
-
                 ],
               ),
             ),
@@ -147,10 +152,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             );
                           },
                           child: Icon(
-                            getIconFromTab(tab),
+                            getIconFromTab(tab, true),
+                            size: 30,
                           ),
                         )
-                      : Icon(getIconFromTab(tab), color: Colors.grey.shade400),
+                      : Icon(getIconFromTab(tab, false),
+                          size: 30, color: Colors.grey.shade400),
                   title: ShaderMask(
                       blendMode: BlendMode.srcIn,
                       shaderCallback: (Rect bounds) {
