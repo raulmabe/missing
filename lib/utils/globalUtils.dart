@@ -22,6 +22,7 @@ IconData pets = IconData(0xf479,
 IconData pets_solid = IconData(0xf47a,
     fontFamily: CupertinoIcons.iconFont,
     fontPackage: CupertinoIcons.iconFontPackage);
+    
 IconData chats = IconData(0xf3fb,
     fontFamily: CupertinoIcons.iconFont,
     fontPackage: CupertinoIcons.iconFontPackage);
