@@ -149,7 +149,7 @@ class MissingCard extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(borderRadius),
                       color: Colors.blueGrey.shade50),
-                  child: Icon(getTypeIcon(card.type),
+                  child: Icon(getIconByType(card.type, false),
                       color: Colors.blueGrey.shade100, size: 50),
                 );
               } else {

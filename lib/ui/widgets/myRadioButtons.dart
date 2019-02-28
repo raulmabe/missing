@@ -37,7 +37,7 @@ class CustomRadio extends StatelessWidget {
           onTap: () => onTap(type),
           splashColor: selectedColor.withOpacity(.5),
           child: Icon(
-            getTypeIcon(type),
+            getIconByType(AppTypes.PEOPLE, false),
             color: isSelected ? Colors.white : unselectedColor,
             size: size / (80 / 40),
           ),

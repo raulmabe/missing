@@ -36,14 +36,14 @@ IconData profile_solid = IconData(0xf41A,
     fontFamily: CupertinoIcons.iconFont,
     fontPackage: CupertinoIcons.iconFontPackage);
 
-IconData getTypeIcon(AppTypes type) {
+IconData getIconByType(AppTypes type, bool solid) {
   switch (type) {
     case AppTypes.PEOPLE:
-      return people;
+      return solid ? people_solid : people;
     case AppTypes.PETS:
-      return pets;
+      return solid ? pets_solid :pets;
     case AppTypes.ITEMS:
-      return basketball;
+      return solid ? basketball_solid : basketball;
   }
 }
 
@@ -57,15 +57,15 @@ IconData getIconFromTab(AppTabs tab, bool selected) {
   switch (tab) {
     case AppTabs.PEOPLE:
       return selected
-          ? people_solid : getTypeIcon(AppTypes.PEOPLE);
+          ? getIconByType(AppTypes.PEOPLE, true) : getIconByType(AppTypes.PEOPLE, false);
     case AppTabs.PETS:
       return selected ? 
-      pets_solid :
-      getTypeIcon(AppTypes.PETS);
+      getIconByType(AppTypes.PETS, true) :
+      getIconByType(AppTypes.PETS, false);
     case AppTabs.ITEMS:
       return selected
-          ? basketball_solid
-          : getTypeIcon(AppTypes.ITEMS);
+          ? getIconByType(AppTypes.ITEMS, true)
+          : getIconByType(AppTypes.ITEMS, false);
     case AppTabs.CHATS:
       return selected ? chats_solid : chats;
     case AppTabs.PROFILE:

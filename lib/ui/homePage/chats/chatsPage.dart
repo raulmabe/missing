@@ -3,6 +3,7 @@ import '../../../models/appTypes.dart';
 import '../../../utils/globalUtils.dart';
 import '../../singleChatPage/chat.dart';
 import '../../../themeData.dart';
+import 'dart:math';
 
 class ChatsPage extends StatelessWidget {
   @override
@@ -15,10 +16,9 @@ class ChatsPage extends StatelessWidget {
           pinned: true,
           actions: <Widget>[
             IconButton(
-              icon: Icon(Icons.menu),
-              onPressed: () => Scaffold.of(context).openEndDrawer(),
-              color: MyTheme.of(context).iconsColor
-            ),
+                icon: Icon(Icons.menu),
+                onPressed: () => Scaffold.of(context).openEndDrawer(),
+                color: MyTheme.of(context).iconsColor),
           ],
           flexibleSpace: FlexibleSpaceBar(
             title: Text(
@@ -68,29 +68,43 @@ class ChatItem extends StatelessWidget {
             );
           },
           child: ListTile(
-            contentPadding:
-                EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-            leading: CircleAvatar(
-              backgroundImage: AssetImage("assets/perro2.jpg"),
-              radius: 30.0,
-            ),
-            title: Text(name),
-            subtitle: Row(
-              children: <Widget>[
-                Icon(Icons.done, color: Colors.grey),
-                SizedBox(
-                  width: 5.0,
-                ),
-                Expanded(child: Container(child: Text(lastMessage))),
-                Text("12:39",
-                style: Theme.of(context).textTheme.subtitle,)
-              ],
-            ),
-            trailing: Icon(
-                getTypeIcon(type),
-                color: Colors.grey,
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+              leading: Stack(
+                alignment: Alignment.bottomRight,
+                children: <Widget>[
+                  CircleAvatar(
+                    backgroundImage: AssetImage("assets/perro2.jpg"),
+                    radius: 30.0,
+                  ),
+                  Transform.translate(
+                    offset: Offset(5, 5),
+                                      child: Container(
+                      height: 30,
+                      width: 30,
+                      decoration: BoxDecoration(
+                          color: getColorByState(context, new Random().nextBool()), 
+                          shape: BoxShape.circle),
+                      child: Icon(
+                        getIconByType(type, true),
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-          ),
+              title: Text(name),
+              subtitle: Container(child: Text(lastMessage)),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Icon(Icons.done, color: Colors.grey),
+                  Text(
+                    "12:39",
+                    style: Theme.of(context).textTheme.subtitle,
+                  )
+                ],
+              )),
         ),
       ),
     );

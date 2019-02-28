@@ -61,7 +61,7 @@ class _MissingDetailsState extends State<MissingDetails> {
                     : Container(
                         color: Colors.blueGrey[100],
                         child: Icon(
-                          getTypeIcon(card.type),
+                          getIconByType(card.type, false),
                           color: Colors.blueGrey,
                           size: 70,
                         ),

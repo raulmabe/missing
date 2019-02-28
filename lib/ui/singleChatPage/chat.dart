@@ -95,97 +95,59 @@ class _ChatState extends State<Chat> with TickerProviderStateMixin {
           )
         ],
       ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          border: BorderDirectional(
-            top: BorderSide(color: Colors.grey.withOpacity(.3))
-          )
-        ),
-        padding: EdgeInsets.only(
-          bottom: MediaQuery.of(context).viewInsets.bottom,
-        ),
-        child: Container(
-          margin: EdgeInsets.all(10),
-          padding: EdgeInsets.all(10),
+      bottomNavigationBar: SafeArea(
+              child: Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(100),
-              border: Border.all(color: Colors.grey)),
-          child: Row(
-            children: <Widget>[
-              Expanded(
-                child: TextField(
-                  focusNode: _focusNode,
-                  autocorrect: false,
-                  cursorColor: Colors.grey,
-                  controller: _textController,
-                  onSubmitted: _submitMessage,
-                  onChanged: (str) {
-                    setState(() {
-                      _isWriting = str.length > 0;
-                    });
-                  },
-                  decoration:
-                      InputDecoration.collapsed(hintText: "Send a message"),
-                ),
-              ),
-              SizedBox(
-                width: 18,
-                height: 18,
-                child: IconButton(
-                  padding: EdgeInsets.all(0.0),
-                  onPressed: _isWriting
-                      ? () => _submitMessage(_textController.text)
-                      : null,
-                  icon: Icon(
-                    Icons.send,
-                    size: 18,
+            border: BorderDirectional(
+              top: BorderSide(color: Colors.grey.withOpacity(.3))
+            )
+          ),
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          child: Container(
+            margin: EdgeInsets.all(10),
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                border: Border.all(color: Colors.grey)),
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: TextField(
+                    focusNode: _focusNode,
+                    autocorrect: false,
+                    cursorColor: Colors.grey,
+                    controller: _textController,
+                    onSubmitted: _submitMessage,
+                    onChanged: (str) {
+                      setState(() {
+                        _isWriting = str.length > 0;
+                      });
+                    },
+                    decoration:
+                        InputDecoration.collapsed(hintText: "Send a message"),
                   ),
                 ),
-              )
-            ],
+                SizedBox(
+                  width: 18,
+                  height: 18,
+                  child: IconButton(
+                    padding: EdgeInsets.all(0.0),
+                    onPressed: _isWriting
+                        ? () => _submitMessage(_textController.text)
+                        : null,
+                    icon: Icon(
+                      Icons.send,
+                      size: 18,
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
-      
-      /*
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-            color: Theme.of(context).primaryColor,
-            borderRadius: BorderRadius.circular(100)),
-        margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-        padding: EdgeInsets.symmetric(vertical: 3, horizontal: 5),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          children: <Widget>[
-            Expanded(
-              child: TextField(
-                focusNode: _focusNode,
-                autocorrect: false,
-                autofocus: true,
-                cursorColor: Colors.white,
-                controller: _textController,
-                onSubmitted: _submitMessage,
-                onChanged: (String txt) {
-                  setState(() {
-                    _isWriting = txt.length > 0;
-                  });
-                },
-                style: TextStyle(color: Colors.white, fontSize: 20.0),
-                decoration: InputDecoration.collapsed(
-                    hintText: "Send a message",
-                    hintStyle: TextStyle(color: Colors.white, fontSize: 20.0)),
-              ),
-            ),
-            IconButton(
-              onPressed: _isWriting
-                  ? () => _submitMessage(_textController.text)
-                  : null,
-              icon: Icon(Icons.send),
-            )
-          ],
-        ),
-      ),
-      */
     );
   }
 }
