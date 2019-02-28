@@ -11,6 +11,7 @@ import '../../models/appTypes.dart';
 import 'package:flutter/cupertino.dart';
 import './others/body.dart';
 import 'dart:ui' as ui;
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomePage extends StatefulWidget {
   final ViewModel viewModel;
@@ -58,53 +59,85 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    /*
     final page = ModalRoute.of(context);
     page.didPush().then((x) {
       SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
           systemNavigationBarColor: Theme.of(context).canvasColor,
           systemNavigationBarIconBrightness: Brightness.dark));
-    });
+    });*/
 
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
           endDrawer: Drawer(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListView(
-                children: <Widget>[
-                  DrawerHeader(
-                    child: SizedBox(
-                      height: 100,
-                    ),
-                    decoration: BoxDecoration(),
+            child: ListView(
+              children: <Widget>[
+                DrawerHeader(
+                  child: SizedBox(
+                    height: 100,
                   ),
-                  ListTile(
-                    onTap: () => print("Settings"),
-                    leading: Icon(CupertinoIcons.gear_solid,
+                  decoration: BoxDecoration(),
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 10),
+                  decoration: BoxDecoration(
+                    color: MyTheme.of(context).kPrimaryColor.withOpacity(.5),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(100),
+                      topLeft: Radius.circular(100),
+                    )
+                  ),
+                  child: ListTile(
+                    onTap: () => print("Main"),
+                    leading: Icon(Icons.home,
                         color: Colors.grey.shade700),
                     title: Text(
-                      "Settings",
+                      "Home",
                       style: Theme.of(context)
                           .textTheme
                           .headline
                           .copyWith(color: Colors.grey.shade700),
                     ),
                   ),
-                  ListTile(
-                    onTap: () => print("log out"),
-                    leading:
-                        Icon(Icons.exit_to_app, color: Colors.grey.shade700),
-                    title: Text(
-                      "Log out",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline
-                          .copyWith(color: Colors.grey.shade700),
-                    ),
-                  )
-                ],
-              ),
+                ),
+                ListTile(
+                  onTap: () => print("Settings"),
+                  leading: Icon(CupertinoIcons.gear_solid,
+                      color: Colors.grey.shade700),
+                  title: Text(
+                    "Settings",
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline
+                        .copyWith(color: Colors.grey.shade700),
+                  ),
+                ),
+                ListTile(
+                  onTap: () => print("log out"),
+                  leading:
+                      Icon(Icons.exit_to_app, color: Colors.grey.shade700),
+                  title: Text(
+                    "Log out",
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline
+                        .copyWith(color: Colors.grey.shade700),
+                  ),
+                ),
+                ListTile(
+                  onTap: () => print("rate"),
+                  leading:
+                      Icon(Icons.star, color: Colors.grey.shade700,),
+                  title: Text(
+                    "Rate our app",
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline
+                        .copyWith(color: Colors.grey.shade700),
+                  ),
+                )
+              ],
             ),
           ),
           body: TabBarView(
