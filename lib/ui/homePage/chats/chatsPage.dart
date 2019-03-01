@@ -98,11 +98,16 @@ class ChatItem extends StatelessWidget {
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 10
+                    ),
+                    child: Text(
+                      "12:39",
+                      style: Theme.of(context).textTheme.subtitle,
+                    ),
+                  ),
                   Icon(Icons.done, color: Colors.grey),
-                  Text(
-                    "12:39",
-                    style: Theme.of(context).textTheme.subtitle,
-                  )
                 ],
               )),
         ),
