@@ -85,34 +85,34 @@ class MissingCard extends StatelessWidget {
                           Builder(
                             builder: (context) {
                               String time;
-                              if (DateTime.now().difference(card.time).inDays >
+                              if (DateTime.now().difference(card.createdTime).inDays >
                                   0)
                                 time = DateTime.now()
-                                        .difference(card.time)
+                                        .difference(card.createdTime)
                                         .inDays
                                         .toString() +
                                     "d";
                               else if (DateTime.now()
-                                      .difference(card.time)
+                                      .difference(card.createdTime)
                                       .inHours >
                                   0)
                                 time = DateTime.now()
-                                        .difference(card.time)
+                                        .difference(card.createdTime)
                                         .inHours
                                         .toString() +
                                     "h";
                               else if (DateTime.now()
-                                      .difference(card.time)
+                                      .difference(card.createdTime)
                                       .inMinutes >
                                   0)
                                 time = DateTime.now()
-                                        .difference(card.time)
+                                        .difference(card.createdTime)
                                         .inMinutes
                                         .toString() +
                                     "m";
                               else
                                 time = DateTime.now()
-                                        .difference(card.time)
+                                        .difference(card.createdTime)
                                         .inSeconds
                                         .toString() +
                                     "s";

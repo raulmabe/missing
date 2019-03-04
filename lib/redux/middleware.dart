@@ -8,6 +8,7 @@ import './auth/auth_middleware.dart';
 import './actions.dart';
 import '../models/appState.dart';
 import 'package:built_collection/built_collection.dart';
+import '../models/user.dart';
 
 void saveToPrefs(AppState state) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -47,11 +48,8 @@ void appStateMiddleware(
     store.dispatch(UpdateStatus("Checking if user exists"));
     await Future.delayed(Duration(seconds: 1));
     store.dispatch(UpdateStatus("Pursuing dogs"));
-    checkIfUserExists(action.email, action.password).then((success) {
-      action.completer.complete(success);
-      !success
-          ? store.dispatch(UserLoginFailure("Username or password incorrects"))
-          : store.dispatch(UserLoginSuccess());
+    login(action.email, action.password).then((UserModel user) {
+      (user != null) ? store.dispatch(UserLoginSuccess(user)) : store.dispatch(UserLoginFailure("Username or password incorrects"));
     });
   }
 }

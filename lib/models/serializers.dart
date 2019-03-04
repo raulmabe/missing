@@ -4,7 +4,10 @@ import './appState.dart';
 import './appTypes.dart';
 import 'package:built_value/standard_json_plugin.dart';
 import './card.dart';
+import './userLevel.dart';
+import './cardStatus.dart';
 import './auth/authState.dart';
+import './user.dart';
 
 part 'serializers.g.dart';
 
@@ -12,7 +15,10 @@ part 'serializers.g.dart';
   AppState,
   CardModel,
   AppTypes,
-  AuthState
+  AuthState,
+  UserLevel,
+  CardStatus,
+  UserModel
 ])
 
 final Serializers serializers = (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

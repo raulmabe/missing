@@ -3,6 +3,7 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'dart:convert';
+import './cardStatus.dart';
 import './serializers.dart';
 
 part 'card.g.dart';
@@ -26,7 +27,12 @@ abstract class CardModel implements Built<CardModel, CardModelBuilder>{
 
   BuiltList<String> get tags;
 
-  DateTime get time;
+  DateTime get createdTime;
+
+  @nullable
+  DateTime get modificatedTime;
+
+  CardStatus get status;
 
   CardModel._();
   factory CardModel([updates(CardModelBuilder b)]) = _$CardModel;

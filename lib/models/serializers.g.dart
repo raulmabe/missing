@@ -11,6 +11,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(AppTypes.serializer)
       ..add(AuthState.serializer)
       ..add(CardModel.serializer)
+      ..add(CardStatus.serializer)
+      ..add(UserLevel.serializer)
+      ..add(UserModel.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType(BuiltList, const [const FullType(int)])

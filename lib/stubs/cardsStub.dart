@@ -1,6 +1,7 @@
 
 import '../models/card.dart';
 import 'dart:math';
+import '../models/cardStatus.dart';
 import '../models/appTypes.dart';
 
 int id = 0;
@@ -15,6 +16,7 @@ List<CardModel> getFakeCards(int x, AppTypes type){
   ..images.addAll([])
   ..location = "Premia de Mar, Barcelona"
   ..tags.addAll(List.generate(5, (j) => "tag $j"))
-  ..time = DateTime.now()
+  ..createdTime = DateTime.now()
+  ..status = CardStatus.APPROVED
   ));
 }

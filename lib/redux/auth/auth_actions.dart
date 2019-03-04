@@ -1,4 +1,5 @@
 import '../actions.dart';
+import '../../models/user.dart';
 import 'dart:async';
 
 class UserLoginRequest implements StartLoading {
@@ -12,7 +13,10 @@ class UserLoginRequest implements StartLoading {
   final String password;
 }
 
-class UserLoginSuccess implements StopLoading {}
+class UserLoginSuccess implements StopLoading {
+  UserModel user;
+  UserLoginSuccess(this.user);
+}
 
 class UserLoginFailure implements StopLoading {
   UserLoginFailure(this.error);

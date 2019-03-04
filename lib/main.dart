@@ -27,7 +27,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final Store<AppState> store = Store<AppState>(appStateReducer,
         initialState: AppState.initial(),
-        middleware: [LoggingMiddleware.printer(), appStateMiddleware]);
+        //middleware: [LoggingMiddleware.printer(), appStateMiddleware]);
+        middleware: [appStateMiddleware]);
     return StoreProvider<AppState>(
       store: store,
       child: MyTheme(child: Builder(

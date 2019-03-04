@@ -1,25 +1,23 @@
 import 'dart:async';
 import 'dart:convert';
-
-import 'package:redux/redux.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../../models/serializers.dart';
-import '../../models/auth/authState.dart';
-import '../actions.dart';
-import '../../models/appState.dart';
-import 'package:built_collection/built_collection.dart';
-import './auth_actions.dart';
 import 'package:http/http.dart' as http;
+import '../../models/user.dart';
 
-Future<bool> checkIfUserExists(String email, String password) async{
-  fetchData();
-  await Future.delayed(Duration(seconds: 4));
-  return true;
-}
+final String baseURI = "http://192.168.1.33:8888";
 
-void fetchData() async {
-    final response = await http.get('http://192.168.43.203:8888/fetch_data.php');
-    if (response.statusCode == 200) {
-        print(json.decode(response.body));
-    } else print("Error: ${response.statusCode}");
+Future<UserModel> login(String email, String password) async {
+  final resp = await http.post(baseURI + '/login.php',
+      body: {"email": email.trim(), "password": password});
+
+  if (resp != null) {
+    try {
+      var data = json.decode(resp.body);
+      if (resp.statusCode == 200 && data.length != 0) {
+        return UserModel.fromJson(resp.body);
+      } else return null;
+    } catch (e) {
+      print(e);
+      return null;
+    }
   }
+}

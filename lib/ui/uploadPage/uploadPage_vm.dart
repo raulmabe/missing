@@ -22,7 +22,7 @@ class ViewModel {
         ..location= card.location
         ..tags.addAll(card.tags)
         ..description= card.description
-        ..time = DateTime.now()
+        ..createdTime = DateTime.now()
       )));
     }
 
