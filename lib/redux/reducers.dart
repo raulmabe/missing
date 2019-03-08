@@ -15,7 +15,7 @@ AppState appStateReducer(AppState prev, action) {
     ..itemsCards = ListBuilder(cardReducer(prev.itemsCards.asList(), action, AppTypes.ITEMS))
     ..isLoading = loadingReducer(prev.isLoading, action)
     ..authState.status = statusReducer(prev.authState.status, action)
-    ..authState.user = userReducer(prev.authState.user, action).toBuilder()
+    ..authState.user = userReducer(prev.authState.user, action)?.toBuilder()
     );
 }
 

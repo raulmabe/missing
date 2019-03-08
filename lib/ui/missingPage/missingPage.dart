@@ -56,8 +56,8 @@ class _MissingDetailsState extends State<MissingDetails> {
                 tag: card.id,
                 child: (card.images.isNotEmpty)
                     ? ImageCarousel(
-                      images: card.images,
-                    )
+                        images: card.images,
+                      )
                     : Container(
                         color: Colors.blueGrey[100],
                         child: Icon(
@@ -73,22 +73,31 @@ class _MissingDetailsState extends State<MissingDetails> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                SizedBox(
-                  height: 20,
-                ),
                 Padding(
                   padding: EdgeInsets.all(20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
-                          Text("50"),
-                          SizedBox(
-                            width: 5.0,
+                          Expanded(
+                            child: Text(card.title,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline
+                                    .copyWith(fontWeight: FontWeight.bold)),
                           ),
-                          Icon(Icons.remove_red_eye),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 5),
+                            child: Text("50"),
+                          ),
+                          Icon(
+                            Icons.remove_red_eye,
+                            color: Colors.grey,
+                          ),
                           SizedBox(
                             width: 20,
                           ),
@@ -109,9 +118,6 @@ class _MissingDetailsState extends State<MissingDetails> {
                           ),
                         ],
                       ),
-                      Text(card.title,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20.0)),
                       SizedBox(
                         height: 10.0,
                       ),
@@ -185,6 +191,8 @@ class _MissingDetailsState extends State<MissingDetails> {
                         height: 20.0,
                       ),
                       Row(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           CircleAvatar(
                             backgroundImage:
@@ -196,9 +204,21 @@ class _MissingDetailsState extends State<MissingDetails> {
                           ),
                           Text(
                             "Raul M.",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600, fontSize: 20.0),
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline
+                                .copyWith(fontWeight: FontWeight.bold),
                           ),
+                          Spacer(),
+                          Spacer(),
+                          Text(
+                            card.modificatedTime==null ? " creado hace " : " modificado hace ",
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline
+                                .copyWith(color: Colors.grey),
+                          ),
+                          calcTime(context)
                         ],
                       ),
                       SizedBox(
@@ -218,9 +238,8 @@ class _MissingDetailsState extends State<MissingDetails> {
           horizontal: 20,
         ),
         decoration: ShapeDecoration(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5
-            )),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
             color: getColorByState(context, card.missing)),
         child: SafeArea(
           child: Material(
@@ -282,5 +301,34 @@ class _MissingDetailsState extends State<MissingDetails> {
     } else {
       throw 'Could not launch $url';
     }
+  }
+
+  Widget calcTime(BuildContext context) {
+    return Builder(
+      builder: (context) {
+        String time;
+        if (DateTime.now().difference(card.createdTime).inDays > 0)
+          time = DateTime.now().difference(card.createdTime).inDays.toString() +
+              "d";
+        else if (DateTime.now().difference(card.createdTime).inHours > 0)
+          time =
+              DateTime.now().difference(card.createdTime).inHours.toString() +
+                  "h";
+        else if (DateTime.now().difference(card.createdTime).inMinutes > 0)
+          time =
+              DateTime.now().difference(card.createdTime).inMinutes.toString() +
+                  "m";
+        else
+          time =
+              DateTime.now().difference(card.createdTime).inSeconds.toString() +
+                  "s";
+        return Text(
+          time,
+          textAlign: TextAlign.end,
+          style:
+              Theme.of(context).textTheme.headline.copyWith(color: Colors.grey),
+        );
+      },
+    );
   }
 }
