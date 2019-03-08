@@ -71,6 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                   },
                   onSaved: (str) => loginInfo.email = str,
                   autocorrect: false,
+                  keyboardType: TextInputType.emailAddress,
                   style: TextStyle(color: textColor),
                   decoration: InputDecoration(
                       focusedErrorBorder: UnderlineInputBorder(

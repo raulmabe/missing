@@ -17,7 +17,7 @@ class LoginButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric( vertical: 10),
         child: Material(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-          color: MyTheme.of(context).kGreen,
+          color: MyTheme.of(context).kPrimaryColor,
           child: InkWell(
             onTap: onPressed,
             splashColor: Colors.white.withOpacity(.3),

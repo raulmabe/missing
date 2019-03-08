@@ -1,3 +1,4 @@
+import '../../registerPage/registerPage.dart';
 import 'package:flutter/material.dart';
 import '../../loginPage/loginPage.dart';
 import '../../../themeData.dart';
@@ -45,24 +46,32 @@ class PreLoginPage extends StatelessWidget {
                     }));
                   },
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Material(
-                    shape: RoundedRectangleBorder(
-                        side: BorderSide(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(5)),
-                    child: InkWell(
-                      onTap: () => print("Tapped"),
-                      splashColor: Colors.grey.shade200,
-                      child: Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: Text(
-                          "register".toUpperCase(),
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              letterSpacing: 2,
-                              color: Colors.grey),
+                Hero(
+                  tag: "register",
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: Material(
+                      shape: RoundedRectangleBorder(
+                          side: BorderSide(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(5)),
+                      child: InkWell(
+                        onTap: (){
+                          Navigator.push(context, 
+                          MaterialPageRoute(builder: (context){
+                            return RegisterPage();
+                          }));
+                        },
+                        splashColor: Colors.grey.shade200,
+                        child: Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: Text(
+                            "register".toUpperCase(),
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                letterSpacing: 2,
+                                color: Colors.grey),
+                          ),
                         ),
                       ),
                     ),

@@ -48,7 +48,7 @@ IconData getIconByType(AppTypes type, bool solid) {
 }
 
 Color getColorByState(BuildContext context, bool missing) {
-  return (missing) ? MyTheme.of(context).kPurple : MyTheme.of(context).kGreen;
+  return (missing) ? MyTheme.of(context).kRed : MyTheme.of(context).kGreen;
 }
 
 enum AppTabs { PEOPLE, PETS, ITEMS, CHATS, PROFILE }

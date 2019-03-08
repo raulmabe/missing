@@ -149,7 +149,7 @@ class MissingCard extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(borderRadius),
                       color: Colors.blueGrey.shade50),
-                  child: Icon(getIconByType(card.type, false),
+                  child: Icon(getIconByType(card.type, true),
                       color: Colors.blueGrey.shade100, size: 50),
                 );
               } else {
@@ -188,7 +188,7 @@ class MissingCard extends StatelessWidget {
                         ? FontAwesomeIcons.search
                         : FontAwesomeIcons.mapMarkedAlt,
                     size: 20,
-                    color: Colors.white),
+                    color:Colors.white),
               ),
             ),
           ),
