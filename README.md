@@ -12,7 +12,7 @@ I developed more in depth my skill with Flutter framework and in the making of b
 
 ## Built with 🛠️
 
-Below I mention several tools I used to develop this game:
+Below I mention several tools I used to develop this app:
 
 * [Flutter](https://flutter.dev/) - Google’s UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase
 * [built_value](https://pub.dev/packages/built_value) - Dart package that provides immutable types and JSON serialization.
