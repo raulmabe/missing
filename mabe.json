@@ -1,0 +1,9 @@
+{
+  "title": "Missing",
+  "version": "unfinished",
+  "path_to_mocks": [
+    "/assets/mocks/Pixel4XL.png",
+    "/assets/mocks/Pixel4XL2.png"
+  ],
+  "tag_tools": ["flutter", "redux"]
+}
