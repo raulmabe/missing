@@ -3,7 +3,7 @@
   "version": "unfinished",
   "tag_tools": ["flutter", "redux"],
   "platforms": ["iOS","Android"],
-  "link_images": ["https://res.cloudinary.com/mabe-portfolio/image/upload/v1602598696/missing/mock.png"],
-  "mocks_angle":["90"],
+  "link_images": ["https://res.cloudinary.com/mabe-portfolio/image/upload/v1603896515/missing/mock.png"],
+  "vertical_image":[true],
   "private": false
 }
